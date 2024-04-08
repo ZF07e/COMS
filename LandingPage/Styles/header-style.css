@@ -12,6 +12,13 @@ header{
     z-index: 100;
 }
 
+.leftPanel a, .leftPanel h2, .leftPanel div{
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
 .leftPanel{
     font-family: "ROBOTO";
     display: flex;
