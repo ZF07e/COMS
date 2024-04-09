@@ -1,0 +1,112 @@
+main{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.registrationContainer{
+    padding: 1rem 1rem;
+    color: #eee;
+    display: flex;
+    height: 100%;
+    background-color: rgb(14, 13, 13);
+    align-items: center;
+    justify-content: space-between  
+}
+
+/* Right Section */
+
+form{
+    background-color: rgba(28, 28, 28, 0.85);
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem;
+    row-gap: 10px;
+    font-family: "ROBOTO";
+}
+
+form input{
+    background-color: transparent;
+    padding: 0.5rem 0.3rem;
+    border: none;
+    border-bottom: solid 1px #eee;
+    font-size: 15px;
+}
+
+form input:focus, form textarea:focus{
+    outline: none;
+}
+
+form  input::placeholder, form textarea::placeholder{
+    color: #eeeeeeb2;
+}
+
+
+form textarea{
+    font-family: "ROBOTO";
+    font-size: 15px;
+    background-color: rgb(18, 18, 18);
+    height: 5rem;
+    border: none;
+    color: #eee;
+}
+
+form button{
+    background-color: #eeeeee;
+    padding: 0.5rem 0rem; 
+    margin: 0.5rem 3rem;
+    border: none;
+    border-radius: 10px
+}
+
+form button:hover{
+    background-color:rgba(238, 238, 238, 0.747)
+}
+
+/* Right Section END */
+
+/* Left Section */
+
+.leftSection{
+
+    display: flex;
+    padding: 15rem 1rem 0rem 1rem;
+}
+
+.leftSection img{
+    background-color: #eee;
+    width: 13rem;
+    height: 13rem;
+    object-position: center;
+    object-fit: cover;
+}
+
+.textSection h3, .textSection p{
+    margin: 0;
+}
+
+.textSection p{
+    font-size: 13px;
+}
+
+.textSection{
+    margin-left: 10px;
+    padding: 1rem 0rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 5px;
+}
+
+/* Left Section END*/
+
+
+/* Bottom Section */
+.associationsMissionVision{
+    color: #eee;
+    padding: 0rem 5rem 3rem 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
