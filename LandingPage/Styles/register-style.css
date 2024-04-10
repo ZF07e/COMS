@@ -3,12 +3,17 @@ main{
     flex-direction: column;
     height: 100%;
 }
+
 .registrationContainer{
     padding: 1rem 1rem;
     color: #eee;
     display: flex;
     height: 100%;
     background-color: rgb(14, 13, 13);
+    background-image: url(/Images/Backgrounds/abstractBlender.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     align-items: center;
     justify-content: space-between  
 }
@@ -68,7 +73,6 @@ form button:hover{
 /* Left Section */
 
 .leftSection{
-
     display: flex;
     padding: 15rem 1rem 0rem 1rem;
 }
@@ -86,7 +90,8 @@ form button:hover{
 }
 
 .textSection p{
-    font-size: 13px;
+    font-size: 15px;
+    color:#c9c9c9;
 }
 
 .textSection{
@@ -110,3 +115,36 @@ form button:hover{
     align-items: center;
     text-align: center;
 }
+
+@media (max-width: 768px) {
+    .registrationContainer{
+        padding: 1rem 1rem;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .leftSection{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0rem 1rem 0rem 1rem;
+    }
+
+    .associationsMissionVision{
+        padding: 0rem 2rem;
+    }
+}
+
+/* @media (max-width: 425px) {
+
+} */
+
+@media (max-width: 375px) {
+    form{
+        width: 17rem;     
+    }
+}
+
+/* @media (max-width: 320px) {
+    
+} */

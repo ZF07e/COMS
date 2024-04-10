@@ -1,4 +1,4 @@
-const Club = [
+export const Club = [
     {
         id: 1,
         image: "/Images/AssosiationsPfp/CodersPfp.jpg",
