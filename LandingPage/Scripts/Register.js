@@ -1,16 +1,18 @@
 import { selectedId } from "./utils/selectedAssociation.js";
-import { Club } from "../SampleData/ClubData.js";
+import { Associations } from "../SampleData/AssociationList.js";
 
-Club.forEach((club)=>{
-    if(club.id == selectedId){
-        console.log(club.image);
+console.log(selectedId);
+
+Associations.forEach((association)=>{
+    if(association.id == selectedId){
+        //console.log(association.image);
         document.querySelector(".leftSection").innerHTML = 
         `
-        <img src="${club.image}" alt="Logo">
+        <img src="${association.image}" alt="Logo">
         <div class="textSection">
-            <h3>${club.name}}</h3>
-            <p>Adivser: ${club.adviser}</p>
-            <p>Members: ${club.totalMembers}</p>
+            <h3>${association.name}}</h3>
+            <p>Adivser: ${association.adviser}</p>
+            <p>Members: ${association.totalMembers}</p>
         </div>
         `;
     }
