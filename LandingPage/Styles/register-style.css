@@ -84,7 +84,7 @@ main{
 }
 
 .fileAndSubmit{
-    padding: 1rem 0rem;
+    padding: 1.5rem 0rem 1rem 0rem;
     display: flex;
     justify-content: space-between;
 }
