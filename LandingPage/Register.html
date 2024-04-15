@@ -24,28 +24,58 @@
    
         <main>
             <section class="registrationContainer">
-
-                <section class="leftSection">
-                    <!-- Render Here -->
-                </section>
-
                 <form>
-                    <h3>Application Form</h3>
-                    <input type="text" placeholder="First Name">   
-                    <input type="text" placeholder="Middle Name">                
-                    <input type="text" placeholder="Last Name">
-                    <input type="text" placeholder="Phone Number">
-                    <input type="text" placeholder="Email">
-                    <textarea placeholder="Address"></textarea>
-                    <button type="submit">Submit Application</button>
+                    <div class="formHeader">
+                        <img src="" alt="Club Profile">
+                        <h4><span>[Club Name]</span> Registration</h4>
+                    </div>
+                    <div class="studentInformation">
+                        <div class="studentInformationBorder">
+                            <p>Student Information</p>
+                        </div>
+                        <div class="studentId">
+                            <input type="text" placeholder="Student Number">
+                        </div>
+                        <div class="nameContainer">
+                            <input type="text" placeholder="First Name">
+                            <input type="text" placeholder="Middle Name">
+                            <input type="text" placeholder="Last Name">
+                        </div>
+                        <div class="extraInfo">
+                            <input type="text" placeholder="Gender">
+                            <input type="text" placeholder="Course/Strand">
+                        </div>
+                    </div>
+
+                    <div class="contactDetails">
+                        <div class="contactDetailsBorder">
+                            <p>Contact Details</p>
+                        </div>
+                        <div class="contactsContainer">
+                            <input type="text" placeholder="Phone Number">
+                            <input type="email" placeholder="Outlook Email">
+                        </div>
+                        <div class="location1Container">
+                            <input type="text" placeholder="Subdivision/Village/Building">
+                            <input type="text" placeholder="Barangay">
+                        </div>
+                        <div class="location2Container">
+                            <input type="text" placeholder="City/Municipality">
+                            <input type="text" placeholder="Province">
+                        </div>
+                    </div>
+                    <div class="fileAndSubmit">
+                        <label for="selectFile">
+                            <input id="selectFile" type="file">
+                        </label>
+                        
+                        <button type="submit">Send Application</button>
+                    </div>            
                 </form>
             </section>
 
             <section class="associationsMissionVision">   
-                <h3>~Mission~</h3>
-                <p class="js-mission">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste magni quos illum non quibusdam excepturi cupiditate laborum mollitia veniam ipsum quasi repellat ipsa reprehenderit sequi voluptatem aut, consequuntur dignissimos minus!</p>
-                <h3>~Vision~</h3>
-                <p class="js-vision">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis unde molestiae deleniti nulla inventore. Tempore at quo, culpa tempora distinctio molestiae, a et autem dolores libero corporis cupiditate vitae suscipit.</p>
+                <!-- Render Here -->
             </section>
 
             <script type="module" src="/LandingPage/Scripts/Register.js"></script>

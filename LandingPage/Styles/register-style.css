@@ -15,106 +15,138 @@ main{
     background-repeat: no-repeat;
     background-size: cover;
     align-items: center;
-    justify-content: space-between  
+    justify-content: center;
 }
 
-/* Right Section */
+/* Registration Container Section */
 
-form{
-    background-color: rgba(28, 28, 28, 0.85);
-    width: 20rem;
+.registrationContainer form{
+    background-color: #1C1C1C;
+    padding: 15px;
+}
+
+.formHeader{
     display: flex;
-    flex-direction: column;
-    padding: 1rem 1rem;
-    row-gap: 10px;
-    font-family: "ROBOTO";
+    align-items: center;
 }
 
-form input{
+.formHeader img{
+    background-color: gray;
+    width: 5rem;
+    height: 4.7rem;
+    margin-right: 0.6rem;
+}
+
+.formHeader h4 span{
+    color: #FF7A30;
+}
+
+.studentInformationBorder, .contactDetailsBorder{
+    border-bottom: solid 1px #FF7A30;
+    margin: 1rem 0rem;
+}
+
+.studentInformationBorder p, .contactDetails p{
+    margin: 0;
+    font-size: 0.8rem;
+    color: #FF7A30;
+}
+
+.studentInformation, .contactDetails{
+    display: flex;
+    flex-wrap: wrap; 
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.studentId, .nameContainer, .extraInfo, .contactsContainer, .location1Container, .location2Container{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.4rem;
+    row-gap: 0.5rem;
+}
+
+.studentInformation input, .contactDetails input{
     background-color: transparent;
-    padding: 0.5rem 0.3rem;
+    color: #eee;
     border: none;
     border-bottom: solid 1px #eee;
-    font-size: 15px;
+    padding: 0.4rem 0.2rem;
+    flex: 1 0 10rem;
 }
 
-form input:focus, form textarea:focus{
+.studentInformation input::placeholder, .contactDetails input::placeholder{
+    color: #ffffffbb;
+}
+
+.studentInformation input:focus{
     outline: none;
 }
 
-form  input::placeholder, form textarea::placeholder{
-    color: #eeeeeeb2;
-}
-
-
-form textarea{
-    font-family: "ROBOTO";
-    font-size: 15px;
-    background-color: rgb(18, 18, 18);
-    height: 5rem;
-    border: none;
-    color: #eee;
-}
-
-form button{
-    background-color: #eeeeee;
-    padding: 0.5rem 0rem; 
-    margin: 0.5rem 3rem;
-    border: none;
-    border-radius: 10px
-}
-
-form button:hover{
-    background-color:rgba(238, 238, 238, 0.747)
-}
-
-/* Right Section END */
-
-/* Left Section */
-
-.leftSection{
-    display: flex;
-    padding: 15rem 1rem 0rem 1rem;
-}
-
-.leftSection img{
-    background-color: #eee;
-    width: 13rem;
-    height: 13rem;
-    object-position: center;
-    object-fit: cover;
-}
-
-.textSection h3, .textSection p{
-    margin: 0;
-}
-
-.textSection p{
-    font-size: 15px;
-    color:#c9c9c9;
-}
-
-.textSection{
-    margin-left: 10px;
+.fileAndSubmit{
     padding: 1rem 0rem;
     display: flex;
-    flex-direction: column;
-    justify-content: end;
-    gap: 5px;
+    justify-content: space-between;
 }
 
-/* Left Section END*/
+.fileAndSubmit label{
+    display: flex;
+    align-items: center;
+    border: solid 1px;
+    font-size: 0.7rem;
+    padding: 0.3rem 0rem;
+}
 
+.fileAndSubmit label input[type="file"]::-webkit-file-upload-button{
+    border: none;
+    background-color: transparent;
+    color: #FF7A30;
+}
+
+.fileAndSubmit label:hover{
+    background-color: #c7c7c7be;
+}
+
+.fileAndSubmit label:active{
+    background-color: rgba(78, 78, 78, 0.42);
+}
+
+.fileAndSubmit button{
+    background-color: #FF7A30;
+    color: #eee;
+    border: none;
+    padding: 0.6rem 0.7rem;
+}
+
+.fileAndSubmit button:hover{
+    background-color: #ff7830be;
+}
+
+.fileAndSubmit button:active{
+    background-color: #ff78306b;
+}
 
 /* Bottom Section */
 .associationsMissionVision{
     color: #eee;
-    padding: 0rem 5rem 3rem 5rem;
+    padding: 1rem 6rem;
     display: flex;
-    flex-direction: column;
+    column-gap: 0.2rem;
+    row-gap: 0.5rem;
     align-items: center;
+    justify-content: center;
     text-align: center;
+    flex-wrap: wrap;
 }
+
+.associationsMissionVision section{
+    display: flex;
+    font-size: 0.9rem;
+    width: 20rem;
+    flex-direction: column;
+    padding: 1rem;
+}
+
 
 @media (max-width: 768px) {
     .registrationContainer{
@@ -131,7 +163,7 @@ form button:hover{
     }
 
     .associationsMissionVision{
-        padding: 0rem 2rem;
+        padding: 1rem 2rem;
     }
 }
 
@@ -140,9 +172,7 @@ form button:hover{
 } */
 
 @media (max-width: 375px) {
-    form{
-        width: 17rem;     
-    }
+
 }
 
 /* @media (max-width: 320px) {

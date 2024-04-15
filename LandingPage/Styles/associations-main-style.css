@@ -85,6 +85,10 @@
     font-size: 20px;
 }
 
+.details a{
+    width: 8rem;
+}
+
 .details button{
     padding: 0.4rem 2rem;
     margin-top: 5px;

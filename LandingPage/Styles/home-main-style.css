@@ -1,11 +1,10 @@
 main{
-    height: 100vh;
-    width: auto;
-    
+    height: 100%;
+    width: auto; 
 }
 
 .logincontainer{
-    padding: 50px 25px;
+    padding: 80px 25px;
     display: flex;
     justify-content: space-between;
     box-shadow: inset 0px -20px 20px rgba(0, 0, 0, 0.3);
