@@ -8,7 +8,7 @@ main{
     display: flex;
     justify-content: space-between;
     box-shadow: inset 0px -20px 20px rgba(0, 0, 0, 0.3);
-    background-image: url(/Images/Backgrounds/Loginbackground.jpg);
+    background-image: url(../Images/Backgrounds/Loginbackground.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

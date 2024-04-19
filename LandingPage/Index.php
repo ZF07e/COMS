@@ -4,11 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>COMS</title>
-        <link rel="icon" href="/Images/WebLogo/CO (1).png" type="images/icon type">
+        <link rel="icon" href="../Images/WebLogo/CO (1).png" type="images/icon type">
 
-        <link rel="stylesheet" href="/LandingPage/Styles/header-style.css">
-        <link rel="stylesheet" href="/LandingPage/Styles/general-style.css">
-        <link rel="stylesheet" href="/LandingPage/Styles/home-main-style.css">
+        <link rel="stylesheet" href="Styles/header-style.css">
+        <link rel="stylesheet" href="Styles/general-style.css">
+        <link rel="stylesheet" href="Styles/home-main-style.css">
         
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,9 +19,9 @@
         
         <header><!--Header-->
             <nav class="leftPanel">
-                <a href="/LandingPage/Index.html"><h2 class="Logo"><span>CO</span>MS<span>.</span></h2></a>
-                <a class="selected" href="/LandingPage/Index.html"><div>Home</div></a>
-                <a href="/LandingPage/Associations.html"><div>Associations</div></a>
+                <a href="Index.php"><h2 class="Logo"><span>CO</span>MS<span>.</span></h2></a>
+                <a class="selected" href="Index.php"><div>Home</div></a>
+                <a href="Associations.php"><div>Associations</div></a>
             </nav>
         </header><!--Header END-->
         <main>
