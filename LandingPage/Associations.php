@@ -4,11 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>COMS</title>
-        <link rel="icon" href="/Images/WebLogo/CO (1).png" type="images/icon type">
+        <link rel="icon" href="../Images/WebLogo/CO (1).png" type="images/icon type">
 
-        <link rel="stylesheet" href="/LandingPage/Styles/header-style.css">
-        <link rel="stylesheet" href="/LandingPage/Styles/general-style.css">
-        <link rel="stylesheet" href="/LandingPage/Styles/associations-main-style.css">
+        <link rel="stylesheet" href="Styles/header-style.css">
+        <link rel="stylesheet" href="Styles/general-style.css">
+        <link rel="stylesheet" href="Styles/associations-main-style.css">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,9 +18,9 @@
         
         <header><!--Header-->
             <nav class="leftPanel">
-                <a href="/LandingPage/Index.php"><h2 class="Logo"><span>CO</span>MS<span>.</span></h2></a>
-                <a href="/LandingPage/Index.php"><div>Home</div></a>
-                <a class="selected" href="/LandingPage/Associations.php"><div>Associations</div></a>
+                <a href="Index.php"><h2 class="Logo"><span>CO</span>MS<span>.</span></h2></a>
+                <a href="Index.php"><div>Home</div></a>
+                <a class="selected" href="Associations.php"><div>Associations</div></a>
             </nav>
         </header><!--Header END-->
         
@@ -35,6 +35,6 @@
 
         </main>
 
-        <script type="module" src="/LandingPage/Scripts/Association.js"></script>
+        <script type="module" src="Scripts/Association.js"></script>
     </body>
 </html>

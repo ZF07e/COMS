@@ -5,7 +5,7 @@ body{
     font-family: "ROBOTO";
 }
 
-a:visited{
+a:visited, a:active, a:hover, a{
     color: #eee;   
 }
 
