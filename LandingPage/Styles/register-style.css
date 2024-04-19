@@ -68,6 +68,8 @@ main{
 
 .studentInformation input, .contactDetails input{
     background-color: transparent;
+    font-family: "ROBOTO";
+    font-size: 1rem;
     color: #eee;
     border: none;
     border-bottom: solid 1px #eee;
@@ -79,18 +81,18 @@ main{
     color: #ffffffbb;
 }
 
-.studentInformation input:focus{
+.studentInformation input:focus, .contactDetails input:focus{
     outline: none;
 }
 
 .fileAndSubmit{
     padding: 1.5rem 0rem 1rem 0rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
 }
 
 .fileAndSubmit label{
-    display: flex;
+    display: none;
     align-items: center;
     border: solid 1px;
     font-size: 0.7rem;

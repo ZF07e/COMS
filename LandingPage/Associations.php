@@ -18,9 +18,9 @@
         
         <header><!--Header-->
             <nav class="leftPanel">
-                <a href="/LandingPage/Index.html"><h2 class="Logo"><span>CO</span>MS<span>.</span></h2></a>
-                <a href="/LandingPage/Index.html"><div>Home</div></a>
-                <a class="selected" href="/LandingPage/Associations.html"><div>Associations</div></a>
+                <a href="/LandingPage/Index.php"><h2 class="Logo"><span>CO</span>MS<span>.</span></h2></a>
+                <a href="/LandingPage/Index.php"><div>Home</div></a>
+                <a class="selected" href="/LandingPage/Associations.php"><div>Associations</div></a>
             </nav>
         </header><!--Header END-->
         
