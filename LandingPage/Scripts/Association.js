@@ -23,7 +23,7 @@ function renderAssociations(){
                     <div class="details">
                         <p>Adviser: ${assosiation.adviser}</p>
                         <span>Type: ${assosiation.type}</span>
-                        <a href="Register.html"><button class="js-ApplyButton" data-association-id="${assosiation.id}">Apply</button></a>
+                        <a href="Register.php"><button class="js-ApplyButton" data-association-id="${assosiation.id}">Apply</button></a>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@ function renderAssociations(){
                     <div class="details">
                         <p>Adviser: ${assosiation.adviser}</p>
                         <span>Type: ${assosiation.type}</span>
-                        <a href="Register.html"><button class="js-ApplyButton" data-association-id="${assosiation.id}">Apply</button></a>
+                        <a href="Register.php"><button class="js-ApplyButton" data-association-id="${assosiation.id}">Apply</button></a>
                     </div>
                 </div>
             </div>

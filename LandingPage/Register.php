@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Registration</title>
-        <link rel="stylesheet" href="/LandingPage/Styles/header-style.css">
-        <link rel="stylesheet" href="/LandingPage/Styles/general-style.css">
-        <link rel="stylesheet" href="/LandingPage//Styles/register-style.css">
+        <link rel="stylesheet" href="Styles/header-style.css">
+        <link rel="stylesheet" href="Styles/general-style.css">
+        <link rel="stylesheet" href="Styles/register-style.css">
         <link rel="icon" href="/Images/WebLogo/CO (1).png" type="images/icon type">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,9 +16,9 @@
     <body>
         <header><!--Header-->
             <nav class="leftPanel">
-                <a href="/LandingPage/Index.php"><h2 class="Logo"><span>CO</span>MS<span>.</span></h2></a>
-                <a href="/LandingPage/Index.php"><div>Home</div></a>
-                <a href="/LandingPage/Associations.php"><div>Associations</div></a>
+                <a href="Index.php"><h2 class="Logo"><span>CO</span>MS<span>.</span></h2></a>
+                <a href="Index.php"><div>Home</div></a>
+                <a href="Associations.php"><div>Associations</div></a>
             </nav>
         </header><!--Header END-->
    
@@ -78,7 +78,7 @@
                 <!-- Render Here -->
             </section>
 
-            <script type="module" src="/LandingPage/Scripts/Register.js"></script>
+            <script type="module" src="Scripts/Register.js"></script>
         </main>
     </body>
 </html>
