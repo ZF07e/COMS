@@ -1,0 +1,131 @@
+main{
+    height: 100%;
+    width: auto; 
+}
+
+.logincontainer{
+    padding: 80px 25px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: inset 0px -20px 20px rgba(0, 0, 0, 0.3);
+    background-image: url(/COMS/Images/Backgrounds/Loginbackground.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.TitleDesc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "ROBOTO";
+    color: #eee;
+    margin: 25px 0px;
+}
+
+.TitleDesc h1, .TitleDesc h3{
+    margin: 0;
+
+}
+
+.TitleDesc h1 span{
+    color: #FF7A30;
+}
+
+.TitleDesc h3{
+    margin-left: 5px;
+    color: #bdbdbd;
+}
+
+form{
+    background-color: rgba(28, 28, 28, 0.85);
+    color: white;
+    font-family: "ROBOTO";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 10px;
+    height: 25rem;
+    width: 20rem;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+form input{
+    width: 95%;
+    padding: 10px 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+form p a{
+    color: #FF7A30;
+}
+
+form p a:visited{
+    color: #FF7A30;
+}
+
+form input:focus{
+    outline: none;
+}
+
+form label{
+    margin: 5px 1px;
+    padding: 0;
+    font-family: "ROBOTO";
+    font-size: 13px;
+}
+
+form p{
+    font-size: 11px;
+    margin: 35px 0px;
+}
+
+.emailcontainer, .passwordcontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+}
+
+.logincontainer button{
+    padding: 10px 100px;
+    border: none;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .TitleDesc h1{
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 425px) {
+    .TitleDesc h1{
+        font-size: 18px;
+    }
+    .TitleDesc h3{
+        font-size: 15px;
+    }
+
+    
+}
+
+@media (max-width: 500px) {
+    .logincontainer{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .TitleDesc{
+        text-align: center;
+    }
+
+    form{
+        height: 25rem;
+        width: 19rem;
+    }
+}

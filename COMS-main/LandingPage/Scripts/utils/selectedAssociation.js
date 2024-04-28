@@ -1,0 +1,1 @@
+export let selectedId = JSON.parse(localStorage.getItem("selectedId")) || "";
