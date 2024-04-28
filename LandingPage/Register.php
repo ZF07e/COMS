@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Registration</title>
+        <title>COMS: Register</title>
+
         <link rel="stylesheet" href="Styles/header-style.css">
         <link rel="stylesheet" href="Styles/general-style.css">
         <link rel="stylesheet" href="Styles/register-style.css">
@@ -21,64 +22,47 @@
                 <a href="Associations.php"><div>Associations</div></a>
             </nav>
         </header><!--Header END-->
-   
-        <main>
-            <section class="registrationContainer">
-                <form>
-                    <div class="formHeader">
-                        <img src="" alt="Club Profile">
-                        <h4><span>[Club Name]</span> Registration</h4>
-                    </div>
-                    <div class="studentInformation">
-                        <div class="studentInformationBorder">
-                            <p>Student Information</p>
-                        </div>
-                        <div class="studentId">
-                            <input type="text" placeholder="Student Number">
-                        </div>
-                        <div class="nameContainer">
-                            <input type="text" placeholder="First Name">
-                            <input type="text" placeholder="Middle Name">
-                            <input type="text" placeholder="Last Name">
-                        </div>
-                        <div class="extraInfo">
-                            <input type="text" placeholder="Gender">
-                            <input type="text" placeholder="Course/Strand">
-                        </div>
-                    </div>
 
-                    <div class="contactDetails">
-                        <div class="contactDetailsBorder">
-                            <p>Contact Details</p>
-                        </div>
-                        <div class="contactsContainer">
-                            <input type="text" placeholder="Phone Number">
-                            <input type="email" placeholder="Outlook Email">
-                        </div>
-                        <div class="location1Container">
-                            <input type="text" placeholder="Subdivision/Village/Building">
-                            <input type="text" placeholder="Barangay">
-                        </div>
-                        <div class="location2Container">
-                            <input type="text" placeholder="City/Municipality">
-                            <input type="text" placeholder="Province">
-                        </div>
+        <main>      
+            <section class="registrationContainer">
+                <section class="left-section">
+                    <div class="imageContainer"></div>
+                    <div class="association-info">
+                        <h2 class="associationTitle">[Associtaion Title]</h2>
+                        <p class="adviser">[Adviser]</p>
+                        <p class="description">[Description]: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam 
+                                                    laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.</p>
+                    </div>  
+                </section>
+
+                <form>
+                    <div class="labelconatainer">
+                        <div>
+                            <h2>Apply</h2>
+                        </div>               
+                        <p>How can we contact you?</p>
                     </div>
-                    <div class="fileAndSubmit">
-                        <label for="selectFile">
-                            <input id="selectFile" type="file">
-                        </label>
-                        
-                        <button type="submit">Send Application</button>
-                    </div>            
+                    <input type="email" placeholder="Outlook Email">
+                    <input type="text" placeholder="Facebook Link">
+                    <button type="submit" class="submitbutton">Submit</button>
                 </form>
             </section>
 
-            <section class="associationsMissionVision">   
-                <!-- Render Here -->
-            </section>
+            <section class="bottomSection">
 
-            <script type="module" src="Scripts/Register.js"></script>
+                <section class="mission">
+                    <h3>• Mission •</h3>
+                    <h5 class="AscMission"></h5>
+                </section>
+
+                <section class="vision">
+                    <h3>• Vision •</h3>
+                    <h5 class="AscVision"></h5>
+                </section>
+
+            </section>                                                              
         </main>
+        
+        <script type="module" src="Scripts/Register.js"></script>
     </body>
 </html>

@@ -1,5 +1,5 @@
 import {selectedId} from "./utils/selectedAssociation.js";
-import {Associations} from "../SampleData/AssociationList.js";
+import {Associations} from "../../SampleData/AssociationList.js";
 
 export let AssociationList = [];
 AddtoArray(Associations);

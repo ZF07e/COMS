@@ -33,20 +33,12 @@
                 </div>
 
                 <form>
-                    <h2 class="Logo"><span>LOG</span>IN<span>.</span></h2>
+                    <h3 class="Logo"><span> LOG</span>IN<span></span></h3>
+
+                    <button>Microsoft 365 Login</button>
                     
-                    <div class="emailcontainer">
-                        <label>Email</label>
-                        <input type="text" placeholder="example@email.com">
-                    </div>
-                    <div class="passwordcontainer">
-                        <label>Password</label>
-                        <input type="password" placeholder="Password">
-                    </div>
-
-                    <p>No Account? <a href="Associations.html">Apply to the Club/Organization</a></p>
-
-                    <button>Login</button>
+                    <p>No Account? <a href="Associations.php">Apply to the Club/Organization</a></p>
+             
                 </form>
             </div>
 

@@ -5,10 +5,12 @@ main{
 
 .logincontainer{
     padding: 80px 25px;
+    height: 50vh;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     box-shadow: inset 0px -20px 20px rgba(0, 0, 0, 0.3);
-    background-image: url(/COMS/Images/Backgrounds/Loginbackground.jpg);
+    background-image: url(../../Images/Backgrounds/Loginbackground.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -29,7 +31,7 @@ main{
 }
 
 .TitleDesc h1 span{
-    color: #FF7A30;
+    /* color: #ff3333; */
 }
 
 .TitleDesc h3{
@@ -45,27 +47,24 @@ form{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    row-gap: 10px;
-    height: 25rem;
     width: 20rem;
+    height: 10rem;
     border-radius: 10px;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 }
 
-form input{
-    width: 95%;
-    padding: 10px 5px;
-    border: none;
-    border-radius: 5px;
+form .Logo{
+    margin: 0;
+ 
 }
 
 form p a{
-    color: #FF7A30;
+    /* color: #ff3333; */
 }
 
 form p a:visited{
-    color: #FF7A30;
+    /* color: #ff3333; */
 }
 
 form input:focus{
@@ -81,20 +80,14 @@ form label{
 
 form p{
     font-size: 11px;
-    margin: 35px 0px;
+    margin: 0px;
 }
 
-.emailcontainer, .passwordcontainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 90%;
-}
-
-.logincontainer button{
-    padding: 10px 100px;
+form button{
+    padding: 15px 90px;
     border: none;
     border-radius: 10px;
+    margin: 1rem 0rem;
 }
 
 @media (max-width: 768px) {
@@ -125,7 +118,6 @@ form p{
     }
 
     form{
-        height: 25rem;
         width: 19rem;
     }
 }
