@@ -1,0 +1,17 @@
+main{
+    display: flex;
+    flex-direction: column;
+}
+
+.top-main-section{
+    border-bottom: solid 1px #eee;
+    padding: 0.4rem 0rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.main-center-section{
+    display: flex;
+    padding-top: 0.7rem;
+}
+
