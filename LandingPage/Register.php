@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="Styles/header-style.css">
         <link rel="stylesheet" href="Styles/general-style.css">
         <link rel="stylesheet" href="Styles/register-style.css">
-        <link rel="icon" href="/Images/WebLogo/CO (1).png" type="images/icon type">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

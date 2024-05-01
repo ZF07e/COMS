@@ -1,0 +1,18 @@
+body{
+    background-color: #232323;
+    font-family: "ROBOTO";
+    color: #eee;
+    overflow: hidden;
+}
+
+a:visited, a:active, a:hover, a{
+    color: #eee;   
+    text-decoration: none;
+    cursor: pointer;
+}
+
+*{
+    font-family: "ROBOTO";
+    margin: 0;
+    padding: 0;
+}

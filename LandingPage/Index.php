@@ -4,12 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>COMS</title>
-        <link rel="icon" href="../Images/WebLogo/CO (1).png" type="images/icon type">
 
-        <link rel="stylesheet" href="Styles/header-style.css">
         <link rel="stylesheet" href="Styles/general-style.css">
+        <link rel="stylesheet" href="Styles/header-style.css">     
         <link rel="stylesheet" href="Styles/home-main-style.css">
-        
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,8 +33,10 @@
                 <form>
                     <h3 class="Logo"><span> LOG</span>IN<span></span></h3>
 
-                    <button>Microsoft 365 Login</button>
-                    
+                    <div class="buttoncontainer">
+                            <button>Microsoft 365 Login</button>
+                    </div>
+                             
                     <p>No Account? <a href="Associations.php">Apply to the Club/Organization</a></p>
              
                 </form>
