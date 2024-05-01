@@ -1,0 +1,1 @@
+export let User = JSON.parse(localStorage.getItem('User')) || {};
