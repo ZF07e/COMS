@@ -30,13 +30,11 @@
                     <h3>Your Ultimate Club and Organization Management </h3>
                 </div>
 
-                <form>
+                <form action = "Functions/UserLogin.php" method = "POST">
                     <h3 class="Logo"><span> LOG</span>IN<span></span></h3>
-
                     <div class="buttoncontainer">
-                            <button>Microsoft 365 Login</button>
+                            <button type = "submit" name = "login">Microsoft 365 Login</button>
                     </div>
-                             
                     <p>No Account? <a href="Associations.php">Apply to the Club/Organization</a></p>
              
                 </form>
