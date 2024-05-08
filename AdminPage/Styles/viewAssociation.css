@@ -1,0 +1,353 @@
+.topSection div:hover{
+    color: #ffffff67;
+    cursor: pointer;
+}
+
+.AssociationHeader{
+    /* background-color:#1C1C1C; */
+    margin: 0rem 0.5rem 1rem 0rem;
+    display: flex;
+    flex-direction: column;
+    border-bottom: solid 1px #ffffff54;
+}
+
+.AssociationHeader .info{
+    display: flex;
+    row-gap: 0.3rem;
+    align-items: center;
+    padding: 1rem 0rem;
+}
+
+.info .text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.1rem 0.7rem;
+}
+
+.AssociationHeader button{
+    border: solid 1px #fff;
+    border-radius: 1rem;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    transition: background-color 0.25s;
+}
+
+.AssociationHeader button:hover{
+    background-color: #ffffff23;
+}
+
+#associationLogo{
+    width: 7rem;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+#navigations{
+    display: flex;
+    column-gap: 0.2rem;
+}
+
+#navigations nav{
+    padding: 0rem 0.5rem;
+    cursor: pointer;
+}
+
+.selectedNav{
+    border-bottom: solid 1px #fff;
+}
+
+/* List Section */
+#list{
+    display: none;
+    flex-direction: column;
+    row-gap: 0.3rem;
+}
+
+.memberContainer{
+    border: solid 5px #1C1C1C;
+    border-radius: 0.5rem;
+}
+.memberHeader{
+    background-color: #1C1C1C;
+    padding: 0.2rem 0rem;
+}
+
+.memberContainer div{
+    font-weight: 300;
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff81;
+}
+
+/* Home Section */
+
+.postContainer{
+    margin-bottom: 1.8rem;
+}
+
+.postHeader{
+    font-size: 1rem;
+    border-bottom: solid 1px #fff;
+   
+}
+
+#home_about, #home_mission, #home_vision{
+    color: #ffffff9a;
+    font-weight: 300;
+    margin: 0.5rem 0rem;
+}
+
+
+/* Home Edit */
+.postContainerEdit textarea{
+    font-family: "ROBOTO";
+    width: 100%;
+    height: 20vh;
+    resize: none;
+    border: none;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    background-color: #181818;
+    color: #fff;
+}
+
+.postContainerEdit textarea:focus{
+    outline: none;
+}
+
+#editHome{
+    display: none;
+}
+
+#submitChanges, #cancelChanges{
+    margin-top: 0.5rem;
+}
+
+#submitChanges{
+    background-color: rgb(60, 190, 60);
+    color: white;
+    border: none;
+    font-weight: 600;
+    padding: 0.6rem 0.8rem;
+    border-radius: 1.5rem;
+}
+
+#cancelChanges{
+    background-color: transparent   ;
+    color: #fff;
+    border: solid 2px #fff;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
+}
+
+.positionedUser{
+    cursor: pointer;
+    user-select: none;
+}
+
+.positionedUser:hover{
+    background-color: #c9c9c915;
+}
+
+/* Upper Layer */
+
+.upperlayer{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000080;
+    z-index: 105;
+    display: none;
+}
+
+.upperlayer form{
+    background-color: #181818;
+    width: 300px;
+    padding: 1rem 0rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.formheader{
+    width: 90%;
+    display: flex;
+    justify-content: right;
+    cursor: pointer;
+    user-select: none;
+}
+
+#viewProfileImg{
+    width: 80px;
+    border-radius: 50%;
+}
+
+.infos{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.4rem;
+    width: 90%;   
+}
+
+.edit_infos{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    row-gap: 0.5rem;
+    display: none;
+}
+
+#cancelEdit, #back{
+    width: 100%; 
+}
+
+.upperlayer form button{
+    padding: 0.5rem;
+    width: 90%;
+    border: solid 1px #fff;
+    border-radius: 1rem;
+    background-color: transparent;
+    color: #fff;
+}
+
+.upperlayer form button:hover{
+    background-color: #ffffff15;
+}
+
+#saveChanges{
+    border-color: rgb(56, 230, 94);
+    color: rgb(56, 230, 94);
+    width: 100%;
+}
+
+#removeUser{
+    border-color: rgb(219, 54, 54);
+    color: rgb(219, 54, 54);
+    width: 100%;
+}
+
+#editInfo{
+    border-color: rgb(54, 120, 219);
+    color: rgb(54, 120, 219);
+    width: 100%;
+}
+
+#saveChanges:hover, #cancelEdit:hover, #removeUser:hover, #editInfo:hover{
+    background-color: #ffffff15;
+}
+
+#saveChanges:active, #cancelEdit:active, #removeUser:active, #editInfo:active{
+    background-color: #ffffff60;
+}
+
+/* Upper Layer 2 */
+
+.upperlayer2{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000080;
+    z-index: 106;
+    display: none;
+}
+
+#confirmation{
+    background-color: #181818;
+    padding: 1rem 0.5rem;
+    user-select: none;
+}
+
+#confirmation p{
+    margin: 0.5rem 0rem;
+}
+
+.confHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: start;
+}
+
+#xbuttonConf{
+    background-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+}
+
+.options{
+    display: flex;
+    width: 100%;
+    column-gap: 0.3rem;
+    justify-content: right;
+
+}
+
+.options button{
+    padding: 0.4rem 1rem;
+    border: solid 1px #fff;
+    border-radius: 1rem;
+}
+
+#yesbtn{
+    border-color: rgb(219, 54, 54);
+    background-color: transparent;
+    color:rgb(219, 54, 54);
+}
+
+#nobtn{
+    background-color: transparent;
+    color:#fff;
+}
+
+#yesbtn:hover, #nobtn:hover{
+    background-color: #ffffff1c;
+}
+
+#yesbtn:active, #nobtn:active{
+    background-color: #ffffff50;
+}
+
+/* add  */
+
+#addmember form input{
+    width: 90%;
+    padding: 0.3rem 0rem;
+}
+
+@media (max-width: 815px) {
+    #associationLogo{
+        width: 5rem;
+    }
+    .info .text{
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 580px) { 
+    #associationLogo{
+        width: 3rem;
+    }
+    #associationLogo{
+        font-size: 0.3rem;
+    }
+}

@@ -1,8 +1,9 @@
-import {selectedId} from "./utils/selectedAssociation.js";
 import {Associations} from "../../SampleData/AssociationList.js";
+export let selectedId = JSON.parse(localStorage.getItem("selectedId")) || "";
 
-export let AssociationList = [];
+let AssociationList = [];
 AddtoArray(Associations);
+
 renderAssociations();
 
 function renderAssociations(){
@@ -51,7 +52,7 @@ function renderAssociations(){
             `;
         }
     });
-    document.querySelector(".orgList").innerHTML = Organization;
+    document.querySelector(".orgList").innerHTML += Organization;
     document.querySelector(".orgList").innerHTML += Clubs;
 };
 
@@ -64,7 +65,6 @@ function AddtoArray(array){
 document.querySelectorAll(".js-ApplyButton").forEach((value) => {
     value.addEventListener('click', ()=>{ 
         let associationId = value.dataset.associationId;
-        console.log(associationId);
         selectedId = localStorage.setItem("selectedId", JSON.stringify(associationId));
     });
 });
