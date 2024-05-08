@@ -161,7 +161,7 @@ function navigationFunction(){
     });
 
     document.getElementById("backbuttonView").addEventListener("click", ()=>{
-        window.location.href="./associations.html";
+        window.location.href="./associations.php";
     });
 }
 

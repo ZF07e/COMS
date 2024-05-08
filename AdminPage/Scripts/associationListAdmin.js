@@ -121,7 +121,7 @@ function viewAssociationFunction(document){
         item.addEventListener("click", ()=>{
             let selectedId = item.dataset.selected;
             selectedAssociationID = localStorage.setItem("selectedAssociationID", JSON.stringify(selectedId));
-            window.location.href = "./viewAssociation.html";
+            window.location.href = "./viewAssociation.php";
         });
     });
 }

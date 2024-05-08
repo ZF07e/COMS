@@ -1,5 +1,5 @@
 document.querySelector(".home").addEventListener("click", ()=>{
-    window.location.href = "./index.html";
+    window.location.href = "./index.php";
 });
 
 document.querySelector(".events").addEventListener("click", ()=>{
@@ -7,11 +7,11 @@ document.querySelector(".events").addEventListener("click", ()=>{
 }); 
 
 document.querySelector(".associations").addEventListener("click", ()=>{
-    window.location.href = "./associations.html";
+    window.location.href = "./associations.php";
 }); 
 
 document.querySelector(".user_management").addEventListener("click", ()=>{
-    window.location.href = "./userManagement.html";
+    window.location.href = "./userManagement.php";
 }); 
 
 document.querySelector(".request").addEventListener("click", ()=>{
