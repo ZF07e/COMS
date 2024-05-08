@@ -1,17 +1,23 @@
-import { selectedId } from "./Association.js";
-import { Associations } from "../../SampleData/AssociationList.js";
+import { selectedId } from "./utils/selectedAssociation.js";
 
-console.log(selectedId);
+fetch('http://localhost/COMS-main/LandingPage/Functions/GetAssociations.php')
+.then(response => response.json())
+.then(data => {
+    funktion(data);
+})
+.catch(error => console.error('Error:', error));
 
-Associations.forEach((association)=>{
-    if(association.id == selectedId){
-        document.querySelector(".imageContainer").innerHTML += `<img src="${association.image}" alt="Profile" class="associationProfile">`;
-        document.querySelector(".associationTitle").innerHTML = association.name;
-        document.querySelector(".adviser").innerHTML = association.adviser;
-        document.querySelector(".description").innerHTML = association.description;
-
-        document.querySelector(".AscMission").innerHTML = association.mission;
-        document.querySelector(".AscVision").innerHTML = association.vision;
-    }
-
-});
+function funktion(Associations){
+    Associations.forEach((association)=>{
+        if(association.id == selectedId){
+            document.querySelector(".imageContainer").innerHTML += `<img src="${association.image}" alt="Profile" class="associationProfile">`;
+            document.querySelector(".associationTitle").innerHTML = association.name;
+            document.querySelector(".adviser").innerHTML = association.adviser;
+            document.querySelector(".description").innerHTML = association.description;
+    
+            document.querySelector(".AscMission").innerHTML = association.mission;
+            document.querySelector(".AscVision").innerHTML = association.vision;
+            document.getElementById("association").value = association.id;
+        }
+    });
+}

@@ -1,12 +1,13 @@
-import {Associations} from "../../SampleData/AssociationList.js";
-export let selectedId = JSON.parse(localStorage.getItem("selectedId")) || "";
+import {selectedId} from "./utils/selectedAssociation.js";
 
-let AssociationList = [];
-AddtoArray(Associations);
+fetch('http://localhost/COMS-main/LandingPage/Functions/GetAssociations.php')
+.then(response => response.json())
+.then(data => {
+    renderAssociations(data);
+})
+.catch(error => console.error('Error:', error));
 
-renderAssociations();
-
-function renderAssociations(){
+function renderAssociations(AssociationList){
     let Organization = "";
     let Clubs = "";   
     AssociationList.forEach((assosiation, index) => {
@@ -52,8 +53,16 @@ function renderAssociations(){
             `;
         }
     });
-    document.querySelector(".orgList").innerHTML += Organization;
+    document.querySelector(".orgList").innerHTML = Organization;
     document.querySelector(".orgList").innerHTML += Clubs;
+    
+    document.querySelectorAll(".js-ApplyButton").forEach((value) => {
+        value.addEventListener('click', ()=>{ 
+            let associationId = value.dataset.associationId;
+            console.log(associationId);
+            selectedId = localStorage.setItem("selectedId", JSON.stringify(associationId));
+        });
+    });
 };
 
 function AddtoArray(array){
@@ -61,16 +70,4 @@ function AddtoArray(array){
         AssociationList.push(array[i]);
     }
 }
-
-document.querySelectorAll(".js-ApplyButton").forEach((value) => {
-    value.addEventListener('click', ()=>{ 
-        let associationId = value.dataset.associationId;
-        selectedId = localStorage.setItem("selectedId", JSON.stringify(associationId));
-    });
-});
-
-
-
-
-
 
