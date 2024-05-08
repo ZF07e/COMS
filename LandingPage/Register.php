@@ -34,15 +34,16 @@
                     </div>  
                 </section>
 
-                <form>
+                <form action = "Functions/Application.php" method = "POST">
                     <div class="labelconatainer">
                         <div>
                             <h2>Apply</h2>
                         </div>               
                         <p>How can we contact you?</p>
                     </div>
-                    <input type="email" placeholder="Outlook Email">
-                    <input type="text" placeholder="Facebook Link">
+                    <input type="email" placeholder="Outlook Email" name = "outlook">
+                    <input type="text" placeholder="Facebook Link" name = "facebook">
+                    <input type = "hidden" id = "association" name = "association">
                     <button type="submit" class="submitbutton">Submit</button>
                 </form>
             </section>
@@ -61,7 +62,6 @@
 
             </section>                                                              
         </main>
-        
         <script type="module" src="Scripts/Register.js"></script>
     </body>
 </html>

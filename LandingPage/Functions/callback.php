@@ -19,15 +19,15 @@
         } else {
             $_SESSION['msatg'] = 1;  //auth and verified
             $_SESSION['uname'] = $rez["displayName"];
-            $_SESSION['id'] = $rez["id"];
+            $_SESSION['email'] = $rez["mail"];
 
             $database = new Database();
             $mysqli = $database->getConnection();
 
             // Check if user ID is set in the session
-            if (isset($_SESSION['id'])) {
-                $id = trim($_SESSION['id']);
-                $sql = "SELECT role FROM userroles WHERE id = '$id'";
+            if (isset($_SESSION['email'])) {
+                $email = trim($_SESSION['email']);
+                $sql = "SELECT role FROM userroles WHERE email = '$email'";
                 $result = $mysqli->query($sql);
 
                 if ($result) {
@@ -55,13 +55,6 @@
                 }
             }
         }
-    }
-
-    // Check if the user is logged in
-    if (isset($_SESSION['msatg']) && $_SESSION['msatg'] == 1) {
-        echo "Session ID: " . $_SESSION['uname'];
-    } else {
-        echo "You are not logged in.";
     }
 ?>
 
