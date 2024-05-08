@@ -3,7 +3,7 @@ header{
     top: 0;
     left: 0;
     bottom: 0;
-    width: 14rem;
+    width: 11rem;
     background-color: #1B1B1B;
     user-select: none;
     display: flex;
@@ -46,7 +46,7 @@ header{
     /* color: #FF7A30; */
 }
 
-.home, .events, .associations, .request, .profile, .settings{
+.home, .events, .associations, .user_management, .request, .profile, .settings{
     display: flex;
     align-items: center;  
     font-size: 0.813rem;
@@ -54,12 +54,12 @@ header{
     gap: 0.6rem;
 }
 
-.home:hover, .events:hover, .associations:hover, .request:hover, .profile:hover, .settings:hover{
+.home:hover, .events:hover, .associations:hover, .user_management:hover, .request:hover, .profile:hover, .settings:hover{
     background-color: #1f1e1e;
     cursor: pointer;
 }
 
-.home:active, .events:active, .associations:active, .request:active, .profile:active, .settings:active{
+.home:active, .events:active, .associations:active, .user_management:active, .request:active, .profile:active, .settings:active{
     background-color: #1f1e1e;
     cursor: pointer;
 }
@@ -87,7 +87,7 @@ header{
 
 
 
-@media (max-width: 320px){
+@media (max-width: 425px){
     header{
         width: 3.8rem;
     }
@@ -96,7 +96,7 @@ header{
         display: none;
     }
 
-    .home div, .events div, .associations div, .request div{
+    .home div, .events div, .associations div, .user_management div, .request div, .profile div, .settings div{
         display: none;
     }
     

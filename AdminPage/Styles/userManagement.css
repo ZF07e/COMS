@@ -1,0 +1,239 @@
+.main-header{
+    background-color: #1C1C1C;
+}
+
+.main-header{
+    padding: 1rem 1rem;
+    display:flex;
+    align-items: center;
+    row-gap: 0.6rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+}
+
+.main-header input{
+    background-color: #171717;
+    color: #b9b9b9;
+    padding: 0.4rem 0.9rem;
+    font-size: 1rem;
+    border: none;
+    width: 100%;
+    border-radius: 1rem 0rem 0rem 1rem;
+}
+
+.searchbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30rem;
+
+}
+
+.main-header input:focus{
+    outline: none;
+}
+
+.searchButton{
+    background-color: #171717;
+    color: #b9b9b9;
+    padding: 0.4rem 0.5rem;
+    width: 1.2rem;
+    border-radius: 0rem 1rem 1rem 0rem;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.main-header button{
+    background-color: #171717;
+    color: #b9b9b9;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 1rem;
+    outline: solid 1px #b9b9b9;
+    transition: background-color 0.15s;
+}
+
+.main-header button:hover{
+    background-color: #272525;
+    outline-width: 2px;
+}
+
+.userList{
+    margin-top: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.3rem;
+}
+
+.userItem{
+    background-color: #1C1C1C;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between ;
+    transition: background-color 0.25s;
+    font-weight: 300;
+}
+
+.userItem img{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+}
+
+.item_left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#position{
+    color:#ffffff6c;
+    font-size: 0.8rem;
+}
+
+#editUser{
+    border: none;
+    padding: 0.2rem 1rem;
+    border-radius: 0.3rem;
+    background-color: transparent;
+    color: #fff;
+}
+
+#editUser:hover{
+    background-color: #ffffff13;
+}
+
+#editUser:active{
+    background-color: #ffffff4b;
+}
+
+
+#pop-upFormUser, #pop-upUserEdit{
+    /* Positioning */
+    top: 25%;
+    left: 50%;
+    transform: translateY(-75%);
+    transform: translateX(-50%);
+    /* Style */
+    background-color: #171717;
+    position: fixed;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 30rem;
+    gap: 0.3rem;
+    /* index */
+    z-index: 101;
+    display:none;
+}
+form div{
+    display: flex;
+}
+
+/* Form Header { */
+
+.form-header{
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-header button{
+    border: solid 1px #fff;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 50%;
+    padding: 0.3rem 0.5rem;
+    font-weight: 300;
+    user-select: none;
+    transition: background-color 0.25s;
+}
+
+.form-header button:hover{
+    background-color: #ffffff2f;
+}
+
+.form-header button:active{
+    background-color: #c7c7c7d5;
+}
+
+/* } Form Header */
+
+.form-body{
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+/* Form Footer { */
+.form-footer{
+    justify-content: right;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+}
+
+.form-footer button, .form-footer-2 button{
+    padding: 0.5rem 1rem;
+    border: solid 1px #fff;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 1rem;
+    font-weight: 600;
+    transition: background-color 0.25s;
+}
+
+#remove_button{
+    border-color: rgb(238, 59, 59);
+    color: rgb(238, 59, 59);
+}
+
+#remove_button:hover{
+    border-color: rgb(238, 59, 59);
+    background-color: rgb(238, 59, 59);
+    color: #fff;
+}
+
+.form-footer button:hover{
+    background-color: #ffffff2f;
+    color: #fff;
+}
+
+.form-footer button:active{
+    background-color:#c7c7c7d5;
+    color: #fff;
+}
+/* } Form Footer */
+
+.normalInput{
+    padding: 0.6rem 0.5rem;
+    font-size: 1rem; 
+    border: solid 1px transparent;
+    border-radius: 5px;  
+}
+
+.form-body select:focus, .normalInput:focus{
+    outline: none;
+}
+
+@media (max-width: 815px) {
+    .userItem{
+        font-size: 0.9rem;
+        font-weight: 300;
+    }
+    #clubName{
+        font-size: 0.5rem;
+    }
+}
+
+@media (max-width: 580px) { 
+    #pop-upFormUser, #pop-upUserEdit{
+        width: 90%;
+    }
+
+    #user_adviser{
+        font-size: 0.7rem;
+    }
+}

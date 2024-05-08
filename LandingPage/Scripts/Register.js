@@ -1,4 +1,4 @@
-import { selectedId } from "./utils/selectedAssociation.js";
+import { selectedId } from "./Association.js";
 import { Associations } from "../../SampleData/AssociationList.js";
 
 console.log(selectedId);
