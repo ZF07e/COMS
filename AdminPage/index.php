@@ -1,3 +1,7 @@
+<?php
+    include ("../LandingPage/Functions/SessionManagement.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -105,5 +109,6 @@
         </main>
         <!-- <script src="../AdminPage/Scripts/vanila-calendar.js"></script> (RESERVED!)-->
         <script src="./Scripts/util/navigation.js"></script>
+        <p><a href="?action=logout">Log Out</a></p>
     </body>
 </html>
