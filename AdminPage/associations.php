@@ -108,33 +108,6 @@
                 <button type="reset" id="cancel_Button">Cancel</button>
             </div>
         </form>
-
-        <form id="pop-upForm">  
-            <div class="form-header">
-                <h3>Add Association</h3>
-                <button type="reset" id="x_button">X</button>
-            </div>
-
-            <div class="form-body">
-
-                <input type="text" class="normalInput" placeholder="Club/Organization Name">
-                <select name="" id="type">
-                    <option value="" selected disabled>- Type -</option>
-                    <option value="Club">Club</option>
-                    <option value="Organization">Organization</option>
-                </select>
-    
-                <select name="" id="advisers">
-                    <option value="">- Advisers -</option>
-                </select>
-
-            </div>
-
-            <div class="form-footer">
-                <button type="submit">Add</button>
-                <button type="reset" id="cancel_Button">Cancel</button>
-            </div>
-        </form>
         
         <script type="module" src="./Scripts/associationListAdmin.js"></script>
         <script src="./Scripts/util/navigation.js"></script>

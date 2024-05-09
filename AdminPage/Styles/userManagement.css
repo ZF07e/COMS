@@ -110,7 +110,6 @@
     background-color: #ffffff4b;
 }
 
-
 #pop-upFormUser, #pop-upUserEdit{
     /* Positioning */
     top: 25%;
@@ -159,6 +158,11 @@ form div{
 
 .form-header button:active{
     background-color: #c7c7c7d5;
+}
+
+.userItem{
+    user-select: none;
+    cursor: pointer;
 }
 
 /* } Form Header */
@@ -216,6 +220,186 @@ form div{
 
 .form-body select:focus, .normalInput:focus{
     outline: none;
+}
+
+/* Upper Layer */
+
+.upperlayer{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000080;
+    z-index: 105;
+    display: none;
+}
+
+.upperlayer form{
+    background-color: #181818;
+    width: 300px;
+    padding: 1rem 0rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.formheader{
+    width: 90%;
+    display: flex;
+    justify-content: right;
+    cursor: pointer;
+    user-select: none;
+}
+
+#viewProfileImg{
+    width: 80px;
+    border-radius: 50%;
+}
+
+.infos{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.4rem;
+    width: 90%;   
+}
+
+.edit_infos{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    row-gap: 0.5rem;
+    display: none;
+}
+
+#cancelEdit, #back{
+    width: 100%; 
+}
+
+.upperlayer form button{
+    padding: 0.5rem;
+    width: 90%;
+    border: solid 1px #fff;
+    border-radius: 1rem;
+    background-color: transparent;
+    color: #fff;
+}
+
+.upperlayer form button:hover{
+    background-color: #ffffff15;
+}
+
+#saveChanges{
+    border-color: rgb(56, 230, 94);
+    color: rgb(56, 230, 94);
+    width: 100%;
+}
+
+#removeUser{
+    border-color: rgb(219, 54, 54);
+    color: rgb(219, 54, 54);
+    width: 100%;
+}
+
+#editInfo{
+    border-color: rgb(54, 120, 219);
+    color: rgb(54, 120, 219);
+    width: 100%;
+}
+
+#saveChanges:hover, #cancelEdit:hover, #removeUser:hover, #editInfo:hover{
+    background-color: #ffffff15;
+}
+
+#saveChanges:active, #cancelEdit:active, #removeUser:active, #editInfo:active{
+    background-color: #ffffff60;
+}
+
+/* Upper Layer 2 */
+
+.upperlayer2{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000080;
+    z-index: 106;
+    display: none;
+}
+
+#confirmation{
+    background-color: #181818;
+    padding: 1rem 0.5rem;
+    user-select: none;
+}
+
+#confirmation p{
+    margin: 0.5rem 0rem;
+}
+
+.confHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: start;
+}
+
+#xbuttonConf{
+    background-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+}
+
+.options{
+    display: flex;
+    width: 100%;
+    column-gap: 0.3rem;
+    justify-content: right;
+
+}
+
+.options button{
+    padding: 0.4rem 1rem;
+    border: solid 1px #fff;
+    border-radius: 1rem;
+}
+
+#yesbtn{
+    border-color: rgb(219, 54, 54);
+    background-color: transparent;
+    color:rgb(219, 54, 54);
+}
+
+#nobtn{
+    background-color: transparent;
+    color:#fff;
+}
+
+#yesbtn:hover, #nobtn:hover{
+    background-color: #ffffff1c;
+}
+
+#yesbtn:active, #nobtn:active{
+    background-color: #ffffff50;
+}
+
+/* add  */
+
+#addmember form input{
+    width: 90%;
+    padding: 0.3rem 0rem;
 }
 
 @media (max-width: 815px) {
