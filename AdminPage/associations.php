@@ -107,7 +107,9 @@
             </div>
 
             <div class="form-footer">
+
                 <button type="submit" name = "add">Add</button>
+                
                 <button type="reset" id="cancel_Button">Cancel</button>
             </div>
         </form>
