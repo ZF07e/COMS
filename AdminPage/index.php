@@ -63,6 +63,10 @@
                 <div class="profile">
                     <img src="" alt="Profile">
                     <div>Profile</div>
+
+                    <section class="popUp">
+                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>
+                    </section>
                 </div>
     
                 <div class="settings">
@@ -78,9 +82,8 @@
                 WELCOME ADMIN
             </section>
 
-            <section class="main-center-section">
+            <!-- <section class="main-center-section" (RESERVED!)>
                 <div class="upcoming-events"> 
-                    <!-- body -->
                  <div class="calendar">
                     <div class="cal-header">
                         <button class="prevBtn">
@@ -100,12 +103,11 @@
                     </div>
                     <div class="dates"></div>
                  </div>
-                    <!-- body -->
                 </div>      
-            </section>
+            </section> -->
+            
         </main>
-        <script src="../AdminPage/Scripts/vanila-calendar.js"></script>
+        <!-- <script src="../AdminPage/Scripts/vanila-calendar.js"></script> (RESERVED!)-->
         <script src="./Scripts/util/navigation.js"></script>
-        <p><a href="?action=logout">Log Out</a></p>
     </body>
 </html>
