@@ -59,6 +59,10 @@
                 <div class="profile">
                     <img src="" alt="Profile">
                     <div>Profile</div>
+
+                    <section class="popUp">
+                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>
+                    </section>
                 </div>
     
                 <div class="settings">

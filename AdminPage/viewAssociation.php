@@ -28,7 +28,7 @@
                     <div class="title"><span>CO</span>MS<span>.</span></div>
                 </div>
     
-                <div class="home ">
+                <div class="home selected">
                     <img src="../Images/Icons/icons8-home-25.png">
                     <div>Home</div>
                 </div>
@@ -38,7 +38,7 @@
                     <div>Events</div>
                 </div>
                 
-                <div class="associations selected">
+                <div class="associations">
                     <img src="../Images/Icons/icons8-hierarchy-25.png">
                     <div>Associations</div>
                 </div>
@@ -58,6 +58,10 @@
                 <div class="profile">
                     <img src="" alt="Profile">
                     <div>Profile</div>
+
+                    <section class="popUp">
+                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>
+                    </section>
                 </div>
     
                 <div class="settings">
@@ -65,55 +69,20 @@
                     <div>Settings</div>
                 </div>
             </nav>
-        </header>  
 
-        <!-- confirmation -->
-        <div class="upperlayer2">
-            <form action="" id="confirmation">
-                <div class="confHeader">
-                    <h3>Warning!</h3>
-                    <button id="xbuttonConf">&#10005;</button>
-                </div>
-                <p>You're about to delete this account are you sure?</p>
-                <div class="options">
-                    <button type="submit" id="yesbtn">Yes</button>
-                    <button type="button" id="nobtn">No</button>
-                </div>
-            </form>
-        </div>
+        </header>  
 
         <!-- view user -->
         <div class="upperlayer" id="viewUser">
             <form>
                 <div class="formheader"><div id="xbuttonView">&#10005;</div></div>
                 <img src="../Images/Noimg.jpg" alt="" id=viewProfileImg>
-                <div class="edit_infos">
-                    <input id="EditselectedName" placeholder="[Name]" class="normalInput"> 
-                    <select name="" id="EditselectedPosition">
-                        <option value="" selected disabled>- Position -</option>
-                        <option value="Adviser">Adviser</option>
-                        <option value="President">President</option>
-                        <option value="Vice President">Vice President</option>
-                        <option value="Secretary">Secretary</option>
-                        <option value="Auditor">Auditor</option>
-                        <option value="Treasurer">Treasurer</option>
-                        <option value="Head Officer">Head Officer</option>
-                        <option value="Officer">Officer</option>
-                    </select>
-                    <input id="EditselectedEmail" placeholder="[Email]" class="normalInput"> 
-                        
-                    <button type="submit" id="saveChanges">SaveChanges</button>
-                    <button type="reset" id="cancelEdit">Cancel</button>
-                </div>
                 
                 <div class="infos">
                     <p id="selectedName">[Sample Name]</p>
                     <p id="selectedPosition">[Sample Position]</p>
                     <p id="selectedEmail">[Sample Email]</p>
-
-                    <button type="button" id="editInfo">Edit</button>
                     <button type="reset" id="back">Back</button>
-                    <button type="button" id="removeUser">Remove User</button>
                 </div>
             </form>
         </div>
