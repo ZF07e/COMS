@@ -1,108 +1,125 @@
 let selectedAssociation = JSON.parse(localStorage.getItem("selectedAssociationID"));
 //sample Data below (Clear this when using fetch)
-let AssociationLists = [
-    {
-        "id": 111,
-        "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
-        "name": "Coders Club",
-        "type": "Club",
-        "adviser": "---",
-        "totalMembers": 15,
-        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-        "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-        "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-    },
-    {
-        "id": 122,
-        "image": "../Images/AssosiationsPfp/CS.jpg",
-        "name": "STICA - Computer Society",
-        "type": "Organization",
-        "adviser": "---",
-        "totalMembers": 20,
-        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-        "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-        "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-    }
-];
-//sample Data 2
 let Users = [
     {
         id : 1,
-        associationid: 111,
         pfp: "../Images/Noimg.jpg",
         name: "Coco Melon",
         firstname: "Coco",
         lastname: "Melon",
         email: "[Sample Email 1 @outlook.com]",
-        role: "Adviser (sample)",
-        roleIndex: 1, //index 2 = adviser
-        position: "Adviser",
-        positionIndex: 1
+        position: {position: "Adviser", index: 1},
+        association: {
+            "id": 122,
+            "image": "../Images/AssosiationsPfp/CS.jpg",
+            "name": "STICA - Computer Society",
+            "type": "Organization",
+            "adviser": "---",
+            "totalMembers": 20,
+            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
+            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
+            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
+        }
     },
     {
         id : 2,
-        associationid: 111,
         pfp: "../Images/Noimg.jpg",
         name: "CoKo Martin",
         firstname: "CoKo",
         lastname: "Martin",
         email: "[Sample Email 2 @outlook.com]",
-        role: "Student (sample)",
-        roleIndex: 1,
-        position: "President",
-        positionIndex: 2
+        position: {position: "Adviser", index: 1},
+        association: {
+            "id": 111,
+            "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
+            "name": "Coders Club",
+            "type": "Club",
+            "adviser": "---",
+            "totalMembers": 15,
+            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
+            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
+            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
+        }
     },
     {
         id : 3,
-        associationid: 111,
         pfp: "../Images/Noimg.jpg",
         name: "Koko Nut",
         firstname: "Koko",
         lastname: "Nut",
         email: "[Sample Email 3 @outlook.com]",
-        role: "Student (sample)",
-        roleIndex: 2, //index 2 = student
-        position: "Vice President",
-        positionIndex: 3
+        position: {position: "Vice President", index: 3},
+        association: {
+            "id": 111,
+            "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
+            "name": "Coders Club",
+            "type": "Club",
+            "adviser": "---",
+            "totalMembers": 15,
+            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
+            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
+            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
+        }
     },
     {
         id : 4,
-        associationid: 111,
         pfp: "../Images/Noimg.jpg",
         name: "Koko Latte",
         firstname: "Koko",
         lastname: "Latte",
         email: "[Sample Email 4 @outlook.com]",
-        role: "Student (sample)",
-        roleIndex: 2,
-        position: "Secretary",
-        positionIndex: 4
+        position: {position: "President", index: 2},
+        association: {
+            "id": 111,
+            "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
+            "name": "Coders Club",
+            "type": "Club",
+            "adviser": "---",
+            "totalMembers": 15,
+            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
+            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
+            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
+        }
     },
     {
         id : 5,
-        associationid: 122,
         pfp: "../Images/Noimg.jpg",
         name: "Koko Sundae",
         firstname: "Koko",
         lastname: "Sundae",
         email: "[Sample Email 4 @outlook.com]",
-        role: "Student (sample)",
-        roleIndex: 2,
-        position: "Officer",
-        positionIndex: 8
+        position: {position: "President", index: 2},
+        association: {
+            "id": 122,
+            "image": "../Images/AssosiationsPfp/CS.jpg",
+            "name": "STICA - Computer Society",
+            "type": "Organization",
+            "adviser": "---",
+            "totalMembers": 20,
+            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
+            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
+            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
+        }
     },
     {
         id : 6,
-        associationid: 111,
         pfp: "../Images/Noimg.jpg",
         name: "Coco Salad",
         firstname: "Koko",
         lastname: "Salad",
         email: "[Sample Email 4 @outlook.com]",
-        role: "Student (sample)",
-        roleIndex: 2,
-        position: "Officer",
-        positionIndex: 8
+        position: {position: "Officer", index: 8},
+        association: {
+            "id": 111,
+            "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
+            "name": "Coders Club",
+            "type": "Club",
+            "adviser": "---",
+            "totalMembers": 15,
+            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
+            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
+            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
+        }
     }
 ];
 
@@ -119,7 +136,7 @@ navigationFunction();
 
 //For Home Tab
 editAddFunctions();
-renderSelectedGroup(AssociationLists);
+renderSelectedGroup(Users);
 
 //For Members Tab
 List(Users);
@@ -129,12 +146,12 @@ selectUser(Users);
 
 function renderSelectedGroup(list){
     list.forEach((value) => {
-        if(value.id == selectedAssociation){
-            document.getElementById("associationName").innerText = value.name;
-            document.getElementById("associationType").innerText = value.type    ;
-            document.getElementById("home_about").innerText = value.description;
-            document.getElementById("home_mission").innerText = value.mission;
-            document.getElementById("home_vision").innerText = value.vision;
+        if(value.association.id == selectedAssociation){
+            document.getElementById("associationName").innerText = value.association.name;
+            document.getElementById("associationType").innerText = value.association.type    ;
+            document.getElementById("home_about").innerText = value.association.description;
+            document.getElementById("home_mission").innerText = value.association.mission;
+            document.getElementById("home_vision").innerText = value.association.vision;
         }
     });
 }
@@ -190,36 +207,36 @@ function List(users){
 
     
     users.forEach((itemVal)=>{
-            if(itemVal.position == "Adviser" && itemVal.associationid == selectedAssociation)
+            if(itemVal.position.position == "Adviser" && itemVal.association.id == selectedAssociation)
             { 
-                console.log(itemVal.position === "Adviser" && itemVal.associationid == selectedAssociation);
+                console.log(itemVal.position === "Adviser" && itemVal.association.id == selectedAssociation);
                 adviserelement += `<div class="positionedUser" data-user-id="${itemVal.id}">${itemVal.name}</div>`;
             }
-            else if(itemVal.position == "President" && itemVal.associationid == selectedAssociation)
+            else if(itemVal.position.position  == "President" && itemVal.association.id == selectedAssociation)
             { 
                 presidentelement += `<div class="positionedUser" data-user-id="${itemVal.id}">${itemVal.name}</div>`;
             }
-            else if(itemVal.position == "Vice President" && itemVal.associationid == selectedAssociation)
+            else if(itemVal.position.position == "Vice President" && itemVal.association.id == selectedAssociation)
             { 
                 viceelement += `<div class="positionedUser" data-user-id="${itemVal.id}">${itemVal.name}</div>`;
             }
-            else if(itemVal.position == "Secretary" && itemVal.associationid == selectedAssociation)
+            else if(itemVal.position.position == "Secretary" && itemVal.association.id == selectedAssociation)
             { 
                 secretaryelement += `<div class="positionedUser" data-user-id="${itemVal.id}">${itemVal.name}</div>`;
             }
-            else if(itemVal.position == "Auditor" && itemVal.associationid == selectedAssociation)
+            else if(itemVal.position.position == "Auditor" && itemVal.association.id == selectedAssociation)
             { 
                 auditorelement += `<div class="positionedUser" data-user-id="${itemVal.id}">${itemVal.name}</div>`;
             }
-            else if(itemVal.position == "Treasurer" && itemVal.associationid == selectedAssociation)
+            else if(itemVal.position.position == "Treasurer" && itemVal.association.id == selectedAssociation)
             { 
                 treasurerelement += `<div class="positionedUser" data-user-id="${itemVal.id}">${itemVal.name}</div>`;
             }
-            else if(itemVal.position == "Head Officer" && itemVal.associationid == selectedAssociation)
+            else if(itemVal.position.position == "Head Officer" && itemVal.association.id == selectedAssociation)
             { 
                 headOfficerelement += `<div class="positionedUser" data-user-id="${itemVal.id}">${itemVal.name}</div>`;
             }
-            else if(itemVal.position == "Officer" && itemVal.associationid == selectedAssociation)
+            else if(itemVal.position.position == "Officer" && itemVal.association.id == selectedAssociation)
             { 
                 officerelement += `<div class="positionedUser" data-user-id="${itemVal.id}">${itemVal.name}</div>`;
             }
@@ -238,102 +255,31 @@ function selectUser(user){
     document.querySelectorAll(".positionedUser").forEach((item)=>{
         item.addEventListener("click", ()=>{
             let userClickedId = item.dataset.userId;
+            let viewmode = document.querySelector(".infos");
             //for selecting documents
             let viewAccount = document.getElementById("viewUser");
             let selectedName = document.getElementById("selectedName");
             let selectedPosition = document.getElementById("selectedPosition");
             let selectedEmail = document.getElementById("selectedEmail");
-
-            //for editing documents
-            let EditselectedName = document.getElementById("EditselectedName");
-            let EditselectedPosition = document.getElementById("EditselectedPosition");
-            let EditselectedEmail = document.getElementById("EditselectedEmail");
+            let xButton = document.getElementById("xbuttonView");
+            let back = document.getElementById("back");
 
             viewAccount.style.display = "flex";
             user.forEach((value)=>{
                 if(value.id == userClickedId){
                     selectedName.innerText = value.name;
-                    selectedPosition.innerText = value.position;
+                    selectedPosition.innerText = value.position.position;
                     selectedEmail.innerText = value.email;
-                    EditselectedName.value = value.name;
-                    EditselectedPosition.value = value.position;
-                    EditselectedEmail.value = value.email;
                 }
             });
 
-
-            //upperlayer2
-            let upperlayer2 = document.querySelector(".upperlayer2");
-            //switch to edit mode
-            let editbutton = document.getElementById("editInfo");
-            let editmode = document.querySelector(".edit_infos");
-            let viewmode = document.querySelector(".infos");
-
-
-            editbutton.addEventListener("click", ()=>{
-                viewmode.style.display = "none";
-                editmode.style.display = "flex";
-
+            xButton.addEventListener("click", ()=>{
+                viewAccount.style.display = "none";
             });
 
-            //Return/back/cancel document
-            let xbuttonView = document.getElementById("xbuttonView");
-            let backView = document.getElementById("back");
-            let cancelEdit = document.getElementById("cancelEdit");
-            let saveChanges = document.getElementById("saveChanges");
-
-            //add events to documents
-            Close_and_switchtoView(xbuttonView);
-            Close_and_switchtoView(backView);
-            switchtoView(cancelEdit);  
-
-            //confirmation
-            let removeUser = document.getElementById("removeUser");
-            let yesbtn = document.getElementById("yesbtn");
-            let nobtn = document.getElementById("nobtn");
-
-            removeUser.addEventListener("click", ()=>{
-                upperlayer2.style.display = "flex";
+            back.addEventListener("click", ()=>{
+                viewAccount.style.display = "none";
             });
-
-            closeAllPopUp(yesbtn);
-            closeConf(nobtn);
-
-            saveChanges.addEventListener("click", (event)=>{
-                event.preventDefault();
-                viewmode.style.display = "flex";
-                editmode.style.display = "none";
-            });
-
-            //Functions >>
-            function closeAllPopUp(document){
-                document.addEventListener("click", (doc)=>{
-                    doc.preventDefault();
-                    upperlayer2.style.display = "none";
-                    viewAccount.style.display = "none";
-                });
-            }
-
-            function Close_and_switchtoView(document){
-                    document.addEventListener("click", ()=>{
-                    viewAccount.style.display = "none";
-                    viewmode.style.display = "flex";
-                    editmode.style.display = "none";
-                });
-            }
-
-            function switchtoView(document){
-                document.addEventListener("click", ()=>{
-                viewmode.style.display = "flex";
-                editmode.style.display = "none";
-                });
-            }
-
-            function closeConf(document){
-                document.addEventListener("click", ()=>{
-                upperlayer2.style.display = "none";
-                });
-            }
         });
     })  
 }
