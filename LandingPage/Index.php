@@ -30,7 +30,7 @@
                     <h3>Your Ultimate Club and Organization Management </h3>
                 </div>
 
-                <form action = "http://localhost/COMS-main/LandingPage/Functions/UserLogin.php" method = "POST">
+                <form action = "http://localhost/COMS/LandingPage/Functions/UserLogin.php" method = "POST">
                     <h3 class="Logo"><span> LOG</span>IN<span></span></h3>
                     <div class="buttoncontainer">
                             <button type = "submit" name = "login">Microsoft 365 Login</button>

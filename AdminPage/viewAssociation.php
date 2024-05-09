@@ -60,7 +60,7 @@
                     <div>Profile</div>
 
                     <section class="popUp">
-                        <button id="LogoutButton">Logout</button>
+                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>
                     </section>
                 </div>
     

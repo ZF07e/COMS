@@ -36,7 +36,7 @@
                         $userData = $result->fetch_assoc();
                         $role = $userData['role'];
                         if ($role == "admin") {
-                            header("Location: http://localhost/COMS-main/AdminPage/index.php");
+                            header("Location: http://localhost/COMS/AdminPage/index.php");
                             exit();
                         } else {
                             // User not authorized (role not match)
@@ -73,7 +73,7 @@
 <?php
     //logout
     if (isset($_GET['action']) && $_GET['action'] == 'logout') {
-        $redirect_uri = urlencode("http://localhost/COMS-main/LandingPage/Index.php"); // Replace with your actual logout confirmation page
+        $redirect_uri = urlencode("http://localhost/COMS/LandingPage/Index.php"); // Replace with your actual logout confirmation page
         $logout_url = "https://login.microsoftonline.com/common/oauth2/v2.0/logout?post_logout_redirect_uri=$redirect_uri";
         header("Location: $logout_url");
         exit();
