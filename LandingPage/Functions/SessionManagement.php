@@ -16,7 +16,7 @@
                 $params["secure"], $params["httponly"]
             );
         }
-        header("Location: http://localhost/COMS-main/LandingPage/Index.php");
+        header("Location: http://localhost/COMS/LandingPage/Index.php");
         exit();
     }
 
@@ -30,7 +30,7 @@
     } else {
         session_unset();
         session_destroy();
-        header("Location: http://localhost/COMS-main/LandingPage/Index.php");
+        header("Location: http://localhost/COMS/LandingPage/Index.php");
     }
 
     if (isset($_GET['action']) && $_GET['action'] == 'logout') {
@@ -46,7 +46,7 @@
         }
         session_unset();
         session_destroy();
-        header("Location: http://localhost/COMS-main/LandingPage/Index.php");
+        header("Location: http://localhost/COMS/LandingPage/Index.php");
         exit();
     }
 ?>
