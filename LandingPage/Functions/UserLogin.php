@@ -6,7 +6,7 @@ class UserLogin {
         $appid = "0b984781-9abf-4b68-8553-b000b7cd9eef";
         $secret = "o7s8Q~ZYwRfPzdGSkDCsRvm9PPYqWPOqh16esaQ_";
         $login_url = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize";
-        $redirect_uri = 'http://localhost/COMS-main/LandingPage/Functions/callback.php';
+        $redirect_uri = 'http://localhost/COMS/LandingPage/Functions/callback.php';
 
         session_start();
         $_SESSION['state']=session_id();
