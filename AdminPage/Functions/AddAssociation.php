@@ -27,12 +27,12 @@
                     $getLastIdNum = (int)filter_var($data, FILTER_SANITIZE_NUMBER_INT);
                 }
                 
-                $num = 1;
                 if((is_numeric($getLastIdNum) && $getLastIdNum == "")){
+                    $num = 1;
                     $id = "CLB".$num;
                 }
                 else {
-                    $id = "CLB".$num + 1;
+                    $id = "CLB".$getLastIdNum + 1;
                 }
             }
             
@@ -56,12 +56,12 @@
                     $getLastIdNum = (int)filter_var($data, FILTER_SANITIZE_NUMBER_INT);
                 }
                 
-                $num = 1;
                 if((is_numeric($getLastIdNum) && $getLastIdNum == "")){
+                    $num = 1;
                     $id = "ORG".$num;
                 }
                 else {
-                    $id = "ORG".$num + 1;
+                    $id = "ORG".$getLastIdNum + 1;
                 }
             }
             
