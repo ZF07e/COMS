@@ -1,6 +1,6 @@
 import { selectedId } from "./utils/selectedAssociation.js";
 
-fetch('http://localhost/COMS-main/LandingPage/Functions/GetAssociations.php')
+fetch('http://localhost/COMS/LandingPage/Functions/GetAssociations.php')
 .then(response => response.json())
 .then(data => {
     funktion(data);

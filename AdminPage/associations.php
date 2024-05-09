@@ -1,5 +1,5 @@
 <?php
-    include ("../LandingPage/Functions/SessionManagement.php");
+    include ("../LandingPage/Functions/SessionManagement.php");   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,7 +89,7 @@
             
         </main>
 
-        <form id="pop-upForm">  
+        <form id="pop-upForm" action = "http://localhost/COMS/AdminPage/Functions/AddAssociation.php" method = "POST">  
             <div class="form-header">
                 <h3>Add Association</h3>
                 <button type="reset" id="x_button">&#10005;</button>
@@ -97,21 +97,21 @@
 
             <div class="form-body">
 
-                <input type="text" class="normalInput" placeholder="Club/Organization Name">
-                <select name="" id="type">
+                <input type="text" class="normalInput" placeholder="Club/Organization Name" name = "name">
+                <select name = "type" id="type">
                     <option value="" selected disabled>- Type -</option>
                     <option value="Club">Club</option>
                     <option value="Organization">Organization</option>
                 </select>
     
-                <select name="" id="advisers">
+                <select name="adviser" id="advisers">
                     <option value="">- Advisers -</option>
                 </select>
 
             </div>
 
             <div class="form-footer">
-                <button type="submit">Add</button>
+                <button type="submit" name = "add">Add</button>
                 <button type="reset" id="cancel_Button">Cancel</button>
             </div>
         </form>
