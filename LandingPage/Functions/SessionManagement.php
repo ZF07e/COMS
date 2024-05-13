@@ -23,7 +23,6 @@
     // Update last activity time
     $_SESSION['last_activity'] = time();
 
-
     // Check if the user is logged in
     if (isset($_SESSION['msatg']) && $_SESSION['msatg'] == 1) {
         echo "Session ID: " . $_SESSION['uname'];
@@ -35,6 +34,9 @@
 
     if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 
+        $redirect_uri = urlencode("http://localhost/COMS/LandingPage/Index.php"); // Replace with your actual logout confirmation page
+        $logout_url = "https://login.microsoftonline.com/common/oauth2/v2.0/logout?post_logout_redirect_uri=$redirect_uri";
+        
         $_SESSION = array();
         // Expire the session cookie
         if (ini_get("session.use_cookies")) {
@@ -46,7 +48,7 @@
         }
         session_unset();
         session_destroy();
-        header("Location: http://localhost/COMS/LandingPage/Index.php");
+        header("Location: $logout_url");
         exit();
     }
 ?>

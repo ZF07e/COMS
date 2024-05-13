@@ -100,11 +100,11 @@
                         <img src="../Images/Noimg.jpg" alt="" id="associationLogo">
                     </div>
                     <div class="text">
-                        <h3 id="associationName">[Association Name]</h3>
+                        <h3 id="associationName" name = "assocName">[Association Name]</h3>
                         <p id="associationType">[Association Type]</p>      
                     </div>
                     <div class="divbuttonContainer">
-                        <button id="editAssociation">Edit</button>
+                        <button id="editAssociation" name = "ediBTN">Edit</button>
                     </div>
                 </div>
                 
@@ -176,24 +176,30 @@
 
             </section>
             
-            <form id="editHome">
+            <form id="editHome" action = "http://localhost/COMS/AdminPage/Functions/InfromationManagement.php" method = "POST">
                 <div class="postContainerEdit">
                     <div class="postHeader">About</div>
-                    <textarea id="edit_about"></textarea>
+                    <textarea id="edit_about" name = "description"></textarea>
                 </div>
 
                 <div class="postContainerEdit">
                     <div class="postHeader">Mission</div>
-                    <textarea id="edit_mission"></textarea>
+                    <textarea id="edit_mission" name = "mission"></textarea>
                 </div>
                 
                 <div class="postContainerEdit">
                     <div class="postHeader">Vision</div>
-                    <textarea id="edit_vision"></textarea>
+                    <textarea id="edit_vision" name = "vision"></textarea>
+                    <input type="hidden" id = "kuninAssocName" name = "getAssocName" value = "">
                 </div>
-
-                <button id="submitChanges" type="submit">Save Changes</button>
+                <button id="submitChanges" type="submit" name = "assocChangeBTN" onClick = "getValueOutsideForm()">Save Changes</button>
                 <button id="cancelChanges" type="reset">Cancel</button>
+                <script>
+                    function getValueOutsideForm() {
+                        var assocName = document.getElementById('associationName').innerText;
+                        document.getElementById('kuninAssocName').value = assocName;
+                    }
+                </script>
             </form>
         </main>
 
