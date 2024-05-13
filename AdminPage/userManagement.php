@@ -12,10 +12,6 @@
         <link rel="stylesheet" href="../AdminPage/Styles/mainStyle/general-style.css">
         <link rel="stylesheet" href="../AdminPage/Styles/userManagement.css">
         
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
     </head>
     <body>
         <header>
@@ -30,7 +26,7 @@
                     <div class="title"><span>CO</span>MS<span>.</span></div>
                 </div>
     
-                <div class="home selected">
+                <div class="home">
                     <img src="../Images/Icons/icons8-home-25.png">
                     <div>Home</div>
                 </div>
@@ -45,7 +41,7 @@
                     <div>Associations</div>
                 </div>
 
-                <div class="user_management">
+                <div class="user_management selected">
                     <img src="../Images/Icons/icons8-management-25.png">
                     <div>User Management</div>
                 </div>
