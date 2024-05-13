@@ -54,12 +54,12 @@ header{
     gap: 0.6rem;
 }
 
-.events:hover, .associations:hover, .user_management:hover, .request:hover, .profile:hover, .settings:hover{
+.home:hover, .events:hover, .associations:hover, .user_management:hover, .request:hover, .profile:hover, .settings:hover{
     background-color: #1f1e1e;
     cursor: pointer;
 }
 
-.events:active, .associations:active, .user_management:active, .request:active, .profile:active, .settings:active{
+.home:active, .events:active, .associations:active, .user_management:active, .request:active, .profile:active, .settings:active{
     background-color: #1f1e1e;
     cursor: pointer;
 }
