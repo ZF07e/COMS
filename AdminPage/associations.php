@@ -86,7 +86,7 @@
             
         </main>
 
-        <form id="pop-upForm" action = "http://localhost/COMS/AdminPage/Functions/AddAssociation.php" method = "POST">  
+        <form id="pop-upForm" action = "http://localhost/COMS/AdminPage/Functions/InfromationManagement.php" method = "POST">  
             <div class="form-header">
                 <h3>Add Association</h3>
                 <button type="reset" id="x_button">&#10005;</button>
@@ -109,7 +109,7 @@
 
             <div class="form-footer">
 
-                <button type="submit" name = "add">Add</button>
+                <button type="submit" name = "addAssocBTN">Add</button>
                 
                 <button type="reset" id="cancel_Button">Cancel</button>
             </div>

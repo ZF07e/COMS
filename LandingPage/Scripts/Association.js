@@ -1,11 +1,11 @@
 import {selectedId} from "./utils/selectedAssociation.js";
 
-fetch('http://localhost/COMS/LandingPage/Functions/GetAssociations.php')
-.then(response => response.json())
-.then(data => {
-    renderAssociations(data);
-})
-.catch(error => console.error('Error:', error));
+fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getAssociationList')
+    .then(response => response.json())
+    .then(data => {
+        renderAssociations(data);
+    })
+    .catch(error => console.error('Error:', error));
 
 function renderAssociations(AssociationList){
     let Organization = "";
@@ -20,7 +20,7 @@ function renderAssociations(AssociationList){
                 
                 <div class="title-description">
                     <div class="topSection">
-                        <h2>${assosiation.name}</h2>
+                        <h2>${assosiation.association}</h2>
                     </div>
                     <div class="details">
                         <p>Adviser: ${assosiation.adviser}</p>
@@ -41,7 +41,7 @@ function renderAssociations(AssociationList){
                 
                 <div class="title-description">
                     <div class="topSection">
-                        <h2>${assosiation.name}</h2>
+                        <h2>${assosiation.association}</h2>
                     </div>
                     <div class="details">
                         <p>Adviser: ${assosiation.adviser}</p>

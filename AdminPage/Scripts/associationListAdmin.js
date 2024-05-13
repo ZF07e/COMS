@@ -1,157 +1,19 @@
 let selectedAssociationID = JSON.parse(localStorage.getItem("selectedAssociationID")) || "";
 
 //sample data code below. remove this when using fetch
-let AssociationLists = [
-    {
-        "id": 111,
-        "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
-        "name": "Coders Club",
-        "type": "Club",
-        "adviser": "---",
-        "totalMembers": 15,
-        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-        "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-        "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-    },
-    {
-        "id": 122,
-        "image": "../Images/AssosiationsPfp/CS.jpg",
-        "name": "STICA - Computer Society",
-        "type": "Organization",
-        "adviser": "---",
-        "totalMembers": 20,
-        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-        "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-        "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-    }
-];
+fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getAssociationList')
+.then(response => response.json())
+.then(data => {
+    renderList(data);
+})
+.catch(error => console.error('Error:', error));
 
-let Users = [
-    {
-        id : 1,
-        pfp: "../Images/Noimg.jpg",
-        name: "Coco Melon",
-        firstname: "Coco",
-        lastname: "Melon",
-        email: "[Sample Email 1 @outlook.com]",
-        position: {position: "Adviser", index: 1},
-        association: {
-            "id": 122,
-            "image": "../Images/AssosiationsPfp/CS.jpg",
-            "name": "STICA - Computer Society",
-            "type": "Organization",
-            "adviser": "---",
-            "totalMembers": 20,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    },
-    {
-        id : 2,
-        pfp: "../Images/Noimg.jpg",
-        name: "CoKo Martin",
-        firstname: "CoKo",
-        lastname: "Martin",
-        email: "[Sample Email 2 @outlook.com]",
-        position: {position: "Adviser", index: 1},
-        association: {
-            "id": 111,
-            "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
-            "name": "Coders Club",
-            "type": "Club",
-            "adviser": "---",
-            "totalMembers": 15,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    },
-    {
-        id : 3,
-        pfp: "../Images/Noimg.jpg",
-        name: "Koko Nut",
-        firstname: "Koko",
-        lastname: "Nut",
-        email: "[Sample Email 3 @outlook.com]",
-        position: {position: "Vice President", index: 3},
-        association: {
-            "id": 111,
-            "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
-            "name": "Coders Club",
-            "type": "Club",
-            "adviser": "---",
-            "totalMembers": 15,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    },
-    {
-        id : 4,
-        pfp: "../Images/Noimg.jpg",
-        name: "Koko Latte",
-        firstname: "Koko",
-        lastname: "Latte",
-        email: "[Sample Email 4 @outlook.com]",
-        position: {position: "President", index: 2},
-        association: {
-            "id": 111,
-            "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
-            "name": "Coders Club",
-            "type": "Club",
-            "adviser": "---",
-            "totalMembers": 15,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    },
-    {
-        id : 5,
-        pfp: "../Images/Noimg.jpg",
-        name: "Koko Sundae",
-        firstname: "Koko",
-        lastname: "Sundae",
-        email: "[Sample Email 4 @outlook.com]",
-        position: {position: "President", index: 2},
-        association: {
-            "id": 122,
-            "image": "../Images/AssosiationsPfp/CS.jpg",
-            "name": "STICA - Computer Society",
-            "type": "Organization",
-            "adviser": "---",
-            "totalMembers": 20,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    },
-    {
-        id : 6,
-        pfp: "../Images/Noimg.jpg",
-        name: "Coco Salad",
-        firstname: "Koko",
-        lastname: "Salad",
-        email: "[Sample Email 4 @outlook.com]",
-        position: {position: "Officer", index: 8},
-        association: {
-            "id": 111,
-            "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
-            "name": "Coders Club",
-            "type": "Club",
-            "adviser": "---",
-            "totalMembers": 15,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    }
-];
-
-
-renderList(AssociationLists);
-renderAdviserOption(Users)
+fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getUserPositions')
+    .then(response => response.json())
+    .then(data => {
+        renderAdviserOption(data)
+    })
+    .catch(error => console.error('Error:', error));
 
 //render Function used for Rendering List
 function renderList(AssociationLists){
@@ -165,7 +27,7 @@ function renderList(AssociationLists){
                     <img src="${association.image}" alt="AssociationProfile" class="list--logo">
                     <div class="nameNtype">
                         <div class="tileNtypeContainer">
-                            <h4 class="association--title">${association.name}</h4>
+                            <h4 class="association--title">${association.association}</h4>
                             <p class="association--type --${association.type}">${association.type}</p>
                         </div>       
                         <p class="association--adviser">${association.adviser}</p>          
@@ -180,7 +42,7 @@ function renderList(AssociationLists){
                     <img src="${association.image}" alt="AssociationProfile" class="list--logo">
                     <div class="nameNtype">
                         <div class="tileNtypeContainer">
-                            <h4 class="association--title">${association.name}</h4>
+                            <h4 class="association--title">${association.association}</h4>
                             <p class="association--type --${association.type}">${association.type}</p>
                         </div>       
                         <p class="association--adviser">${association.adviser}</p>          
@@ -211,7 +73,7 @@ function searchAssociation(AssociationLists){
                         <img src="${value.image}" alt="AssociationProfile" class="list--logo">
                         <div class="nameNtype">
                             <div class="tileNtypeContainer">
-                                <h4 class="association--title">${value.name}</h4>
+                                <h4 class="association--title">${value.association}</h4>
                                 <p class="association--type --${value.type}">${value.type}</p>
                             </div>       
                             <p class="association--adviser">${value.adviser}</p>          
@@ -226,7 +88,7 @@ function searchAssociation(AssociationLists){
                         <img src="${value.image}" alt="AssociationProfile" class="list--logo">
                         <div class="nameNtype">
                             <div class="tileNtypeContainer">
-                                <h4 class="association--title">${value.name}</h4>
+                                <h4 class="association--title">${value.association}</h4>
                                 <p class="association--type --${value.type}">${value.type}</p>
                             </div>       
                             <p class="association--adviser">${value.adviser}</p>          
@@ -247,6 +109,7 @@ function viewAssociationFunction(document){
         item.addEventListener("click", ()=>{
             let selectedId = item.dataset.selected;
             selectedAssociationID = localStorage.setItem("selectedAssociationID", JSON.stringify(selectedId));
+            console.log(selectedId);
             window.location.href = "./viewAssociation.php";
         });
     });
@@ -272,10 +135,12 @@ function formButtonFunction(){
 
 function renderAdviserOption(users){
     let options;
+    
     users.forEach((value)=>{
-        if(value.position.position == "Adviser"){
+        if(value.position == "Adviser"){
+            let fullName = value.firstName + " " + value.lastName;
             options += `
-                <option value="${value.name}">${value.name}</option>    
+                <option value="${fullName}">${fullName}</option>    
             `;
         }
     });
