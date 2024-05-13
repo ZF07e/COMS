@@ -1,17 +1,14 @@
-document.querySelector(".home").addEventListener("click", ()=>{
-    window.location.href = "./index.php";
-});
+document.querySelector(".associations").addEventListener("click", ()=>{
+    window.location.href = "./index.html";
+}); 
 
 document.querySelector(".events").addEventListener("click", ()=>{
-    window.location.href = "./Events.php";
+    window.location.href = "./";
 }); 
 
-document.querySelector(".associations").addEventListener("click", ()=>{
-    window.location.href = "./associations.php";
-}); 
 
 document.querySelector(".user_management").addEventListener("click", ()=>{
-    window.location.href = "./userManagement.php";
+    window.location.href = "./";
 }); 
 
 document.querySelector(".request").addEventListener("click", ()=>{

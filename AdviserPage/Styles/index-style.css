@@ -1,0 +1,220 @@
+main{
+    height: 100%;
+}
+
+/* Association Header */
+#topHeaderSection{
+    display:flex;
+    flex-direction: column;
+    background-color: #131314;
+    padding: 0rem 0.8rem 1.7rem 0.8rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.25s;
+}
+
+#sectionHeader{
+    display: flex;
+    justify-content: right;
+    user-select: none;
+}
+
+#headerOptions{
+    cursor: pointer;
+}
+
+#sectionBody, #nameContainer{
+    display: flex;
+}
+
+#assocProfile{
+    width: 8rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+#nameContainer{
+    flex-direction: column;
+    justify-content: center;
+    padding: 0rem 1rem;
+}
+
+/* List */
+
+#List{
+    display: grid;
+    font-size: 0.8rem;
+    grid-template-columns: 70% 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+    height: 100%;
+    column-gap: 0.8rem;
+    row-gap: 0.8rem;   
+    padding: 1rem 0rem;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#leftDiv, #rightDiv{
+    display: grid;
+}
+
+#leftDiv{
+    height: 100%;
+    grid-template-rows: auto 1fr;
+    row-gap: 0.8rem;
+}
+
+/* Middle Body Section */
+#middleBodySection{
+    height: 100%;
+}
+
+#MiddleTotalContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 0.6rem;
+    column-gap: 0.6rem;
+    width: 100%;
+}
+
+/* dash Records */
+
+.dashRecords{
+    background-color: #131314;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.3rem 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
+    transition: background-color 0.25s;
+}
+
+.dashRecords:hover, #topHeaderSection:hover{
+    background-color: #131314bb;
+}
+
+/* requestList */
+
+#requestList ,#upcomingEvents{
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    -webkit-user-drag: none;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    border: solid 1px #131314;   
+    background-color: #13131454; 
+    padding: 0.5rem; 
+}
+
+#requestHeader, #upcomingEventsHeader{    
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-bottom: solid 1px #fff;
+    margin-bottom: 0.3rem;
+}
+
+
+#requestBody{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.2rem; 
+    width: 100%;   
+    max-height: 95%; 
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #161616 transparent;
+}
+
+.reqItem{
+    background-color: #00000049; 
+    border-radius: 0.3rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem 0.8rem;
+    font-size: 0.8rem;
+    justify-content: space-between;
+}
+
+.reqItem div{
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.reqItem:nth-child(even){
+    background-color: #00000018; 
+}
+
+#reqItemSender, #reqItemDate{
+    font-weight: 600;
+    color: #a8a8a8;
+}
+
+#reqItemSubject{
+    overflow: hidden;
+}
+
+
+/* upcoming Events */
+#upcomingEventsBody{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.1rem;
+    height: 95%;
+    text-wrap: nowrap;
+    overflow: hidden;
+    width: 100%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #161616 transparent;
+}
+
+.eventItem{
+    background-color: #0000001a; 
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0.5rem;
+    transition: background-color 0.25s;
+    border: solid 1px #101011;   
+}
+
+#eventTitle::before{
+    content: "• ";
+}
+
+.eventItem #eventDate{
+    color: #ffffff94;
+}
+
+@media (max-width: 768px) {
+    #List{
+        font-size: 0.6rem;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .dashRecords{
+        padding: 1rem 0.2rem;
+    }
+
+    .reqItem{
+        font-size: 0.5rem;
+    } 
+    
+    .eventItem{
+        font-size: 0.6rem;
+    }
+}
