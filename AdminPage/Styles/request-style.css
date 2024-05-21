@@ -71,6 +71,7 @@ main{
 
 #containerHeader{
     background-color: #232323;  
+    border: solid 1px #131314; 
     padding: 0.7rem;
     border-radius: 0.3rem;
     display: flex;
@@ -180,6 +181,7 @@ main{
     grid-template-columns: 1fr 1fr 1fr;
     border-radius: 0.2rem;
     background-color: #2e2e30ab;
+    border: solid 1px #131314; 
     flex-wrap: wrap;
     user-select: none;
     cursor: pointer;
@@ -257,6 +259,7 @@ main{
 
 #topHeader{
     background-color: #181818;
+    border: solid 1px #131314; 
     border-radius: 0.5rem;
     display: flex;
     align-items: center;
@@ -337,7 +340,7 @@ main{
 
 #requestDocument{
     display: flex;
-    border: solid 1px #fff;
+    border: solid 1px #131314;
     border-radius: 1rem;
     width: 100%;
 }
@@ -365,6 +368,7 @@ main{
 
 #listOfApprover{
     background-color: #181818;
+    border: solid 1px #131314; 
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -430,6 +434,7 @@ main{
 
 #comments{
     background-color: #181818;
+    border: solid 1px #131314; 
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;

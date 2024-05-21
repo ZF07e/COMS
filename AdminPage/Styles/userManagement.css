@@ -5,6 +5,7 @@
 .main-header{
     padding: 1rem 1rem;
     display:flex;
+    border: solid 1px #131314; 
     align-items: center;
     row-gap: 0.6rem;
     justify-content: space-between;
@@ -68,6 +69,7 @@
 
 .userItem{
     background-color: #1C1C1C;
+    border: solid 1px #131314; 
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     display: flex;

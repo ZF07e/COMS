@@ -70,7 +70,7 @@ checkIfDownloadable();
 
 
 $("#backButton").on("click", ()=>{
-    window.location.href = "../AssocClient/Request.php";
+    window.location.href = "../AdminPage/Request.php";
 });
 
 $("#downloadButton").on("click", ()=>{

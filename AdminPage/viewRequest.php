@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="./Styles/request-style.css">
     </head>
     <body>
-        <header>
+    <header>
             <nav>
                 <div class="system-logo">
                     <div class="logo">
@@ -24,25 +24,25 @@
                     </div>
                     <div class="title"><span>CO</span>MS<span>.</span></div>
                 </div>
-                
-                <div class="associations">
-                    <img src="../Images/Icons/icons8-bulletin-board-25.png">
-                    <div>Association</div>
+    
+                <div class="home ">
+                    <img src="../Images/Icons/icons8-home-25.png">
+                    <div>Home</div>
                 </div>
     
                 <div class="events">
                     <img src="../Images/Icons/icons8-calendar-25.png">
-                    <div>Calendar</div>
+                    <div>Events</div>
                 </div>
                 
-                <div class="tasks">
-                    <img src="../Images/Icons/icons8-task-25.png">
-                    <div>Tasks</div>
+                <div class="associations">
+                    <img src="../Images/Icons/icons8-hierarchy-25.png">
+                    <div>Associations</div>
                 </div>
-    
+
                 <div class="user_management">
-                    <img src="../Images/Icons/icons8-group-25.png">
-                    <div>Members</div>
+                    <img src="../Images/Icons/icons8-management-25.png">
+                    <div>User Management</div>
                 </div>
     
                 <div class="request selected">
@@ -55,7 +55,7 @@
                 <div class="profile">
                     <img src="" alt="Profile">
                     <div>Profile</div>
-    
+
                     <section class="popUp">
                         <a href="?action=logout"><button id="LogoutButton">Logout</button></a>
                     </section>
@@ -66,8 +66,9 @@
                     <div>Settings</div>
                 </div>
             </nav>
-    
+
         </header>  
+
 
         <main>
             <section id="topHeader"> 
@@ -189,7 +190,7 @@
 
         </main>
 
-        <script src="./Scripts/utils/navigation.js"></script>
+        <script src="./Scripts/util/navigation.js"></script>
         <script src="./Scripts/viewRequest.js"></script>
     </body>
 </html>
