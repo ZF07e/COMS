@@ -61,7 +61,7 @@
         $fullname = $firstName." ".$lastName;
 
         if ($adviser == $fullname && $position != "adviser"){
-            $removeAdviser = "UPDATE associations SET adviser = ''  WHERE association = ?";
+            $removeAdviser = "UPDATE associations SET adviser = 'Unassigned'  WHERE association = ?";
 
             $stmt = $mysqli->stmt_init();
             if(!$stmt->prepare($removeAdviser)){
@@ -84,6 +84,7 @@
         }
         echo "Account updated successfully!";
         $mysqli->close();
+        header("Location: ../userManagement.php");
     }
 
     function addUser(){;
@@ -103,8 +104,8 @@
         }
         $stmt->bind_param("ssss", $firstName, $lastName, $email, $position);
         $stmt->execute();
-        echo "Account registered successfully!";
-        $mysqli->close();
+        $mysqli->close();  
+        header("Location: ../userManagement.php");
     }
 
     function addAssociation(){
@@ -202,6 +203,8 @@
 
         echo "Association added!";
         $mysqli->close();
+
+        header("Location: ../associations.php");
     }
 
     function updateAssociation(){
@@ -225,6 +228,7 @@
             $stmt->execute();
             echo "Assocaition details updated successfully!";
             $mysqli->close();
+            header("Location: ../associations.php");
         }
     }
 
@@ -242,8 +246,8 @@
         }
         $stmt->bind_param("s", $email);
         $stmt->execute();
-        echo "Account deleted successfully!";
         $mysqli->close();
+        header("Location: ../userManagement.php");
     }
 
     if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['saveBTN'])){
