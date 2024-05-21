@@ -78,28 +78,42 @@
 
     <!-- confirmation -->
         <div class="upperlayer2">
-            <form action="" id="confirmation">
+            <form id="confirmation" action = "http://localhost/COMS/AdminPage/Functions/InfromationManagement.php" method = "POST">
                 <div class="confHeader">
                     <h3>Warning!</h3>
                     <button id="xbuttonConf">&#10005;</button>
                 </div>
                 <p>You're about to delete this account are you sure?</p>
+                <input type="hidden" id = "name" name = "name" value = "">
+                <input type="hidden" id = "position" name = "position" value = "">
+                <input type="hidden" id = "email" name = "email" value = "">
                 <div class="options">
-                    <button type="submit" id="yesbtn">Yes</button>
+                    <button type="submit" id="yesbtn" name = "removeUser" onClick = "getValueFromForm()">Yes</button>
                     <button type="button" id="nobtn">No</button>
                 </div>
+                <script>
+                    function getValueFromForm() {
+                        var name = document.getElementById('selectedName').innerText;
+                        var position = document.getElementById('selectedPosition').innerText;
+                        var email = document.getElementById('selectedEmail').innerText;
+
+                        document.getElementById('name').value = name;
+                        document.getElementById('position').value = position;
+                        document.getElementById('email').value = email;
+                    }
+                </script>
             </form>
         </div>
 
         <!-- view user -->
         <div class="upperlayer" id="viewUser">
-            <form>
+            <form action = "http://localhost/COMS/AdminPage/Functions/InfromationManagement.php" method = "POST">
                 <div class="formheader"><div id="xbuttonView">&#10005;</div></div>
                 <img src="../Images/Noimg.jpg" alt="" id=viewProfileImg>
                 <div class="edit_infos">
-                    <input type="text" class="normalInput" placeholder="First Name" id="User_FirstName">
-                    <input type="text" class="normalInput" placeholder="Last Name" id="User_LastName">
-                    <select name="" id="EditselectedPosition">
+                    <input type="text" class="normalInput" placeholder="First Name" id="User_FirstName" name = "newFirstName">
+                    <input type="text" class="normalInput" placeholder="Last Name" id="User_LastName" name = "newLastName">
+                    <select name="newPosition" id="EditselectedPosition">
                         <option value="" selected disabled>- Position -</option>
                         <option value="Adviser">Adviser</option>
                         <option value="President">President</option>
@@ -110,12 +124,12 @@
                         <option value="Head Officer">Head Officer</option>
                         <option value="Officer">Officer</option>
                     </select>
-                    <input type="text" class="normalInput" placeholder="Outlook Email" id="User_Email">
-                    <select name="" id="EdithandlingAssociation">
+                    <input type="text" class="normalInput" placeholder="Outlook Email" id="User_Email" name = "newEmail">
+                    <select name="newAffiliation" id="EdithandlingAssociation">
                         <option value="" selected disabled>- Association -</option>
                     </select>
-                        
-                    <button type="submit" id="saveChanges">SaveChanges</button>
+                    <input type="hidden" id="ID" name="userID">
+                    <button type="submit" id="saveChanges" name = "saveBTN">SaveChanges</button>
                     <button type="reset" id="cancelEdit">Cancel</button>
                 </div>
                 
@@ -133,28 +147,28 @@
 
         
         <!-- Form 1 For Inserting -->
-        <form id="pop-upFormUser">  
+        <form id="pop-upFormUser" action = "http://localhost/COMS/AdminPage/Functions/InfromationManagement.php" method = "POST">  
             <div class="form-header">
                 <h3>Add User</h3>
                 <button type="reset" id="User_x_button">X</button>
             </div>
 
             <div class="form-body">
-                <input type="text" class="normalInput" placeholder="First Name">
-                <input type="text" class="normalInput" placeholder="Last Name">
-                <input type="text" class="normalInput" placeholder="Outlook Email">
-                <select name="" id="type">
+                <input type="text" class="normalInput" placeholder="First Name" name = "firstName">
+                <input type="text" class="normalInput" placeholder="Last Name" name = "lastName">
+                <input type="text" class="normalInput" placeholder="Outlook Email" name = "email">
+                <select name="position" id="type">
                     <option value="" selected disabled>- Role -</option>
                     <option value="Adviser">Adviser</option>
                     <option value="President">President</option>
                 </select>
                 <select name="" id="handlingAssociation">
-                    <option value="" selected disabled>- Association - (Optional)</option>
+                    <option value="" selected disabled>- Association -</option>
                 </select>
             </div>
 
             <div class="form-footer">
-                <button type="submit">Add</button>
+                <button type="submit" name = "addBTN">Add</button>
                 <button type="reset" id="User_cancel_Button">Cancel</button>
             </div>
         </form>

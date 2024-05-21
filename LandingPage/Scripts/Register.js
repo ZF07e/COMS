@@ -1,6 +1,6 @@
 import { selectedId } from "./utils/selectedAssociation.js";
 
-fetch('http://localhost/COMS/LandingPage/Functions/GetAssociations.php')
+fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getAssociationList')
 .then(response => response.json())
 .then(data => {
     funktion(data);
@@ -11,7 +11,7 @@ function funktion(Associations){
     Associations.forEach((association)=>{
         if(association.id == selectedId){
             document.querySelector(".imageContainer").innerHTML += `<img src="${association.image}" alt="Profile" class="associationProfile">`;
-            document.querySelector(".associationTitle").innerHTML = association.name;
+            document.querySelector(".associationTitle").innerHTML = association.association;
             document.querySelector(".adviser").innerHTML = association.adviser;
             document.querySelector(".description").innerHTML = association.description;
     
