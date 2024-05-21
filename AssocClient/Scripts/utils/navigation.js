@@ -1,5 +1,5 @@
 document.querySelector(".associations").addEventListener("click", ()=>{
-    window.location.href = "./index.html";
+    window.location.href = "./index.php";
 }); 
 
 document.querySelector(".events").addEventListener("click", ()=>{
@@ -12,8 +12,10 @@ document.querySelector(".user_management").addEventListener("click", ()=>{
 }); 
 
 document.querySelector(".request").addEventListener("click", ()=>{
-    window.location.href = "./";
+    window.location.href = "./Request.php";
 }); 
+
+
 
 let isOn = false;
 let profilePopUp = document.querySelector(".popUp");

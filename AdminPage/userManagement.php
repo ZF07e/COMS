@@ -149,7 +149,7 @@
                     <option value="President">President</option>
                 </select>
                 <select name="" id="handlingAssociation">
-                    <option value="" selected disabled>- Association -</option>
+                    <option value="" selected disabled>- Association - (Optional)</option>
                 </select>
             </div>
 
