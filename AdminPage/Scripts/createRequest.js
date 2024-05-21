@@ -196,5 +196,5 @@ $("#sendReq").on("click", (e)=>{
 });
 
 $("#canlReq").on("click", (e)=>{
-   window.location.href = "../AssocClient/Request.php"
+   window.location.href = "../AdminPage/Request.php"
 });

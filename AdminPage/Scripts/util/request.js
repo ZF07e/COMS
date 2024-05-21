@@ -69,12 +69,12 @@ document.querySelectorAll(".mailRequest").forEach((e)=>{
     e.addEventListener("click", ()=>{
         let selectedID = e.dataset.request;
         selectedRequest = localStorage.setItem("selectedRequest", JSON.stringify(selectedID));
-        window.location.href = "../AssocClient/viewRequest.php";
+        window.location.href = "../AdminPage/viewRequest.php";
     });
 });
 
 document.getElementById("CreateRequest").addEventListener("click", ()=>{
-    window.location.href = "./createRequest.php";
+    window.location.href = "../AdminPage/createRequest.php";
 }); 
 
 $("#deleteMail").click((ev)=>{

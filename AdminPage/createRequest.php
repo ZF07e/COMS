@@ -3,17 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>COMS: Request</title>
+        <title>COMS: Create Request</title>
+        <!-- QUILL Library -->
+        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
 
         <!-- jquery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+        <!-- Font Awesome -->
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+        <!-- my css -->
+        <link rel="stylesheet" href="./Styles/request-style.css">
         <link rel="stylesheet" href="./Styles/mainStyle/general-style.css">
         <link rel="stylesheet" href="./Styles/mainStyle/header-style.css">
-        <link rel="stylesheet" href="./Styles/request-style.css">
     </head>
     <body>
-
     <header>
             <nav>
                 <div class="system-logo">
@@ -70,63 +77,49 @@
 
         </header>  
 
+        <main>
+            <div class="top-main-section">Create Request </div>
+            <form id="Requestmessage">
+                
+                <section id="leftsectionReq">
+                    <div id="editor">
+                    </div>
+                </section>
+                
+                <section id="RightsectionReq">
+                    <div id="SelectRecv">
+                        <p for="field1">To</p>
+                        <div class="field1"></div>
+                    </div>
 
-    <main>
-        <section class="top-main-section">
-            Request
-        </section>
+                    <div class="multiselectFields">
+                        <p for="field2">Endorsed by</p>
+                        <div class="field2"></div>
+                    </div>
 
-        <section id="topSection">
-            <div id="inbox" class="selected">Inbox</div>
-            <div id="approved" class="">Approved</div>
-            <div id="rejected" class="">Rejected</div>
-            <div id="archives" class="">Archives</div>
-        </section>
+                    <div class="multiselectFields">
+                        <p for="field3">Noted by</p>
+                        <div class="field3"></div>
+                    </div>
 
-        <section id="requestContainer">
-            <div id="containerHeader">  
-                <div id="searchContainer">
-                    <input type="text" id="searchRequest" placeholder="Search...">
-                    <img src="../Images/Icons/icons8-search-25.png" alt="" width="20px">
-                </div>
-                <button id="CreateRequest">New Request</button>
-            </div>
+                    <div class="multiselectFields">
+                        <p for="field4">Approved by</p>
+                        <div class="field4"></div>
+                    </div>
 
-            <div id="containerBody" class="HideTab">
-                <div class="mailRequest">
-                    <div id="mailSender">Association Sender(Inbox)</div>
-                    <div id="mailSubject">Sender Subject</div>
-                    <div id="mailDate">DateTime</div>
-                </div>
-            </div>
+                    <div id="buttonContainer">
+                        <button id="sendReq">Send Request</button>  
+                        <button id="canlReq" type="reset">cancel</button>                  
+                    </div>
+                </section>
+            </form>
+        </main>
 
-            <div id="containerBodyApproved">
-                <div class="mailRequest">
-                    <div id="mailSender">Association Sender(Approved)</div>
-                    <div id="mailSubject">Sender Subject</div>
-                    <div id="mailDate">DateTime</div>
-                </div>
-            </div>
-
-            <div id="containerBodyRejected">
-                <div class="mailRequest">
-                    <div id="mailSender">Association Sender(Rejected)</div>
-                    <div id="mailSubject">Sender Subject</div>
-                    <div id="mailDate">DateTime</div>
-                </div>
-            </div>
-
-            <div id="containerBodyArchived">
-                <div class="mailRequest">
-                    <div id="mailSender">Association Sender(Archived)</div>
-                    <div id="mailSubject">Sender Subject</div>
-                    <div id="mailDate">DateTime</div>
-                </div>
-            </div>
-
-        </section>
-    </main>
-        <script src="./Scripts/util/request.js"></script>
+        
+        <!-- MultiSelect Library -->
+        <script src="./Scripts/util/bundle.min.js"></script>
         <script src="./Scripts/util/navigation.js"></script>
+        <script src="./Scripts/createRequest.js"></script>
+
     </body>
 </html>
