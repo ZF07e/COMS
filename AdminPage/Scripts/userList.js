@@ -1,162 +1,61 @@
-//Sample data below(remove when Using fetch)
-let Users = [
-    {
-        id : 1,
-        pfp: "../Images/Noimg.jpg",
-        name: "Coco Melon",
-        firstname: "Coco",
-        lastname: "Melon",
-        email: "[Sample Email 1 @outlook.com]",
-        position: {position: "Adviser", index: 1},
-        association: {
-            "id": 122,
-            "image": "../Images/AssosiationsPfp/CS.jpg",
-            "name": "STICA - Computer Society",
-            "type": "Organization",
-            "adviser": "---",
-            "totalMembers": 20,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    },
-    {
-        id : 2,
-        pfp: "../Images/Noimg.jpg",
-        name: "CoKo Martin",
-        firstname: "CoKo",
-        lastname: "Martin",
-        email: "[Sample Email 2 @outlook.com]",
-        position: {position: "Adviser", index: 1},
-        association: {
-            "id": 111,
-            "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
-            "name": "Coders Club",
-            "type": "Club",
-            "adviser": "---",
-            "totalMembers": 15,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    },
-    {
-        id : 3,
-        pfp: "../Images/Noimg.jpg",
-        name: "Koko Nut",
-        firstname: "Koko",
-        lastname: "Nut",
-        email: "[Sample Email 3 @outlook.com]",
-        position: {position: "Vice President", index: 3},
-        association: {
-            "id": 111,
-            "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
-            "name": "Coders Club",
-            "type": "Club",
-            "adviser": "---",
-            "totalMembers": 15,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    },
-    {
-        id : 4,
-        pfp: "../Images/Noimg.jpg",
-        name: "Koko Latte",
-        firstname: "Koko",
-        lastname: "Latte",
-        email: "[Sample Email 4 @outlook.com]",
-        position: {position: "President", index: 2},
-        association: {
-            "id": 111,
-            "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
-            "name": "Coders Club",
-            "type": "Club",
-            "adviser": "---",
-            "totalMembers": 15,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    },
-    {
-        id : 5,
-        pfp: "../Images/Noimg.jpg",
-        name: "Koko Sundae",
-        firstname: "Koko",
-        lastname: "Sundae",
-        email: "[Sample Email 4 @outlook.com]",
-        position: {position: "President", index: 2},
-        association: {
-            "id": 122,
-            "image": "../Images/AssosiationsPfp/CS.jpg",
-            "name": "STICA - Computer Society",
-            "type": "Organization",
-            "adviser": "---",
-            "totalMembers": 20,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    },
-    {
-        id : 6,
-        pfp: "../Images/Noimg.jpg",
-        name: "Coco Salad",
-        firstname: "Koko",
-        lastname: "Salad",
-        email: "[Sample Email 4 @outlook.com]",
-        position: {position: "Officer", index: 8},
-        association: {
-            "id": 111,
-            "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
-            "name": "Coders Club",
-            "type": "Club",
-            "adviser": "---",
-            "totalMembers": 15,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    }
-];
+//fetch members list
+fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getUserPositions')
+    .then(response => response.json())
+    .then(data => {
+        renderUserList(data);
+        SearchTab(data);
+    })
+    .catch(error => console.error('Error:', error));
 
-renderUserList(Users);// use this function for rendering
+fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getAssociationList')
+    .then(response => response.json())
+    .then(data => {
+        getAssociationList(data);
+    })
+    .catch(error => console.error('Error:', error));
 
 function renderUserList(userList){//Function For Rendering 
     let users = "";
-    let associations = "";
+    
     userList.forEach((userprofile) => {
+        let assoc;
+
+        if(userprofile.affiliation == ""){
+            assoc = "Unassigned";
+        }
+        else{
+            assoc = userprofile.affiliation
+        }
         users += `
-                <div class="userItem" data-User-id="${userprofile.id}">
+                <div class="userItem" data-User-id="${userprofile.userID}">
                     <div class="item_left">
                         <img src="${userprofile.pfp}" class="profilePicture">
                         <div class="userInfo">
-                            <p id="user_adviser">${userprofile.name}</p>
-                            <p id="position">${userprofile.position.position} (${userprofile.association.name})</p>
+                            <p id="user_adviser">${userprofile.firstName} ${userprofile.lastName}</p>
+                            <p id="position">${userprofile.position} (${assoc})</p>
                         </div>
                     </div>
                 </div>
                 `;
     });
-
-    userList.forEach((asscList)=>{
-        if(!associations.includes(asscList.association.name)){
-            console.log("yes");
-            associations += `
-            <option value="${asscList.association.name}"> ${asscList.association.name}</option>
-            `
-        }
-
-    });
-
-    document.getElementById("EdithandlingAssociation").innerHTML += associations;
-    document.getElementById("handlingAssociation").innerHTML += associations;
+    
     document.querySelector(".userList").innerHTML = users;
     SearchTab(userList);
     editButtonFunction(userList);
     FormButtonsFunctions();
+}
+
+function getAssociationList(list){
+    let associations = "";
+
+    list.forEach((asscList)=>{
+        if(!associations.includes(asscList.association)){
+            console.log(associations);
+            associations += `<option value="${asscList.association}"> ${asscList.association}</option>`
+        }
+    });
+
+    document.getElementById("EdithandlingAssociation").innerHTML += associations;
 }
 
 function SearchTab(userList){
@@ -165,16 +64,16 @@ function SearchTab(userList){
         //get input String and convert it to UpperCase
         let searchString = document.getElementById("searchUser").value.toUpperCase();
         let accountsFound = "";
-
-        userList.forEach((value)=>{  
-        if(value.name.toUpperCase().includes(searchString, 0)){
+        userList.forEach((value)=>{
+        let fullName = value.firstName +" "+ value.lastName;  
+        if(fullName.toUpperCase().includes(searchString, 0)){
             accountsFound += `
-                            <div class="userItem" data-User-id="${value.id}">
+                            <div class="userItem" data-User-id="${value.userID}">
                                 <div class="item_left">
                                     <img src="${value.pfp}" class="profilePicture">
                                     <div class="userInfo">
-                                        <p id="user_adviser">${value.name}</p>
-                                        <p id="position">${value.position.position} (${value.association.name})</p>
+                                        <p id="user_adviser">${fullName}</p>
+                                        <p id="position">${value.position} (${value.affiliation})</p>
                                     </div>
                                 </div>
                             </div>
@@ -193,29 +92,31 @@ function editButtonFunction(userList){
             //gets the button's stored id and display the floating form
             let userSelectedId = item.dataset.userId;
 
-
             document.querySelector(".upperlayer").style.display = "flex";
             let selectIndex;
             let selectOptions = document.getElementById("EdithandlingAssociation");
+            
             userList.forEach((userListId)=>{//gets the current value of the users Information               
-                if(userListId.id == userSelectedId){
+                if(userListId.userID == userSelectedId){
                     for(let i = 0; i < selectOptions.length; i++){
-                        if(selectOptions[i].text == userListId.association.name){
+                        if(selectOptions[i].text == userListId.firstName){
                             selectIndex = selectOptions[i].index;
                             console.log(selectIndex);
-                            
                         }
                     }
-                    document.getElementById("selectedName").innerText = userListId.name;   
-                    document.getElementById("selectedPosition").innerText = userListId.position.position;   
-                    document.getElementById("selectedEmail").innerText = userListId.email;   
-                    document.getElementById("User_FirstName").value = userListId.firstname;
-                    document.getElementById("User_LastName").value = userListId.lastname;
+                    document.getElementById("selectedName").innerText = userListId.firstName + " " + userListId.lastName;   
+                    document.getElementById("selectedPosition").innerText = userListId.position;
+
+                    document.getElementById("selectedEmail").innerText = userListId.email;
+                    document.getElementById("selectedEmail").value = userListId.email;
+                    console.log(userList.email);
+                       
+                    document.getElementById("User_FirstName").value = userListId.firstName;
+                    document.getElementById("User_LastName").value = userListId.lastName;
                     document.getElementById("User_Email").value = userListId.email;
                     document.getElementById("EditselectedPosition").selectedIndex = userListId.position.index;
                     document.getElementById("EdithandlingAssociation").selectedIndex = selectIndex;
-
-
+                    document.getElementById("ID").value = userSelectedId;
                 }
             })
         }); 
@@ -255,7 +156,7 @@ function PopUpFormFunction(){
 
         //On Confirmation Functions
         yesbtn.addEventListener("click", (doc)=>{
-            doc.preventDefault();
+            //doc.preventDefault();
             upperlayer2.style.display = "none";
             viewAccount.style.display = "none";
         });
@@ -271,7 +172,7 @@ function PopUpFormFunction(){
 
 
         saveChanges.addEventListener("click", (event)=>{
-            event.preventDefault();
+            //event.preventDefault();
             viewmode.style.display = "flex";
             editmode.style.display = "none";
         });

@@ -24,10 +24,10 @@
             $database = new Database();
             $mysqli = $database->getConnection();
 
-            // Check if user ID is set in the session
+            // Check if user email is set in the session
             if (isset($_SESSION['email'])) {
                 $email = trim($_SESSION['email']);
-                $sql = "SELECT role FROM userroles WHERE email = '$email'";
+                $sql = "SELECT role FROM admins WHERE email = '$email'";
                 $result = $mysqli->query($sql);
 
                 if ($result) {
@@ -55,27 +55,5 @@
                 }
             }
         }
-    }
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p><a href="?action=logout">Log Out</a></p> <!-- logout testing -->
-</body>
-</html>
-
-<?php
-    //logout
-    if (isset($_GET['action']) && $_GET['action'] == 'logout') {
-        $redirect_uri = urlencode("http://localhost/COMS/LandingPage/Index.php"); // Replace with your actual logout confirmation page
-        $logout_url = "https://login.microsoftonline.com/common/oauth2/v2.0/logout?post_logout_redirect_uri=$redirect_uri";
-        header("Location: $logout_url");
-        exit();
     }
 ?>
