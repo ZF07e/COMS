@@ -72,7 +72,7 @@
 
 
     <main>
-        <section class="top-main-section">
+        <section class="pageTitle">
             Request
         </section>
 
@@ -89,7 +89,6 @@
                     <input type="text" id="searchRequest" placeholder="Search...">
                     <img src="../Images/Icons/icons8-search-25.png" alt="" width="20px">
                 </div>
-                <button id="CreateRequest">New Request</button>
             </div>
 
             <div id="containerBody" class="HideTab">

@@ -25,7 +25,7 @@
 
     // Check if the user is logged in
     if (isset($_SESSION['msatg']) && $_SESSION['msatg'] == 1) {
-        echo "Session ID: " . $_SESSION['uname'];
+        //echo "Session ID: " . $_SESSION['uname'];
     } else {
         session_unset();
         session_destroy();
