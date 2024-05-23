@@ -22,12 +22,22 @@ main{
     cursor: pointer;
 }
 
+#topHeaderSection #sectionBody h2{
+    
+
+}
+
+#topHeaderSection #sectionBody h2{
+
+
+}
+
 #sectionBody, #nameContainer{
     display: flex;
 }
 
 #assocProfile{
-    width: 8rem;
+    width: 7rem;
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
@@ -216,5 +226,19 @@ main{
     
     .eventItem{
         font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 425px){
+    #MiddleTotalContainer{
+        grid-template-columns: 1fr;
+    }
+
+    #assocProfile{
+        width: 5rem;
+    }
+
+    #nameContainer{
+        font-size: 0.8rem;
     }
 }

@@ -1,17 +1,465 @@
 main{
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
-.top-main-section{
-    border-bottom: solid 1px #eee;
-    padding: 0.4rem 0rem;
-    font-weight: bold;
-    font-style: italic;
-}
-
-.main-center-section{
+.pageTitle{
     display: flex;
-    padding-top: 0.7rem;
+    align-items: center;
+    justify-content: space-between;
 }
 
+#logoutHeader{
+    background-color: #ecf577;
+    border-radius: 1rem;
+    border: none;
+    padding: 0.2rem 1rem;
+    margin-right: 0.5rem;
+    transition: background-color 0.25s;
+}
+
+#logoutHeader:hover{
+    background-color: #f9ffa2;
+}
+
+#CenterDivContainer{
+    padding: 1rem 0.5rem; 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 1.171vw;
+    column-gap: 1.171vw;
+}
+
+#CenterDivContainer section{
+    background-color: #1B1B1B;
+    padding: 1.464vw 1.757vw;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    transition: box-shadow 0.25s;
+}
+
+#CenterDivContainer section h3{
+    font-size: 1.171vw;
+}
+
+#CenterDivContainer section:hover{
+    box-shadow: 0px 0px 1rem #000000e7;
+}
+
+/* fonts */
+
+#UserNameHome{
+    font-size: 1vw;
+}
+
+#PositionHome{
+    font-size: 0.9vw;   
+}
+
+#todayTitle{
+    font-size: 1.2vw;
+}
+
+
+/* Account_Con */
+
+#Account_Con{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.82vw;
+    overflow: hidden;
+}
+
+#accountProfileHome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    row-gap: 0.117vw;
+    height: 80%;
+}
+
+#accountProfileHome img{
+    border-radius: 50%;
+    width: 7.687vw;
+    height: 7.687vw;
+    border: solid 7px #0f0f0f;
+}
+
+/* DateNTotalEvents_Con */
+
+#DateNTotalEvents_Con{
+    padding: 0rem 0.5rem; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#topDate{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.2rem;
+}
+
+#gotoButton{
+    color: #f9ffa2;
+    font-weight: 500;
+    font-size: 1.171vw;
+    text-align: center;
+    cursor: pointer;
+    font-style: oblique;
+}
+
+#datesRow{
+    display: flex;
+    column-gap: 0.82vw;
+}
+
+#Today_Con, #not_Today_Con{
+    border: solid 4px #f9ffa2;
+    color: #f9ffa2; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.3vw;
+    border-radius: 1rem;
+    font-weight: 600;
+    width: 4.392vw;
+    height: 5.857vw;
+    margin: 0.5rem 0rem;
+    user-select: none;
+}
+
+#not_Today_Con{
+    width: 3.66vw;
+    height: 5.124vw;
+    border: solid 4px #cfcfcf42;
+    color: #ffffff42; 
+}
+
+#bullet{
+    border-radius: 0.2rem;
+    width: 10px;
+    height: 10px;
+}
+
+#eventToday{
+    display: flex;
+    align-items: center;
+    column-gap: 0.469vw;
+}
+
+#eventToday #bullet{
+    background-color: #fff;
+}
+
+#eventToday p{
+    font-size: 1.288vw;
+    font-weight: 600;
+    justify-self: end;
+}
+
+#EventTodayTotal{
+    font-size: 4.217vw;
+}
+
+
+/* Association_Con */
+
+#Association_Con{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+#orgPercentage, #clubPercentage{
+    border-radius: 1rem;
+    width: 8.053vw;
+    height: 5.857vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.514vw;
+    font-weight: 200;
+    user-select: none;
+}
+
+#orgPercentage{
+    border: solid 3px #f9ffa2;
+    color:#fff;
+}
+
+#clubPercentage{
+    border: solid 3px #fff;
+    color:#f9ffa2;
+}
+
+.assoc_Con{
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    height: 100%;
+}
+
+#orgColor, #clubColor{
+    border-radius: 0.2rem;
+    width: 10px;
+    height: 10px;
+    background-color:#f9ffa2;
+}
+
+#clubColor{
+    background-color:#fff;
+}
+
+#org_detl, #club_detl{
+    display: flex;
+    align-items: center;
+    column-gap: 0.3rem;
+    
+}
+
+#org_detl h3, #club_detl h3{
+    font-weight: 400;
+    font-size: 1.37vw;
+}
+
+/* TotalUsers_Con */
+
+#TotalUsers_Con{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#totalUsersCount{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#totalUsers{
+    border: solid 4px #fff;
+    color: #f9ffa2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 7.321vw;
+    height: 7.321vw;
+    font-size: 3.343vw;
+    font-weight: 500;
+    user-select: none;
+}
+
+#userPer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.469vw;
+    margin-bottom: 0.8rem;
+    user-select: none;
+}
+
+#userPer hr{
+    background-color: #fff;
+    border:none;
+    height: 1px;
+}
+
+#adviserPer_Con, #studentPer_Con{
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    justify-content: space-between;
+}
+#leftsideAd, #leftsideStu{
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+#leftsideAd p, #leftsideStu p{
+    font-size: 1.171vw;
+}
+
+#bulletAd{
+    background-color: #fff;
+    border-radius: 0.2rem;
+    width: 10px;
+    height: 10px;
+}
+
+#studentPer_Con #bulletAd{
+    background-color: #eef773;
+}
+
+#adviPer, #studPer{
+    font-size: 1.171vw;
+    padding: 0rem 0.5rem;
+}
+
+/* TotalRequest_Con */
+#gotoRequest_Con{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+#viewReq{
+    background-color: transparent;
+    color: #ffffffcc;
+    font-size: 1.171vw;
+    font-weight: 700;
+    padding: 0.586vw 1.171vw;
+    border-radius: 1.171vw;
+    border: solid 1px #ffffffcc;
+    transition: background-color 0.20s, color 0.20s;
+}
+
+#viewReq:hover{
+    background-color: #ffffffcc;
+    color: #000;
+}
+
+#viewReq:active{
+    background-color: #ffffff0e;
+    color: #fff;
+}
+
+#allTotalReq_Con{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.8rem;
+    margin-top: 1rem;
+    font-size: 1.171vw;
+}
+
+#allTotalReq_Con hr{
+    background-color: #ffffffcc;
+    border: none;
+    height: 1px;
+}
+
+#rightSection_Con{
+    display: flex;
+    align-items: center;
+    column-gap: 0.469vw;
+}
+
+#unread_Con, #inbox_Con, #approved_Con, #rejected_Con{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 0.5rem;
+}
+
+#inbox_Con #bullet, #approved_Con #bullet{
+    background-color: #fff;
+}
+
+#unread_Con #bullet, #rejected_Con #bullet{
+    background-color: #f9ffa2;
+}
+
+#totalInbox, #totalUnread, #totalApproved, #totalRejected{
+    font-size: 1.1rem;
+}
+
+@media (max-width: 800px){
+    #CenterDivContainer section h3{
+        font-size: 1rem;
+    }
+    
+    #PositionHome{
+        font-size: 1rem; 
+    }
+
+    #totalUsers{
+        font-size: 2rem;
+    }
+    
+    #leftsideAd p, #leftsideStu p, #adviPer, #studPer{
+        font-size: 0.8rem;
+    }
+
+    #allTotalReq_Con{
+        font-size: 0.8rem;
+    }
+
+    #totalInbox, #totalUnread, #totalApproved, #totalRejected{
+        font-size: 1rem;
+    }
+
+    #CenterDivContainer{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 642px){
+    #gotoButton{
+        font-size: 0.7rem;
+    }
+
+    #viewReq{
+        font-size: 0.6rem;
+        padding: 0.5rem 1rem;
+    }
+
+    #CenterDivContainer section{
+        padding: 1rem 1.757vw;
+    }
+
+    #totalUsers{
+        padding: 1rem 1rem;
+    }
+
+    #Today_Con, #not_Today_Con{
+        border: solid 2px #f9ffa2;
+        font-size: 1rem;
+        width: 2.8rem;
+        height: 4rem;
+        margin: 0.5rem 0rem;
+        user-select: none;
+    }
+
+    #orgPercentage, #clubPercentage{
+        width: 3rem;
+        height: 3rem;
+        font-size: 1rem;
+    }
+
+    #EventTodayTotal{
+        font-size: 3rem;
+    }
+
+    #eventToday p {
+        font-size: 0.8rem;
+    }
+
+    #not_Today_Con{
+        width: 2.8rem;
+        height: 3.7rem;
+        border: solid 2px #cfcfcf42;
+    }
+
+    #totalUsers{
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    #CenterDivContainer{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+}

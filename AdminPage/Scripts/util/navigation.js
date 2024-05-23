@@ -15,7 +15,7 @@ document.querySelector(".user_management").addEventListener("click", ()=>{
 }); 
 
 document.querySelector(".request").addEventListener("click", ()=>{
-    window.location.href = "./";
+    window.location.href = "./Request.php";
 }); 
 
 let isOn = false;

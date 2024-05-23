@@ -4,6 +4,7 @@ main{
 
 .main-header{
     background-color: #1C1C1C;
+    border: solid 1px #131314; 
 }
 
 .main-header{
@@ -72,6 +73,7 @@ main{
 
 .associationItem{
     background-color: #1C1C1C;
+    border: solid 1px #131314; 
     padding: 0.5rem 0.5rem;
     border-radius: 0.5rem;
     display: flex;

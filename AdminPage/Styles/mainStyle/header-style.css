@@ -12,6 +12,12 @@ header{
     z-index: 100;
 }
 
+header nav{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.1rem;
+}
+
 .system-logo{
     display: flex; 
     align-items: center;
@@ -49,7 +55,7 @@ header{
 .home, .events, .associations, .user_management, .request, .profile, .settings{
     display: flex;
     align-items: center;  
-    font-size: 0.813rem;
+    font-size: 0.75rem;
     padding: 0.5rem 1rem; 
     gap: 0.6rem;
 }
