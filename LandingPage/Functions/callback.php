@@ -27,18 +27,23 @@
             // Check if user email is set in the session
             if (isset($_SESSION['email'])) {
                 $email = trim($_SESSION['email']);
-                $sql = "SELECT role FROM admins WHERE email = '$email'";
+                $sql = "SELECT position FROM users WHERE email = '$email'";
                 $result = $mysqli->query($sql);
 
                 if ($result) {
                     if ($result->num_rows > 0) {
                         // User found in the database
                         $userData = $result->fetch_assoc();
-                        $role = $userData['role'];
+                        $role = $userData['position'];
                         if ($role == "admin") {
                             header("Location: http://localhost/COMS/AdminPage/index.php");
                             exit();
-                        } else {
+                        }
+                        elseif ($role == "Secretary") {
+                            header("Location: http://localhost/COMS/AssocClient/index.php");
+                            exit();
+                        }
+                         else {
                             // User not authorized (role not match)
                             echo "You do not have permission to access this page.";
                             exit();
