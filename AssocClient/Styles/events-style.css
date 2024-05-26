@@ -1,0 +1,147 @@
+main{
+    height: 100vh;
+    /* min-width: 70rem; */
+    min-width: 566px;
+}
+
+#middleSection{
+    height: 100%;
+}
+
+/* Pop Up */
+
+#popUpCreateEvent, #popUpCreateEvent2{
+    background-color: #00000091;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    z-index: 105;
+    display: none;
+}
+
+#addEvent, #editEvent{
+    background-color: #181818;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    user-select: none;
+}
+
+#popUpHeader{
+    display: flex;
+    justify-content: space-between;
+}
+
+#popUpBody{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0rem;
+    row-gap: 1rem;
+}
+
+#timeDate{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    row-gap: 0.5rem;
+    column-gap: 0.5rem;
+}
+
+.dateTimeContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+#eventNameContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+#popUpButtons{
+    display: flex;
+    justify-content: right;
+    column-gap: 0.3rem;
+}
+
+#submitEvent, #saveEditEvent{
+    padding: 0.5rem 1.5rem; 
+    border-radius: 1rem;
+    border: none;
+}
+
+#cancelAddEvent, #cancelEditEvent, #removeEditEvent{
+    background-color: transparent;
+    outline: solid 1px #fff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem; 
+    border-radius: 1rem;
+    
+}
+
+#submitEvent:hover{
+    background-color: #ffffffc5;
+}
+
+#cancelAddEvent:hover, #cancelEditEvent:hover, #removeEditEvent:hover{
+    background-color: #ffffff28;
+}
+
+/* calendar Style */
+#calendar{
+    height: 100%;
+    overflow: hidden;
+    background-color: #13131454; 
+    padding: 1rem;
+    border-radius: 1rem;
+    border: solid 1px #131314;  
+}
+
+:root {
+    --fc-small-font-size: .65rem;
+    --fc-page-bg-color: #131314; 
+    --fc-neutral-bg-color: hsl(0, 0%, 7%);
+    --fc-neutral-text-color: grey;
+    --fc-border-color: #ddd;
+    --fc-button-text-color: #fff;
+    --fc-button-bg-color: #13131454;
+    --fc-button-border-color: #131314;
+    --fc-button-hover-bg-color: #13131454;
+    --fc-button-hover-border-color: #ffffff71;
+    --fc-button-active-bg-color: #13131454;
+    --fc-button-active-border-color: #131314;
+    --fc-event-bg-color: #ffffff;
+    --fc-event-border-color: #ffffff;
+    --fc-event-text-color: #2c2c2c;
+    --fc-event-selected-overlay-color: rgba(0,0,0,.25);
+    --fc-more-link-bg-color: #d0d0d0;
+    --fc-more-link-text-color: inherit;
+    --fc-event-resizer-thickness: 8px;
+    --fc-event-resizer-dot-total-width: 8px;
+    --fc-event-resizer-dot-border-width: 1px;
+    --fc-non-business-color: hsla(0,0%,84%,.3);
+    --fc-bg-event-color: #8fdf82;
+    --fc-bg-event-opacity: 0.3;
+    --fc-highlight-color: rgba(188,232,241,.3);
+    --fc-today-bg-color: rgba(255, 255, 255, 0.267);
+    --fc-now-indicator-color: red;
+}
+
+.fc-scroller-liquid, .fc-scroller-liquid-absolute, .fc-scroller{
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.603) transparent;
+}
+
+.fc .fc-list-event:hover td{
+    background-color: #ffffff1e;
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 0.5rem;
+}
+
+/* calendar Style[End] */

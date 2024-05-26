@@ -52,26 +52,23 @@
             </div>
         </nav>
         
-        <nav>
-            <div class="profile">
-                <img src="" alt="Profile">
-                <div>Profile</div>
+            <nav id="profileNav">
+                <hr>
+                <div class="profile">
+                    <img src="" alt="">
+                    <div>Profile</div>
 
-                <section class="popUp">
-                    <a href="?action=logout"><button id="LogoutButton">Logout</button></a>
-                </section>
-            </div>
-
-            <div class="settings">
-                <img src="../Images/Icons/icons8-settings-25.png" alt="">
-                <div>Settings</div>
-            </div>
-        </nav>
+                    <section class="popUp">
+                        <button id="ProfileButton">Profile</button>
+                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>        
+                    </section>
+                </div>  
+            </nav>
 
     </header>  
 
     <main>
-        <section class="top-main-section">
+        <section class="pageTitle">
             Request
         </section>
 

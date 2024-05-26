@@ -24,7 +24,7 @@ function renderList(AssociationLists){
         if(association.type === "Organization"){
             orgs += `
                 <div class="associationItem" data-selected=${association.id}>
-                    <img src="${association.image}" alt="AssociationProfile" class="list--logo">
+                    <img src="${association.image}" alt="" class="list--logo">
                     <div class="nameNtype">
                         <div class="tileNtypeContainer">
                             <h4 class="association--title">${association.association}</h4>
@@ -39,7 +39,7 @@ function renderList(AssociationLists){
         else if(association.type === "Club"){
             clubs += `
                 <div class="associationItem" data-selected=${association.id}>
-                    <img src="${association.image}" alt="AssociationProfile" class="list--logo">
+                    <img src="${association.image}" alt="" class="list--logo">
                     <div class="nameNtype">
                         <div class="tileNtypeContainer">
                             <h4 class="association--title">${association.association}</h4>
@@ -70,7 +70,7 @@ function searchAssociation(AssociationLists){
             if(value.type === "Organization"){
                 OrganizationFound += `
                     <div class="associationItem" data-selected=${value.id}>
-                        <img src="${value.image}" alt="AssociationProfile" class="list--logo">
+                        <img src="${value.image}" alt="" class="list--logo">
                         <div class="nameNtype">
                             <div class="tileNtypeContainer">
                                 <h4 class="association--title">${value.association}</h4>
@@ -85,7 +85,7 @@ function searchAssociation(AssociationLists){
             else if(value.type === "Club"){
                 clubFound += `
                     <div class="associationItem" data-selected=${value.id}>
-                        <img src="${value.image}" alt="AssociationProfile" class="list--logo">
+                        <img src="${value.image}" alt="" class="list--logo">
                         <div class="nameNtype">
                             <div class="tileNtypeContainer">
                                 <h4 class="association--title">${value.association}</h4>

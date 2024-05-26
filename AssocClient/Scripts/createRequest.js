@@ -130,7 +130,7 @@ myData = [];
 Users.forEach((e)=>{
     myData.push({
         label: e.name,
-        value: e.email
+        value: `${e.email + "," + e.position.position}`
     });
 });
 
@@ -150,7 +150,17 @@ let mySelect1 = new MultiSelect2(".field1", {
     autocomplete: true,
     icon: "fa fa-times",
     onChange: value => {
-        selectedRecipients.to = value;
+
+        let formattedValue = []
+
+        let Incr = 0;
+
+        value.forEach((val)=>{
+            formattedValue[Incr] = {email: value[Incr].split(",")[0], position: value[Incr].split(",")[1]} 
+            Incr++;
+        });
+
+        selectedRecipients.to = formattedValue;  
     },
 });
 
@@ -192,7 +202,8 @@ $("#sendReq").on("click", (e)=>{
     e.preventDefault();
     const delta = quill.getText();
     console.log(delta);
-    console.log("Recipient Data" + selectedRecipients);
+    console.log("Recipient Data: " + selectedRecipients.to);
+    
 });
 
 $("#canlReq").on("click", (e)=>{

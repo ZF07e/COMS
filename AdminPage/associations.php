@@ -25,17 +25,17 @@
                     </div>
                     <div class="title"><span>CO</span>MS<span>.</span></div>
                 </div>
-
+    
                 <div class="home">
                     <img src="../Images/Icons/icons8-home-25.png">
                     <div>Home</div>
                 </div>
-
+    
                 <div class="events">
                     <img src="../Images/Icons/icons8-calendar-25.png">
                     <div>Events</div>
                 </div>
-    
+                
                 <div class="associations selected">
                     <img src="../Images/Icons/icons8-hierarchy-25.png">
                     <div>Associations</div>
@@ -45,30 +45,28 @@
                     <img src="../Images/Icons/icons8-management-25.png">
                     <div>User Management</div>
                 </div>
-
+    
                 <div class="request">
                     <img src="../Images/Icons/icons8-request-feedback-25.png">
                     <div>Request</div>
                 </div>
             </nav>
             
-            <nav>
+            <nav id="profileNav">
+                <hr>
                 <div class="profile">
-                    <img src="" alt="Profile">
+                    <img src="" alt="">
                     <div>Profile</div>
 
                     <section class="popUp">
-                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>
+                        <button id="ProfileButton">Profile</button>
+                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>        
                     </section>
-                </div>
-    
-                <div class="settings">
-                    <img src="../Images/Icons/icons8-settings-25.png" alt="">
-                    <div>Settings</div>
-                </div>
-            </nav>  
+                </div>  
+            </nav>
 
-        </header>
+        </header>  
+
         <main>
             <div class="pageTitle">Associations</div>
             <div class="main-header">

@@ -48,20 +48,17 @@
                 </div>
             </nav>
             
-            <nav>
+            <nav id="profileNav">
+                <hr>
                 <div class="profile">
-                    <img src="" alt="Profile">
+                    <img src="" alt="">
                     <div>Profile</div>
 
                     <section class="popUp">
-                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>
+                        <button id="ProfileButton">Profile</button>
+                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>        
                     </section>
-                </div>
-    
-                <div class="settings">
-                    <img src="../Images/Icons/icons8-settings-25.png" alt="">
-                    <div>Settings</div>
-                </div>
+                </div>  
             </nav>
 
         </header>  

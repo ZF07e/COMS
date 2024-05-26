@@ -6,6 +6,7 @@ let HomePage = document.getElementById("home");
 let ListPageNav = document.getElementById("MembersPage");
 let ListPage = document.getElementById("list");
 let EditHome = document.getElementById("editHome");
+let RemoveHome = document.getElementById("removeAssoc");
 let editbuttonHeader = document.getElementById("editAssociation");
 
 //Giving function to navs in header
@@ -35,12 +36,17 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
 function renderSelectedGroup(list){
     list.forEach((value) => {
         if(value.id == selectedAssociation){
-            document.getElementById("associationName").innerText = value.association;
-            document.getElementById("associationType").innerText = value.type;
-            document.getElementById("home_about").innerText = value.description;
-            document.getElementById("home_mission").innerText = value.mission;
-            document.getElementById("home_vision").innerText = value.vision;
-        }
+            $("#associationName").text(value.association);   
+            $("#associationType").text(value.type);  
+            $("#home_about").text(value.description);  
+            $("#home_mission").text(value.mission);  
+            $("#home_vision").text(value.vision);  
+
+            $("#kuninAssocName").val(value.association);
+            $("#edit_about").html($("#home_about").text());
+            $("#edit_mission").html($("#home_mission").text());
+            $("#edit_vision").html($("#home_vision").text());
+        } 
     });
 }
 
@@ -53,6 +59,7 @@ function navigationFunction(){
         HomePage.style.display = "none";
         EditHome.style.display = "none";
         editbuttonHeader.style.display = "none";
+        RemoveHome.style.display = "none";
         
     });
 
@@ -63,6 +70,7 @@ function navigationFunction(){
         ListPage.style.display = "none";
         HomePage.style.display = "";
         editbuttonHeader.style.display = "";    
+        RemoveHome.style.display = "";
     });
 
     document.getElementById("backbuttonView").addEventListener("click", ()=>{
@@ -96,7 +104,7 @@ function List(users){
     users.forEach((itemVal)=>{
             if(itemVal.position == "Adviser" && itemVal.associationCode == selectedAssociation)
             { 
-                console.log(itemVal.position === "Adviser" && itemVal.associationCode == selectedAssociation);
+                //console.log(itemVal.position === "Adviser" && itemVal.associationCode == selectedAssociation);
                 adviserelement += `<div class="positionedUser" data-user-id="${itemVal.userID}">${itemVal.firstName} ${itemVal.lastName}</div>`;
             }
             else if(itemVal.position  == "President" && itemVal.associationCode == selectedAssociation)

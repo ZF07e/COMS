@@ -9,7 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>COMS: ADMIN</title>
         <link rel="icon" href="../Images/WebLogo/CO (1).png" type="images/icon type">
-        
+    
+        <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         
         <link rel="stylesheet" href="../AdminPage/Styles/mainStyle/header-style.css">
         <link rel="stylesheet" href="../AdminPage/Styles/mainStyle/general-style.css">
@@ -55,20 +57,17 @@
                 </div>
             </nav>
             
-            <nav>
+            <nav id="profileNav">
+                <hr>
                 <div class="profile">
-                    <img src="" alt="Profile">
+                    <img src="" alt="">
                     <div>Profile</div>
 
                     <section class="popUp">
-                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>
+                        <button id="ProfileButton">Profile</button>
+                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>        
                     </section>
-                </div>
-    
-                <div class="settings">
-                    <img src="../Images/Icons/icons8-settings-25.png" alt="">
-                    <div>Settings</div>
-                </div>
+                </div>  
             </nav>
 
         </header>  
@@ -97,19 +96,19 @@
                     </div>
                     <h3 id="todayTitle">Today</h3> 
                     <div id="datesRow">
-                        <div id="not_Today_Con">
-                            <p id="day">Tue</p>
-                            <p id="date">22</p>  
+                        <div class="not_Today_Con" id="yesterdayDate">
+                            <p id="yesterdayDateday">Tue</p>
+                            <p id="yesterdayDatedate">22</p>  
                         </div>
 
                         <div id="Today_Con">
-                            <p id="day">Wed</p>
-                            <p id="date">22</p>  
+                            <p id="Today_day">Wed</p>
+                            <p id="Today_date">22</p>  
                         </div>
 
-                        <div id="not_Today_Con">
-                            <p id="day">Thu</p>
-                            <p id="date">22</p>  
+                        <div class="not_Today_Con" id="tomorrowDate">
+                            <p id="tomorrowDateday">Thu</p>
+                            <p id="tomorrowDatedate">22</p>  
                         </div>
                     </div>  
                     
@@ -246,6 +245,7 @@
             
         </main>
         <!-- <script src="../AdminPage/Scripts/vanila-calendar.js"></script> (RESERVED!)-->
+        <script src="./Scripts/index-main.js"></script>
         <script src="./Scripts/util/navigation.js"></script>
     </body>
 </html>

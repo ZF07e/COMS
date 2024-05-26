@@ -69,7 +69,6 @@
             }
             $stmt->bind_param("s", $affiliation);
             $stmt->execute();
-            echo "Adviser has been removed from association table <br>";
         }
         else{
             $adviserQuery = "UPDATE associations SET adviser = ?  WHERE association = ?";
@@ -80,10 +79,9 @@
             }
             $stmt->bind_param("ss", $fullname, $affiliation);
             $stmt->execute();
-            echo "Adviser has been added to association table <br>";
         }
-        echo "Account updated successfully!";
         $mysqli->close();
+        header("Location: ../userManagement.php");
     }
 
     function addUser(){;
@@ -103,8 +101,8 @@
         }
         $stmt->bind_param("ssss", $firstName, $lastName, $email, $position);
         $stmt->execute();
-        echo "Account registered successfully!";
         $mysqli->close();
+        header("Location: ../userManagement.php");
     }
 
     function addAssociation(){
@@ -200,8 +198,8 @@
             return;
         }
 
-        echo "Association added!";
         $mysqli->close();
+        header("Location: ../associations.php");
     }
 
     function updateAssociation(){
@@ -223,8 +221,8 @@
             }
             $stmt->bind_param("ssss", $mission, $vision, $description, $associationName);
             $stmt->execute();
-            echo "Assocaition details updated successfully!";
             $mysqli->close();
+            header("Location: ../viewAssociation.php");
         }
     }
 
@@ -242,8 +240,8 @@
         }
         $stmt->bind_param("s", $email);
         $stmt->execute();
-        echo "Account deleted successfully!";
         $mysqli->close();
+        header("Location: ../userManagement.php");
     }
 
     if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['saveBTN'])){

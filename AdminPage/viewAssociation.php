@@ -7,6 +7,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>COMS :Association</title>
+
+        <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
         <link rel="stylesheet" href="../AdminPage/Styles/mainStyle/general-style.css">
         <link rel="stylesheet" href="../AdminPage/Styles/mainStyle/header-style.css">
         <link rel="stylesheet" href="../AdminPage/Styles/viewAssociation.css">
@@ -24,7 +28,7 @@
                     <div class="title"><span>CO</span>MS<span>.</span></div>
                 </div>
     
-                <div class="home selected">
+                <div class="home ">
                     <img src="../Images/Icons/icons8-home-25.png">
                     <div>Home</div>
                 </div>
@@ -34,7 +38,7 @@
                     <div>Events</div>
                 </div>
                 
-                <div class="associations">
+                <div class="associations selected">
                     <img src="../Images/Icons/icons8-hierarchy-25.png">
                     <div>Associations</div>
                 </div>
@@ -50,20 +54,17 @@
                 </div>
             </nav>
             
-            <nav>
+            <nav id="profileNav">
+                <hr>
                 <div class="profile">
-                    <img src="" alt="Profile">
+                    <img src="" alt="">
                     <div>Profile</div>
 
                     <section class="popUp">
-                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>
+                        <button id="ProfileButton">Profile</button>
+                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>        
                     </section>
-                </div>
-    
-                <div class="settings">
-                    <img src="../Images/Icons/icons8-settings-25.png" alt="">
-                    <div>Settings</div>
-                </div>
+                </div>  
             </nav>
 
         </header>  
@@ -96,11 +97,12 @@
                         <img src="../Images/Noimg.jpg" alt="" id="associationLogo">
                     </div>
                     <div class="text">
-                        <h3 id="associationName" name = "assocName">[Association Name]</h3>
-                        <p id="associationType">[Association Type]</p>      
+                        <h3 id="associationName" name = "assocName"></h3>
+                        <p id="associationType"></p>      
                     </div>
                     <div class="divbuttonContainer">
                         <button id="editAssociation" name = "ediBTN">Edit</button>
+                        <button id="removeAssoc">Remove</button>
                     </div>
                 </div>
                 
@@ -157,17 +159,17 @@
             <section id="home">
                 <div class="postContainer">
                     <div class="postHeader">About</div>
-                    <div id="home_about">None</div>
+                    <div id="home_about"></div>
                 </div>
 
                 <div class="postContainer">
                     <div class="postHeader">Mission</div>
-                    <div id="home_mission">None</div>
+                    <div id="home_mission"></div>
                 </div>
                 
                 <div class="postContainer">
                     <div class="postHeader">Vision</div>
-                    <div id="home_vision">None</div>
+                    <div id="home_vision"></div>
                 </div>
 
             </section>
@@ -188,14 +190,8 @@
                     <textarea id="edit_vision" name = "vision"></textarea>
                     <input type="hidden" id = "kuninAssocName" name = "getAssocName" value = "">
                 </div>
-                <button id="submitChanges" type="submit" name = "assocChangeBTN" onClick = "getValueOutsideForm()">Save Changes</button>
+                <button id="submitChanges" type="submit" name = "assocChangeBTN">Save Changes</button>
                 <button id="cancelChanges" type="reset">Cancel</button>
-                <script>
-                    function getValueOutsideForm() {
-                        var assocName = document.getElementById('associationName').innerText;
-                        document.getElementById('kuninAssocName').value = assocName;
-                    }
-                </script>
             </form>
         </main>
 
