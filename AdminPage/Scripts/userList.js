@@ -85,6 +85,7 @@ function SearchTab(userList){
     });
 }
 
+
 function editButtonFunction(userList){
     //Form Editing Buttons Functions
     document.querySelectorAll(".userItem").forEach((item)=>{
@@ -114,6 +115,7 @@ function editButtonFunction(userList){
                     document.getElementById("User_FirstName").value = userListId.firstName;
                     document.getElementById("User_LastName").value = userListId.lastName;
                     document.getElementById("User_Email").value = userListId.email;
+
                     document.getElementById("EditselectedPosition").selectedIndex = userListId.position.index;
                     document.getElementById("EdithandlingAssociation").selectedIndex = selectIndex;
                     document.getElementById("ID").value = userSelectedId;

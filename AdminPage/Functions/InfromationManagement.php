@@ -31,7 +31,7 @@
         }
 
         //Pag may nakuha na ID, update na data sa users lamesa
-        $updateQuery = "UPDATE users SET firstName = ? , lastName = ? , position = ? , affiliation = ? , email = ?, associationCode = ? WHERE userID = ?";
+        $updateQuery = "UPDATE users SET firstName = ? , lastName = ? , role = ? , affiliation = ? , email = ?, associationCode = ? WHERE userID = ?";
 
         $stmt = $mysqli->stmt_init();
         if(!$stmt->prepare($updateQuery)){
@@ -61,7 +61,7 @@
         $fullname = $firstName." ".$lastName;
 
         if ($adviser == $fullname && $position != "adviser"){
-            $removeAdviser = "UPDATE associations SET adviser = ''  WHERE association = ?";
+            $removeAdviser = "UPDATE associations SET adviser = 'Unassigned'  WHERE association = ?";
 
             $stmt = $mysqli->stmt_init();
             if(!$stmt->prepare($removeAdviser)){
@@ -93,7 +93,7 @@
         $database = new Database();
         $mysqli = $database->getConnection();
 
-        $insertUser = "INSERT INTO users (firstName, lastName, email, position) VALUES (?, ?, ?, ?)";
+        $insertUser = "INSERT INTO users (firstName, lastName, email, role) VALUES (?, ?, ?, ?)";
 
         $stmt = $mysqli->stmt_init();
         if(!$stmt->prepare($insertUser)){
@@ -228,9 +228,38 @@
 
     function removeUser(){
         $email = $_POST['email'];
+        $name = $_POST['name'];
+        $adviser;
           
         $database = new Database();
         $mysqli = $database->getConnection();
+
+        $queryGetAdviser = "SELECT adviser FROM associations WHERE adviser = ?;";
+
+        $stmt = $mysqli->stmt_init();
+        if(!$stmt->prepare($queryGetAdviser)){
+            die("SQL Error". $mysqli->error);
+        }
+        $stmt->bind_param("s", $name);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $data = $result->fetch_assoc();
+
+        if(gettype($data) == "array"){
+            $adviser = implode($data);
+        }
+
+        if ($adviser == $name){
+            $removeAdviser = "UPDATE associations SET adviser = 'Unassigned'  WHERE adviser = ?";
+
+            $stmt = $mysqli->stmt_init();
+            if(!$stmt->prepare($removeAdviser)){
+                die("SQL Error". $mysqli->error);
+            }
+            $stmt->bind_param("s", $name);
+            $stmt->execute();
+            echo "Adviser has been removed from association table <br>";
+        }
 
         $query = "DELETE FROM users WHERE email = ?";
 
@@ -259,5 +288,4 @@
     elseif($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['assocChangeBTN'])){
         updateAssociation();
     }
-
 ?>

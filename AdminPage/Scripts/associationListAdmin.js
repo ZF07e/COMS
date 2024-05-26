@@ -66,7 +66,7 @@ function searchAssociation(AssociationLists){
         let clubFound = "";
         
         AssociationLists.forEach((value)=>{  
-        if(value.name.toUpperCase().includes(searchString, 0)){
+        if(value.association.toUpperCase().includes(searchString, 0)){
             if(value.type === "Organization"){
                 OrganizationFound += `
                     <div class="associationItem" data-selected=${value.id}>

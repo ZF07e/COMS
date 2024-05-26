@@ -156,9 +156,6 @@
                     <option value="Adviser">Adviser</option>
                     <option value="President">President</option>
                 </select>
-                <select name="" id="handlingAssociation">
-                    <option value="" selected disabled>- Association -</option>
-                </select>
             </div>
 
             <div class="form-footer">
