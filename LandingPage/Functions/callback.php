@@ -20,7 +20,8 @@
             $_SESSION['msatg'] = 1;  //auth and verified
             $_SESSION['uname'] = $rez["displayName"];
             $_SESSION['email'] = $rez["mail"];
-
+            $_SESSION['position'] = $rez["jobTitle"];
+            
             $database = new Database();
             $mysqli = $database->getConnection();
 

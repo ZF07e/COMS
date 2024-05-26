@@ -1,140 +1,8 @@
-let Users = [
-    {
-        id : 1,
-        pfp: "../Images/Noimg.jpg",
-        name: "Coco Melon",
-        firstname: "Coco",
-        lastname: "Melon",
-        email: "[Sample Email 1 @outlook.com]",
-        position: {position: "Adviser", index: 1},
-        association: {
-            "id": 122,
-            "image": "../Images/AssosiationsPfp/CS.jpg",
-            "name": "STICA - Computer Society",
-            "type": "Organization",
-            "adviser": "---",
-            "totalMembers": 20,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    },
-    {
-        id : 2,
-        pfp: "../Images/Noimg.jpg",
-        name: "CoKo Martin",
-        firstname: "CoKo",
-        lastname: "Martin",
-        email: "[Sample Email 2 @outlook.com]",
-        position: {position: "Adviser", index: 1},
-        association: {
-            "id": 111,
-            "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
-            "name": "Coders Club",
-            "type": "Club",
-            "adviser": "---",
-            "totalMembers": 15,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    },
-    {
-        id : 3,
-        pfp: "../Images/Noimg.jpg",
-        name: "Koko Nut",
-        firstname: "Koko",
-        lastname: "Nut",
-        email: "[Sample Email 3 @outlook.com]",
-        position: {position: "Vice President", index: 3},
-        association: {
-            "id": 111,
-            "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
-            "name": "Coders Club",
-            "type": "Club",
-            "adviser": "---",
-            "totalMembers": 15,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    },
-    {
-        id : 4,
-        pfp: "../Images/Noimg.jpg",
-        name: "Koko Latte",
-        firstname: "Koko",
-        lastname: "Latte",
-        email: "[Sample Email 4 @outlook.com]",
-        position: {position: "President", index: 2},
-        association: {
-            "id": 111,
-            "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
-            "name": "Coders Club",
-            "type": "Club",
-            "adviser": "---",
-            "totalMembers": 15,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    },
-    {
-        id : 5,
-        pfp: "../Images/Noimg.jpg",
-        name: "Koko Sundae",
-        firstname: "Koko",
-        lastname: "Sundae",
-        email: "[Sample Email 5 @outlook.com]",
-        position: {position: "President", index: 2},
-        association: {
-            "id": 122,
-            "image": "../Images/AssosiationsPfp/CS.jpg",
-            "name": "STICA - Computer Society",
-            "type": "Organization",
-            "adviser": "---",
-            "totalMembers": 20,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    },
-    {
-        id : 6,
-        pfp: "../Images/Noimg.jpg",
-        name: "Coco Salad",
-        firstname: "Koko",
-        lastname: "Salad",
-        email: "[Sample Email 6 @outlook.com]",
-        position: {position: "Officer", index: 8},
-        association: {
-            "id": 111,
-            "image": "../Images/AssosiationsPfp/CodersPfp.jpg",
-            "name": "Coders Club",
-            "type": "Club",
-            "adviser": "---",
-            "totalMembers": 15,
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, dolore temporibus enim saepe dolor veniam laborum quo reprehenderit quae eaque illum nemo eveniet tenetur quibusdam ipsum odit non a quis.",
-            "mission": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat nostrum consectetur vel ipsam sapiente odio itaque? Eius neque, quia quam veritatis eligendi maiores quod cum ab voluptate nulla excepturi.",
-            "vision": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit exercitationem, iste eligendi placeat repudiandae odit facilis itaque nihil recusandae earum, necessitatibus doloremque nulla, commodi iusto fuga ratione est aliquid enim."
-        }
-    }
-];
-
 const quill = new Quill('#editor', {
     theme: 'snow'
   });
 
 myData = [];
-
-Users.forEach((e)=>{
-    myData.push({
-        label: e.name,
-        value: e.email
-    });
-});
-
-
 
 let selectedRecipients = {
     to: [],
@@ -143,56 +11,142 @@ let selectedRecipients = {
     approved: []
 }
 
-let mySelect1 = new MultiSelect2(".field1", {
-    options: myData,
-    value: [],
-    multiple: true,
-    autocomplete: true,
-    icon: "fa fa-times",
-    onChange: value => {
-        selectedRecipients.to = value;
-    },
-});
+fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getUserPositions')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        data.forEach((e)=>{
+            let fullName = e.firstName + " " + e.lastName;
+            myData.push({
+                label: fullName,
+                value: `${e.email + "," + e.position + "," + e.firstName + "," + e.lastName}`
+            });
+        });
 
-let mySelect2 = new MultiSelect2(".field2", {
-    options: myData,
-    value: [],
-    multiple: true,
-    autocomplete: true,
-    icon: "fa fa-times",
-    onChange: value => {
-        selectedRecipients.endorsed = value;
-    },
-});
+        
+        let mySelect1 = new MultiSelect2(".field1", {
+            options: myData,
+            value: [],
+            multiple: true,
+            autocomplete: true,
+            icon: "fa fa-times",
+            onChange: value => {
+                let formattedValue = []
+                let incrmt = 0;
 
-let mySelect3 = new MultiSelect2(".field3", {
-    options: myData,
-    value: [],
-    multiple: true,
-    autocomplete: true,
-    icon: "fa fa-times",
-    onChange: value => {
-        selectedRecipients.noted = value;
-    },
-});
+                value.forEach((val)=>{
+                    formattedValue[incrmt] = {email: value[incrmt].split(",")[0], position: value[incrmt].split(",")[1], 
+                                            firstname: value[incrmt].split(",")[2], lastname: value[incrmt].split(",")[3]}
+                    incrmt++;
+                })
+                selectedRecipients.to = formattedValue;
+            },
+        });
+        
+        let mySelect2 = new MultiSelect2(".field2", {
+            options: myData,
+            value: [],
+            multiple: true,
+            autocomplete: true,
+            icon: "fa fa-times",
+            onChange: value => {
+                let formattedValue = []
+                let incrmt = 0;
 
-let mySelect4 = new MultiSelect2(".field4", {
-    options: myData,
-    value: [],
-    multiple: true,
-    autocomplete: true,
-    icon: "fa fa-times",
-    onChange: value => {
-        selectedRecipients.approved = value;       
-    },
-});
+                value.forEach((val)=>{
+                    formattedValue[incrmt] = {email: value[incrmt].split(",")[0], position: value[incrmt].split(",")[1], 
+                                            firstname: value[incrmt].split(",")[2], lastname: value[incrmt].split(",")[3]}
+                    incrmt++;
+                })
+                selectedRecipients.endorsed = formattedValue;
+            },
+        });
+        
+        let mySelect3 = new MultiSelect2(".field3", {
+            options: myData,
+            value: [],
+            multiple: true,
+            autocomplete: true,
+            icon: "fa fa-times",
+            onChange: value => {
+                let formattedValue = []
+                let incrmt = 0;
+
+                value.forEach((val)=>{
+                    formattedValue[incrmt] = {email: value[incrmt].split(",")[0], position: value[incrmt].split(",")[1], 
+                                            firstname: value[incrmt].split(",")[2], lastname: value[incrmt].split(",")[3]}
+                    incrmt++;
+                })
+                selectedRecipients.noted = formattedValue;
+            },
+        });
+
+        let mySelect4 = new MultiSelect2(".field4", {
+            options: myData,
+            value: [],
+            multiple: true,
+            autocomplete: true,
+            icon: "fa fa-times",
+            onChange: value => {
+                let formattedValue = []
+                let incrmt = 0;
+
+                value.forEach((val)=>{
+                    formattedValue[incrmt] = {email: value[incrmt].split(",")[0], position: value[incrmt].split(",")[1], 
+                                            firstname: value[incrmt].split(",")[2], lastname: value[incrmt].split(",")[3]}
+                    incrmt++;
+                })
+                selectedRecipients.approved = formattedValue;
+            },
+        });
+    })
+    .catch(error => console.error('Error:', error));
 
 
 $("#sendReq").on("click", (e)=>{
     e.preventDefault();
-    const delta = quill.getText();
+    const delta = quill.getSemanticHTML();
     console.log(delta);
-    console.log("Recipient Data" + selectedRecipients);
+    console.log("Recipient Data" + selectedRecipients.to);
+    
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'http://localhost/COMS/AssocClient/Functions/GenerateLetter.php';
+
+    const textField = document.createElement('input');
+    textField.type = 'hidden';
+    textField.name = 'text';
+    textField.value = delta;
+
+    const reciepientTOField = document.createElement('input');
+    reciepientTOField.type = 'hidden';
+    reciepientTOField.name = 'recipientTo';
+    reciepientTOField.value = JSON.stringify(selectedRecipients.to);
+
+    const endorsedField = document.createElement('input');
+    endorsedField.type = 'hidden';
+    endorsedField.name = 'endorsed';
+    endorsedField.value = JSON.stringify(selectedRecipients.endorsed);
+
+    const notedField = document.createElement('input');
+    notedField.type = 'hidden';
+    notedField.name = 'noted';
+    notedField.value = JSON.stringify(selectedRecipients.noted);
+
+    const approvedField = document.createElement('input');
+    approvedField.type = 'hidden';
+    approvedField.name = 'approved';
+    approvedField.value = JSON.stringify(selectedRecipients.approved);
+
+    form.appendChild(textField);
+    form.appendChild(reciepientTOField);
+    form.appendChild(endorsedField);
+    form.appendChild(notedField);
+    form.appendChild(approvedField);
+
+    document.body.appendChild(form);
+
+    form.submit();
 });
 
 $("#canlReq").on("click", (e)=>{

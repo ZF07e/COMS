@@ -31,7 +31,7 @@
         }
 
         //Pag may nakuha na ID, update na data sa users lamesa
-        $updateQuery = "UPDATE users SET firstName = ? , lastName = ? , position = ? , affiliation = ? , email = ?, associationCode = ? WHERE userID = ?";
+        $updateQuery = "UPDATE users SET firstName = ? , lastName = ? , role = ? , affiliation = ? , email = ?, associationCode = ? WHERE userID = ?";
 
         $stmt = $mysqli->stmt_init();
         if(!$stmt->prepare($updateQuery)){
@@ -96,7 +96,7 @@
         $database = new Database();
         $mysqli = $database->getConnection();
 
-        $insertUser = "INSERT INTO users (firstName, lastName, email, position) VALUES (?, ?, ?, ?)";
+        $insertUser = "INSERT INTO users (firstName, lastName, email, role) VALUES (?, ?, ?, ?)";
 
         $stmt = $mysqli->stmt_init();
         if(!$stmt->prepare($insertUser)){
