@@ -84,25 +84,25 @@
                     </div>
                     <div class="title"><span>CO</span>MS<span>.</span></div>
                 </div>
-    
-                <div class="home ">
-                    <img src="../Images/Icons/icons8-home-25.png">
-                    <div>Home</div>
+                
+                <div class="associations ">
+                    <img src="../Images/Icons/icons8-bulletin-board-25.png">
+                    <div>Association</div>
                 </div>
-    
-                <div class="events selected">
+
+                <div class="events selected" >
                     <img src="../Images/Icons/icons8-calendar-25.png">
-                    <div>Events</div>
+                    <div>Calendar</div>
                 </div>
                 
-                <div class="associations">
-                    <img src="../Images/Icons/icons8-hierarchy-25.png">
-                    <div>Associations</div>
+                <div class="tasks">
+                    <img src="../Images/Icons/icons8-task-25.png">
+                    <div>Tasks</div>
                 </div>
 
                 <div class="user_management">
-                    <img src="../Images/Icons/icons8-management-25.png">
-                    <div>User Management</div>
+                    <img src="../Images/Icons/icons8-group-25.png">
+                    <div>Members</div>
                 </div>
     
                 <div class="request">
@@ -134,7 +134,7 @@
         </main>
 
 
-        <script src="./Scripts/util/calendarScript.js"></script>
-        <script src="./Scripts/util/navigation.js"></script>
+        <script src="./Scripts/utils/calendarScript.js"></script>
+        <script src="./Scripts/utils/navigation.js"></script>
     </body>
 </html>

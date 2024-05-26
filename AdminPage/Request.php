@@ -15,61 +15,57 @@
     <body>
 
     <header>
-            <nav>
-                <div class="system-logo">
-                    <div class="logo">
-                        <span><div></div></span>
-                        <span><div></div></span>
-                        <div></div>
-                        <div></div>
-                    </div>
-                    <div class="title"><span>CO</span>MS<span>.</span></div>
+        <nav>
+            <div class="system-logo">
+                <div class="logo">
+                    <span><div></div></span>
+                    <span><div></div></span>
+                    <div></div>
+                    <div></div>
                 </div>
-    
-                <div class="home ">
-                    <img src="../Images/Icons/icons8-home-25.png">
-                    <div>Home</div>
-                </div>
-    
-                <div class="events">
-                    <img src="../Images/Icons/icons8-calendar-25.png">
-                    <div>Events</div>
-                </div>
-                
-                <div class="associations">
-                    <img src="../Images/Icons/icons8-hierarchy-25.png">
-                    <div>Associations</div>
-                </div>
+                <div class="title"><span>CO</span>MS<span>.</span></div>
+            </div>
 
-                <div class="user_management">
-                    <img src="../Images/Icons/icons8-management-25.png">
-                    <div>User Management</div>
-                </div>
-    
-                <div class="request selected">
-                    <img src="../Images/Icons/icons8-request-feedback-25.png">
-                    <div>Request</div>
-                </div>
-            </nav>
+            <div class="home ">
+                <img src="../Images/Icons/icons8-home-25.png">
+                <div>Home</div>
+            </div>
+
+            <div class="events">
+                <img src="../Images/Icons/icons8-calendar-25.png">
+                <div>Events</div>
+            </div>
             
-            <nav>
+            <div class="associations">
+                <img src="../Images/Icons/icons8-hierarchy-25.png">
+                <div>Associations</div>
+            </div>
+
+            <div class="user_management">
+                <img src="../Images/Icons/icons8-management-25.png">
+                <div>User Management</div>
+            </div>
+
+            <div class="request selected">
+                <img src="../Images/Icons/icons8-request-feedback-25.png">
+                <div>Request</div>
+            </div>
+        </nav>
+        
+            <nav id="profileNav">
+                <hr>
                 <div class="profile">
-                    <img src="" alt="Profile">
+                    <img src="" alt="">
                     <div>Profile</div>
 
                     <section class="popUp">
-                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>
+                        <button id="ProfileButton">Profile</button>
+                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>        
                     </section>
-                </div>
-    
-                <div class="settings">
-                    <img src="../Images/Icons/icons8-settings-25.png" alt="">
-                    <div>Settings</div>
-                </div>
+                </div>  
             </nav>
 
-        </header>  
-
+    </header>  
 
     <main>
         <section class="pageTitle">

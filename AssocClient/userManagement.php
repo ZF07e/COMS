@@ -1,6 +1,3 @@
-<?php
-    include ("../LandingPage/Functions/SessionManagement.php");
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,12 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>COMS: User Management</title>
 
-        <link rel="stylesheet" href="../AdminPage/Styles/mainStyle/header-style.css">
-        <link rel="stylesheet" href="../AdminPage/Styles/mainStyle/general-style.css">
+        <link rel="stylesheet" href="./Styles/mainStyle/general-style.css">
+        <link rel="stylesheet" href="./Styles/mainStyle/header-style.css">
         <link rel="stylesheet" href="../AdminPage/Styles/userManagement.css">
         
-        <!-- jquery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
     <body>
         <header>
@@ -27,25 +22,25 @@
                     </div>
                     <div class="title"><span>CO</span>MS<span>.</span></div>
                 </div>
-    
-                <div class="home ">
-                    <img src="../Images/Icons/icons8-home-25.png">
-                    <div>Home</div>
-                </div>
-    
-                <div class="events">
-                    <img src="../Images/Icons/icons8-calendar-25.png">
-                    <div>Events</div>
-                </div>
                 
                 <div class="associations">
-                    <img src="../Images/Icons/icons8-hierarchy-25.png">
-                    <div>Associations</div>
+                    <img src="../Images/Icons/icons8-bulletin-board-25.png">
+                    <div>Association</div>
+                </div>
+
+                <div class="events">
+                    <img src="../Images/Icons/icons8-calendar-25.png">
+                    <div>Calendar</div>
+                </div>
+                
+                <div class="tasks">
+                    <img src="../Images/Icons/icons8-task-25.png">
+                    <div>Tasks</div>
                 </div>
 
                 <div class="user_management selected">
-                    <img src="../Images/Icons/icons8-management-25.png">
-                    <div>User Management</div>
+                    <img src="../Images/Icons/icons8-group-25.png">
+                    <div>Members</div>
                 </div>
     
                 <div class="request">
@@ -67,7 +62,7 @@
                 </div>  
             </nav>
 
-        </header>  
+        </header>   
 
     <!-- confirmation -->
         <div class="upperlayer2">
@@ -81,7 +76,7 @@
                 <input type="hidden" id = "position" name = "position" value = "">
                 <input type="hidden" id = "email" name = "email" value = "">
                 <div class="options">
-                <button type="submit" id="yesbtn" name = "removeUser" onClick = "getValueFromForm()">Yes</button>
+                    <button type="submit" id="yesbtn" name = "removeUser" onClick = "getValueFromForm()">Yes</button>
                     <button type="button" id="nobtn">No</button>
                 </div>
                 <script>
@@ -106,7 +101,6 @@
                 <div class="edit_infos">
                     <input type="text" class="normalInput" placeholder="First Name" id="User_FirstName" name = "newFirstName">
                     <input type="text" class="normalInput" placeholder="Last Name" id="User_LastName" name = "newLastName">
-                    <input type="text" class="normalInput" placeholder="Outlook Email" id="User_Email" name = "newEmail">
                     <select name="newPosition" id="EditselectedPosition">
                         <option value="" selected disabled>- Position -</option>
                         <option value="Adviser">Adviser</option>
@@ -118,13 +112,13 @@
                         <option value="Head Officer">Head Officer</option>
                         <option value="Officer">Officer</option>
                     </select>
-
+                    <input type="text" class="normalInput" placeholder="Outlook Email" id="User_Email" name = "newEmail">
                     <select name="newAffiliation" id="EdithandlingAssociation">
                         <option value="" selected disabled>- Association -</option>
                     </select>
                     <input type="hidden" id="ID" name="userID">
                     <button type="submit" id="saveChanges" name = "saveBTN">SaveChanges</button>
-                    <button type="button" id="cancelEdit">Cancel</button>
+                    <button type="reset" id="cancelEdit">Cancel</button>
                 </div>
                 
                 <div class="infos">
@@ -148,7 +142,7 @@
             </div>
 
             <div class="form-body">
-            <input type="text" class="normalInput" placeholder="First Name" name = "firstName">
+                <input type="text" class="normalInput" placeholder="First Name" name = "firstName">
                 <input type="text" class="normalInput" placeholder="Last Name" name = "lastName">
                 <input type="text" class="normalInput" placeholder="Outlook Email" name = "email">
                 <select name="position" id="type">
@@ -156,10 +150,13 @@
                     <option value="Adviser">Adviser</option>
                     <option value="President">President</option>
                 </select>
+                <select name="" id="handlingAssociation">
+                    <option value="" selected disabled>- Association -</option>
+                </select>
             </div>
 
             <div class="form-footer">
-            <button type="submit" name = "addBTN">Add</button>
+                <button type="submit" name = "addBTN">Add</button>
                 <button type="reset" id="User_cancel_Button">Cancel</button>
             </div>
         </form>
@@ -181,6 +178,6 @@
         </main>
 
         <script src="./Scripts/userList.js"></script>
-        <script src="./Scripts/util/navigation.js"></script>
+        <script src="./Scripts/utils/navigation.js"></script>
     </body>
 </html>

@@ -86,7 +86,7 @@ main{
 
 .list--logo{
     background-color: #2c2c31;
-    width: 6.5rem;
+    max-width: 6.5rem;
     object-position: center;
     object-fit: cover;
     border-radius: 0.5rem;

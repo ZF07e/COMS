@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="./Styles/request-style.css">
     </head>
     <body>
-    <header>
+        <header>
             <nav>
                 <div class="system-logo">
                     <div class="logo">
@@ -51,24 +51,73 @@
                 </div>
             </nav>
             
-            <nav>
+            <nav id="profileNav">
+                <hr>
                 <div class="profile">
-                    <img src="" alt="Profile">
+                    <img src="" alt="">
                     <div>Profile</div>
 
                     <section class="popUp">
-                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>
+                        <button id="ProfileButton">Profile</button>
+                        <a href="?action=logout"><button id="LogoutButton">Logout</button></a>        
                     </section>
-                </div>
-    
-                <div class="settings">
-                    <img src="../Images/Icons/icons8-settings-25.png" alt="">
-                    <div>Settings</div>
-                </div>
+                </div>  
             </nav>
 
         </header>  
 
+        <div id="ApprovePopUp_Con" action="">
+            <form id="ApprovePopUp">
+                <div id="ApproveHeader">
+                    <h3>Sign Document</h3>
+                    <div id="exitApproveHeader" type="reset">&#10005;</div>
+                </div>  
+
+                <div id="SignOptions">
+                    <div id="UploadSignature" class="seclectedOption">Upload</div>
+                    <div id="SignWithCanvas">Sign in Canvas</div>
+                </div>
+
+                <div id="ApproveBody">
+                    <div id="UploadBody">               
+                        <input type="file" id="fileSelector" accept=".png">
+                        <img src="" alt="" id="prevIMg" width="380" height="210" style="display: none;">
+                        <label for="fileSelector" id="labelFile">Choose A File</label>
+                            
+                        <canvas id="offscreen-canvas-upload" width="390" height="250" style="display: none;">
+                        </canvas>
+                    </div>
+
+                    <div id="SignBody">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Sign in the canvas below</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <canvas id="sig-canvas" width="390" height="250">
+                                </canvas>
+
+                                <canvas id="offscreen-sig-canvas" width="390" height="250" style="display: none;">
+                                </canvas>
+                            </div>
+                        </div>
+                   
+                        <div class="row">
+                            <div class="footerSign">
+                                <button class="btn btn-primary" id="sig-submitBtn" type="submit">Submit Signature</button>
+                                <button class="btn btn-default" id="sig-clearBtn" type="button">Clear Signature</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ApproveOptions">
+                        <button id="signUploaded" type="submit">Sign</button>
+                        <button id="cancelUpload" type="reset">Cancel</button>
+                    </div>                   
+                </div>
+            </form>  
+        </div>
 
         <main>
             <section id="topHeader"> 
@@ -80,7 +129,10 @@
                     [Sample Title]
                 </div>
 
-                <div> <!--Extra div to center the Title--> </div>
+                <div> 
+                    <button id="approveRequest">Approve</button>
+                    <button id="rejectRequest">Reject</button>
+                </div>
 
             </section>
 
@@ -173,7 +225,7 @@
                         </form>
 
                         <div id="commentsList">
-                            <div id="commentStyle">
+                            <!-- <div id="commentStyle">
                                 <div id="commentStyleHeader">Marius Brylle U. Pastoral (Student)</div>
                                 <div id="commentBody">OOoohhhwwshiittt angaling</div>
                             </div>
@@ -181,7 +233,7 @@
                             <div id="commentStyle">
                                 <div id="commentStyleHeader">Marius Brylle U. Pastoral (Student)</div>
                                 <div id="commentBody">UwU</div>
-                            </div>
+                            </div> -->
                         </div>
 
                     </div>

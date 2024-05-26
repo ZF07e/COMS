@@ -1,18 +1,23 @@
-//fetch members list
-fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getUserPositions')
-    .then(response => response.json())
-    .then(data => {
-        renderUserList(data);
-        SearchTab(data);
-    })
-    .catch(error => console.error('Error:', error));
+/*
 
-fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getAssociationList')
-    .then(response => response.json())
-    .then(data => {
-        getAssociationList(data);
-    })
-    .catch(error => console.error('Error:', error));
+    Duplicated Code, Members Within The Club Lang dito ;>
+
+*/
+
+// fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getUserPositions')
+//     .then(response => response.json())
+//     .then(data => {
+//         renderUserList(data);
+//         SearchTab(data);
+//     })
+//     .catch(error => console.error('Error:', error));
+
+// fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getAssociationList')
+//     .then(response => response.json())
+//     .then(data => {
+//         getAssociationList(data);
+//     })
+//     .catch(error => console.error('Error:', error));
 
 function renderUserList(userList){//Function For Rendering 
     let users = "";
@@ -50,7 +55,7 @@ function getAssociationList(list){
 
     list.forEach((asscList)=>{
         if(!associations.includes(asscList.association)){
-            //console.log(associations);
+            console.log(associations);
             associations += `<option value="${asscList.association}"> ${asscList.association}</option>`
         }
     });
@@ -85,7 +90,6 @@ function SearchTab(userList){
     });
 }
 
-
 function editButtonFunction(userList){
     //Form Editing Buttons Functions
     document.querySelectorAll(".userItem").forEach((item)=>{
@@ -102,7 +106,7 @@ function editButtonFunction(userList){
                     for(let i = 0; i < selectOptions.length; i++){
                         if(selectOptions[i].text == userListId.firstName){
                             selectIndex = selectOptions[i].index;
-                            //console.log(selectIndex);
+                            console.log(selectIndex);
                         }
                     }
                     document.getElementById("selectedName").innerText = userListId.firstName + " " + userListId.lastName;   
@@ -110,12 +114,11 @@ function editButtonFunction(userList){
 
                     document.getElementById("selectedEmail").innerText = userListId.email;
                     document.getElementById("selectedEmail").value = userListId.email;
-                    //console.log(userList.email);
+                    console.log(userList.email);
                        
                     document.getElementById("User_FirstName").value = userListId.firstName;
                     document.getElementById("User_LastName").value = userListId.lastName;
                     document.getElementById("User_Email").value = userListId.email;
-
                     document.getElementById("EditselectedPosition").selectedIndex = userListId.position.index;
                     document.getElementById("EdithandlingAssociation").selectedIndex = selectIndex;
                     document.getElementById("ID").value = userSelectedId;
@@ -212,3 +215,6 @@ function FormButtonsFunctions(){
         document.getElementById("pop-upFormUser").style.display = "none";
     });
 }
+
+
+
