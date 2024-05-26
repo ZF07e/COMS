@@ -134,8 +134,6 @@ Users.forEach((e)=>{
     });
 });
 
-
-
 let selectedRecipients = {
     to: [],
     endorsed: [],
@@ -190,9 +188,30 @@ let mySelect4 = new MultiSelect2(".field4", {
 
 $("#sendReq").on("click", (e)=>{
     e.preventDefault();
-    const delta = quill.getText();
+    const delta = quill.getSemanticHTML();
     console.log(delta);
-    console.log("Recipient Data" + selectedRecipients);
+    //console.log("Recipient Data" + seldectedRecipients)
+    
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'http://localhost/COMS/AssocClient/Functions/GenerateLetter.php';
+
+    const textField = document.createElement('input');
+    textField.type = 'hidden';
+    textField.name = 'text';
+    textField.value = delta;
+
+    const reciepientField = document.createElement('input');
+    reciepientField.type = 'hidden';
+    reciepientField.name = 'recipient';
+    reciepientField.value = JSON.stringify(selectedRecipients);
+
+    form.appendChild(textField);
+    form.appendChild(reciepientField);
+
+    document.body.appendChild(form);
+
+    form.submit();
 });
 
 $("#canlReq").on("click", (e)=>{
