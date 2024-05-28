@@ -13,7 +13,7 @@ let Documents = [
         requestID: 1,
         requestSender: "IRB",
         requestStatus: "archived",
-        requestSubject: "Sample Session Invitation",
+        requestSubject: "Sample Session Invitation",    
         requestDate: "May 29 2024"
     }
 ];

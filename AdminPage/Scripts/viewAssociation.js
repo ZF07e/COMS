@@ -32,7 +32,7 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
     })
     .catch(error => console.error('Error:', error));
 
-//Functions below >>
+
 function renderSelectedGroup(list){
     list.forEach((value) => {
         if(value.id == selectedAssociation){
