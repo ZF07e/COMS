@@ -64,7 +64,6 @@ Documents.forEach((e)=>{
     }
 });
 
-
 displayRecipient();
 checkIfDownloadable();
 
@@ -76,7 +75,6 @@ $("#backButton").on("click", ()=>{
 $("#downloadButton").on("click", ()=>{
     console.log("Hello")
 });
-
 
 
 function displayRecipient(){
