@@ -1,6 +1,5 @@
 <?php
     require ("connectionDB.php");
-    require ("SessionManagement.php");
 
     function getAssociation(){
         $database = new Database();
@@ -11,7 +10,7 @@
 
         $data = array();
         while ($row = $result->fetch_assoc()) {
-            
+
             $data[] = $row;
         }
 
@@ -31,7 +30,7 @@
 
         $data = array();
         while ($row = $result->fetch_assoc()) {
-            
+
             $data[] = $row;
         }
 
@@ -51,7 +50,7 @@
 
         $data = array();
         while ($row = $result->fetch_assoc()) {
-            
+
             $data[] = $row;
         }
 
