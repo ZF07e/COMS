@@ -101,7 +101,7 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
 
 $("#sendReq").on("click", (e)=>{
     e.preventDefault();
-    const delta = quill.getSemanticHTML();
+    const delta = quill.root.innerHTML;
     console.log(delta);
     console.log("Recipient Data" + selectedRecipients.to);
     

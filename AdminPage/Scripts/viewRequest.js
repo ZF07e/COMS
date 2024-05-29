@@ -293,6 +293,7 @@ $("#SignWithCanvas").click(()=>{
       clearCanvas();
     }, false);
     submitBtn.addEventListener("click", function(e) {  
+      e.preventDefault();
       if(canvas.toDataURL() != offscreenCanvas.toDataURL()){    
         offscreenCtx.font = "bold 11px Arial";
         offscreenCtx.fillStyle = "rgba(255, 0, 0, 0.7)";
@@ -307,6 +308,18 @@ $("#SignWithCanvas").click(()=>{
     }, false);
     
     $("#exitApproveHeader").click(()=>{
+      $("#ApprovePopUp_Con").css("display", "none");
+      clearCanvas();
+      localStorage.clear("image");
+      $("#fileSelector").val("");
+      $("#prevIMg").attr("src", "");
+      $("#prevIMg").css("display", "none");
+      img.src = "";
+      offscreenUploadCanvas.width = offscreenUploadCanvas.width;
+      offscreenCanvas.width = offscreenCanvas.width;
+    });
+
+    $("#cancelUpload").click(()=>{
       $("#ApprovePopUp_Con").css("display", "none");
       clearCanvas();
       localStorage.clear("image");
@@ -351,7 +364,8 @@ $("#fileSelector").change(()=>{
 });
 
 
-$("#signUploaded").click((e)=>{  
+$("#signUploaded").click((e)=>{
+  e.preventDefault();  
   console.log(localStorage.getItem("image"))
   if(localStorage.getItem("image") != null){ 
     img.src = localStorage.getItem("image");

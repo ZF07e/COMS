@@ -36,7 +36,8 @@
                         // User found in the database
                         $userData = $result->fetch_assoc();
                         $role = $userData['position'];
-                        if ($role == "admin") {
+                        
+                        if ($role == "Student Affairs Officer") {
                             header("Location: http://localhost/COMS/AdminPage/index.php");
                             exit();
                         }
@@ -63,7 +64,6 @@
                         exit();
                     }
                 } else {
-                    // Error executing the SQL query
                     echo "Error: " . $mysqli->error;
                     exit();
                 }

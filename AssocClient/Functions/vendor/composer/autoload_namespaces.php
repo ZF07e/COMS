@@ -6,5 +6,4 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'PHPWord' => array($vendorDir . '/phpword/phpword/Library'),
 );
