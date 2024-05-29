@@ -199,7 +199,7 @@
                 $html1 .= '
                 <div class="endorser1" style="float: left;"> 
                     <br>
-                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle">        
+                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle" alt=".">        
                     <p>
                     <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
                     <i>'.$endorsed[$i]['position'].'</i></p>
@@ -208,7 +208,7 @@
                 $html1 .= '
                 <div class="endorser2" style="float: right;"> 
                     <br>
-                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle">
+                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle" alt=".">
                     <p> 
                     <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
                     <i>'.$endorsed[$i]['position'].'</i></p>
@@ -217,7 +217,7 @@
                 $html2 .= '
                 <div class="endorser3" style="float: left;">
                     <br> 
-                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle"> 
+                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle" alt="."> 
                     <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
                     <i>'.$endorsed[$i]['position'].'</i></p>
                 </div>';
@@ -225,7 +225,7 @@
                 $html2 .= '
                 <div class="endorser4" style="float: right;">
                     <br> 
-                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle"> 
+                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle" alt="."> 
                     <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
                     <i>'.$endorsed[$i]['position'].'</i></p>
                 </div>';
@@ -242,15 +242,15 @@
 
     function gerateNotedSection($notedCount) {
         $noted = json_decode($_POST['noted'] ?? '[]', true);
-        $html1 = '<div class="noted1">';
-        $html2 = '<div class="noted2">';
+        $html1 = '<div class="noter1">';
+        $html2 = '<div class="noter2">';
 
         for ($i = 0; $i < $notedCount; $i++) {
             if ($i == 0) {
                 $html1 .= '
                 <div class="noted1" style="float: left;"> 
                     <br>
-                    <img src= "'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'signature" class="signatureStyle">        
+                    <img src= "'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'signature" class="signatureStyle" alt=".">        
                     <p>
                     <strong>'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
                     <i>'.$noted[$i]['position'].'</i></p>
@@ -259,7 +259,7 @@
                 $html1 .= '
                 <div class="noted2" style="float: right;"> 
                     <br>
-                    <img src= "'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'signature" class="signatureStyle">
+                    <img src= "'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'signature" class="signatureStyle" alt=".">
                     <p> 
                     <strong>'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
                     <i>'.$noted[$i]['position'].'</i></p>
@@ -268,16 +268,16 @@
                 $html2 .= '
                 <div class="noted3" style="float: left;">
                     <br>
-                    <img src= "'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'signature" class="signatureStyle">
+                    <img src= "'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'signature" class="signatureStyle" alt=".">
                     <p> 
-                    <strong>Fullname'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
+                    <strong>'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
                     <i>'.$noted[$i]['position'].'</i></p>
                 </div>';
             } elseif ($i == 3) {
                 $html2 .= '
                 <div class="noted4" style="float: right;">
                     <br> 
-                    <img src= "'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'signature" class="signatureStyle"> 
+                    <img src= "'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'signature" class="signatureStyle" alt="."> 
                     <p>
                     <strong>'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
                     <i>'.$noted[$i]['position'].'</i></p>
@@ -302,82 +302,105 @@
             <title>Request Letter</title>
             <style>
                 
-                body {
-                    font-family: Arial, sans-serif;
-                    margin: 0;
-                    padding: 0;
-                }
+            .signatureStyle{
+                position: absolute;
+                width: 150px;
+                height: 140px;
+                bottom: 0%;
+                left: 0;
+                right:0;
+            }
+    
+            .endorser1 p, .endorser2 p, .endorser3 p, .endorser4 p, #writerCon p{
+                // position: absolute;
+                // top: 50%;
+                // left: 0%;
+                // right: 0%;
+                margin: 0;
+                text-align: center;
+                text-wrap: nowrap;
+            }
+    
+            .endorser1, .endorser2, .endorser3, .endorser4, #writerCon{
+                vertical-align: bottom;
+                height: 100px;
+                position: relative;
+            }
+    
+            .noted1 p, .noted2 p, .noted3 p, .noted4 p{
+                // position: absolute;
+                // top: 50%;
+                // left: 0%;
+                // right: 0%;
+                text-wrap: nowrap;
+            }
+            
+            .noted1, .noted2, .noted3, .noted4{
+                vertical-align: bottom;
+                height: 100px;
+                position: relative;
+                margin: 0;
+                text-align: center;
+            }
 
-                .header {
-                    padding: 0px 20px;
-                    text-align: center; 
-                    font-family: "Times New Roman";
-                }
 
-                .headerText {
-                    margin: 0rem 3rem;
-                    display: inline-block;
-                    vertical-align: middle;
-                    line-height: 0px;   
-                }
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
 
-                .header img {
-                    max-width: 100px;
-                }
+            .header {
+                padding: 0px 20px;
+                text-align: center; 
+                font-family: "Times New Roman";
+            }
 
-                .letter {
-                    padding: 0px 20px;
-                    line-height: 1.6;
-                }
+            .headerText {
+                margin: 0rem 3rem;
+                display: inline-block;
+                vertical-align: middle;
+                line-height: 0px;   
+            }
 
-                .letterInfo{
-                    line-height: 1;
-                }
+            .header img {
+                max-width: 100px;
+            }
 
-                .endorsed{
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                }
+            .letter {
+                padding: 0px 20px;
+                line-height: 1.6;
+            }
 
-                .endorsed1, .endorsed2{
-                    padding: 0rem 5rem;
-                }
+            .letterInfo{
+                line-height: 1;
+            }
 
-                .endorser1 p, .endorser2 p, .endorser3 p, .endorser4 p{
-                    margin: 0;
-                    text-align: center;
-                }
+            .endorsed1, .endorsed2, .noter1, .noter2{
+                padding: 0rem 5rem;
+            }
 
-                .endorsed1{
-                    margin-botom: 10px;
-                }
+            .endorsed1,.noter1{
+                margin-botom: 10px;
+            }
 
-                .noted{
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                }
 
-                .noted1, .noted2{
-                    padding: 0rem 5rem;
-                }
+            .noted1 p, .noted2 p, .noted3 p, .noted4 p{
 
-                .noted1 p, .noted2 p, .noted3 p, .noted4 p{
-                    margin: 0;
-                    text-align: center;
-                }
+            }
 
-                .noted1{
-                    margin-botom: 10px;
-                }
+            .noted1{
+                margin-botom: 10px;
+            }
 
-                .textBody{
-                    line-height: 1.3;
-                }
+            .textBody{
+                line-height: 1.3;
+            }
             </style>
         </head>
         <body>
             <div class="header">
-                <img src= '.$logoLeft.' class="logo-left">
+                <img src= '.$logoLeft.' class="logo-left" alt=".">
                     <div class="headerText">
                         <h2>STI COLLEGE ALABANG</h2>
                         <p style = "font-size: 1.5rem;">'.$association.'</p>
@@ -404,9 +427,9 @@
                 '.$text.'
                 </div>  
                 
-                <p>
+                <p id="writerCon">
                     Sincerely,<br>
-                    <img src= "'.$writer.'signature" class="signatureStyle"> <br>
+                    <img src= "'.$writer.'signature" class="signatureStyle" alt="."> <br>
                     <strong>'.$writer.'</strong><br>
                     <i>'.$writerPosition.'<i>
                 </p>

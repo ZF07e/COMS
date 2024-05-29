@@ -148,6 +148,11 @@ main{
     display: none;
 }
 
+#containerBody {
+    overflow-y: auto;
+}
+
+
 #rightMailRequest{
     font-size: 0.9rem;
     display: flex;

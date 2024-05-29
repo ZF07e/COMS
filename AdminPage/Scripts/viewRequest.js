@@ -259,7 +259,7 @@ function signature(){
         offscreenCtx.font = "bold 11px Arial";
         offscreenCtx.fillStyle = "rgba(255, 0, 0, 0.7)";
         offscreenCtx.drawImage(canvas,0,0);
-        offscreenCtx.fillText("THIS SIGNATURE IS FOR INTERNAL USE ONLY",70 ,170);
+        offscreenCtx.fillText("THIS SIGNATURE IS FOR INTERNAL USE ONLY",70 ,270);
         var dataUrl = offscreenCanvas.toDataURL();
         console.log(selectedRequest);
         $.ajax({
@@ -343,7 +343,7 @@ function signature(){
       offscreenUploadCtx.font = "bold 11px Arial";
       offscreenUploadCtx.fillStyle = "rgba(255, 0, 0, 0.7)";
       offscreenUploadCtx.drawImage(img,0,0);
-      offscreenUploadCtx.fillText("THIS SIGNATURE IS FOR INTERNAL USE ONLY",70 ,170);
+      offscreenUploadCtx.fillText("THIS SIGNATURE IS FOR INTERNAL USE ONLY",70 ,270);
       var dataUrl = offscreenUploadCanvas.toDataURL();
       console.log(dataUrl);
       $.ajax({
