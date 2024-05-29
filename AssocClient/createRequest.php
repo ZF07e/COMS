@@ -42,11 +42,6 @@
                     <img src="../Images/Icons/icons8-calendar-25.png">
                     <div>Calendar</div>
                 </div>
-                
-                <div class="tasks">
-                    <img src="../Images/Icons/icons8-task-25.png">
-                    <div>Tasks</div>
-                </div>
 
                 <div class="user_management">
                     <img src="../Images/Icons/icons8-group-25.png">
@@ -84,6 +79,11 @@
                 </section>
                 
                 <section id="RightsectionReq">
+                    <div id="subjectDiv">
+                        <p>Subject</p>
+                        <input type="text" id="SubjectInput">
+                    </div>
+                    <hr id="separator">
                     <div id="SelectRecv">
                         <p for="field1">To</p>
                         <div class="field1"></div>
@@ -98,11 +98,11 @@
                         <p for="field3">Noted by</p>
                         <div class="field3"></div>
                     </div>
-
+<!-- 
                     <div class="multiselectFields">
                         <p for="field4">Approved by</p>
                         <div class="field4"></div>
-                    </div>
+                    </div> -->
 
                     <div id="buttonContainer">
                         <button id="sendReq">Send Request</button>  

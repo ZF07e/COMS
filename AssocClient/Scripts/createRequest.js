@@ -23,24 +23,20 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
             });
         });
 
+        //gets The value of Subject Input
+        $("#SubjectInput").text();
         
         let mySelect1 = new MultiSelect2(".field1", {
             options: myData,
-            value: [],
-            multiple: true,
             autocomplete: true,
-            icon: "fa fa-times",
             onChange: value => {
                 let formattedValue = []
                 let incrmt = 0;
-
-                value.forEach((val)=>{
-                    formattedValue[incrmt] = {email: value[incrmt].split(",")[0], position: value[incrmt].split(",")[1], 
-                                            firstname: value[incrmt].split(",")[2], lastname: value[incrmt].split(",")[3]}
-                    incrmt++;
-                })
+                formattedValue[incrmt] = {email: value[incrmt].split(",")[0], position: value[incrmt].split(",")[1], 
+                                        firstname: value[incrmt].split(",")[2], lastname: value[incrmt].split(",")[3]}
+                incrmt++;
                 selectedRecipients.to = formattedValue;
-            },
+            }
         });
         
         let mySelect2 = new MultiSelect2(".field2", {
@@ -81,24 +77,24 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
             },
         });
 
-        let mySelect4 = new MultiSelect2(".field4", {
-            options: myData,
-            value: [],
-            multiple: true,
-            autocomplete: true,
-            icon: "fa fa-times",
-            onChange: value => {
-                let formattedValue = []
-                let incrmt = 0;
+        // let mySelect4 = new MultiSelect2(".field4", {
+        //     options: myData,
+        //     value: [],
+        //     multiple: true,
+        //     autocomplete: true,
+        //     icon: "fa fa-times",
+        //     onChange: value => {
+        //         let formattedValue = []
+        //         let incrmt = 0;
 
-                value.forEach((val)=>{
-                    formattedValue[incrmt] = {email: value[incrmt].split(",")[0], position: value[incrmt].split(",")[1], 
-                                            firstname: value[incrmt].split(",")[2], lastname: value[incrmt].split(",")[3]}
-                    incrmt++;
-                })
-                selectedRecipients.approved = formattedValue;
-            },
-        });
+        //         value.forEach((val)=>{
+        //             formattedValue[incrmt] = {email: value[incrmt].split(",")[0], position: value[incrmt].split(",")[1], 
+        //                                     firstname: value[incrmt].split(",")[2], lastname: value[incrmt].split(",")[3]}
+        //             incrmt++;
+        //         })
+        //         selectedRecipients.approved = formattedValue;
+        //     },
+        // });
     })
     .catch(error => console.error('Error:', error));
 
@@ -133,16 +129,16 @@ $("#sendReq").on("click", (e)=>{
     notedField.name = 'noted';
     notedField.value = JSON.stringify(selectedRecipients.noted);
 
-    const approvedField = document.createElement('input');
-    approvedField.type = 'hidden';
-    approvedField.name = 'approved';
-    approvedField.value = JSON.stringify(selectedRecipients.approved);
+    // const approvedField = document.createElement('input');
+    // approvedField.type = 'hidden';
+    // approvedField.name = 'approved';
+    // approvedField.value = JSON.stringify(selectedRecipients.approved);
 
     form.appendChild(textField);
     form.appendChild(reciepientTOField);
     form.appendChild(endorsedField);
     form.appendChild(notedField);
-    form.appendChild(approvedField);
+    //form.appendChild(approvedField);
 
     document.body.appendChild(form);
 

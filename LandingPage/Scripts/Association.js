@@ -15,7 +15,7 @@ function renderAssociations(AssociationList){
             Organization += `
             <div class="itemList"> 
                 <div class="pictureFrame">
-                    <img src="${assosiation.image}">
+                    <img src="${assosiation.image == undefined ? "../Images/COMS.png" : assosiation.image}">
                 </div>
                 
                 <div class="title-description">
@@ -33,10 +33,11 @@ function renderAssociations(AssociationList){
         }
 
         else if(assosiation.type === "Club"){
+           // console.log(assosiation.image);
         Clubs += `
             <div class="itemList"> 
                 <div class="pictureFrame">
-                    <img src="${assosiation.image}">
+                    <img src="${assosiation.image == undefined ? "../Images/COMS.png" : assosiation.image}">
                 </div>
                 
                 <div class="title-description">

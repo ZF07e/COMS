@@ -7,10 +7,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>COMS</title>
+
+        <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
         <link rel="stylesheet" href="./Styles/mainStyle/general-style.css">
         <link rel="stylesheet" href="./Styles/mainStyle/header-style.css">
         <link rel="stylesheet" href="./Styles/index-style.css">
-
     </head>
     <body>
         <header>
@@ -35,11 +38,6 @@
                     <div>Calendar</div>
                 </div>
                 
-                <div class="tasks">
-                    <img src="../Images/Icons/icons8-task-25.png">
-                    <div>Tasks</div>
-                </div>
-
                 <div class="user_management">
                     <img src="../Images/Icons/icons8-group-25.png">
                     <div>Members</div>
@@ -69,62 +67,63 @@
         <main>
             <section id="topHeaderSection">
                 <div id="sectionHeader">
-                    <h1 id="headerOptions">...</h1>
+                    <div id="headerOptions">
+                        ...
+                        <div id="EditOptions">
+                            <div id="edtMissionVision">Edit Info</div>
+                        </div>
+                    </div>
                 </div>
                 <div id="sectionBody">
                     <img src="../Images/Noimg.jpg" alt="" id="assocProfile">
                     <div id="nameContainer">
-                        <h2 id="assocName">[Name]</h2>
-                        <p id="assocType">[Type]</p>
+                        <h2 id="assocName"></h2>
+                        <p id="assocType"></p>
                     </div>
                 </div>
             </section>
 
             <section id="middleBodySection">
 
-                <section id="List">
-                    <div id="leftDiv">
+                <form id="List" action = "http://localhost/COMS/AssocClient/Functions/Querries/InfromationManagement.php" method = "POST">
+                    <div id="midDiv">
                         <section id="MiddleTotalContainer">
-                            <div class="dashRecords" id="total1">Members: 0</div>
-                            <div class="dashRecords" id="total2">Request: 0</div>
-                            <div class="dashRecords" id="total3">Task: 0</div>
-                            <div class="dashRecords" id="total4">Events: 0</div>
+                            <div class="dashRecords" id="total1"></div>
+                            <div class="dashRecords" id="total2"></div>
+                            <div class="dashRecords" id="total3"></div>
                         </section>
 
-                        <section id="requestList">
-                            <div id="requestHeader">Request</div>
-                            <div id="requestBody">
-                                
-                                <div class="reqItem">
-                                    <div> <img src="../Images/Icons/icons8-document-20.png" alt=""> <p id="reqItemSender">Lorem Ipsum(Username)</p></div>
-                                    <p id="reqItemSubject">Request Lorem Ipsum</p>
-                                    <p id="reqItemDate">[Month] [day]</p>
-                                </div>     
-                                
-                                <div class="reqItem">
-                                    <div> <img src="../Images/Icons/icons8-document-20.png" alt=""> <p id="reqItemSender">Lorem Ipsum(Username)</p></div>
-                                    <p id="reqItemSubject">Request Lorem Ipsum</p>
-                                    <p id="reqItemDate">[Month] [day]</p>
-                                </div>     
-                            </div> 
-                        </section>
-                    </div>
-                    
-                    <div id="rightDiv">
-                        <section id="upcomingEvents">
-                            <div id="upcomingEventsHeader">Upcoming Events</div>
-                            <div id="upcomingEventsBody">
-                                <div class="eventItem">
-                                    <p id="eventTitle">[Lorem Ipsum]</p>
-                                    <p id="eventDate">[Month] [Day]</p>
-                                </div>
+                        <section id="MissionVisionSection">
+                            <div id="aboutDiv">
+                                <h2>About</h2>
+                                <p id="dashboardAbout"></p>
+                                <textarea id="edit_about" name = "description"></textarea>
+                            </div>
+
+                            <div id="missionDiv">
+                                <h2>Mission</h2>
+                                <p id="dashboardMission"></p>
+                                <textarea id="edit_mission" name = "mission"></textarea>
+                            </div>
+
+                            <div id="visionDiv">
+                                <h2>Vision</h2>
+                                <p id="dashboardVision"></p>
+                                <textarea id="edit_vision" name = "vision"></textarea>
+                                <input type="hidden" id = "kuninAssocName" name = "getAssocName" value = "">
                             </div>
                         </section>
-                    </div>     
-                </section>
+                    </div>
+
+                    <div id="optionResult">
+                        <button type="submit" id="saveInfoChanges" name="assocChangeBTN">Save Changes</button>
+                        <button type="reset" id="resetInfoChanges">Cancel</button>
+                    </div>
+                </form>
+
             </section>
         </main>
-
         <script src="./Scripts/utils/navigation.js"></script>
+        <script src="./Scripts/indexScript.js"></script>
     </body>
 </html>

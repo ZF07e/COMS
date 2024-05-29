@@ -32,11 +32,6 @@
                     <img src="../Images/Icons/icons8-calendar-25.png">
                     <div>Calendar</div>
                 </div>
-                
-                <div class="tasks">
-                    <img src="../Images/Icons/icons8-task-25.png">
-                    <div>Tasks</div>
-                </div>
 
                 <div class="user_management selected">
                     <img src="../Images/Icons/icons8-group-25.png">
@@ -95,7 +90,7 @@
 
         <!-- view user -->
         <div class="upperlayer" id="viewUser">
-            <form action = "http://localhost/COMS/AdminPage/Functions/InfromationManagement.php" method = "POST">
+            <form action = "http://localhost/COMS/AssocClient/Functions/Querries/InfromationManagement.php" method = "POST">
                 <div class="formheader"><div id="xbuttonView">&#10005;</div></div>
                 <img src="../Images/Noimg.jpg" alt="" id=viewProfileImg>
                 <div class="edit_infos">
@@ -103,7 +98,6 @@
                     <input type="text" class="normalInput" placeholder="Last Name" id="User_LastName" name = "newLastName">
                     <select name="newPosition" id="EditselectedPosition">
                         <option value="" selected disabled>- Position -</option>
-                        <option value="Adviser">Adviser</option>
                         <option value="President">President</option>
                         <option value="Vice President">Vice President</option>
                         <option value="Secretary">Secretary</option>
@@ -113,9 +107,6 @@
                         <option value="Officer">Officer</option>
                     </select>
                     <input type="text" class="normalInput" placeholder="Outlook Email" id="User_Email" name = "newEmail">
-                    <select name="newAffiliation" id="EdithandlingAssociation">
-                        <option value="" selected disabled>- Association -</option>
-                    </select>
                     <input type="hidden" id="ID" name="userID">
                     <button type="submit" id="saveChanges" name = "saveBTN">SaveChanges</button>
                     <button type="reset" id="cancelEdit">Cancel</button>
@@ -127,7 +118,7 @@
                     <p id="selectedEmail">[Sample Email]</p>
 
                     <button type="button" id="editInfo">Edit</button>
-                    <button type="button" id="removeUser">Remove User</button>
+                    <button type="button" id="removeUser">Deactivate User</button>
                     <button type="reset" id="back">Back</button>
                 </div>
             </form>
@@ -135,7 +126,7 @@
 
         
         <!-- Form 1 For Inserting -->
-        <form id="pop-upFormUser" action = "http://localhost/COMS/AdminPage/Functions/InfromationManagement.php" method = "POST">  
+        <form id="pop-upFormUser" action = "http://localhost/COMS/AssocClient/Functions/Querries/InfromationManagement.php" method = "POST">  
             <div class="form-header">
                 <h3>Add User</h3>
                 <button type="reset" id="User_x_button">X</button>
@@ -147,11 +138,13 @@
                 <input type="text" class="normalInput" placeholder="Outlook Email" name = "email">
                 <select name="position" id="type">
                     <option value="" selected disabled>- Role -</option>
-                    <option value="Adviser">Adviser</option>
-                    <option value="President">President</option>
-                </select>
-                <select name="" id="handlingAssociation">
-                    <option value="" selected disabled>- Association -</option>
+                        <option value="President">President</option>
+                        <option value="Vice President">Vice President</option>
+                        <option value="Secretary">Secretary</option>
+                        <option value="Auditor">Auditor</option>
+                        <option value="Treasurer">Treasurer</option>
+                        <option value="Head Officer">Head Officer</option>
+                        <option value="Officer">Officer</option>
                 </select>
             </div>
 

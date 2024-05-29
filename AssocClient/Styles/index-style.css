@@ -1,5 +1,5 @@
 main{
-    height: 100%;
+    height: 100vh;
 }
 
 /* Association Header */
@@ -18,18 +18,34 @@ main{
     user-select: none;
 }
 
-#headerOptions{
+#headerOptions{ 
+    font-weight: 700;
+    font-size: 1.5rem;
     cursor: pointer;
+    position: relative;
+    display: flex;
 }
 
-#topHeaderSection #sectionBody h2{
-    
-
+#EditOptions{
+    background-color: #0a0a0a;
+    border-radius: 0.5rem;
+    /* padding: 0.5rem 1rem; */
+    position: absolute;
+    font-weight: 400;
+    font-size: 1rem;
+    right: 0;
+    width: 11rem;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-#topHeaderSection #sectionBody h2{
+#EditOptions div{
+    padding: 0.8rem 1rem;
+}
 
-
+#EditOptions div:hover{
+    background-color: #1d1d1d;
 }
 
 #sectionBody, #nameContainer{
@@ -56,7 +72,7 @@ main{
 #List{
     display: grid;
     font-size: 0.8rem;
-    grid-template-columns: 70% 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     width: 100%;
     height: 100%;
@@ -68,24 +84,20 @@ main{
     -webkit-tap-highlight-color: transparent;
 }
 
-#leftDiv, #rightDiv{
+#midDiv{
     display: grid;
 }
 
-#leftDiv{
-    height: 100%;
+#midDiv{
     grid-template-rows: auto 1fr;
     row-gap: 0.8rem;
 }
 
 /* Middle Body Section */
-#middleBodySection{
-    height: 100%;
-}
 
 #MiddleTotalContainer{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     row-gap: 0.6rem;
     column-gap: 0.6rem;
     width: 100%;
@@ -100,6 +112,8 @@ main{
     justify-content: center;
     padding: 1.3rem 0.5rem;
     border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
     cursor: pointer;
     user-select: none;
     -webkit-user-drag: none;
@@ -110,103 +124,58 @@ main{
     background-color: #131314bb;
 }
 
-/* requestList */
-
-#requestList ,#upcomingEvents{
+#MissionVisionSection{
     display: flex;
     flex-direction: column;
-    user-select: none;
-    -webkit-user-drag: none;
-    cursor: pointer;
-    overflow: hidden;
-    border-radius: 0.5rem;
-    border: solid 1px #131314;   
-    background-color: #13131454; 
-    padding: 0.5rem; 
+    row-gap: 0.5rem;
 }
 
-#requestHeader, #upcomingEventsHeader{    
-    display: flex;
-    align-items: center;
-    padding: 0.5rem 0.2rem;
-    font-size: 1rem;
-    font-weight: bold;
-    border-bottom: solid 1px #fff;
-    margin-bottom: 0.3rem;
-}
-
-
-#requestBody{
+#MissionVisionSection div{
+    background-color: #131314;
     display: flex;
     flex-direction: column;
-    row-gap: 0.2rem; 
-    width: 100%;   
-    max-height: 95%; 
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #161616 transparent;
-}
-
-.reqItem{
-    background-color: #00000049; 
-    border-radius: 0.3rem;
-    display: flex;
-    align-items: center;
+    row-gap: 0.5rem;
+    border-radius: 0.7rem;
     padding: 1rem 0.8rem;
-    font-size: 0.8rem;
-    justify-content: space-between;
 }
 
-.reqItem div{
-    display: flex;
-    align-items: center;
-    column-gap: 0.5rem;
+#dashboardMission, #dashboardVision, #dashboardAbout{
+    font-size: 1rem;
 }
 
-.reqItem:nth-child(even){
-    background-color: #00000018; 
-}
-
-#reqItemSender, #reqItemDate{
-    font-weight: 600;
-    color: #a8a8a8;
-}
-
-#reqItemSubject{
-    overflow: hidden;
-}
-
-
-/* upcoming Events */
-#upcomingEventsBody{
-    display: flex;
-    flex-direction: column;
-    row-gap: 0.1rem;
-    height: 95%;
-    text-wrap: nowrap;
-    overflow: hidden;
+#MissionVisionSection div textarea{
+    font-family: "ROBOTO";
+    font-size: 1rem;
+    padding: 0.5rem;
     width: 100%;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #161616 transparent;
+    height: 15vh;
+    resize: none;
+    border: none;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    background-color: #181818;
+    color: #fff;
 }
 
-.eventItem{
-    background-color: #0000001a; 
-    font-size: 0.9rem;
+#MissionVisionSection div textarea:focus{
+    outline: none;
+}
+
+#optionResult{
     display: flex;
-    justify-content: space-between;
-    padding: 0.8rem 0.5rem;
-    transition: background-color 0.25s;
-    border: solid 1px #101011;   
+    justify-content: right;
+    column-gap: 0.2rem;
 }
 
-#eventTitle::before{
-    content: "• ";
+#optionResult button{
+    padding: 0.6rem 1rem;
+    border: none;
+    font-weight: 700;
+    border-radius: 1rem;
 }
 
-.eventItem #eventDate{
-    color: #ffffff94;
+#optionResult button:hover{
+    background-color: #cccccc;
 }
 
 @media (max-width: 768px) {
@@ -218,14 +187,6 @@ main{
 
     .dashRecords{
         padding: 1rem 0.2rem;
-    }
-
-    .reqItem{
-        font-size: 0.5rem;
-    } 
-    
-    .eventItem{
-        font-size: 0.6rem;
     }
 }
 

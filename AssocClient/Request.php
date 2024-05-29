@@ -35,11 +35,6 @@
                 <img src="../Images/Icons/icons8-calendar-25.png">
                 <div>Calendar</div>
             </div>
-            
-            <div class="tasks">
-                <img src="../Images/Icons/icons8-task-25.png">
-                <div>Tasks</div>
-            </div>
 
             <div class="user_management">
                 <img src="../Images/Icons/icons8-group-25.png">
