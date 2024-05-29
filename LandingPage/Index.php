@@ -32,10 +32,13 @@
 
                 <form action = "http://localhost/COMS/LandingPage/Functions/UserLogin.php" method = "POST">
                     <h3 class="Logo"><span> LOG</span>IN<span></span></h3>
+                    
                     <div class="buttoncontainer">
-                            <button type = "submit" name = "login">Microsoft 365 Login</button>
+                            <button type = "submit" name = "login">
+                            <img src="../Images/Icons/icons8-microsoft-48.png" alt="">    
+                            Microsoft 365 Login</button>
                     </div>
-                    <p>No Account? <a href="Associations.php">Apply to the Club/Organization</a></p>
+                    <p>No Account? <a href="Associations.php" id="applyText">Apply to the Club/Organization</a></p>
              
                 </form>
             </div>

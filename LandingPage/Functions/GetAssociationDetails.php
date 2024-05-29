@@ -1,5 +1,6 @@
 <?php
     require ("connectionDB.php");
+    require ("SessionManagement.php");
 
     function getAssociation(){
         $database = new Database();

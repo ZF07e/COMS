@@ -44,6 +44,14 @@
                             header("Location: http://localhost/COMS/AssocClient/index.php");
                             exit();
                         }
+                        elseif($role == "President"){
+                            header("Location: http://localhost/COMS/AssocClient/index.php");
+                            exit();
+                        }
+                        elseif($role == "Adviser"){
+                            header("Location: http://localhost/COMS/AssocClient/index.php");
+                            exit();
+                        }
                         else {
                             // User not authorized (role not match)
                             echo "You do not have permission to access this page.";

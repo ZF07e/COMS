@@ -1,10 +1,11 @@
 main{
-    height: 100%;
+    height: 95vh;
     width: auto; 
 }
 
 .logincontainer{
-    padding: 150px 25px;
+    padding: 0px 1.667vw;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -46,23 +47,12 @@ form{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 320px;
-    height: 160px;
-    border-radius: 10px;
+    /* width: 400px; */
+    /* height: 200px; */
+    padding: 2rem;
+    border-radius: 1rem;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-}
-
-form .Logo{
-    margin: 0;
-}
-
-form p a{
-    /* color: #ff3333; */
-}
-
-form p a:visited{
-    /* color: #ff3333; */
 }
 
 form input:focus{
@@ -76,6 +66,12 @@ form label{
     font-size: 13px;
 }
 
+form .Logo{
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
 form p{
     font-size: 11px;
     margin: 0px;
@@ -83,13 +79,31 @@ form p{
 
 .buttoncontainer{
     display: flex;
+    width: 100%;
 }
 
 .buttoncontainer button{
-    padding: 1rem 4.5rem;
-    border: none;
+    background-color: transparent;
+    column-gap: 0.4rem;
+    color: #fff;
+    font-weight: 5rem;
+    font-weight: 600;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 4rem;
+    border: solid 1px #7a7a7a;
     border-radius: 10px;
-    margin: 1rem 0rem;
+    margin: 1rem 0rem;    
+}
+
+.buttoncontainer button:hover{
+    background-color: #ffffff18;
+}
+
+#applyText{
+    color: #f9ffa2;
 }
 
 @media (max-width: 1142px){

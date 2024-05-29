@@ -111,12 +111,6 @@
                         <option value="" selected disabled>- Position -</option>
                         <option value="Adviser">Adviser</option>
                         <option value="President">President</option>
-                        <option value="Vice President">Vice President</option>
-                        <option value="Secretary">Secretary</option>
-                        <option value="Auditor">Auditor</option>
-                        <option value="Treasurer">Treasurer</option>
-                        <option value="Head Officer">Head Officer</option>
-                        <option value="Officer">Officer</option>
                     </select>
 
                     <select name="newAffiliation" id="EdithandlingAssociation">

@@ -35,11 +35,6 @@
                     <div>Calendar</div>
                 </div>
                 
-                <div class="tasks">
-                    <img src="../Images/Icons/icons8-task-25.png">
-                    <div>Tasks</div>
-                </div>
-    
                 <div class="user_management">
                     <img src="../Images/Icons/icons8-group-25.png">
                     <div>Members</div>
@@ -139,7 +134,7 @@
                                 </div>    
                             </div>                            
                         </div>
-                        <div id="approvedBy">
+                        <!-- <div id="approvedBy">
                             <div id="approvedTitle">Approved By:</div>
                             <div id="approvedList">
                                 <div id="recipientContainer">
@@ -156,7 +151,7 @@
                                     <div id="reciepientStatusPending">Pending</div>
                                 </div>    
                             </div>
-                        </div>
+                        </div> -->
                         <button id="downloadButton">Download</button>
                     </div>
 
@@ -168,7 +163,7 @@
                             <button id="commentButton">Comment</button>
                         </form>
 
-                        <div id="commentsList">
+                        <!-- <div id="commentsList">
                             <div id="commentStyle">
                                 <div id="commentStyleHeader">Marius Brylle U. Pastoral (Student)</div>
                                 <div id="commentBody">OOoohhhwwshiittt angaling</div>
@@ -178,7 +173,7 @@
                                 <div id="commentStyleHeader">Marius Brylle U. Pastoral (Student)</div>
                                 <div id="commentBody">UwU</div>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
                 </section>
