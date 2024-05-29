@@ -37,36 +37,38 @@ let Users = [
     }
 ];
 
-let Documents = [
-    {
-        requestID: 0,
-        requestSender: "Mr Lorem Ipsum",
-        requestStatus: "inbox",
-        requestSubject: "Sample Subject",
-        requestDate: "May 21 2024"
-    },
-    {
-        requestID: 1,
-        requestSender: "IRB",
-        requestStatus: "archived",
-        requestSubject: "Sample Session Invitation",
-        requestDate: "May 29 2024"
-    }
-];
+let Documents = [];
 
-let selectedRequest = JSON.parse(localStorage.getItem("selectedRequest"));
+fetch('http://localhost/COMS/AssocClient/Functions/GetDocument.php?action=getDocumentDetails')
+    .then(response => response.json())
+    .then(data => {
+        Documents = data;
+        //displayRequest(Documents);
+        let selectedRequest = JSON.parse(localStorage.getItem("selectedRequest"));
+        Documents.forEach((e)=>{
+            if(e.id == selectedRequest){
+                $("#headerTitleRequest").text(e.subject);
+                $("#documentPrev").attr('src', "../PDF-FILES/"+e.id+".pdf")
+            }
+        });
 
+        console.log(selectedRequest);
 
-Documents.forEach((e)=>{
-    if(e.requestID == selectedRequest){
-        $("#headerTitleRequest").text(e.requestSubject);
-        
-    }
-});
+        $.ajax({
+            getRecipient: true,
+            type: 'POST',
+            url: "http://localhost/COMS/AssocClient/Functions/GetDocument.php",
+            data: {selectedID: selectedRequest},
+            success:(e)=>{
+                console.log(e);
+                //window.location.href = "http://localhost/COMS/AssocClient/Functions/GetDocument.php";   
+            }  
+        })
+    })
+    .catch(error => console.error('Error:', error));
 
 displayRecipient();
 checkIfDownloadable();
-
 
 $("#backButton").on("click", ()=>{
     window.location.href = "../AssocClient/Request.php";
@@ -139,7 +141,3 @@ function checkIfDownloadable(){
         $("#downloadButton").attr("disabled", true);
     }
 }
-
-
-
-
