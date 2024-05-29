@@ -1,24 +1,24 @@
 localStorage.clear("selectedRequest");
 let selectedRequest = JSON.parse(localStorage.getItem("selectedRequest")) || "";
 
-let Documents = [
-    {
-        requestID: 0,
-        requestSender: "Mr Lorem Ipsum",
-        requestStatus: "inbox",
-        requestSubject: "Sample Subject",
-        requestDate: "May 21 2024"
-    },
-    {
-        requestID: 1,
-        requestSender: "IRB",
-        requestStatus: "archived",
-        requestSubject: "Sample Session Invitation",    
-        requestDate: "May 29 2024"
-    }
-];
+let Documents = [];
 
-displayRequest();
+fetch('http://localhost/COMS/AssocClient/Functions/GetDocument.php?action=getDocumentDetails')
+    .then(response => response.json())
+    .then(data => {
+        Documents = data;
+        displayRequest(Documents);
+        document.querySelectorAll(".mailRequest").forEach((e)=>{
+            e.addEventListener("click", ()=>{
+                let selectedID = e.dataset.request;
+                selectedRequest = localStorage.setItem("selectedRequest", JSON.stringify(selectedID));
+                console.log(selectedID);
+                $("documentPrev").attr('src', "../AssocClient/../" + selectedID+".pdf")
+                window.location.href = "../AssocClient/viewRequest.php";
+            });
+        });
+    })
+    .catch(error => console.error('Error:', error));
 
 let inboxbod = document.getElementById("containerBody");
 let apprvbod = document.getElementById("containerBodyApproved");
@@ -65,17 +65,12 @@ function switchTo(document, tab){
 
 //When User select a Request
 
-document.querySelectorAll(".mailRequest").forEach((e)=>{
-    e.addEventListener("click", ()=>{
-        let selectedID = e.dataset.request;
-        selectedRequest = localStorage.setItem("selectedRequest", JSON.stringify(selectedID));
-        window.location.href = "../AssocClient/viewRequest.php";
-    });
-});
+
 
 document.getElementById("CreateRequest").addEventListener("click", ()=>{
     window.location.href = "./createRequest.php";
 }); 
+
 
 $("#deleteMail").click((ev)=>{
     ev.stopPropagation();
@@ -88,50 +83,59 @@ $("#archiveMail").click((ev)=>{
 });
 
 
-function displayRequest(){
+function displayRequest(documents){
     let inboxEL = "";
     let approEL = "";
     let rejecEL = "";
     let archiEL = "";
 
-    Documents.forEach((e)=>{
-        if(e.requestStatus == "inbox"){
+    documents.forEach((e)=>{
+        if(e.status == "Inbox"){
             inboxEL += `
-            <div class="mailRequest" data-Request="${e.requestID}">
-                <div id="mailSender">${e.requestSender}</div>
-                <div id="mailSubject">${e.requestSubject}</div>
+            <div class="mailRequest" data-Request="${e.id}">
+                <div id="mailSender">${e.sender}</div>
+                <div id="mailSubject">${e.subject}</div>
                 <div id="rightMailRequest">
                 <div id="deleteMail">Delete</div>
                 <div id="archiveMail">Archive</div>
-                <div id="mailDate">${e.requestDate}</div>
+                <div id="mailDate">${e.date_only}</div>
                 </div>
             </div>
             `;
         }
-        else if(e.requestStatus == "approved"){
+        else if(e.status == "Approved"){
             approEL += `
-            <div class="mailRequest" data-Request="${e.requestID}">
-                <div id="mailSender">${e.requestSender}</div>
-                <div id="mailSubject">${e.requestSubject}</div>
-                <div id="mailDate">${e.requestDate}</div>
+            <div class="mailRequest" data-Request="${e.id}">
+                <div id="mailSender">${e.sender}</div>
+                <div id="mailSubject">${e.subject}</div>
+                <div id="rightMailRequest">
+                <div id="deleteMail">Delete</div>
+                <div id="archiveMail">Archive</div>
+                <div id="mailDate">${e.date_only}</div>
             </div>
             `;    
         }
-        else if(e.requestStatus == "rejected"){
+        else if(e.status == "Rejected"){
             rejecEL += `
-            <div class="mailRequest" data-Request="${e.requestID}">
-                <div id="mailSender">${e.requestSender}</div>
-                <div id="mailSubject">${e.requestSubject}</div>
-                <div id="mailDate">${e.requestDate}</div>
+            <div class="mailRequest" data-Request="${e.id}">
+                <div id="mailSender">${e.sender}</div>
+                <div id="rightMailRequest">
+                <div id="deleteMail">Delete</div>
+                <div id="archiveMail">Archive</div>
+                <div id="mailSubject">${e.subject}</div>
+                <div id="mailDate">${e.date_only}</div>
             </div>
             `;            
         }
-        else if(e.requestStatus == "archived"){
+        else if(e.status == "Archived"){
             archiEL += `
-            <div class="mailRequest" data-Request="${e.requestID}">
-                <div id="mailSender">${e.requestSender}</div>
-                <div id="mailSubject">${e.requestSubject}</div>
-                <div id="mailDate">${e.requestDate}</div>
+            <div class="mailRequest" data-Request="${e.id}">
+                <div id="mailSender">${e.sender}</div>
+                <div id="rightMailRequest">
+                <div id="deleteMail">Delete</div>
+                <div id="archiveMail">Archive</div>
+                <div id="mailSubject">${e.subject}</div>
+                <div id="mailDate">${e.date_only}</div>
             </div>
             `;            
         }

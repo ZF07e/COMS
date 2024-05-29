@@ -2,67 +2,58 @@
     require ('../../LandingPage/Functions/SessionManagement.php');
     require ('../../LandingPage/Functions/connectionDB.php');
 
-    function getDocumentFromDatabaseById($id) {
+    function getDocuments() {
         $database = new Database();
         $mysqli = $database->getConnection();
 
-        $query = 'SELECT fileName, data FROM documents WHERE id = ?';
+        $query = 'SELECT id, sender, status, subject, filename, htmlContent, DATE(timestamp) as date_only FROM documents';
+        $result = $mysqli->query($query);
 
-        $stmt = $mysqli->prepare($query);
-        if (!$stmt) {
-            error_log("SQL Error: " . $mysqli->error);
-            return null;
+        if (!$result) {
+            die("SQL Error (query): " . $mysqli->error);
         }
-        $stmt->bind_param("s", $id);
-        $stmt->execute();
-        $stmt->bind_result($retrievedFileName, $data);
-        if ($stmt->fetch()) {
-            $stmt->close();
-            $mysqli->close();
-            return [
-                'fileName' => $retrievedFileName,
-                'data' => $data
-            ];
-        } else {
-            $stmt->close();
-            $mysqli->close();
-            return null;
+
+        $documents = [];
+        while ($row = $result->fetch_assoc()) {
+            $documents[] = $row;
         }
+
+        $jsonArray = json_encode($documents);
+        header('Content-Type: application/json');
+        echo $jsonArray;
+        $mysqli->close();
+    }
+    function getRecipient(){
+        $database = new Database();
+        $mysqli = $database->getConnection();
+        $id = $_POST['selectedID'];
+
+        // $query = 'SELECT htmlContent FROM documents WHERE id = ?';
+
+        // $stmt = $mysqli->prepare($query);
+        // if ($stmt) {
+        //     $stmt->bind_param("s", $id);
+        //     $stmt->execute();
+        //     $stmt->bind_result($htmlcontent);
+        //     $stmt->fetch();
+        //     $stmt->close();
+        //     return $htmlcontent;
+        // } else {
+        //     // Handle error
+        //     echo "Error preparing statement: " . $mysqli->error;
+        //     return null;
+        // }
+        // $mysqli->close();
+        echo $id;
     }
 
-    if (isset($_GET['id'])) {
-        $requestedId = $_GET['id'];
+    function selectAllUsers(){
+        $database = new Database();
+        $mysqli = $database->getConnection();
+    }
 
-        if ($requestedId) {
-            $document = getDocumentFromDatabaseById($requestedId);
-
-            if ($document) {
-                // Serve the document as a download
-                header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
-                header('Content-Disposition: attachment; filename="' . $document['fileName'] . '"');
-                header('Content-Length: ' . strlen($document['data']));
-                echo $document['data'];
-                exit;
-            } else {
-                echo "Document not found.";
-            }
-        } else {
-            echo "No ID provided.";
-        }
+    if (isset($_GET['action']) && $_GET['action'] == 'getDocumentDetails') {
+        getDocuments();
+        exit();
     }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Download Document</title>
-</head>
-<body>
-    <h1>Download Document</h1>
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="GET">
-        <label for="id">Enter Document ID:</label>
-        <input type="text" id="id" name="id" placeholder="Enter document ID...">
-        <button type="submit">Download</button>
-    </form>
-</body>
-</html>
