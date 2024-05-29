@@ -3,6 +3,7 @@ import {selectedId} from "./utils/selectedAssociation.js";
 fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getAssociationList')
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         renderAssociations(data);
     })
     .catch(error => console.error('Error:', error));
@@ -10,12 +11,14 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
 function renderAssociations(AssociationList){
     let Organization = "";
     let Clubs = "";   
+    
     AssociationList.forEach((assosiation, index) => {
         if(assosiation.type === "Organization"){
+            let pic = assosiation.image == undefined ? "../Images/COMS.png" : assosiation.image;
             Organization += `
             <div class="itemList"> 
                 <div class="pictureFrame">
-                    <img src="${assosiation.image == undefined ? "../Images/COMS.png" : assosiation.image}">
+                    <img src="${pic}">
                 </div>
                 
                 <div class="title-description">
@@ -33,11 +36,11 @@ function renderAssociations(AssociationList){
         }
 
         else if(assosiation.type === "Club"){
-           // console.log(assosiation.image);
+           let pic = assosiation.image == undefined ? "../Images/COMS.png" : assosiation.image;
         Clubs += `
             <div class="itemList"> 
                 <div class="pictureFrame">
-                    <img src="${assosiation.image == undefined ? "../Images/COMS.png" : assosiation.image}">
+                    <img src="${pic}">
                 </div>
                 
                 <div class="title-description">
