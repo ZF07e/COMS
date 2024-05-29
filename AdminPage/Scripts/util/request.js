@@ -8,6 +8,14 @@ fetch('http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=getDocu
     .then(data => {
         Documents = data;
         displayRequest(Documents);
+        document.querySelectorAll(".mailRequest").forEach((e)=>{
+            e.addEventListener("click", ()=>{
+                let selectedID = e.dataset.request;
+                selectedRequest = localStorage.setItem("selectedRequest", JSON.stringify(selectedID));
+                console.log(selectedID);
+                window.location.href = "../AdminPage/viewRequest.php";
+            });
+        });
     })
     .catch(error => console.error('Error:', error));
 
@@ -56,13 +64,13 @@ function switchTo(document, tab){
 
 //When User select a Request
 
-document.querySelectorAll(".mailRequest").forEach((e)=>{
-    e.addEventListener("click", ()=>{
-        let selectedID = e.dataset.request;
-        selectedRequest = localStorage.setItem("selectedRequest", JSON.stringify(selectedID));
-        window.location.href = "../AdminPage/viewRequest.php";
-    });
-});
+// document.querySelectorAll(".mailRequest").forEach((e)=>{
+//     e.addEventListener("click", ()=>{
+//         let selectedID = e.dataset.request;
+//         selectedRequest = localStorage.setItem("selectedRequest", JSON.stringify(selectedID));
+//         window.location.href = "../AdminPage/viewRequest.php";
+//     });
+// });
 
 $("#deleteMail").click((ev)=>{
     ev.stopPropagation();
