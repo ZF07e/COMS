@@ -1,34 +1,18 @@
-//fetch associations list
-// const data = fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getAssociation')
-// .then(response => response.json())
-// .then(data => {
-//     console.log(data);
-//     renderDashboard(data);
-//     return fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getUserPositions');
-// })
-// .then(response => response.json())
-// .catch(error => console.error('Error:', error));
+fetch('http://localhost/COMS/AssocClient/Functions/Querries/UserAssociation.php?action=getUserAssociation')
+.then(response => response.json())
+.then(data => {
+    renderDashboard(data);
+}).catch(error => console.error('Error:', error));
 
-// data.then(d =>{
-//     //console.log(d)
-//     //members(d);
-// })
+fetch('http://localhost/COMS/AssocClient/Functions/Querries/GetTotals.php')
+.then(response => response.json())
+.then(data => {
+    $("#total1").text(`Members: ${data}`);
+}).catch(error => console.error('Error:', error));
 
 
-
-function members(arr){
-    let ttlMembers = 0
-    ttlRequest = 0;
-    ttlEvents = 0;
-    arr.forEach((e)=>{
-        if(e.associationCode == "CLB1"){
-            ttlMembers++
-        }
-    })
-    $("#total1").text(`Members: ${ttlMembers}`);
-    $("#total2").text(`Request: ${ttlRequest}`);
-    $("#total3").text(`Events: ${ttlEvents}`);
-}
+$("#total2").text(`Request: ${0}`);
+$("#total3").text(`Events: ${0}`);
 
 
 function renderDashboard(Arr){

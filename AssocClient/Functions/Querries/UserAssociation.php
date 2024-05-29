@@ -1,6 +1,6 @@
 <?php
-    require ('../../LandingPage/Functions/SessionManagement.php');
-    require ('../../LandingPage/Functions/connectionDB.php');
+    require ('../../../LandingPage/Functions/SessionManagement.php');
+    require ('../../../LandingPage/Functions/connectionDB.php');
 
 getUserAssociation();
 
@@ -31,26 +31,28 @@ function getAssociation($association){
     $database = new Database();
     $mysqli = $database->getConnection();
 
-    $query = "SELECT * FROM associations WHERE association = .$association.";
+    $query = "SELECT * FROM associations WHERE association =  ?";
         
     $stmt = $mysqli->prepare($query);
     if (!$stmt) {
         die("SQL Error: " . $mysqli->error);
     }
-    $stmt->bind_param("s", $fileName);
+    $stmt->bind_param("s", $association);
     $stmt->execute();
-    $stmt->bind_result($retrievedFileName, $data);
-    if ($stmt->fetch()) {
-        $stmt->close();
-        $mysqli->close();
-        print_r($data);
-    } else {
-        $stmt->close();
-        $mysqli->close();
-        return null;
+    $result = $stmt->get_result();
+
+    $data = array();
+    while ($row = $result->fetch_assoc()) {
+            
+        $data[] = $row;
     }
 
-    
+    $jsonArray = json_encode($data);
+    header('Content-Type: application/json');
+
+    print_r($jsonArray);
+    $stmt->close();
+    $mysqli->close();
 }
 
 ?>

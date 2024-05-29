@@ -36,36 +36,35 @@ let Users = [
         recipientRole: "endorser"
     }
 ];
+// let Documents = [];
 
-let Documents = [];
 
-fetch('http://localhost/COMS/AssocClient/Functions/GetDocument.php?action=getDocumentDetails')
-    .then(response => response.json())
-    .then(data => {
-        Documents = data;
-        //displayRequest(Documents);
-        let selectedRequest = JSON.parse(localStorage.getItem("selectedRequest"));
-        Documents.forEach((e)=>{
-            if(e.id == selectedRequest){
-                $("#headerTitleRequest").text(e.subject);
-                $("#documentPrev").attr('src', "../PDF-FILES/"+e.id+".pdf")
-            }
-        });
+let selectedRequest = JSON.parse(localStorage.getItem("selectedRequest"));
+console.log(selectedRequest);
 
-        console.log(selectedRequest);
+$.ajax({
+    type: "POST",
+    url: "../AssocClient/Functions/GetDocument.php",
+    data: {req: selectedRequest},
+    success: (e)=>{
+        console.log(e);
+    }
+});
 
-        $.ajax({
-            getRecipient: true,
-            type: 'POST',
-            url: "http://localhost/COMS/AssocClient/Functions/GetDocument.php",
-            data: {selectedID: selectedRequest},
-            success:(e)=>{
-                console.log(e);
-                //window.location.href = "http://localhost/COMS/AssocClient/Functions/GetDocument.php";   
-            }  
-        })
-    })
-    .catch(error => console.error('Error:', error));
+
+
+// fetch('http://localhost/COMS/AssocClient/Functions/GetDocument.php?action=getDocumentDetails')
+//     .then(response => response.json())
+//     .then(data => {
+//         Documents = data;
+//         
+//         //console.log(selectedRequest);
+
+//         if(selectedRequest){
+
+//         }  
+//     })
+//     .catch(error => console.error('Error:', error));
 
 displayRecipient();
 checkIfDownloadable();

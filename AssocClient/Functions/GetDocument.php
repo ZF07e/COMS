@@ -26,7 +26,7 @@
     function getRecipient(){
         $database = new Database();
         $mysqli = $database->getConnection();
-        $id = $_POST['selectedID'];
+
 
         // $query = 'SELECT htmlContent FROM documents WHERE id = ?';
 
@@ -44,7 +44,7 @@
         //     return null;
         // }
         // $mysqli->close();
-        echo $id;
+
     }
 
     function selectAllUsers(){
@@ -56,4 +56,9 @@
         getDocuments();
         exit();
     }
+
+        $id = $_POST['req'] ?? "";
+        print_r($id);
+        print_r("Yezzz:".$id);
+    
 ?>

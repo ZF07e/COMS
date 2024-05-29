@@ -85,7 +85,7 @@
 
             <section id="middleBodySection">
 
-                <form id="List" action = "http://localhost/COMS/AssocClient/Functions/InfromationManagement.php" method = "POST">
+                <form id="List" action = "http://localhost/COMS/AssocClient/Functions/Querries/InfromationManagement.php" method = "POST">
                     <div id="midDiv">
                         <section id="MiddleTotalContainer">
                             <div class="dashRecords" id="total1"></div>

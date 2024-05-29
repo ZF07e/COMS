@@ -4,20 +4,14 @@
 
 */
 
-// fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getUserPositions')
-//     .then(response => response.json())
-//     .then(data => {
-//         renderUserList(data);
-//         SearchTab(data);
-//     })
-//     .catch(error => console.error('Error:', error));
+fetch('http://localhost/COMS/AssocClient/Functions/Querries/getUsers.php')
+    .then(response => response.json())
+    .then(data => {
+        renderUserList(data);
+        SearchTab(data);
+    })
+    .catch(error => console.error('Error:', error));
 
-// fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getAssociationList')
-//     .then(response => response.json())
-//     .then(data => {
-//         getAssociationList(data);
-//     })
-//     .catch(error => console.error('Error:', error));
 
 function renderUserList(userList){//Function For Rendering 
     let users = "";
@@ -29,15 +23,16 @@ function renderUserList(userList){//Function For Rendering
             assoc = "Unassigned";
         }
         else{
-            assoc = userprofile.affiliation
+            
         }
+        assoc = 
         users += `
                 <div class="userItem" data-User-id="${userprofile.userID}">
                     <div class="item_left">
                         <img src="${userprofile.pfp}" class="profilePicture" alt="">
                         <div class="userInfo">
                             <p id="user_adviser">${userprofile.firstName} ${userprofile.lastName}</p>
-                            <p id="position">${userprofile.position} (${assoc})</p>
+                            <p id="position">${userprofile.position} (${userprofile.affiliation})</p>
                         </div>
                     </div>
                 </div>
@@ -60,7 +55,6 @@ function getAssociationList(list){
         }
     });
 
-    document.getElementById("EdithandlingAssociation").innerHTML += associations;
 }
 
 function SearchTab(userList){
@@ -71,11 +65,11 @@ function SearchTab(userList){
         let accountsFound = "";
         userList.forEach((value)=>{
         let fullName = value.firstName +" "+ value.lastName;  
+        //                                    <img src="${value.pfp}" class="profilePicture">
         if(fullName.toUpperCase().includes(searchString, 0)){
             accountsFound += `
                             <div class="userItem" data-User-id="${value.userID}">
                                 <div class="item_left">
-                                    <img src="${value.pfp}" class="profilePicture">
                                     <div class="userInfo">
                                         <p id="user_adviser">${fullName}</p>
                                         <p id="position">${value.position} (${value.affiliation})</p>
@@ -98,17 +92,9 @@ function editButtonFunction(userList){
             let userSelectedId = item.dataset.userId;
 
             document.querySelector(".upperlayer").style.display = "flex";
-            let selectIndex;
-            let selectOptions = document.getElementById("EdithandlingAssociation");
-            
+           
             userList.forEach((userListId)=>{//gets the current value of the users Information               
                 if(userListId.userID == userSelectedId){
-                    for(let i = 0; i < selectOptions.length; i++){
-                        if(selectOptions[i].text == userListId.firstName){
-                            selectIndex = selectOptions[i].index;
-                            console.log(selectIndex);
-                        }
-                    }
                     document.getElementById("selectedName").innerText = userListId.firstName + " " + userListId.lastName;   
                     document.getElementById("selectedPosition").innerText = userListId.position;
 
@@ -120,7 +106,6 @@ function editButtonFunction(userList){
                     document.getElementById("User_LastName").value = userListId.lastName;
                     document.getElementById("User_Email").value = userListId.email;
                     document.getElementById("EditselectedPosition").selectedIndex = userListId.position.index;
-                    document.getElementById("EdithandlingAssociation").selectedIndex = selectIndex;
                     document.getElementById("ID").value = userSelectedId;
                 }
             })
