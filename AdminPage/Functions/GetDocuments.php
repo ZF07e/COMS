@@ -73,41 +73,41 @@
         return $htmlcontents;
     }
 
-    function selectEndorsers($id){
-        $database = new Database();
-        $mysqli = $database->getConnection();
+    // function selectEndorsers($id){
+    //     $database = new Database();
+    //     $mysqli = $database->getConnection();
 
-        $query = "SELECT name FROM recipients WHERE documentID = '$id' AND role = 'Endorser'";
-        $stmt = $mysqli->stmt_init();
-        if(!$stmt->prepare($query)){
-            die("SQL Error". $mysqli->error);
-        }
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $endorser = [];
-        while ($row = $result->fetch_assoc()) {
-            $endorser[] = $row;
-        }
-        return $endorser;
-    }
+    //     $query = "SELECT name FROM recipients WHERE documentID = '$id' AND role = 'Endorser'";
+    //     $stmt = $mysqli->stmt_init();
+    //     if(!$stmt->prepare($query)){
+    //         die("SQL Error". $mysqli->error);
+    //     }
+    //     $stmt->execute();
+    //     $result = $stmt->get_result();
+    //     $endorser = [];
+    //     while ($row = $result->fetch_assoc()) {
+    //         $endorser[] = $row;
+    //     }
+    //     return $endorser;
+    // }
 
-    function selectNoters($id){
-        $database = new Database();
-        $mysqli = $database->getConnection();
+    // function selectNoters($id){
+    //     $database = new Database();
+    //     $mysqli = $database->getConnection();
 
-        $query = "SELECT name FROM recipients WHERE documentID = '$id' AND role = 'Noter'";
-        $stmt = $mysqli->stmt_init();
-        if(!$stmt->prepare($query)){
-            die("SQL Error". $mysqli->error);
-        }
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $noter = [];
-        while ($row = $result->fetch_assoc()) {
-            $noter[] = $row;
-        }
-        return $noter;
-    }
+    //     $query = "SELECT name FROM recipients WHERE documentID = '$id' AND role = 'Noter'";
+    //     $stmt = $mysqli->stmt_init();
+    //     if(!$stmt->prepare($query)){
+    //         die("SQL Error". $mysqli->error);
+    //     }
+    //     $stmt->execute();
+    //     $result = $stmt->get_result();
+    //     $noter = [];
+    //     while ($row = $result->fetch_assoc()) {
+    //         $noter[] = $row;
+    //     }
+    //     return $noter;
+    // }
 
     function updateData($html, $selectedID){
         $database = new Database();
@@ -141,7 +141,7 @@
         getDocuments();
         exit();
     }
-    elseif (isset($_POST['selectedID'])) {
+    elseif(isset($_POST['selectedID'])) {
         $selectedID = $_POST['selectedID'];
         getRecipient($selectedID);
     }
