@@ -149,47 +149,99 @@
     $date = date('F j, Y');
     $recipientFullname = trim($recipientTo[0]['firstname']." ".$recipientTo[0]['lastname']);
 
-    function generateEndorsementSection($endorserCount) {
+
+    function generateEndorsementSection($endorsedCount) {
+        $endorsed = json_decode($_POST['endorsed'] ?? '[]', true);
         $html1 = '<div class="endorsed1">';
         $html2 = '<div class="endorsed2">';
 
-        for ($i = 0; $i < $endorserCount; $i++) {
+        for ($i = 0; $i < $endorsedCount; $i++) {
             if ($i == 0) {
                 $html1 .= '
                 <div class="endorser1" style="float: left;"> 
                     <br>
                     <img src= "image" class="signatureStyle">        
                     <p>
-                    Signature'.$i.'<br> 
-                    <strong>Fullname'.$i.'</strong><br>
-                    <i>Position'.$i.'</i></p>
+                    <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
+                    <i>'.$endorsed[$i]['position'].'</i></p>
                 </div>';
             } elseif ($i == 1) {
                 $html1 .= '
                 <div class="endorser2" style="float: right;"> 
                     <br>
-                    <img src= "image"class="signatureStyle"> 
-                    <p>Signature'.$i.'<br> 
-                    <strong>Fullname'.$i.'</strong><br>
-                    <i>Position'.$i.'</i></p>
+                    <img src= "image"class="signatureStyle">
+                    <p> 
+                    <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
+                    <i>'.$endorsed[$i]['position'].'</i></p>
                 </div>';
             } elseif ($i == 2) {
                 $html2 .= '
                 <div class="endorser3" style="float: left;">
                     <br> 
                     <img src= "image"class="signatureStyle"> 
-                    <p>Signature'.$i.'<br> 
-                    <strong>Fullname'.$i.'</strong><br>
-                    <i>Position'.$i.'</i></p>
+                    <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
+                    <i>'.$endorsed[$i]['position'].'</i></p>
                 </div>';
             } elseif ($i == 3) {
                 $html2 .= '
                 <div class="endorser4" style="float: right;">
                     <br> 
                     <img src= "image"class="signatureStyle"> 
-                    <p>Signature'.$i.'<br> 
-                    <strong>Fullname'.$i.'</strong><br>
-                    <i>Position'.$i.'</i></p>
+                    <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
+                    <i>'.$endorsed[$i]['position'].'</i></p>
+                </div>';
+            }
+        }
+        $html1 .= '<div style="clear: both;"></div>';
+        $html2 .= '<div style="clear: both;"></div>';
+        $html1 .= '</div>';
+        $html2 .= '</div>';
+
+        $htmlFinal = $html1 . $html2;
+        return $htmlFinal;
+    }
+
+    function gerateNotedSection($notedCount) {
+        $noted = json_decode($_POST['noted'] ?? '[]', true);
+        $html1 = '<div class="noted1">';
+        $html2 = '<div class="noted2">';
+
+        for ($i = 0; $i < $notedCount; $i++) {
+            if ($i == 0) {
+                $html1 .= '
+                <div class="noted1" style="float: left;"> 
+                    <br>
+                    <img src= "image" class="signatureStyle">        
+                    <p>
+                    <strong>'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
+                    <i>'.$noted[$i]['position'].'</i></p>
+                </div>';
+            } elseif ($i == 1) {
+                $html1 .= '
+                <div class="noted2" style="float: right;"> 
+                    <br>
+                    <img src= "image"class="signatureStyle">
+                    <p> 
+                    <strong>'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
+                    <i>'.$noted[$i]['position'].'</i></p>
+                </div>';
+            } elseif ($i == 2) {
+                $html2 .= '
+                <div class="noted3" style="float: left;">
+                    <br>
+                    <img src= "image"class="signatureStyle">
+                    <p> 
+                    <strong>Fullname'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
+                    <i>'.$noted[$i]['position'].'</i></p>
+                </div>';
+            } elseif ($i == 3) {
+                $html2 .= '
+                <div class="noted4" style="float: right;">
+                    <br> 
+                    <img src= "image"class="signatureStyle"> 
+                    <p>
+                    <strong>'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
+                    <i>'.$noted[$i]['position'].'</i></p>
                 </div>';
             }
         }
@@ -227,7 +279,7 @@
                     margin: 0rem 3rem;
                     display: inline-block;
                     vertical-align: middle;
-                    line-height: 0px;
+                    line-height: 0px;   
                 }
 
                 .header img {
@@ -261,6 +313,24 @@
                     margin-botom: 10px;
                 }
 
+                .noted{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                }
+
+                .noted1, .noted2{
+                    padding: 0rem 5rem;
+                }
+
+                .noted1 p, .noted2 p, .noted3 p, .noted4 p{
+                    margin: 0;
+                    text-align: center;
+                }
+
+                .noted1{
+                    margin-botom: 10px;
+                }
+
                 .textBody{
                     line-height: 1.3;
                 }
@@ -271,7 +341,7 @@
                 <img src= '.$logoLeft.' class="logo-left">
                     <div class="headerText">
                         <h2>STI COLLEGE ALABANG</h2>
-                        <p>'.$association.'</p>
+                        <p style = "font-size: 1.5rem;">'.$association.'</p>
                         <p>RZB Building Interior Montiliano St.</p>
                         <p>Alabang, Muntinlupa City</p>
                     </div>
@@ -308,8 +378,8 @@
             </div>
             <div>
             Noted by:
+            '.gerateNotedSection(count($noted)).'
             </div>
-            
         </body>
         </html>
         ';
@@ -320,9 +390,6 @@
     $dompdf->loadHtml($htmlContent);
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
-
-    $pdfData = $dompdf->output();
-    $pdfName = 'Letter-'.$association.'-'.date('F-j-Y').'.pdf';
 
     function generateUniqueID(){
         $database = new Database();
@@ -352,35 +419,31 @@
         return 'LTTR'.$code.'-'.$randomNumber;
     }
 
-    function savePdfToDatabase($id, $sender, $status, $subject, $filename, $pdfData) {
+    $uniqueID = generateUniqueID();
+    $pdfData = $dompdf->output();
+    $folderPath = '../../PDF-FILES/';
+    $filePath = '../../PDF-FILES/'.$uniqueID.'.pdf';
+    file_put_contents($filePath, $pdfData);
+
+    $pdfName = $uniqueID.'.pdf';
+
+    function savePdfToDatabase($id, $sender, $status, $subject, $filename, $htmlcontents) {
         $database = new Database();
         $mysqli = $database->getConnection();
     
-        $query = 'INSERT INTO documents (id, sender, status, subject, filename, data, timestamp) VALUES (?, ?, ?, ?, ?, ?, NOW())';
-    
-        $stmt = $mysqli->prepare($query);
-        if (!$stmt) {
-            die("SQL Error (prepare): " . $mysqli->error);
+        $query = 'INSERT INTO documents (id, sender, status, subject, fileName, htmlContent, timestamp) VALUES (?, ?, ?, ?, ?, ?, NOW())';
+
+        $stmt = $mysqli->stmt_init();
+        if(!$stmt->prepare($query)){
+            die("SQL Error". $mysqli->error);
         }
-    
-        $null = NULL;
-        $stmt->bind_param("sssssb", $id, $sender, $status, $subject, $filename, $null);
-    
-        // Bind PDF data
-        if (!$stmt->send_long_data(5, $pdfData)) {
-            die("Error sending PDF data: " . $stmt->error);
-        }
-    
-        if (!$stmt->execute()) {
-            die("SQL Error (execute): " . $stmt->error);
-        }
-    
-        $stmt->close();
+        $stmt->bind_param("ssssss", $id, $sender, $status, $subject, $filename, $htmlcontents);
+        $stmt->execute();
         $mysqli->close();
     }    
 
-    savePdfToDatabase(generateUniqueID(), $writer, "Inbox", "No Subject", $pdfName, $pdfData);
+    savePdfToDatabase($uniqueID, $writer, "Inbox", "No Subject", $pdfName, $htmlContent);
 
-    $dompdf->stream("Coders_Club_Letter.pdf", array("Attachment" => 0));
+    //$dompdf->stream("Coders_Club_Letter.pdf", array("Attachment" => 0));
     header("Location: ../Request.php");
 ?>
