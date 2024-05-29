@@ -1,74 +1,30 @@
-let Users = [
-    {
-        id : 1,
-        name: "Coco Melon",
-        requestStatus: "Signed",
-        recipientRole: "endorser"
-    },
-    {
-        id : 2,
-        name: "CoKo Martin",
-        requestStatus: "Signed",
-        recipientRole: "endorser"
-    },
-    {
-        id : 3,
-        name: "Koko Nut",
-        requestStatus: "Signed",
-        recipientRole: "noter"
-    },
-    {
-        id : 4,
-        name: "Koko Latte",
-        requestStatus: "Signed",
-        recipientRole: "endorser"
-    },
-    {
-        id : 5,
-        name: "Koko Sundae",
-        requestStatus: "Pending",
-        recipientRole: "approver"
-    },
-    {
-        id : 6,
-        name: "Coco Salad",
-        requestStatus: "Signed",
-        recipientRole: "endorser"
-    }
-];
-// let Documents = [];
-
-
+let Documents = [];
 let selectedRequest = JSON.parse(localStorage.getItem("selectedRequest"));
-console.log(selectedRequest);
+fetch(`http://localhost/COMS/AssocClient/Functions/GetDocument.php?action=getDocumentDetails`)
+    .then(response => response.json())
+    .then(data => {
+        Documents = data;
+        Documents.forEach((e) => {
+            if (e.id == selectedRequest) {
+                id = e.id;
+                $("#headerTitleRequest").text(e.subject);
+                $("#documentPrev").attr('src', `../PDF-FILES/${e.id}.pdf`);
+            }
+        });
+    })
+    .catch(error => console.error('Error:', error));
 
-$.ajax({
-    type: "POST",
-    url: "../AssocClient/Functions/GetDocument.php",
-    data: {req: selectedRequest},
-    success: (e)=>{
-        console.log(e);
-    }
-});
-
-
-
-// fetch('http://localhost/COMS/AssocClient/Functions/GetDocument.php?action=getDocumentDetails')
-//     .then(response => response.json())
-//     .then(data => {
-//         Documents = data;
-//         
-//         //console.log(selectedRequest);
-
-//         if(selectedRequest){
-
-//         }  
-//     })
-//     .catch(error => console.error('Error:', error));
-
-displayRecipient();
-checkIfDownloadable();
-
+    $.ajax({
+        url: "http://localhost/COMS/AssocClient/Functions/GetDocument.php",
+        method: "POST",
+        data: {selectedID: selectedRequest},
+        success: function(response){
+            console.log(response);
+            displayRecipient(response);
+            checkIfDownloadable(response);
+        }
+    })
+    console.log(selectedRequest);
 $("#backButton").on("click", ()=>{
     window.location.href = "../AssocClient/Request.php";
 });
@@ -78,39 +34,39 @@ $("#downloadButton").on("click", ()=>{
 });
 
 
-function displayRecipient(){
+function displayRecipient(Users){
     let endorserElements = "";
     let noterElements = "";
     let approverElements = "";
     
     Users.forEach((e)=>{
-        if(e.recipientRole == "endorser"){
+        if(e.role == "Endorser"){
             endorserElements += `
             <div id="recipientContainer">
                 <div id="reciepientName">
                     <p>${e.name}</p>
                 </div>
-                <div id="reciepientStatus${e.requestStatus}">${e.requestStatus}</div>
+                <div id="reciepientStatus${e.status}">${e.status}</div>
             </div>   
             `;
         }
-        else if(e.recipientRole == "noter"){
+        else if(e.role == "Noter"){
             noterElements += `
             <div id="recipientContainer">
                 <div id="reciepientName">
                     <p>${e.name}</p>
                 </div>
-                <div id="reciepientStatus${e.requestStatus}">${e.requestStatus}</div>
+                <div id="reciepientStatus${e.status}">${e.status}</div>
             </div>   
             `;
         }
-        else if(e.recipientRole == "approver"){
+        else if(e.role == "Approver"){
             approverElements += `
             <div id="recipientContainer">
                 <div id="reciepientName">
                     <p>${e.name}</p>
                 </div>
-                <div id="reciepientStatus${e.requestStatus}">${e.requestStatus}</div>
+                <div id="reciepientStatus${e.status}">${e.status}</div>
             </div>   
             `;
         }
@@ -122,12 +78,12 @@ function displayRecipient(){
 }
 
 
-function checkIfDownloadable(){
+function checkIfDownloadable(Users){
     let totalRecipient = Users.length;
     let totalSigned = 0;
 
     Users.forEach((e)=>{
-        if(e.requestStatus == "Signed"){
+        if(e.role == "Signed"){
             totalSigned++;
         }
     });

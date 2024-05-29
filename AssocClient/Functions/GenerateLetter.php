@@ -149,6 +149,45 @@
     $date = date('F j, Y');
     $recipientFullname = trim($recipientTo[0]['firstname']." ".$recipientTo[0]['lastname']);
 
+    function insertRecipients($documentID){
+        $endorsed = json_decode($_POST['endorsed'] ?? '[]', true);
+        $noted = json_decode($_POST['noted'] ?? '[]', true);
+
+        for ($x = 0; $x < count($endorsed); $x++){
+            $database = new Database();
+            $mysqli = $database->getConnection();
+
+            $name = $endorsed[$x]['firstname'].' '.$endorsed[$x]['lastname'];
+            $role = 'Endorser';
+            $status = 'Pending';
+            $query = 'INSERT INTO recipients (name, role, status, documentid) VALUES (?, ?, ?, ?)';
+
+            $stmt = $mysqli->stmt_init();
+            if(!$stmt->prepare($query)){
+                die("SQL Error". $mysqli->error);
+            }
+            $stmt->bind_param("ssss", $name, $role, $status, $documentID);
+            $stmt->execute();
+            $mysqli->close();
+        }
+        for ($x = 0; $x < count($noted); $x++){
+            $database = new Database();
+            $mysqli = $database->getConnection();
+
+            $name = $noted[$x]['firstname'].' '.$noted[$x]['lastname'];
+            $role = 'Noter';
+            $status = 'Pending';
+            $query = 'INSERT INTO recipients (name, role, status, documentid) VALUES (?, ?, ?, ?)';
+
+            $stmt = $mysqli->stmt_init();
+            if(!$stmt->prepare($query)){
+                die("SQL Error". $mysqli->error);
+            }
+            $stmt->bind_param("ssss", $name, $role, $status, $documentID);
+            $stmt->execute();
+            $mysqli->close();
+        }
+    }
 
     function generateEndorsementSection($endorsedCount) {
         $endorsed = json_decode($_POST['endorsed'] ?? '[]', true);
@@ -160,7 +199,7 @@
                 $html1 .= '
                 <div class="endorser1" style="float: left;"> 
                     <br>
-                    <img src= "image" class="signatureStyle">        
+                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle">        
                     <p>
                     <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
                     <i>'.$endorsed[$i]['position'].'</i></p>
@@ -169,7 +208,7 @@
                 $html1 .= '
                 <div class="endorser2" style="float: right;"> 
                     <br>
-                    <img src= "image"class="signatureStyle">
+                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle">
                     <p> 
                     <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
                     <i>'.$endorsed[$i]['position'].'</i></p>
@@ -178,7 +217,7 @@
                 $html2 .= '
                 <div class="endorser3" style="float: left;">
                     <br> 
-                    <img src= "image"class="signatureStyle"> 
+                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle"> 
                     <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
                     <i>'.$endorsed[$i]['position'].'</i></p>
                 </div>';
@@ -186,7 +225,7 @@
                 $html2 .= '
                 <div class="endorser4" style="float: right;">
                     <br> 
-                    <img src= "image"class="signatureStyle"> 
+                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle"> 
                     <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
                     <i>'.$endorsed[$i]['position'].'</i></p>
                 </div>';
@@ -211,7 +250,7 @@
                 $html1 .= '
                 <div class="noted1" style="float: left;"> 
                     <br>
-                    <img src= "image" class="signatureStyle">        
+                    <img src= "'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'signature" class="signatureStyle">        
                     <p>
                     <strong>'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
                     <i>'.$noted[$i]['position'].'</i></p>
@@ -220,7 +259,7 @@
                 $html1 .= '
                 <div class="noted2" style="float: right;"> 
                     <br>
-                    <img src= "image"class="signatureStyle">
+                    <img src= "'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'signature" class="signatureStyle">
                     <p> 
                     <strong>'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
                     <i>'.$noted[$i]['position'].'</i></p>
@@ -229,7 +268,7 @@
                 $html2 .= '
                 <div class="noted3" style="float: left;">
                     <br>
-                    <img src= "image"class="signatureStyle">
+                    <img src= "'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'signature" class="signatureStyle">
                     <p> 
                     <strong>Fullname'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
                     <i>'.$noted[$i]['position'].'</i></p>
@@ -238,7 +277,7 @@
                 $html2 .= '
                 <div class="noted4" style="float: right;">
                     <br> 
-                    <img src= "image"class="signatureStyle"> 
+                    <img src= "'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'signature" class="signatureStyle"> 
                     <p>
                     <strong>'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
                     <i>'.$noted[$i]['position'].'</i></p>
@@ -367,7 +406,7 @@
                 
                 <p>
                     Sincerely,<br>
-                    <img src= "image" class="signatureStyle"> <br>
+                    <img src= "'.$writer.'signature" class="signatureStyle"> <br>
                     <strong>'.$writer.'</strong><br>
                     <i>'.$writerPosition.'<i>
                 </p>
@@ -443,6 +482,7 @@
     }    
 
     savePdfToDatabase($uniqueID, $writer, "Inbox", "No Subject", $pdfName, $htmlContent);
+    insertRecipients($uniqueID);
 
     //$dompdf->stream("Coders_Club_Letter.pdf", array("Attachment" => 0));
     header("Location: ../Request.php");

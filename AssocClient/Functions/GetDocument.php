@@ -23,42 +23,42 @@
         echo $jsonArray;
         $mysqli->close();
     }
-    function getRecipient(){
+    
+    function getRecipient($id) {
         $database = new Database();
         $mysqli = $database->getConnection();
 
+        $query = "SELECT * FROM recipients WHERE documentID = '$id'";
 
-        // $query = 'SELECT htmlContent FROM documents WHERE id = ?';
+        $data = array();
+    
+        if ($stmt = $mysqli->prepare($query)) {
+            $stmt->execute();
+            $result = $stmt->get_result();
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+            $stmt->close();
+        } else {
+            $data = array('error' => 'Failed to prepare the SQL statement');
+        }
 
-        // $stmt = $mysqli->prepare($query);
-        // if ($stmt) {
-        //     $stmt->bind_param("s", $id);
-        //     $stmt->execute();
-        //     $stmt->bind_result($htmlcontent);
-        //     $stmt->fetch();
-        //     $stmt->close();
-        //     return $htmlcontent;
-        // } else {
-        //     // Handle error
-        //     echo "Error preparing statement: " . $mysqli->error;
-        //     return null;
-        // }
-        // $mysqli->close();
-
-    }
-
-    function selectAllUsers(){
-        $database = new Database();
-        $mysqli = $database->getConnection();
+        if (empty($data)) {
+            $data = array('error' => 'No recipients found for the provided documentID');
+        }
+    
+        $jsonArray = json_encode($data);
+        header('Content-Type: application/json');
+        echo $jsonArray;
+        $mysqli->close();
     }
 
     if (isset($_GET['action']) && $_GET['action'] == 'getDocumentDetails') {
         getDocuments();
         exit();
     }
-
-        $id = $_POST['req'] ?? "";
-        print_r($id);
-        print_r("Yezzz:".$id);
-    
+    elseif (isset($_POST['selectedID'])) {
+        $selectedID = $_POST['selectedID'];
+        getRecipient($selectedID);
+    }
 ?>

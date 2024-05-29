@@ -13,7 +13,6 @@ fetch('http://localhost/COMS/AssocClient/Functions/GetDocument.php?action=getDoc
                 let selectedID = e.dataset.request;
                 selectedRequest = localStorage.setItem("selectedRequest", JSON.stringify(selectedID));
                 console.log(selectedID);
-                $("documentPrev").attr('src', "../AssocClient/../" + selectedID+".pdf")
                 window.location.href = "../AssocClient/viewRequest.php";
             });
         });
@@ -62,10 +61,6 @@ function switchTo(document, tab){
     tab.classList.add("selected");
     document.style.display = "flex";
 }
-
-//When User select a Request
-
-
 
 document.getElementById("CreateRequest").addEventListener("click", ()=>{
     window.location.href = "./createRequest.php";
