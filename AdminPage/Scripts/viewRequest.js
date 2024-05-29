@@ -5,6 +5,8 @@ fetch(`http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=getDocu
     .then(response => response.json())
     .then(data => {
         Documents = data;
+        console.log(data);
+        let selectedRequest = JSON.parse(localStorage.getItem("selectedRequest"));
         Documents.forEach((e) => {
             if (e.id == selectedRequest) {
                 id = e.id;
@@ -26,6 +28,7 @@ fetch(`http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=getDocu
           signature();
       }
   })
+
   console.log(selectedRequest);
 
 let img = new Image();
@@ -335,7 +338,7 @@ function signature(){
 
 
   $("#signUploaded").click((e)=>{
-    //e.preventDefault();  
+    e.preventDefault();  
     console.log(localStorage.getItem("image"))
     if(localStorage.getItem("image") != null){ 
       img.src = localStorage.getItem("image");
@@ -345,11 +348,11 @@ function signature(){
       offscreenUploadCtx.drawImage(img,0,0);
       offscreenUploadCtx.fillText("THIS SIGNATURE IS FOR INTERNAL USE ONLY",70 ,170);
       var dataUrl = offscreenUploadCanvas.toDataURL();
-      console.log(dataUrl);
+      console.log(selectedRequest);
       $.ajax({
         url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php",
         method: "POST",
-        data: {signature: dataUrl},
+        data: {signature: dataUrl, id: selectedRequest},
         success: function(response){
             console.log(response);
         }
