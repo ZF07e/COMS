@@ -310,6 +310,10 @@
                 left: 0;
                 right:0;
             }
+
+            .extraStyle{
+                top: 8%;
+            }
     
             .endorser1 p, .endorser2 p, .endorser3 p, .endorser4 p, #writerCon p{
                 // position: absolute;
@@ -429,7 +433,7 @@
                 
                 <p id="writerCon">
                     Sincerely,<br>
-                    <img src= "'.$writer.'signature" class="signatureStyle" alt="."> <br>
+                    <img src= "'.$writer.'signature" class="signatureStyle extraStyle" alt="."> <br>
                     <strong>'.$writer.'</strong><br>
                     <i>'.$writerPosition.'<i>
                 </p>

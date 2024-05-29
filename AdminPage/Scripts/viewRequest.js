@@ -1,12 +1,14 @@
 let Documents = [];
-
 let selectedRequest = JSON.parse(localStorage.getItem("selectedRequest"));
+let resp;
+
 fetch(`http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=getDocumentDetails`)
     .then(response => response.json())
     .then(data => {
         Documents = data;
         console.log(data);
         let selectedRequest = JSON.parse(localStorage.getItem("selectedRequest"));
+
         Documents.forEach((e) => {
             if (e.id == selectedRequest) {
                 id = e.id;
@@ -14,36 +16,26 @@ fetch(`http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=getDocu
                 $("#documentPrev").attr('src', `../PDF-FILES/${e.id}.pdf`);
             }
         });
+        
     })
     .catch(error => console.error('Error:', error));
 
+    
     $.ajax({
       url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php",
       method: "POST",
       data: {selectedID: selectedRequest},
       success: function(response){
-          console.log(response);
-          displayRecipient(response);
-          checkIfDownloadable(response);
+          resp = response;
+          console.log(resp);
+          displayRecipient(resp);
+          checkIfDownloadable(resp);
           signature();
       }
   })
 
   console.log(selectedRequest);
 
-let img = new Image();
-let offscreenUploadCanvas = document.getElementById("offscreen-canvas-upload");
-let offscreenUploadCtx = offscreenUploadCanvas.getContext("2d");    
-var offscreenCanvas = document.getElementById("offscreen-sig-canvas");
-var offscreenCtx = offscreenCanvas.getContext("2d");   
-
-$("#backButton").on("click", ()=>{
-  window.location.href = "../AdminPage/Request.php";
-});
-
-$("#downloadButton").on("click", ()=>{
-  console.log("Hello")
-});
 
 
 
@@ -108,10 +100,27 @@ function checkIfDownloadable(Users){
   else{
       $("#downloadButton").attr("disabled", true);
   }
-}
+} 
+
+let img = new Image();
+var offscreenCanvas = document.getElementById("offscreen-sig-canvas");
+var offscreenCtx = offscreenCanvas.getContext("2d");   
 
 
 function signature(){
+
+  let offscreenUploadCanvas = document.getElementById("offscreen-canvas-upload");
+  let offscreenUploadCtx = offscreenUploadCanvas.getContext("2d");    
+
+  $("#backButton").on("click", ()=>{
+    window.location.href = "../AdminPage/Request.php";
+  });
+
+  $("#downloadButton").on("click", ()=>{
+    console.log("Hello")
+  });
+
+
   $("#fileSelector").on("change", ()=>{
   $("#labelFile").text($("#fileSelector")[0].files[0].name);
   });
@@ -257,12 +266,11 @@ function signature(){
       clearCanvas();
     }, false);
     submitBtn.addEventListener("click", function(e) {  
-      e.preventDefault();
       if(canvas.toDataURL() != offscreenCanvas.toDataURL()){    
         offscreenCtx.font = "bold 11px Arial";
         offscreenCtx.fillStyle = "rgba(255, 0, 0, 0.7)";
         offscreenCtx.drawImage(canvas,0,0);
-        offscreenCtx.fillText("THIS SIGNATURE IS FOR INTERNAL USE ONLY",70 ,270);
+        offscreenCtx.fillText("THIS SIGNATURE IS FOR INTERNAL USE ONLY",70 ,90);
         var dataUrl = offscreenCanvas.toDataURL();
         console.log(selectedRequest);
         $.ajax({
@@ -283,7 +291,7 @@ function signature(){
     $("#exitApproveHeader").click(()=>{
       $("#ApprovePopUp_Con").css("display", "none");
       clearCanvas();
-      localStorage.clear("image");
+      localStorage.removeItem("image");
       $("#fileSelector").val("");
       $("#prevIMg").attr("src", "");
       $("#prevIMg").css("display", "none");
@@ -295,7 +303,7 @@ function signature(){
     $("#cancelUpload").click(()=>{
       $("#ApprovePopUp_Con").css("display", "none");
       clearCanvas();
-      localStorage.clear("image");
+      localStorage.removeItem("image");
       $("#fileSelector").val("");
       $("#prevIMg").attr("src", "");
       $("#prevIMg").css("display", "none");
@@ -312,7 +320,7 @@ function signature(){
   $("#approveRequest").click(()=>{
     $("#labelFile").text("Choose A File");
     $("#ApprovePopUp_Con").css("display", "flex");
-    localStorage.clear("image")
+    localStorage.removeItem("image");
   });
 
   $("#rejectRequest").click(()=>{
@@ -338,7 +346,6 @@ function signature(){
 
 
   $("#signUploaded").click((e)=>{
-    e.preventDefault();  
     console.log(localStorage.getItem("image"))
     if(localStorage.getItem("image") != null){ 
       img.src = localStorage.getItem("image");
@@ -346,7 +353,7 @@ function signature(){
       offscreenUploadCtx.font = "bold 11px Arial";
       offscreenUploadCtx.fillStyle = "rgba(255, 0, 0, 0.7)";
       offscreenUploadCtx.drawImage(img,0,0);
-      offscreenUploadCtx.fillText("THIS SIGNATURE IS FOR INTERNAL USE ONLY",70 ,270);
+      offscreenUploadCtx.fillText("THIS SIGNATURE IS FOR INTERNAL USE ONLY",70 ,90);
       var dataUrl = offscreenUploadCanvas.toDataURL();
       console.log(selectedRequest);
       $.ajax({
