@@ -78,6 +78,18 @@ main{
     border-radius: 0.5rem;
     display: flex;
     transition: background-color 0.25s;
+    cursor: pointer;
+}
+
+.associationItemDeactivated{
+    opacity: 40%;
+    background-color: #1C1C1C;
+    border: solid 1px #131314; 
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    transition: background-color 0.25s;
+    cursor: pointer;
 }
 
 .associationItem:hover{

@@ -19,20 +19,13 @@ function renderUserList(userList){//Function For Rendering
     
     userList.forEach((userprofile) => {
         let assoc;
-
-        if(userprofile.affiliation == ""){
-            assoc = "Unassigned";
-        }
-        else{
-            assoc = userprofile.affiliation
-        }
+        //                        <img src="${userprofile.pfp}" class="profilePicture" alt="">
         users += `
                 <div class="userItem" data-User-id="${userprofile.userID}">
                     <div class="item_left">
-                        <img src="${userprofile.pfp}" class="profilePicture" alt="">
                         <div class="userInfo">
                             <p id="user_adviser">${userprofile.firstName} ${userprofile.lastName}</p>
-                            <p id="position">${userprofile.position} (${assoc})</p>
+                            <p id="position">${userprofile.position} (${userprofile.affiliation ?? "Unassigned"})</p>
                         </div>
                     </div>
                 </div>
@@ -70,10 +63,9 @@ function SearchTab(userList){
             accountsFound += `
                             <div class="userItem" data-User-id="${value.userID}">
                                 <div class="item_left">
-                                    <img src="${value.pfp}" class="profilePicture">
                                     <div class="userInfo">
                                         <p id="user_adviser">${fullName}</p>
-                                        <p id="position">${value.position} (${value.affiliation})</p>
+                                        <p id="position">${value.position} (${value.affiliation ?? "Unassigned"})</p>
                                     </div>
                                 </div>
                             </div>

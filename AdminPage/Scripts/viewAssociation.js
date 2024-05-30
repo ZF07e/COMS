@@ -8,7 +8,7 @@ let ListPage = document.getElementById("list");
 let EditHome = document.getElementById("editHome");
 let RemoveHome = document.getElementById("removeAssoc");
 let editbuttonHeader = document.getElementById("editAssociation");
-
+$("#deleteClub").css("display", "none");
 //Giving function to navs in header
 navigationFunction();
 
@@ -46,9 +46,68 @@ function renderSelectedGroup(list){
             $("#edit_about").html($("#home_about").text());
             $("#edit_mission").html($("#home_mission").text());
             $("#edit_vision").html($("#home_vision").text());
+
+            if(value.isActive == 1){
+                $("#activateAssoc").css("display", "none");
+            }
+            else{
+                $("#removeAssoc").css("display", "none");
+            }
         } 
     });
 }
+
+$("#removeAssoc").click(()=>{
+    $("#deleteClub").css("display", "flex");
+});
+
+$("#N_Option").click(()=>{
+    $("#deleteClub").css("display", "none");
+});
+
+$("#X_exit").click(()=>{
+    $("#deleteClub").css("display", "none");
+});
+
+
+$("#activateAssoc").click(()=>{
+    $("#Activate").css("display", "flex");
+});
+
+$("#N_OptionActive").click(()=>{
+    $("#Activate").css("display", "none");
+});
+
+$("#X_exitActive").click(()=>{
+    $("#Activate").css("display", "none");
+});
+
+
+$("#deleteAssociation").submit((e)=>{
+    e.preventDefault();
+    //console.log(selectedAssociation);
+    $.ajax({
+        type: "POST",
+        url: "http://localhost/COMS/AdminPage/Functions/InfromationManagement.php?action=removeAssoc",
+        data: {selectedAssoc: selectedAssociation},
+        success: (s)=>{
+            window.location.href = "./associations.php";
+        }
+    })
+    
+});
+
+$("#ActivateAssociation").submit((e)=>{
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "http://localhost/COMS/AdminPage/Functions/InfromationManagement.php?action=activAssoc",
+        data: {selectedAssoc: selectedAssociation},
+        success: (s)=>{
+            window.location.reload();
+        }
+    })
+});
 
 function navigationFunction(){
     //List Page
@@ -79,13 +138,13 @@ function navigationFunction(){
 }
 
 function editAddFunctions(){
-    editbuttonHeader.addEventListener("click", ()=>{
-        HomePageNav.classList.add("selectedNav");
-        ListPage.style.display = "none";
-        HomePage.style.display = "none";
-        EditHome.style.display = "inline";
-        ListPageNav.classList.remove("selectedNav");
-    });
+    // editbuttonHeader.addEventListener("click", ()=>{
+    //     HomePageNav.classList.add("selectedNav");
+    //     ListPage.style.display = "none";
+    //     HomePage.style.display = "none";
+    //     EditHome.style.display = "inline";
+    //     ListPageNav.classList.remove("selectedNav");
+    // });
 
     document.getElementById("cancelChanges").addEventListener("click", ()=>{
         HomePageNav.classList.add("selectedNav");

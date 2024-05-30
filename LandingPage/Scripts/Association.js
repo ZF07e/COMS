@@ -1,9 +1,9 @@
-import {selectedId} from "./utils/selectedAssociation.js";
+// import {selectedId} from "./utils/selectedAssociation.js";
 
-fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getAssociationList')
+fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=displayActiveAssociation')
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+        // console.log(data);
         renderAssociations(data);
     })
     .catch(error => console.error('Error:', error));

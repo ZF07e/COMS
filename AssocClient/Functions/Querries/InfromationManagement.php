@@ -26,6 +26,9 @@
         elseif($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['saveBTN'])){
             updateUserInfo($affiliation);
         }
+        elseif(isset($_GET['action']) && $_GET['action'] == 'getPosition'){
+            checkPosition();
+        }
         
     } else {
         // Handle error
@@ -111,5 +114,25 @@
 
         $mysqli->close();
         header("Location: ../../userManagement.php");
+    }
+
+    //associationButton
+    function checkPosition(){
+        $database = new Database();
+        $mysqli = $database->getConnection();
+        $query = "SELECT position FROM users WHERE email = ?";        
+        $stmt = $mysqli->stmt_init();
+        if(!$stmt->prepare($query)){
+            die("SQL Error". $mysqli->error);
+        }
+        $stmt->bind_param("s", $_SESSION['email']);
+        $stmt->execute();
+        $stmt->bind_result($value1);
+        $stmt->fetch();
+        $stmt->close();
+        $jsonArray = json_encode($value1);
+        header('Content-Type: application/json');
+        echo $jsonArray;
+        
     }
 ?>

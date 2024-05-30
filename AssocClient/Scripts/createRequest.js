@@ -2,7 +2,7 @@ const quill = new Quill('#editor', {
     theme: 'snow'
   });
 
-myData = [];
+
 
 let selectedRecipients = {
     to: [],
@@ -15,6 +15,7 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
     .then(response => response.json())
     .then(data => {
         console.log(data);
+        myData = [];
         data.forEach((e)=>{
             let fullName = e.firstName + " " + e.lastName;
             myData.push({
@@ -40,6 +41,7 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
             autocomplete: true,
             icon: "fa fa-times",
             onChange: value => {
+                console.log(value);
                 let formattedValue = []
                 let incrmt = 0;
 
@@ -95,6 +97,8 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
 
 $("#sendReq").on("click", (e)=>{
     e.preventDefault();
+
+    console.log(selectedRecipients.to);
     const delta = quill.root.innerHTML;
     const subject = $("#SubjectInput").val();
     console.log(delta);

@@ -1,3 +1,6 @@
+<?php
+    include ("../LandingPage/Functions/SessionManagement.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
