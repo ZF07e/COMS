@@ -4,6 +4,7 @@ let selectedAssociationID = JSON.parse(localStorage.getItem("selectedAssociation
 fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getAssociationList')
 .then(response => response.json())
 .then(data => {
+    console.log(data);
     renderList(data);
 })
 .catch(error => console.error('Error:', error));
@@ -21,10 +22,24 @@ function renderList(AssociationLists){
     let orgs = "";
     let clubs = "";
     AssociationLists.forEach((association)=>{
-        if(association.type === "Organization"){
+        if(association.type === "Organization" && association.isActive == 1){
             orgs += `
                 <div class="associationItem" data-selected=${association.id}>
-                    <img src="${association.image}" alt="" class="list--logo">
+                    <img src="${association.image ?? "../Images/COMS.png"}" alt="" class="list--logo">
+                    <div class="nameNtype">
+                        <div class="tileNtypeContainer">
+                            <h4 class="association--title">${association.association}</h4>
+                            <p class="association--type --${association.type}">${association.type}</p>
+                        </div>       
+                        <p class="association--adviser">${association.adviser}</p>          
+                    </div>
+                </div>        
+            `;
+        }
+        else if(association.type === "Organization" && association.isActive == 0){
+            orgs += `
+                <div class="associationItemDeactivated" data-selected=${association.id}>
+                    <img src="${association.image ?? "../Images/COMS.png"}" alt="" class="list--logo">
                     <div class="nameNtype">
                         <div class="tileNtypeContainer">
                             <h4 class="association--title">${association.association}</h4>
@@ -36,10 +51,10 @@ function renderList(AssociationLists){
             `;
         }
 
-        else if(association.type === "Club"){
+        else if(association.type === "Club" && association.isActive == 1){
             clubs += `
                 <div class="associationItem" data-selected=${association.id}>
-                    <img src="${association.image}" alt="" class="list--logo">
+                    <img src="${association.image ?? "../Images/COMS.png"}" alt="" class="list--logo">
                     <div class="nameNtype">
                         <div class="tileNtypeContainer">
                             <h4 class="association--title">${association.association}</h4>
@@ -50,11 +65,26 @@ function renderList(AssociationLists){
                 </div>          
             `;
         }
+        else if(association.type === "Club" && association.isActive == 0){
+            clubs += `
+                <div class="associationItemDeactivated" data-selected=${association.id}>
+                    <img src="${association.image ?? "../Images/COMS.png"}" alt="" class="list--logo">
+                    <div class="nameNtype">
+                        <div class="tileNtypeContainer">
+                            <h4 class="association--title">${association.association}</h4>
+                            <p class="association--type --${association.type}">${association.type}</p>
+                        </div>       
+                        <p class="association--adviser">${association.adviser}</p>          
+                    </div>
+                </div>        
+            `;
+        }
     });
     list.innerHTML += orgs;
     list.innerHTML += clubs;   
     searchAssociation(AssociationLists); 
     viewAssociationFunction(document.querySelectorAll(".associationItem"));
+    viewAssociationFunction(document.querySelectorAll(".associationItemDeactivated"));
     formButtonFunction();   
 }
 
@@ -65,35 +95,63 @@ function searchAssociation(AssociationLists){
         let OrganizationFound = "";
         let clubFound = "";
         
-        AssociationLists.forEach((value)=>{  
-        if(value.association.toUpperCase().includes(searchString, 0)){
-            if(value.type === "Organization"){
+        AssociationLists.forEach((association)=>{  
+        if(association.association.toUpperCase().includes(searchString, 0)){      
+            if(association.type === "Organization" && association.isActive == 1){
                 OrganizationFound += `
-                    <div class="associationItem" data-selected=${value.id}>
-                        <img src="${value.image}" alt="" class="list--logo">
+                    <div class="associationItem" data-selected=${association.id}>
+                        <img src="${association.image ?? "../Images/COMS.png"}" alt="" class="list--logo">
                         <div class="nameNtype">
                             <div class="tileNtypeContainer">
-                                <h4 class="association--title">${value.association}</h4>
-                                <p class="association--type --${value.type}">${value.type}</p>
+                                <h4 class="association--title">${association.association}</h4>
+                                <p class="association--type --${association.type}">${association.type}</p>
                             </div>       
-                            <p class="association--adviser">${value.adviser}</p>          
+                            <p class="association--adviser">${association.adviser}</p>          
+                        </div>
+                    </div>        
+                `;
+            }
+            else if(association.type === "Organization" && association.isActive == 0){
+                OrganizationFound += `
+                    <div class="associationItemDeactivated" data-selected=${association.id}>
+                        <img src="${association.image ?? "../Images/COMS.png"}" alt="" class="list--logo">
+                        <div class="nameNtype">
+                            <div class="tileNtypeContainer">
+                                <h4 class="association--title">${association.association}</h4>
+                                <p class="association--type --${association.type}">${association.type}</p>
+                            </div>       
+                            <p class="association--adviser">${association.adviser}</p>          
                         </div>
                     </div>        
                 `;
             }
     
-            else if(value.type === "Club"){
+            else if(association.type === "Club" && association.isActive == 1){
                 clubFound += `
-                    <div class="associationItem" data-selected=${value.id}>
-                        <img src="${value.image}" alt="" class="list--logo">
+                    <div class="associationItem" data-selected=${association.id}>
+                        <img src="${association.image ?? "../Images/COMS.png"}" alt="" class="list--logo">
                         <div class="nameNtype">
                             <div class="tileNtypeContainer">
-                                <h4 class="association--title">${value.association}</h4>
-                                <p class="association--type --${value.type}">${value.type}</p>
+                                <h4 class="association--title">${association.association}</h4>
+                                <p class="association--type --${association.type}">${association.type}</p>
                             </div>       
-                            <p class="association--adviser">${value.adviser}</p>          
+                            <p class="association--adviser">${association.adviser}</p>          
                         </div>
                     </div>          
+                `;
+            }
+            else if(association.type === "Club" && association.isActive == 0){
+                clubFound += `
+                    <div class="associationItemDeactivated" data-selected=${association.id}>
+                        <img src="${association.image ?? "../Images/COMS.png"}" alt="" class="list--logo">
+                        <div class="nameNtype">
+                            <div class="tileNtypeContainer">
+                                <h4 class="association--title">${association.association}</h4>
+                                <p class="association--type --${association.type}">${association.type}</p>
+                            </div>       
+                            <p class="association--adviser">${association.adviser}</p>          
+                        </div>
+                    </div>        
                 `;
             }
         }
@@ -101,6 +159,7 @@ function searchAssociation(AssociationLists){
             document.querySelector(".associationList").innerHTML += clubFound;
         });
         viewAssociationFunction(document.querySelectorAll(".associationItem"));
+        viewAssociationFunction(document.querySelectorAll(".associationItemDeactivated"));
     });
 }
 

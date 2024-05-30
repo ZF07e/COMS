@@ -1,8 +1,4 @@
-/*
-
-    Duplicated Code, Members Within The Club Lang dito ;>
-
-*/
+$("#associationButton").css("display", "none");
 
 fetch('http://localhost/COMS/AssocClient/Functions/Querries/getUsers.php')
     .then(response => response.json())
@@ -12,27 +8,26 @@ fetch('http://localhost/COMS/AssocClient/Functions/Querries/getUsers.php')
     })
     .catch(error => console.error('Error:', error));
 
+fetch('http://localhost/COMS/AssocClient/Functions/Querries/InfromationManagement.php?action=getPosition')
+    .then(response => response.json())
+    .then(data => {
+        if(data == "President" || data == "Adviser" || data == "Vice President"){
+            $("#associationButton").css("display", "inline");
+        }
+    })
+    .catch(error => console.error('Error:', error));
 
 function renderUserList(userList){//Function For Rendering 
     let users = "";
     
-    userList.forEach((userprofile) => {
-        let assoc;
-
-        if(userprofile.affiliation == ""){
-            assoc = "Unassigned";
-        }
-        else{
-            
-        }
-        assoc = 
+    userList.forEach((userprofile) => { 
         users += `
                 <div class="userItem" data-User-id="${userprofile.userID}">
                     <div class="item_left">
                         <img src="${userprofile.pfp}" class="profilePicture" alt="">
                         <div class="userInfo">
                             <p id="user_adviser">${userprofile.firstName} ${userprofile.lastName}</p>
-                            <p id="position">${userprofile.position} (${userprofile.affiliation})</p>
+                            <p id="position">${userprofile.position} (${userprofile.affiliation ?? "Unassigned"})</p>
                         </div>
                     </div>
                 </div>
@@ -65,7 +60,7 @@ function SearchTab(userList){
         let accountsFound = "";
         userList.forEach((value)=>{
         let fullName = value.firstName +" "+ value.lastName;  
-        //                                    <img src="${value.pfp}" class="profilePicture">
+        // <img src="${value.pfp}" class="profilePicture">
         if(fullName.toUpperCase().includes(searchString, 0)){
             accountsFound += `
                             <div class="userItem" data-User-id="${value.userID}">

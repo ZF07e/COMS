@@ -29,7 +29,6 @@ let apprv = document.getElementById("approved");
 let rejec = document.getElementById("rejected");
 let archv = document.getElementById("archives");
 
-
 inbox.addEventListener("click", (e)=>{
     switchTo(inboxbod, inbox);
 });

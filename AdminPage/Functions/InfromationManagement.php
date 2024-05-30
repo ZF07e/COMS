@@ -272,6 +272,38 @@
         $mysqli->close();
         header("Location: ../userManagement.php");
     }
+    
+    function removeAssoc(){
+        $selectedAssoc = $_POST['selectedAssoc'];
+        $database = new Database();
+        $mysqli = $database->getConnection();
+
+        $query = "UPDATE associations SET isActive = 0 WHERE id = ?";
+        $stmt = $mysqli->stmt_init();
+        if(!$stmt->prepare($query)){
+            die("SQL Error". $mysqli->error);
+        }
+        $stmt->bind_param("s", $selectedAssoc);
+        $stmt->execute();
+        $mysqli->close();
+
+        // header("Location: ../associations.php");
+    }
+
+    function activAssoc(){
+        $selectedAssoc = $_POST['selectedAssoc'];
+        $database = new Database();
+        $mysqli = $database->getConnection();
+
+        $query = "UPDATE associations SET isActive = 1 WHERE id = ?";
+        $stmt = $mysqli->stmt_init();
+        if(!$stmt->prepare($query)){
+            die("SQL Error". $mysqli->error);
+        }
+        $stmt->bind_param("s", $selectedAssoc);
+        $stmt->execute();
+        $mysqli->close();
+    }
 
     if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['saveBTN'])){
         updateUserInfo();
@@ -287,5 +319,11 @@
     }
     elseif($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['assocChangeBTN'])){
         updateAssociation();
+    }
+    elseif($_GET['action'] == 'removeAssoc'){
+        removeAssoc();
+    }
+    elseif($_GET['action'] == 'activAssoc'){
+        activAssoc();
     }
 ?>
