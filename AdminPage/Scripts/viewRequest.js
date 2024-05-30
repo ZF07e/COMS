@@ -274,7 +274,7 @@ function signature(){
         var dataUrl = offscreenCanvas.toDataURL();
         console.log(selectedRequest);
         $.ajax({
-          url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php",
+          url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=approved",
           method: "POST",
           data: {signature: dataUrl, id: selectedRequest},
           success: function(response){
@@ -328,6 +328,29 @@ function signature(){
 
   $("#rejectRequest").click(()=>{
     $("#ApprovePopUp_Con").css("display", "none");
+    let filePath = '../Images/reject.png';
+
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function() {
+        var reader = new FileReader();
+        reader.onload = function() {
+            rejectImage = reader.result;
+            $.ajax({
+                url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=rejected",
+                method: "POST",
+                data: {signature: rejectImage, id: selectedRequest},
+                success: function(response){
+                  console.log(response);
+                }
+            })
+        };
+        reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', filePath);
+    xhr.send();
+    
+    window.location.reload();
   });
 
 
@@ -360,7 +383,7 @@ function signature(){
       var dataUrl = offscreenUploadCanvas.toDataURL();
       console.log(selectedRequest);
       $.ajax({
-        url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php",
+        url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=approved",
         method: "POST",
         data: {signature: dataUrl, id: selectedRequest},
         success: function(response){

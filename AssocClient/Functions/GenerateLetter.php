@@ -4,15 +4,19 @@
     require 'vendor/autoload.php';
 
     use Dompdf\Dompdf;
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
 
     $text;
     $recipientTo;
     $endorsed;
     $noted;
     $approved;
+    $subject;
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $text = $_POST['text'] ?? '';
+        $subject = $_POST['subject'];
     
         // Retrieve and decode the recipient arrays
         $recipientTo = json_decode($_POST['recipientTo'] ?? '[]', true);
@@ -22,9 +26,9 @@
     
         // Function to process recipients
         function processRecipients($recipients, $type) {
-            //echo "Recipients for $type:<br>";
+            // echo "Recipients for $type:<br>";
             foreach ($recipients as $recipient) {
-                //echo "Name: " . htmlspecialchars($recipient['firstname'])." ".htmlspecialchars($recipient['lastname']). "<br>";
+                // echo "Name: " . htmlspecialchars($recipient['firstname'])." ".htmlspecialchars($recipient['lastname']). "<br>";
                 // echo "Email: " . htmlspecialchars($recipient['email']) . "<br>";
                 // echo "Position: " . htmlspecialchars($recipient['position']) . "<br>";
             }
@@ -485,6 +489,57 @@
         return 'LTTR'.$code.'-'.$randomNumber;
     }
 
+    function sendEmail($subject){
+        $recipientTo = json_decode($_POST['recipientTo'] ?? '[]', true);
+        $endorsed = json_decode($_POST['endorsed'] ?? '[]', true);
+        $noted = json_decode($_POST['noted'] ?? '[]', true);
+
+        $mail = new PHPMailer(true);
+        try {
+            // Server settings
+            $mail->SMTPDebug = 0; // Enable verbose debug output (0 = off, 2 = on)
+            $mail->isSMTP(); // Set mailer to use SMTP
+            $mail->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true; // Enable SMTP authentication
+            $mail->Username = 'sti.college.coms@gmail.com'; // SMTP username
+            $mail->Password = 'vbvp hefu avlr fizn'; // SMTP password - use an app-specific password if 2FA is enabled
+            $mail->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
+            $mail->Port = 587; // TCP port to connect to
+
+            // Recipients
+            $mail->setFrom('sti.college.coms@gmail.com', 'COMS-Notifier');
+
+            for($x = 0; $x < count($endorsed); $x++){
+                $mail->addAddress($endorsed[$x]['email'], $endorsed[$x]['firstname'].' '.$endorsed[$x]['lastname']);
+            }
+            for($x = 0; $x < count($noted); $x++){
+                $mail->addAddress($noted[$x]['email'], $noted[$x]['firstname'].' '.$noted[$x]['lastname']);
+            }
+            for($x = 0; $x < count($recipientTo); $x++){
+                $mail->addAddress($recipientTo['email'], $recipientTo['firstname'].' '.$recipientTo['lastname']);
+            }
+            // $mail->addAddress('ellen@example.com'); // Name is optional
+            // $mail->addReplyTo('info@example.com', 'Information');
+            // $mail->addCC('cc@example.com');
+            // $mail->addBCC('bcc@example.com');
+
+            // Attachments
+            // $mail->addAttachment('/var/tmp/file.tar.gz'); // Add attachments
+            // $mail->addAttachment('/tmp/image.jpg', 'new.jpg'); // Optional name
+
+            // Content
+            $mail->isHTML(true); // Set email format to HTML
+            $mail->Subject = $subject;
+            $mail->Body    = 'A document letter is sent to you for approval. <br> Click the link to view here: <a href="http://localhost/COMS/AdminPage/Request.php">View Document</a>';
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+            $mail->send();
+            //echo 'Message has been sent';
+        } catch (Exception $e) {
+            //echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+
     $uniqueID = generateUniqueID();
     $pdfData = $dompdf->output();
     $folderPath = '../../PDF-FILES/';
@@ -508,9 +563,10 @@
         $mysqli->close();
     }    
 
-    savePdfToDatabase($uniqueID, $writer, "Inbox", "No Subject", $pdfName, $htmlContent);
+    savePdfToDatabase($uniqueID, $writer, "Inbox", $subject, $pdfName, $htmlContent);
     insertRecipients($uniqueID);
+    sendEmail($subject);
 
-    //$dompdf->stream("Coders_Club_Letter.pdf", array("Attachment" => 0));
+    //$dompdf->stream("Coders_Club_Letter.pdf", array("Attachment" => 0))
     header("Location: ../Request.php");
 ?>

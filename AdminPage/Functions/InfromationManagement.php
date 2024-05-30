@@ -60,7 +60,7 @@
 
         $fullname = $firstName." ".$lastName;
 
-        if ($adviser == $fullname && $position != "adviser"){
+        if ($adviser == $fullname && $position != "Adviser"){
             $removeAdviser = "UPDATE associations SET adviser = 'Unassigned'  WHERE association = ?";
 
             $stmt = $mysqli->stmt_init();
@@ -70,7 +70,7 @@
             $stmt->bind_param("s", $affiliation);
             $stmt->execute();
         }
-        else{
+        else {
             $adviserQuery = "UPDATE associations SET adviser = ?  WHERE association = ?";
 
             $stmt = $mysqli->stmt_init();

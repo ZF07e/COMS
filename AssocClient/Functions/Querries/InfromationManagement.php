@@ -36,8 +36,6 @@
         return null;
     }
     $mysqli->close();
-        
-    
 
     function updateAssociation($assoc){
         if(!isset($_POST["submit"])){

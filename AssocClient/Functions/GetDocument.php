@@ -5,8 +5,29 @@
     function getDocuments() {
         $database = new Database();
         $mysqli = $database->getConnection();
+        $email = $_SESSION['email'];
+        $assocCode;
 
-        $query = 'SELECT id, sender, status, subject, filename, htmlContent, DATE(timestamp) as date_only FROM documents';
+        $query = "SELECT associationCode FROM users WHERE email = ?";
+
+        $stmt = $mysqli->stmt_init();
+        if(!$stmt->prepare($query)){
+            die("SQL Error". $mysqli->error);
+        }
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $data = $result->fetch_assoc();
+
+        if(gettype($data) == "array"){
+            $assocCode = implode($data);
+        }else{
+            $assocCode = $data;
+        }
+
+        $query = "SELECT id, sender, status, subject, filename, htmlContent, DATE(timestamp) as date_only 
+                    FROM documents
+                    WHERE id LIKE CONCAT('LTTR', '$assocCode', '%')";
         $result = $mysqli->query($query);
 
         if (!$result) {

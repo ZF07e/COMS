@@ -23,10 +23,6 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
                 value: `${e.email + "," + e.position + "," + e.firstName + "," + e.lastName}`
             });
         });
-        console.log(myData);
-
-        //gets The value of Subject Input
-        //$("#SubjectInput").text();
         
         let mySelect1 = new MultiSelect2(".field1", {
             options: myData,
@@ -104,6 +100,7 @@ $("#sendReq").on("click", (e)=>{
 
     console.log(selectedRecipients.to);
     const delta = quill.root.innerHTML;
+    const subject = $("#SubjectInput").val();
     console.log(delta);
     console.log("Recipient Data" + selectedRecipients.to);
     
@@ -115,6 +112,11 @@ $("#sendReq").on("click", (e)=>{
     textField.type = 'hidden';
     textField.name = 'text';
     textField.value = delta;
+
+    const subjectField = document.createElement('input');
+    subjectField.type = 'hidden';
+    subjectField.name = 'subject';
+    subjectField.value = JSON.stringify(subject);
 
     const reciepientTOField = document.createElement('input');
     reciepientTOField.type = 'hidden';
@@ -137,6 +139,7 @@ $("#sendReq").on("click", (e)=>{
     // approvedField.value = JSON.stringify(selectedRecipients.approved);
 
     form.appendChild(textField);
+    form.appendChild(subjectField);
     form.appendChild(reciepientTOField);
     form.appendChild(endorsedField);
     form.appendChild(notedField);
