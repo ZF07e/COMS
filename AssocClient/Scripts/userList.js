@@ -1,8 +1,4 @@
-/*
-
-    Duplicated Code, Members Within The Club Lang dito ;>
-
-*/
+$("#associationButton").css("display", "none");
 
 fetch('http://localhost/COMS/AssocClient/Functions/Querries/getUsers.php')
     .then(response => response.json())
@@ -12,6 +8,14 @@ fetch('http://localhost/COMS/AssocClient/Functions/Querries/getUsers.php')
     })
     .catch(error => console.error('Error:', error));
 
+fetch('http://localhost/COMS/AssocClient/Functions/Querries/InfromationManagement.php?action=getPosition')
+    .then(response => response.json())
+    .then(data => {
+        if(data == "President" || data == "Adviser" || data == "Vice President"){
+            $("#associationButton").css("display", "inline");
+        }
+    })
+    .catch(error => console.error('Error:', error));
 
 function renderUserList(userList){//Function For Rendering 
     let users = "";
