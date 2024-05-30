@@ -22,19 +22,13 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
                 value: `${e.email + "," + e.position + "," + e.firstName + "," + e.lastName}`
             });
         });
-
-        //gets The value of Subject Input
-        $("#SubjectInput").text();
         
         let mySelect1 = new MultiSelect2(".field1", {
             options: myData,
             autocomplete: true,
             onChange: value => {
-                let formattedValue = []
-                let incrmt = 0;
-                formattedValue[incrmt] = {email: value[incrmt].split(",")[0], position: value[incrmt].split(",")[1], 
-                                        firstname: value[incrmt].split(",")[2], lastname: value[incrmt].split(",")[3]}
-                incrmt++;
+                let formattedValue = {email: value.split(",")[0], position: value.split(",")[1], 
+                                        firstname: value.split(",")[2], lastname: value.split(",")[3]}
                 selectedRecipients.to = formattedValue;
             }
         });
@@ -102,6 +96,7 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
 $("#sendReq").on("click", (e)=>{
     e.preventDefault();
     const delta = quill.root.innerHTML;
+    const subject = $("#SubjectInput").val();
     console.log(delta);
     console.log("Recipient Data" + selectedRecipients.to);
     
@@ -113,6 +108,11 @@ $("#sendReq").on("click", (e)=>{
     textField.type = 'hidden';
     textField.name = 'text';
     textField.value = delta;
+
+    const subjectField = document.createElement('input');
+    subjectField.type = 'hidden';
+    subjectField.name = 'subject';
+    subjectField.value = JSON.stringify(subject);
 
     const reciepientTOField = document.createElement('input');
     reciepientTOField.type = 'hidden';
@@ -135,6 +135,7 @@ $("#sendReq").on("click", (e)=>{
     // approvedField.value = JSON.stringify(selectedRecipients.approved);
 
     form.appendChild(textField);
+    form.appendChild(subjectField);
     form.appendChild(reciepientTOField);
     form.appendChild(endorsedField);
     form.appendChild(notedField);

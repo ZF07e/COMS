@@ -427,6 +427,11 @@ main{
     border-radius: 0.3rem;
 }
 
+#reciepientStatusRejected{
+    font-size: 0.9rem;
+    color: rgb(253, 56, 56);
+}
+
 #downloadButton:hover{
     background-color: #ffffffc4;
 }
