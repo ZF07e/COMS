@@ -41,7 +41,7 @@
                             header("Location: http://localhost/COMS/AdminPage/index.php");
                             exit();
                         }
-                        elseif($role == "Secretary"){
+                        elseif($role == "Adviser"){
                             header("Location: http://localhost/COMS/AssocClient/index.php");
                             exit();
                         }
@@ -49,7 +49,23 @@
                             header("Location: http://localhost/COMS/AssocClient/index.php");
                             exit();
                         }
-                        elseif($role == "Adviser"){
+                        elseif($role == "Secretary"){
+                            header("Location: http://localhost/COMS/AssocClient/index.php");
+                            exit();
+                        }
+                        elseif($role == "Auditor"){
+                            header("Location: http://localhost/COMS/AssocClient/index.php");
+                            exit();
+                        }
+                        elseif($role == "Treasurer"){
+                            header("Location: http://localhost/COMS/AssocClient/index.php");
+                            exit();
+                        }
+                        elseif($role == "Head Officer"){
+                            header("Location: http://localhost/COMS/AssocClient/index.php");
+                            exit();
+                        }
+                        elseif($role == "Officer"){
                             header("Location: http://localhost/COMS/AssocClient/index.php");
                             exit();
                         }
