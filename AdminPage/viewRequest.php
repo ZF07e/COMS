@@ -1,3 +1,6 @@
+<?php
+    include ("../LandingPage/Functions/SessionManagement.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -121,15 +124,16 @@
 
         <main>
             <section id="topHeader"> 
-                <div id="backButton">
-                    &#8634; back
-                </div>
+                <div id="topPrev">
+                    <div id="backButton">
+                        &#8634; back
+                    </div>
 
-                <div id="headerTitleRequest">
-                    [Sample Title]
+                    <div id="headerTitleRequest">
+                        [Sample Title]
+                    </div>
                 </div>
-
-                <div> 
+                <div id="ActionsContainer"> 
                     <button id="approveRequest">Approve</button>
                     <button id="rejectRequest">Reject</button>
                 </div>
@@ -142,6 +146,7 @@
                         <div id="documentReqBody">
                             <iframe id="documentPrev" src = "" width="100%" height="100%"></iframe>
                         </div>
+                      
                     </div>
                 </section>
 

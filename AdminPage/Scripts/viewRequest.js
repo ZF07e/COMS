@@ -13,7 +13,7 @@ fetch(`http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=getDocu
             if (e.id == selectedRequest) {
                 id = e.id;
                 $("#headerTitleRequest").text(e.subject);
-                $("#documentPrev").attr('src', `../PDF-FILES/${e.id}.pdf`);
+                $("#documentPrev").attr('src', `../PDF-FILES/${e.id}.pdf#toolbar=0`);
             }
         });
         
@@ -290,6 +290,7 @@ function signature(){
     
     $("#exitApproveHeader").click(()=>{
       $("#ApprovePopUp_Con").css("display", "none");
+      $("body").css("overflow", "auto");
       clearCanvas();
       localStorage.removeItem("image");
       $("#fileSelector").val("");
@@ -302,6 +303,7 @@ function signature(){
 
     $("#cancelUpload").click(()=>{
       $("#ApprovePopUp_Con").css("display", "none");
+      $("body, html").css("overflow", "auto");
       clearCanvas();
       localStorage.removeItem("image");
       $("#fileSelector").val("");
@@ -321,6 +323,7 @@ function signature(){
     $("#labelFile").text("Choose A File");
     $("#ApprovePopUp_Con").css("display", "flex");
     localStorage.removeItem("image");
+    $("body, html").css("overflow", "hidden");
   });
 
   $("#rejectRequest").click(()=>{

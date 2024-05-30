@@ -2,7 +2,7 @@ const quill = new Quill('#editor', {
     theme: 'snow'
   });
 
-myData = [];
+
 
 let selectedRecipients = {
     to: [],
@@ -15,6 +15,7 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
     .then(response => response.json())
     .then(data => {
         console.log(data);
+        myData = [];
         data.forEach((e)=>{
             let fullName = e.firstName + " " + e.lastName;
             myData.push({
@@ -22,19 +23,17 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
                 value: `${e.email + "," + e.position + "," + e.firstName + "," + e.lastName}`
             });
         });
+        console.log(myData);
 
         //gets The value of Subject Input
-        $("#SubjectInput").text();
+        //$("#SubjectInput").text();
         
         let mySelect1 = new MultiSelect2(".field1", {
             options: myData,
             autocomplete: true,
             onChange: value => {
-                let formattedValue = []
-                let incrmt = 0;
-                formattedValue[incrmt] = {email: value[incrmt].split(",")[0], position: value[incrmt].split(",")[1], 
-                                        firstname: value[incrmt].split(",")[2], lastname: value[incrmt].split(",")[3]}
-                incrmt++;
+                let formattedValue = {email: value.split(",")[0], position: value.split(",")[1], 
+                                        firstname: value.split(",")[2], lastname: value.split(",")[3]}
                 selectedRecipients.to = formattedValue;
             }
         });
@@ -46,6 +45,7 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
             autocomplete: true,
             icon: "fa fa-times",
             onChange: value => {
+                console.log(value);
                 let formattedValue = []
                 let incrmt = 0;
 
@@ -101,6 +101,8 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
 
 $("#sendReq").on("click", (e)=>{
     e.preventDefault();
+
+    console.log(selectedRecipients.to);
     const delta = quill.root.innerHTML;
     console.log(delta);
     console.log("Recipient Data" + selectedRecipients.to);

@@ -10,7 +10,7 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
 function funktion(Associations){
     Associations.forEach((association)=>{
         if(association.id == selectedId){
-            document.querySelector(".imageContainer").innerHTML += `<img src="${association.image}" alt="Profile" class="associationProfile">`;
+            document.querySelector(".imageContainer").innerHTML += `<img src="${association.image ?? "../Images/COMS.png"}" alt="Profile" class="associationProfile">`;
             document.querySelector(".associationTitle").innerHTML = association.association;
             document.querySelector(".adviser").innerHTML = association.adviser;
             document.querySelector(".description").innerHTML = association.description;

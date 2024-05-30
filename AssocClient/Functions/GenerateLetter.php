@@ -147,7 +147,7 @@
     $writerPosition = getUserPosition();
     $association = getUserAffiliation();
     $date = date('F j, Y');
-    $recipientFullname = trim($recipientTo[0]['firstname']." ".$recipientTo[0]['lastname']);
+    $recipientFullname = trim($recipientTo['firstname']." ".$recipientTo['lastname']);
 
     function insertRecipients($documentID){
         $endorsed = json_decode($_POST['endorsed'] ?? '[]', true);
@@ -419,7 +419,7 @@
                 <p class="letterInfo">
                     '.$date.'<br>
                     <strong>'.$recipientFullname.'</strong><br>
-                    '.trim($recipientTo[0]['position']).'<br>
+                    '.trim($recipientTo['position']).'<br>
                     <i>STI College Alabang</i>
                 </p>
 

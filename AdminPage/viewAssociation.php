@@ -69,6 +69,34 @@
 
         </header>  
 
+        <div class="PopUpCon_" id="deleteClub">
+            <form action="" class="_PopUpForm" id="deleteAssociation">
+                <div class="_PopUpTop">
+                    <h3 class="_PopUpType">Alert</h3>
+                    <p class="_PopUpExit" id="X_exit">&#10005;</p>
+                </div>  
+                <p>You're About To Deactivate This Club/Organization?</p>
+                <div class="_PopUpOptionsCon">
+                    <button type="submit" class="_AcceptOption" id="Y_Option">Yes</button>
+                    <button type="reset" class="_NoOption" id="N_Option">No</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="PopUpCon_" id="Activate">
+            <form action="" class="_PopUpForm" id="ActivateAssociation">
+                <div class="_PopUpTop">
+                    <h3 class="_PopUpType">Alert</h3>
+                    <p class="_PopUpExit" id="X_exitActive">&#10005;</p>
+                </div>  
+                <p>Activate This Club/Organization?</p>
+                <div class="_PopUpOptionsCon">
+                    <button type="submit" class="_AcceptOption" id="Y_OptionActive">Yes</button>
+                    <button type="reset" class="_NoOption" id="N_OptionActive">No</button>
+                </div>
+            </form>
+        </div>
+
         <!-- view user -->
         <div class="upperlayer" id="viewUser">
             <form>
@@ -101,8 +129,8 @@
                         <p id="associationType"></p>      
                     </div>
                     <div class="divbuttonContainer">
-                        <button id="editAssociation" name = "ediBTN">Edit</button>
-                        <button id="removeAssoc">Remove</button>
+                        <button id="activateAssoc">Activate</button>
+                        <button id="removeAssoc">Deactivate</button>
                     </div>
                 </div>
                 

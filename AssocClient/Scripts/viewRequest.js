@@ -8,7 +8,7 @@ fetch(`http://localhost/COMS/AssocClient/Functions/GetDocument.php?action=getDoc
             if (e.id == selectedRequest) {
                 id = e.id;
                 $("#headerTitleRequest").text(e.subject);
-                $("#documentPrev").attr('src', `../PDF-FILES/${e.id}.pdf`);
+                $("#documentPrev").attr('src', `../PDF-FILES/${e.id}.pdf#toolbar=0`);
             }
         });
     })

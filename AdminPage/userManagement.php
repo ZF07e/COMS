@@ -109,12 +109,14 @@
                     <input type="text" class="normalInput" placeholder="Outlook Email" id="User_Email" name = "newEmail">
                     <select name="newPosition" id="EditselectedPosition">
                         <option value="" selected disabled>- Position -</option>
+                        <option value="Unassigned">Unassigned</option>
                         <option value="Adviser">Adviser</option>
-                        <option value="President">President</option>
+                        <option value="President">President</option>               
                     </select>
 
                     <select name="newAffiliation" id="EdithandlingAssociation">
                         <option value="" selected disabled>- Association -</option>
+                        <option value="Unassigned">Unassigned</option>
                     </select>
                     <input type="hidden" id="ID" name="userID">
                     <button type="submit" id="saveChanges" name = "saveBTN">SaveChanges</button>
@@ -147,6 +149,7 @@
                 <input type="text" class="normalInput" placeholder="Outlook Email" name = "email">
                 <select name="position" id="type">
                     <option value="" selected disabled>- Role -</option>
+                    <option value="Unassigned">Unassigned</option>
                     <option value="Adviser">Adviser</option>
                     <option value="President">President</option>
                 </select>

@@ -273,6 +273,13 @@ main{
     margin-bottom: 0.7rem;
 }
 
+#topPrev{
+    display: flex;
+    justify-content: space-between;
+    width: 45%;
+    padding: 0rem, 5rem;
+}
+
 #backButton{
     display: flex;
     font-weight: 500;
@@ -419,6 +426,11 @@ main{
 #reciepientStatusSigned{
     font-size: 0.9rem;
     color: #6bce7cc7;
+}
+
+#reciepientStatusRejected{
+    font-size: 0.9rem;
+    color: #aa3333;
 }
 
 #downloadButton{
@@ -820,4 +832,31 @@ display: none;
     border: none;
     border-radius: 0.3rem;
     padding: 0.5rem 1rem;
+}
+
+@media (max-width: 568px){
+    #topHeader{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #ActionsContainer{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 1rem;
+        row-gap: 0.6rem;
+    }
+
+    #topPrev{
+        display: flex;
+        width: 100%;
+        padding: 0rem 5rem;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #ApproveBody:focus{
+        scroll-snap-stop:always;
+    }
 }
