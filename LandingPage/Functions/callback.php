@@ -71,16 +71,19 @@
                         }
                         else {
                             // User not authorized (role not match)
-                            echo "You do not have permission to access this page.";
+                            //echo "You do not have permission to access this page.";
+                            header("Location: http://localhost/COMS/LandingPage/Index.php");
                             exit();
                         }
                     } else {
                         // User not found in the database
-                        echo "User not found in the database. <br>";
+                        //echo "User not found in the database. <br>";
+                        header("Location: http://localhost/COMS/LandingPage/Index.php");
                         exit();
                     }
                 } else {
                     echo "Error: " . $mysqli->error;
+                    header("Location: http://localhost/COMS/LandingPage/Index.php");
                     exit();
                 }
             }

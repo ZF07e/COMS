@@ -108,6 +108,7 @@ function displayRecipient(Users){
 function checkIfDownloadable(Users){
   let totalRecipient = Users.length;
   let totalSigned = 0;
+  let totalRejected = 0;
 
   Users.forEach((e)=>{
       if(e.status == "Signed"){
@@ -115,12 +116,40 @@ function checkIfDownloadable(Users){
       }
   });
 
+  Users.forEach((e)=>{
+    if(e.status == "Rejected"){
+        totalRejected++;
+    }
+});
+
   console.log(totalRecipient + " - " + totalSigned);
   if(totalSigned === totalRecipient){
       $("#downloadButton").removeAttr("disabled", false);
+      console.log(selectedRequest);
+      $.ajax({
+        url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=updateDocumentStatusApproved",
+        method: "POST",
+        data: {id: selectedRequest},
+        success: function(response){
+            console.log(response);
+        }
+    })
+  }
+  else if(totalRecipient === totalRejected){
+    $("#downloadButton").removeAttr("disabled", false);
+      console.log(selectedRequest);
+      $.ajax({
+        url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=updateDocumentStatusRejected",
+        method: "POST",
+        data: {id: selectedRequest},
+        success: function(response){
+            console.log(response);
+        }
+    })
+      $("#downloadButton").attr("disabled", true);
   }
   else{
-      $("#downloadButton").attr("disabled", true);
+    $("#downloadButton").attr("disabled", true);
   }
 } 
 

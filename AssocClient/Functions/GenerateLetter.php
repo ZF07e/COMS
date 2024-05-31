@@ -48,6 +48,7 @@
         $database = new Database();
         $mysqli = $database->getConnection();
         $fileName;
+        $imageURL;
 
         $query = "SELECT fileName FROM associationimages WHERE name = ?";
         
@@ -65,7 +66,14 @@
         } else {
             $fileName = $data;
         }
-        $imageURL = "../../Images/AssosiationsPfp/".$fileName;
+
+        if($fileName == null){
+            $fileName = "COMS.png";
+            $imageURL = "../../Images/".$fileName;
+        }
+        else{
+            $imageURL = "../../Images/AssosiationsPfp/".$fileName;
+        }
         $stmt->close();
         $mysqli->close();
 
