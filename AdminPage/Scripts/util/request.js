@@ -72,14 +72,14 @@ function switchTo(document, tab){
 //     });
 // });
 
-$("#deleteMail").click((ev)=>{
-    ev.stopPropagation();
-    console.log("remove to database");
-});
-
 $("#archiveMail").click((ev)=>{
     ev.stopPropagation();
     console.log("change request status to archived");
+});
+
+$("#deleteMail").click((ev)=>{
+    ev.stopPropagation();
+    console.log("remove to database");
 });
 
 function displayRequest(documents){

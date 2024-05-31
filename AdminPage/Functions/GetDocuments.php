@@ -101,6 +101,38 @@
         $mysqli->close();
     }
 
+    function updateDocumentStatusApproved(){
+        $selectedID = $_POST['id'];
+        $database = new Database();
+        $mysqli = $database->getConnection();
+
+        $query = "UPDATE documents SET status = 'Approved' WHERE id = '$selectedID'";
+
+        $stmt = $mysqli->stmt_init();
+        if(!$stmt->prepare($query)){
+            die("SQL Error". $mysqli->error);
+        }
+        $stmt->execute();
+        $stmt->close();
+        $mysqli->close();
+    }
+
+    function updateDocumentStatusRejected(){
+        $selectedID = $_POST['id'];
+        $database = new Database();
+        $mysqli = $database->getConnection();
+
+        $query = "UPDATE documents SET status = 'Rejected' WHERE id = '$selectedID'";
+
+        $stmt = $mysqli->stmt_init();
+        if(!$stmt->prepare($query)){
+            die("SQL Error". $mysqli->error);
+        }
+        $stmt->execute();
+        $stmt->close();
+        $mysqli->close();
+    }
+
     function updateStatusReject($name, $selectedID){
         $database = new Database();
         $mysqli = $database->getConnection();
@@ -211,5 +243,11 @@
     }
     elseif(isset($_GET['action']) && $_GET['action'] == 'approved'){
         approved();
+    }
+    elseif(isset($_GET['action']) && $_GET['action'] == 'updateDocumentStatusApproved'){
+        updateDocumentStatusApproved();
+    }
+    elseif(isset($_GET['action']) && $_GET['action'] == 'updateDocumentStatusRejected'){
+        updateDocumentStatusRejected();
     }
 ?>
