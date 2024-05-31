@@ -19,7 +19,7 @@ window.onload = ()=>{
   }
 
   if(approved){
-    var notification = alertify.notify('Approved', 'success', 4);  
+    var notification = alertify.notify('Letter Signed', 'success', 4);  
     localStorage.removeItem("approved");
   }
 }
@@ -329,7 +329,7 @@ function signature(){
           method: "POST",
           data: {signature: dataUrl, id: selectedRequest},
           success: function(response){
-              console.log(response);
+              //console.log(response);
               
           }
       })
