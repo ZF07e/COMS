@@ -19,6 +19,19 @@ fetch('http://localhost/COMS/AssocClient/Functions/GetDocument.php?action=getDoc
     })
     .catch(error => console.error('Error:', error));
 
+
+fetch('http://localhost/COMS/LandingPage/Functions/getPosition.php')
+.then(response => response.json())
+.then(data => {
+    if(data == "Adviser" || data == "President" || data == "Vice President" || data == "Secretary"){
+        $("#CreateRequest").css("display", "inline");
+    }
+    else{
+        $("#CreateRequest").css("display", "none");
+    }
+})
+.catch(error => console.error('Error:', error));
+
 let inboxbod = document.getElementById("containerBody");
 let apprvbod = document.getElementById("containerBodyApproved");
 let rejecbod = document.getElementById("containerBodyRejected");

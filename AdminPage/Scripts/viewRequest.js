@@ -2,6 +2,28 @@ let Documents = [];
 let selectedRequest = JSON.parse(localStorage.getItem("selectedRequest"));
 let resp;
 
+window.onload = ()=>{ 
+  let rejected = localStorage.getItem("rejected");
+  let approved = localStorage.getItem("approved");
+  let cancelled = localStorage.getItem("cancelled");
+
+
+  if(rejected){
+    var notification = alertify.notify('Rejected', 'custom', 4);  
+    localStorage.removeItem("rejected");
+  }
+
+  if(cancelled){
+    var notification = alertify.notify('Cancelled', 'custom', 4);  
+    localStorage.removeItem("cancelled");
+  }
+
+  if(approved){
+    var notification = alertify.notify('Approved', 'success', 4);  
+    localStorage.removeItem("approved");
+  }
+}
+
 fetch(`http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=getDocumentDetails`)
     .then(response => response.json())
     .then(data => {
@@ -279,9 +301,11 @@ function signature(){
           data: {signature: dataUrl, id: selectedRequest},
           success: function(response){
               console.log(response);
+              
           }
       })
         //console.log(dataUrl);
+        localStorage.setItem("approved", true);
       }
       else{
         alert("bruh")
@@ -317,8 +341,6 @@ function signature(){
   })();
 
 
-
-
   $("#approveRequest").click(()=>{
     $("#labelFile").text("Choose A File");
     $("#ApprovePopUp_Con").css("display", "flex");
@@ -327,30 +349,40 @@ function signature(){
   });
 
   $("#rejectRequest").click(()=>{
-    $("#ApprovePopUp_Con").css("display", "none");
-    let filePath = '../Images/reject.png';
 
-    var xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
-    xhr.onload = function() {
-        var reader = new FileReader();
-        reader.onload = function() {
-            rejectImage = reader.result;
-            $.ajax({
-                url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=rejected",
-                method: "POST",
-                data: {signature: rejectImage, id: selectedRequest},
-                success: function(response){
-                  console.log(response);
-                }
-            })
-        };
-        reader.readAsDataURL(xhr.response);
-    };
-    xhr.open('GET', filePath);
-    xhr.send();
+    alertify.confirm("Are you sure you want to reject this letter?.",
+    function(){
+      localStorage.setItem("rejected", true);
+      $("#ApprovePopUp_Con").css("display", "none");
+      let filePath = '../Images/reject.png';
+  
+      var xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = function() {
+          var reader = new FileReader();
+          reader.onload = function() {
+              rejectImage = reader.result;
+              $.ajax({
+                  url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=rejected",
+                  method: "POST",
+                  data: {signature: rejectImage, id: selectedRequest},
+                  success: function(response){
+                    console.log(response);
+                  }
+              })
+          };
+          reader.readAsDataURL(xhr.response);
+      };
+      xhr.open('GET', filePath);
+      xhr.send();
+
+      window.location.reload();
+    },
+    function(){
+      localStorage.setItem("cancelled", true);
+      window.location.reload();
+    }).setHeader('<strong>Reject Confirmation</strong>');
     
-    window.location.reload();
   });
 
 
@@ -388,8 +420,10 @@ function signature(){
         data: {signature: dataUrl, id: selectedRequest},
         success: function(response){
             console.log(response);
+            localStorage.setItem("approved", true);
         }
     })
+    localStorage.setItem("approved", true);
   }
   else{
     alert("bruh");

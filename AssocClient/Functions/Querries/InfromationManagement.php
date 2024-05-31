@@ -26,8 +26,17 @@
         elseif($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['saveBTN'])){
             updateUserInfo($affiliation);
         }
+        elseif($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['removeUser'])){
+            removeUser();
+        }
+        elseif($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['activateUser'])){
+            activateUser();
+        }
         elseif(isset($_GET['action']) && $_GET['action'] == 'getPosition'){
             checkPosition();
+        }
+        elseif(isset($_GET['action']) && $_GET['action'] == 'checkReciptient'){
+            checkRecipient($email);
         }
         
     } else {
@@ -36,6 +45,92 @@
         return null;
     }
     $mysqli->close();
+
+    function checkRecipient($email){
+        $database = new Database();
+        $mysqli = $database->getConnection();
+
+        $query = "SELECT firstName, lastName FROM users WHERE email = ?";
+        $stmt = $mysqli->stmt_init();
+        if(!$stmt->prepare($query)){
+            die("SQL Error". $mysqli->error);
+        }
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->bind_result($value1, $value2);
+        $stmt->fetch();
+        $stmt->close();
+
+        $fullName = $value1 . " " . $value2;
+        $jsonArray = json_encode($fullName);
+        header('Content-Type: application/json');
+        echo $jsonArray;
+    }
+
+    function removeUser(){
+        $email = $_POST['email'];
+        $name = $_POST['name'];
+        $adviser;
+          
+        $database = new Database();
+        $mysqli = $database->getConnection();
+
+        $queryGetAdviser = "SELECT adviser FROM associations WHERE adviser = ?;";
+
+        $stmt = $mysqli->stmt_init();
+        if(!$stmt->prepare($queryGetAdviser)){
+            die("SQL Error". $mysqli->error);
+        }
+        $stmt->bind_param("s", $name);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $data = $result->fetch_assoc();
+
+        if(gettype($data) == "array"){
+            $adviser = implode($data);
+        }
+
+        if ($adviser == $name){
+            $removeAdviser = "UPDATE associations SET adviser = 'Unassigned'  WHERE adviser = ?";
+
+            $stmt = $mysqli->stmt_init();
+            if(!$stmt->prepare($removeAdviser)){
+                die("SQL Error". $mysqli->error);
+            }
+            $stmt->bind_param("s", $name);
+            $stmt->execute();
+            //echo "Adviser has been removed from association table <br>";
+        }
+
+        $query = "UPDATE users SET userStatus = 0 WHERE email = ?";
+
+        $stmt = $mysqli->stmt_init();
+        if(!$stmt->prepare($query)){
+            die("SQL Error". $mysqli->error);
+        }
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $mysqli->close();
+        header("Location: ../../userManagement.php");
+    }
+
+    function activateUser(){
+        $email = $_POST['newEmail'];
+
+        $database = new Database();
+        $mysqli = $database->getConnection();
+
+        $query = "UPDATE users SET userStatus = 1 WHERE email = ?";
+
+        $stmt = $mysqli->stmt_init();
+        if(!$stmt->prepare($query)){
+            die("SQL Error". $mysqli->error);
+        }
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $mysqli->close();
+        header("Location: ../../userManagement.php");
+    }
 
     function updateAssociation($assoc){
         if(!isset($_POST["submit"])){
@@ -79,7 +174,7 @@
         $stmt->fetch();
         $stmt->close();
 
-        $insertUser = "INSERT INTO users (firstName, lastName, email, position, affiliation, associationCode) VALUES (?, ?, ?, ?, ?, ?)";
+        $insertUser = "INSERT INTO users (firstName, lastName, email, position, affiliation, associationCode, userStatus) VALUES (?, ?, ?, ?, ?, ?, 1)";
 
         $stmt = $mysqli->stmt_init();
         if(!$stmt->prepare($insertUser)){

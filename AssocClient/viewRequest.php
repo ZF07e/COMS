@@ -11,9 +11,23 @@
         <!-- jquery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+
         <link rel="stylesheet" href="./Styles/mainStyle/general-style.css">
         <link rel="stylesheet" href="./Styles/mainStyle/header-style.css">
         <link rel="stylesheet" href="./Styles/request-style.css">
+
+        
+        <!-- alertify JavaScript -->
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+
+        <!-- Alertify CSS -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+
+        <!-- Bootstrap theme -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/bootstrap.min.css"/> 
+
+        <!-- Semantic UI theme -->
+        <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/semantic.min.css"/> -->
     </head>
     <body>
         <header>
@@ -64,6 +78,59 @@
     
         </header>  
 
+        <div id="ApprovePopUp_Con" action="">
+            <form id="ApprovePopUp">
+                <div id="ApproveHeader">
+                    <h3>Sign Document</h3>
+                    <div id="exitApproveHeader" type="reset">&#10005;</div>
+                </div>  
+
+                <div id="SignOptions">
+                    <div id="UploadSignature" class="seclectedOption">Upload</div>
+                    <div id="SignWithCanvas">Sign in Canvas</div>
+                </div>
+
+                <div id="ApproveBody">
+                    <div id="UploadBody">               
+                        <input type="file" id="fileSelector" accept=".png">
+                        <img src="" alt="" id="prevIMg" width="380" height="210" style="display: none;">
+                        <label for="fileSelector" id="labelFile">Choose A File</label>
+                            
+                        <canvas id="offscreen-canvas-upload" width="390" height="250" style="display: none;">
+                        </canvas>
+                    </div>
+
+                    <div id="SignBody">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Sign in the canvas below</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <canvas id="sig-canvas" width="390" height="250">
+                                </canvas>
+
+                                <canvas id="offscreen-sig-canvas" width="390" height="250" style="display: none;">
+                                </canvas>
+                            </div>
+                        </div>
+                   
+                        <div class="row">
+                            <div class="footerSign">
+                                <button class="btn btn-primary" id="sig-submitBtn" type="submit">Submit Signature</button>
+                                <button class="btn btn-default" id="sig-clearBtn" type="button">Clear Signature</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ApproveOptions">
+                        <button id="signUploaded" type="submit">Sign</button>
+                        <button id="cancelUpload" type="reset">Cancel</button>
+                    </div>                   
+                </div>
+            </form>  
+        </div>
+
         <main>
             <section id="topHeader"> 
                 <div id="backButton">
@@ -74,7 +141,8 @@
                     [Sample Title]
                 </div>
 
-                <div> <!--Extra div to center the Title--> </div>
+                <div id="ActionsContainer"> 
+                </div>
 
             </section>
 

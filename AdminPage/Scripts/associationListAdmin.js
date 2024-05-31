@@ -1,5 +1,13 @@
 let selectedAssociationID = JSON.parse(localStorage.getItem("selectedAssociationID")) || "";
 
+window.onload = ()=>{
+    let assocAdded = localStorage.getItem("assocAdded");
+    if(assocAdded){
+        var notification = alertify.notify('Association Added', 'success', 4);  
+        localStorage.removeItem("assocAdded");
+    }
+}
+
 //sample data code below. remove this when using fetch
 fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getAssociationList')
 .then(response => response.json())
@@ -15,6 +23,11 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
         renderAdviserOption(data)
     })
     .catch(error => console.error('Error:', error));
+
+$("#pop-upForm").submit(()=>{
+    console.log("working");
+    localStorage.setItem("assocAdded", true);
+});
 
 //render Function used for Rendering List
 function renderList(AssociationLists){

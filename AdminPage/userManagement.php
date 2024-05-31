@@ -8,14 +8,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>COMS: User Management</title>
 
+        <!-- alertify JavaScript -->
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+
+        <!-- Alertify CSS -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+
         <link rel="stylesheet" href="../AdminPage/Styles/mainStyle/header-style.css">
         <link rel="stylesheet" href="../AdminPage/Styles/mainStyle/general-style.css">
         <link rel="stylesheet" href="../AdminPage/Styles/userManagement.css">
-        
+
         <!-- jquery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
     <body>
+
         <header>
             <nav>
                 <div class="system-logo">
@@ -69,7 +76,7 @@
 
         </header>  
 
-    <!-- confirmation -->
+        <!-- confirmation -->
         <div class="upperlayer2">
             <form id="confirmation" action = "http://localhost/COMS/AdminPage/Functions/InfromationManagement.php" method = "POST">
                 <div class="confHeader">
@@ -129,37 +136,40 @@
                     <p id="selectedEmail">[Sample Email]</p>
 
                     <button type="button" id="editInfo">Edit</button>
-                    <button type="button" id="removeUser">Remove User</button>
+                    <button type="button" id="removeUser">Deactivate User</button>
+                    <button type="submit" id="activateBtn" name="activateUser">Activate</button>
                     <button type="reset" id="back">Back</button>
                 </div>
             </form>
         </div>
 
+        <div id="forPopUpUser">
+            <!-- Form 1 For Inserting -->
+            <form id="pop-upFormUser" action = "http://localhost/COMS/AdminPage/Functions/InfromationManagement.php" method = "POST">  
+                <div class="form-header">
+                    <h3>Add User</h3>
+                    <button type="reset" id="User_x_button">X</button>
+                </div>
+
+                <div class="form-body">
+                <input type="text" class="normalInput" placeholder="First Name" name = "firstName" id="u_fname">
+                    <input type="text" class="normalInput" placeholder="Last Name" name = "lastName" id="u_lname">
+                    <input type="text" class="normalInput" placeholder="Outlook Email" name = "email" id="u_email">
+                    <select name="position" id="type" id="u_pos">
+                        <option value="" selected disabled>- Role -</option>
+                        <option value="Unassigned">Unassigned</option>
+                        <option value="Adviser">Adviser</option>
+                        <option value="President">President</option>
+                    </select>
+                </div>
+
+                <div class="form-footer">
+                <button type="submit" name = "addBTN">Add</button>
+                    <button type="reset" id="User_cancel_Button">Cancel</button>
+                </div>
+            </form>
+        </div>
         
-        <!-- Form 1 For Inserting -->
-        <form id="pop-upFormUser" action = "http://localhost/COMS/AdminPage/Functions/InfromationManagement.php" method = "POST">  
-            <div class="form-header">
-                <h3>Add User</h3>
-                <button type="reset" id="User_x_button">X</button>
-            </div>
-
-            <div class="form-body">
-            <input type="text" class="normalInput" placeholder="First Name" name = "firstName">
-                <input type="text" class="normalInput" placeholder="Last Name" name = "lastName">
-                <input type="text" class="normalInput" placeholder="Outlook Email" name = "email">
-                <select name="position" id="type">
-                    <option value="" selected disabled>- Role -</option>
-                    <option value="Unassigned">Unassigned</option>
-                    <option value="Adviser">Adviser</option>
-                    <option value="President">President</option>
-                </select>
-            </div>
-
-            <div class="form-footer">
-            <button type="submit" name = "addBTN">Add</button>
-                <button type="reset" id="User_cancel_Button">Cancel</button>
-            </div>
-        </form>
 
         <main>
             <div class="pageTitle">User Management</div>

@@ -93,7 +93,7 @@
         $database = new Database();
         $mysqli = $database->getConnection();
 
-        $insertUser = "INSERT INTO users (firstName, lastName, email, position) VALUES (?, ?, ?, ?)";
+        $insertUser = "INSERT INTO users (firstName, lastName, email, position, userStatus) VALUES (?, ?, ?, ?, 1)";
 
         $stmt = $mysqli->stmt_init();
         if(!$stmt->prepare($insertUser)){
@@ -258,10 +258,10 @@
             }
             $stmt->bind_param("s", $name);
             $stmt->execute();
-            echo "Adviser has been removed from association table <br>";
+            //echo "Adviser has been removed from association table <br>";
         }
 
-        $query = "DELETE FROM users WHERE email = ?";
+        $query = "UPDATE users SET userStatus = 0 WHERE email = ?";
 
         $stmt = $mysqli->stmt_init();
         if(!$stmt->prepare($query)){
@@ -273,6 +273,24 @@
         header("Location: ../userManagement.php");
     }
     
+    function activateUser(){
+        $email = $_POST['newEmail'];
+
+        $database = new Database();
+        $mysqli = $database->getConnection();
+
+        $query = "UPDATE users SET userStatus = 1 WHERE email = ?";
+
+        $stmt = $mysqli->stmt_init();
+        if(!$stmt->prepare($query)){
+            die("SQL Error". $mysqli->error);
+        }
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $mysqli->close();
+        header("Location: ../userManagement.php");
+    }
+
     function removeAssoc(){
         $selectedAssoc = $_POST['selectedAssoc'];
         $database = new Database();
@@ -314,16 +332,19 @@
     elseif($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['removeUser'])){
         removeUser();
     }
+    elseif($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['activateUser'])){
+        activateUser();
+    }
     elseif($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['addAssocBTN'])){
         addAssociation();
     }
     elseif($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['assocChangeBTN'])){
         updateAssociation();
     }
-    elseif($_GET['action'] == 'removeAssoc'){
+    elseif(isset($_GET['action']) && $_GET['action'] == 'removeAssoc'){
         removeAssoc();
     }
-    elseif($_GET['action'] == 'activAssoc'){
+    elseif(isset($_GET['action']) && $_GET['action'] ==  'activAssoc'){
         activAssoc();
     }
 ?>

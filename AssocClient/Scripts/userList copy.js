@@ -1,4 +1,21 @@
-$("#associationButton").css("display", "none");
+window.onload = ()=>{
+    let useradded = localStorage.getItem("userResponse");
+    let userDeact = localStorage.getItem("userDeact");
+    let userActvt = localStorage.getItem("userActvt");
+
+    if(useradded){
+        var notification = alertify.notify('User Added', 'success', 4);  
+        localStorage.removeItem("userResponse");
+    }
+    if(userDeact){
+        var notification = alertify.notify('User Deactivated', 'custom', 4);  
+        localStorage.removeItem("userDeact");
+    }
+    if(userActvt){
+        var notification = alertify.notify('User Activated', 'success', 4);  
+        localStorage.removeItem("userActvt");
+    }
+}
 
 fetch('http://localhost/COMS/AssocClient/Functions/Querries/getUsers.php')
     .then(response => response.json())
@@ -17,29 +34,6 @@ fetch('http://localhost/COMS/AssocClient/Functions/Querries/InfromationManagemen
     })
     .catch(error => console.error('Error:', error));
 
-function renderUserList(userList){//Function For Rendering 
-    let users = "";
-    
-    userList.forEach((userprofile) => { 
-        users += `
-                <div class="userItem" data-User-id="${userprofile.userID}">
-                    <div class="item_left">
-                        <img src="${userprofile.pfp}" class="profilePicture" alt="">
-                        <div class="userInfo">
-                            <p id="user_adviser">${userprofile.firstName} ${userprofile.lastName}</p>
-                            <p id="position">${userprofile.position} (${userprofile.affiliation ?? "Unassigned"})</p>
-                        </div>
-                    </div>
-                </div>
-                `;
-    });
-    
-    document.querySelector(".userList").innerHTML = users;
-    SearchTab(userList);
-    editButtonFunction(userList);
-    FormButtonsFunctions();
-}
-
 $("#pop-upFormUser").submit((e)=>{
     localStorage.setItem("userResponse", true);
     $("#forPopUpUser").css("display", "none"); 
@@ -55,16 +49,55 @@ $("#activateBtn").click(()=>{
     window.location.reload();
 });
 
+function renderUserList(userList){//Function For Rendering 
+    let users = "";
+    
+    userList.forEach((userprofile) => {
+        //<img src="${userprofile.pfp}" class="profilePicture" alt="">
+        console.log(userprofile.userStatus);
+        if(userprofile.userStatus == 1){
+            users += `
+            <div class="userItem" data-User-id="${userprofile.userID}">
+                <div class="item_left">
+                    <div class="userInfo">
+                        <p id="user_adviser">${userprofile.firstName} ${userprofile.lastName}</p>
+                        <p id="position">${userprofile.position} (${userprofile.affiliation == "" ? "Unassigned" : userprofile.affiliation})</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+        else{
+            users += `
+            <div class="userItem DeactuserItem" data-User-id="${userprofile.userID}">
+                <div class="item_left">
+                    <div class="userInfo">
+                        <p id="user_adviser">${userprofile.firstName} ${userprofile.lastName}</p>
+                        <p id="position">${userprofile.position} (${userprofile.affiliation == "" ? "Unassigned" : userprofile.affiliation})</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+
+    });
+    document.querySelector(".userList").innerHTML = users;
+    SearchTab(userList);
+    editButtonFunction(userList);
+    FormButtonsFunctions();
+}
+
 function getAssociationList(list){
     let associations = "";
 
     list.forEach((asscList)=>{
         if(!associations.includes(asscList.association)){
-            console.log(associations);
+            //console.log(associations);
             associations += `<option value="${asscList.association}"> ${asscList.association}</option>`
         }
     });
 
+    document.getElementById("EdithandlingAssociation").innerHTML += associations;
 }
 
 function SearchTab(userList){
@@ -75,14 +108,13 @@ function SearchTab(userList){
         let accountsFound = "";
         userList.forEach((value)=>{
         let fullName = value.firstName +" "+ value.lastName;  
-        // <img src="${value.pfp}" class="profilePicture">
         if(fullName.toUpperCase().includes(searchString, 0)){
             accountsFound += `
                             <div class="userItem" data-User-id="${value.userID}">
                                 <div class="item_left">
                                     <div class="userInfo">
                                         <p id="user_adviser">${fullName}</p>
-                                        <p id="position">${value.position} (${value.affiliation})</p>
+                                        <p id="position">${value.position} (${value.affiliation == "" ? "Unassigned" : value.affiliation})</p>
                                     </div>
                                 </div>
                             </div>
@@ -94,6 +126,7 @@ function SearchTab(userList){
     });
 }
 
+
 function editButtonFunction(userList){
     //Form Editing Buttons Functions
     document.querySelectorAll(".userItem").forEach((item)=>{
@@ -102,30 +135,41 @@ function editButtonFunction(userList){
             let userSelectedId = item.dataset.userId;
 
             document.querySelector(".upperlayer").style.display = "flex";
-           
+            let selectIndex;
+            let selectOptions = document.getElementById("EdithandlingAssociation");
+            
             userList.forEach((userListId)=>{//gets the current value of the users Information               
-                console.log(userListid.userStatus);
-                if(userListId.userStatus == 0){
-                    $("#activateBtn").css("display", "inline");
-                    $("#removeUser").css("display", "none");
-                }
-                else{
-                    $("#activateBtn").css("display", "none");
-                    $("#removeUser").css("display", "inline");
-                }
-
                 if(userListId.userID == userSelectedId){
+                    // for(let i = 0; i < selectOptions.length; i++){
+                    //     if(selectOptions[i].text == userListId.firstName){
+                    //         selectIndex = selectOptions[i].index;
+                    //         //console.log(selectIndex);
+                    //     }
+                    // }
+                    
+ 
+                    if(userListId.userStatus == 0){
+                        $("#activateBtn").css("display", "inline");
+                        $("#removeUser").css("display", "none");
+                    }
+                    else{
+                        $("#activateBtn").css("display", "none");
+                        $("#removeUser").css("display", "inline");
+                    }
+
                     document.getElementById("selectedName").innerText = userListId.firstName + " " + userListId.lastName;   
                     document.getElementById("selectedPosition").innerText = userListId.position;
 
                     document.getElementById("selectedEmail").innerText = userListId.email;
                     document.getElementById("selectedEmail").value = userListId.email;
-                    console.log(userList.email);
+                    //console.log(userList.email);
                        
                     document.getElementById("User_FirstName").value = userListId.firstName;
                     document.getElementById("User_LastName").value = userListId.lastName;
                     document.getElementById("User_Email").value = userListId.email;
+
                     document.getElementById("EditselectedPosition").selectedIndex = userListId.position.index;
+                    //document.getElementById("EdithandlingAssociation").selectedIndex = selectIndex;
                     document.getElementById("ID").value = userSelectedId;
                 }
             })
@@ -220,6 +264,3 @@ function FormButtonsFunctions(){
         document.getElementById("forPopUpUser").style.display = "none";
     });
 }
-
-
-

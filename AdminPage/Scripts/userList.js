@@ -1,5 +1,23 @@
-//fetch members list
-fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getUserPositions')
+window.onload = ()=>{
+    let useradded = localStorage.getItem("userResponse");
+    let userDeact = localStorage.getItem("userDeact");
+    let userActvt = localStorage.getItem("userActvt");
+
+    if(useradded){
+        var notification = alertify.notify('User Added', 'success', 4);  
+        localStorage.removeItem("userResponse");
+    }
+    if(userDeact){
+        var notification = alertify.notify('User Deactivated', 'custom', 4);  
+        localStorage.removeItem("userDeact");
+    }
+    if(userActvt){
+        var notification = alertify.notify('User Activated', 'success', 4);  
+        localStorage.removeItem("userActvt");
+    }
+}
+
+fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getUserListPositions')
     .then(response => response.json())
     .then(data => {
         renderUserList(data);
@@ -14,24 +32,57 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
     })
     .catch(error => console.error('Error:', error));
 
+$("#pop-upFormUser").submit((e)=>{
+    localStorage.setItem("userResponse", true);
+    $("#forPopUpUser").css("display", "none"); 
+});
+
+$("#confirmation").submit((e)=>{
+    localStorage.setItem("userDeact", true);
+    //window.location.reload();
+});
+
+$("#activateBtn").click(()=>{
+    localStorage.setItem("userActvt", true);
+    window.location.reload();
+});
+
 function renderUserList(userList){//Function For Rendering 
     let users = "";
     
     userList.forEach((userprofile) => {
-        let assoc;
         //                        <img src="${userprofile.pfp}" class="profilePicture" alt="">
-        users += `
-                <div class="userItem" data-User-id="${userprofile.userID}">
-                    <div class="item_left">
-                        <div class="userInfo">
-                            <p id="user_adviser">${userprofile.firstName} ${userprofile.lastName}</p>
-                            <p id="position">${userprofile.position} (${userprofile.affiliation ?? "Unassigned"})</p>
-                        </div>
+        console.log(userprofile.userStatus);
+        if(userprofile.userStatus == 1){
+            users += `
+            <div class="userItem" data-User-id="${userprofile.userID}">
+                <div class="item_left">
+                    <div class="userInfo">
+                        <p id="user_adviser">${userprofile.firstName} ${userprofile.lastName}</p>
+                        <p id="position">${userprofile.position} (${userprofile.affiliation == "" ? "Unassigned" : userprofile.affiliation})</p>
                     </div>
                 </div>
-                `;
+            </div>
+            `;
+            console.log(users);
+        }
+        else{
+            users += `
+            <div class="userItem DeactuserItem" data-User-id="${userprofile.userID}">
+                <div class="item_left">
+                    <div class="userInfo">
+                        <p id="user_adviser">${userprofile.firstName} ${userprofile.lastName}</p>
+                        <p id="position">${userprofile.position} (${userprofile.affiliation == "" ? "Unassigned" : userprofile.affiliation})</p>
+                    </div>
+                </div>
+            </div>
+            `;
+            console.log(users);
+        }
+
     });
     
+    console.log(users);
     document.querySelector(".userList").innerHTML = users;
     SearchTab(userList);
     editButtonFunction(userList);
@@ -65,7 +116,7 @@ function SearchTab(userList){
                                 <div class="item_left">
                                     <div class="userInfo">
                                         <p id="user_adviser">${fullName}</p>
-                                        <p id="position">${value.position} (${value.affiliation ?? "Unassigned"})</p>
+                                        <p id="position">${value.position} (${value.affiliation == "" ? "Unassigned" : value.affiliation})</p>
                                     </div>
                                 </div>
                             </div>
@@ -97,6 +148,16 @@ function editButtonFunction(userList){
                             //console.log(selectIndex);
                         }
                     }
+                    
+                    if(userListId.userStatus == 0){
+                        $("#activateBtn").css("display", "inline");
+                        $("#removeUser").css("display", "none");
+                    }
+                    else{
+                        $("#activateBtn").css("display", "none");
+                        $("#removeUser").css("display", "inline");
+                    }
+
                     document.getElementById("selectedName").innerText = userListId.firstName + " " + userListId.lastName;   
                     document.getElementById("selectedPosition").innerText = userListId.position;
 
@@ -191,16 +252,16 @@ function PopUpFormFunction(){
 function FormButtonsFunctions(){
     //Form Inserting Buttons Functions
     document.getElementById("associationButton").addEventListener("click" ,()=>{
-        document.getElementById("pop-upFormUser").style.display = "flex";
+        document.getElementById("forPopUpUser").style.display = "flex";
     });
 
     //When X Button is clicked in Adding account
     document.getElementById("User_x_button").addEventListener("click" ,()=>{
-        document.getElementById("pop-upFormUser").style.display = "none";
+        document.getElementById("forPopUpUser").style.display = "none";
     });
 
     //When Cancel Button is clicked in Adding account
     document.getElementById("User_cancel_Button").addEventListener("click" ,()=>{
-        document.getElementById("pop-upFormUser").style.display = "none";
+        document.getElementById("forPopUpUser").style.display = "none";
     });
 }
