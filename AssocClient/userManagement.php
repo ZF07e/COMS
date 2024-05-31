@@ -8,6 +8,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>COMS: User Management</title>
 
+        
+        <!-- alertify JavaScript -->
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+
+        <!-- Alertify CSS -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+
         <link rel="stylesheet" href="./Styles/mainStyle/general-style.css">
         <link rel="stylesheet" href="./Styles/mainStyle/header-style.css">
         <link rel="stylesheet" href="../AdminPage/Styles/userManagement.css">
@@ -64,9 +71,9 @@
 
         </header>   
 
-    <!-- confirmation -->
+        <!-- confirmation -->
         <div class="upperlayer2">
-            <form id="confirmation" action = "http://localhost/COMS/AdminPage/Functions/InfromationManagement.php" method = "POST">
+            <form id="confirmation" action = "http://localhost/COMS/AssocClient/Functions/Querries/InfromationManagement.php" method = "POST">
                 <div class="confHeader">
                     <h3>Warning!</h3>
                     <button id="xbuttonConf">&#10005;</button>
@@ -124,40 +131,43 @@
 
                     <button type="button" id="editInfo">Edit</button>
                     <button type="button" id="removeUser">Deactivate User</button>
+                    <button type="submit" id="activateBtn" name="activateUser">Activate</button>
                     <button type="reset" id="back">Back</button>
                 </div>
             </form>
         </div>
 
+        <div id="forPopUpUser">
+            <!-- Form 1 For Inserting -->
+            <form id="pop-upFormUser" action = "http://localhost/COMS/AssocClient/Functions/Querries/InfromationManagement.php" method = "POST">  
+                <div class="form-header">
+                    <h3>Add User</h3>
+                    <button type="reset" id="User_x_button">X</button>
+                </div>
+
+                <div class="form-body">
+                    <input type="text" class="normalInput" placeholder="First Name" name = "firstName">
+                    <input type="text" class="normalInput" placeholder="Last Name" name = "lastName">
+                    <input type="text" class="normalInput" placeholder="Outlook Email" name = "email">
+                    <select name="position" id="type">
+                        <option value="" selected disabled>- Role -</option>
+                            <option value="President">President</option>
+                            <option value="Vice President">Vice President</option>
+                            <option value="Secretary">Secretary</option>
+                            <option value="Auditor">Auditor</option>
+                            <option value="Treasurer">Treasurer</option>
+                            <option value="Head Officer">Head Officer</option>
+                            <option value="Officer">Officer</option>
+                    </select>
+                </div>
+
+                <div class="form-footer">
+                    <button type="submit" name = "addBTN">Add</button>
+                    <button type="reset" id="User_cancel_Button">Cancel</button>
+                </div>
+            </form>
+        </div>
         
-        <!-- Form 1 For Inserting -->
-        <form id="pop-upFormUser" action = "http://localhost/COMS/AssocClient/Functions/Querries/InfromationManagement.php" method = "POST">  
-            <div class="form-header">
-                <h3>Add User</h3>
-                <button type="reset" id="User_x_button">X</button>
-            </div>
-
-            <div class="form-body">
-                <input type="text" class="normalInput" placeholder="First Name" name = "firstName">
-                <input type="text" class="normalInput" placeholder="Last Name" name = "lastName">
-                <input type="text" class="normalInput" placeholder="Outlook Email" name = "email">
-                <select name="position" id="type">
-                    <option value="" selected disabled>- Role -</option>
-                        <option value="President">President</option>
-                        <option value="Vice President">Vice President</option>
-                        <option value="Secretary">Secretary</option>
-                        <option value="Auditor">Auditor</option>
-                        <option value="Treasurer">Treasurer</option>
-                        <option value="Head Officer">Head Officer</option>
-                        <option value="Officer">Officer</option>
-                </select>
-            </div>
-
-            <div class="form-footer">
-                <button type="submit" name = "addBTN">Add</button>
-                <button type="reset" id="User_cancel_Button">Cancel</button>
-            </div>
-        </form>
 
         <main>
             <div class="pageTitle">User Management</div>
@@ -175,7 +185,7 @@
             </section>
         </main>
 
-        <script src="./Scripts/userList.js"></script>
+        <script src="./Scripts/userList copy.js"></script>
         <script src="./Scripts/utils/navigation.js"></script>
     </body>
 </html>

@@ -32,6 +32,19 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
     })
     .catch(error => console.error('Error:', error));
 
+window.onload = ()=>{
+    let isActivated = localStorage.getItem("isActivated");
+    let isDeactivated = localStorage.getItem("isDeactivated");
+
+    if(isActivated){
+        var notification = alertify.notify('Association Activated', 'success', 4);  
+        localStorage.removeItem("isActivated");
+    }
+    if(isDeactivated){
+        alertify.notify('Association Deactivated', 'custom', 4);
+        localStorage.removeItem("isDeactivated");     
+    }
+}
 
 function renderSelectedGroup(list){
     list.forEach((value) => {
@@ -91,7 +104,9 @@ $("#deleteAssociation").submit((e)=>{
         url: "http://localhost/COMS/AdminPage/Functions/InfromationManagement.php?action=removeAssoc",
         data: {selectedAssoc: selectedAssociation},
         success: (s)=>{
-            window.location.href = "./associations.php";
+            //window.location.href = "./associations.php";
+            window.location.reload();
+            localStorage.setItem("isDeactivated", true);
         }
     })
     
@@ -105,6 +120,7 @@ $("#ActivateAssociation").submit((e)=>{
         data: {selectedAssoc: selectedAssociation},
         success: (s)=>{
             window.location.reload();
+            localStorage.setItem("isActivated", true);
         }
     })
 });

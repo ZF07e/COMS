@@ -91,35 +91,35 @@
             </div>
 
             <div id="containerBody" class="HideTab">
-                <div class="mailRequest">
+                <!-- <div class="mailRequest">
                     <div id="mailSender">Association Sender(Inbox)</div>
                     <div id="mailSubject">Sender Subject</div>
                     <div id="mailDate">DateTime</div>
-                </div>
+                </div> -->
             </div>
 
             <div id="containerBodyApproved">
-                <div class="mailRequest">
+                <!-- <div class="mailRequest">
                     <div id="mailSender">Association Sender(Approved)</div>
                     <div id="mailSubject">Sender Subject</div>
                     <div id="mailDate">DateTime</div>
-                </div>
+                </div> -->
             </div>
 
             <div id="containerBodyRejected">
-                <div class="mailRequest">
+                <!-- <div class="mailRequest">
                     <div id="mailSender">Association Sender(Rejected)</div>
                     <div id="mailSubject">Sender Subject</div>
                     <div id="mailDate">DateTime</div>
-                </div>
+                </div> -->
             </div>
 
             <div id="containerBodyArchived">
-                <div class="mailRequest">
+                <!-- <div class="mailRequest">
                     <div id="mailSender">Association Sender(Archived)</div>
                     <div id="mailSubject">Sender Subject</div>
                     <div id="mailDate">DateTime</div>
-                </div>
+                </div> -->
             </div>
 
         </section>
