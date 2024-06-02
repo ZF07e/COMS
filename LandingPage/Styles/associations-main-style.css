@@ -1,12 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap');
+
 .mainPage{
     height: 100vh;
     display: flex;
     flex-direction: column;
+    box-shadow: inset 0px -20px 20px rgba(0, 0, 0, 0.3);
+    background-image: url(../../Images/Backgrounds/BackgroundColor.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #292929;
 }
 
-.mainPage h1{
-    font-family: "ROBOTO";
-    color: #eee;
+.title-container h1{
+    font-family: "Oswald";
+    margin: 0;
 }
 
 .mainPage h1 span{
@@ -16,9 +24,9 @@
 .title-container{
     display: flex;
     align-items: center;
-    height: 6rem;
+    color: #333333;
+    margin-top: 1rem;
     padding: 0px 2rem;
-    background-color: #131314;
 }
 
 .orgList{
@@ -30,13 +38,17 @@
 }
 
 .itemList{
-    background-color: #131314;
-    color: #eee;
+    background-color:transparent;
+    border: solid 2px #525252;
+    border-radius: 0.5rem;
+    box-shadow: 0.4rem 0.4rem 0.7rem #292929;
     height: 7.5rem;
     display: flex;
     align-items: center;
     padding: 1rem;  
     font-family: "ROBOTO";
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .pictureFrame{
@@ -59,7 +71,7 @@
 
 .title-description .details span, .title-description .details p{
     font-size: 15px;
-    color: #c4c4c4;
+    color: #292929;
 }
 
 .title-description .details span::-webkit-scrollbar, .title-description .details p::-webkit-scrollbar{
@@ -92,9 +104,9 @@
 .details button{
     padding: 0.4rem 2rem;
     margin-top: 5px;
-    border: solid 1px #eee;
+    border: solid 1px #292929;
     flex: 1;
-    color: #eee;
+    color: #292929;
     font-family: "ROBOTO";
     background-color: transparent;
 }
@@ -104,12 +116,14 @@
 }
 
 .details button:hover{
-    background-color: #eeeeee13;
+    background-color: #29292913;
 }
 
 .details button:active{
-    background-color: #eeeeee8f;
+    background-color: #2929298f;
 }
+
+
 
 
 @media (max-width: 768px) {

@@ -25,7 +25,7 @@
         
         <main class="mainPage">
             <div class="title-container">
-                <h1><span>A</span>ssociations</h1>
+                <h1>Associations</h1>
             </div>
             
             <div class="orgList">
