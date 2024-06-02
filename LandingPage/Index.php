@@ -12,6 +12,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
     <body>
         
@@ -27,22 +29,33 @@
 
                 <div class="TitleDesc">
                     <h1><span>CO</span>MS<span>:</span> <span>Club</span> and <span>Organization</span> Management System.</h1>
-                    <h3>Your Ultimate Club and Organization Management </h3>
+                    <p>Your Ultimate Club and Organization Management </p>
                 </div>
 
                 <form action = "http://localhost/COMS/LandingPage/Functions/UserLogin.php" method = "POST">
                     <h3 class="Logo"><span> LOG</span>IN<span></span></h3>
                     
+                    <div id="inputsContainer">
+                        <input type="text" name="inputEmail" id="inputEmail" placeholder="Outlook Email">
+                        <div id="passwordCon">
+                            <input type="password" name="inputPassword" id="password" placeholder="Password">
+                            <button id="seePass" type="button"><img src="../Images/Icons/icons8-eye-15.png" alt=""></button>
+                        </div>   
+                        <button type="button" id="loginButtonInput">Login</button>
+                        <p>- Or -</p>
+                    </div>
+
                     <div class="buttoncontainer">
                             <button type = "submit" name = "login">
-                            <img src="../Images/Icons/icons8-microsoft-48.png" alt="">    
-                            Microsoft 365 Login</button>
+                            <img src="../Images/Icons/icons8-microsoft-30.png" alt="">    
+                            Continue With Microsoft </button>
                     </div>
-                    <p>No Account? <a href="Associations.php" id="applyText">Apply to the Club/Organization</a></p>
+                    <p id="noAcc">No Account? <a href="Associations.php" id="applyText">Apply to the Club/Organization</a></p>
              
                 </form>
             </div>
 
         </main>
+        <script src="./Scripts/index-script.js"></script>
     </body>
 </html>

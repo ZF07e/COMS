@@ -119,6 +119,7 @@ function displayRequest(documents){
                 <div id="deleteMail">Delete</div>
                 <div id="archiveMail">Archive</div>
                 <div id="mailDate">${e.date_only}</div>
+                </div>
             </div>
             `;    
         }
@@ -126,11 +127,12 @@ function displayRequest(documents){
             rejecEL += `
             <div class="mailRequest" data-Request="${e.id}">
                 <div id="mailSender">${e.sender}</div>
+                <div id="mailSubject">${e.subject}</div>
                 <div id="rightMailRequest">
                 <div id="deleteMail">Delete</div>
                 <div id="archiveMail">Archive</div>
-                <div id="mailSubject">${e.subject}</div>
                 <div id="mailDate">${e.date_only}</div>
+                </div>
             </div>
             `;            
         }
@@ -138,11 +140,12 @@ function displayRequest(documents){
             archiEL += `
             <div class="mailRequest" data-Request="${e.id}">
                 <div id="mailSender">${e.sender}</div>
+                <div id="mailSubject">${e.subject}</div>
                 <div id="rightMailRequest">
                 <div id="deleteMail">Delete</div>
                 <div id="archiveMail">Archive</div>
-                <div id="mailSubject">${e.subject}</div>
                 <div id="mailDate">${e.date_only}</div>
+                </div>
             </div>
             `;            
         }

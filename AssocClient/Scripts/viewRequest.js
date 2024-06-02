@@ -20,7 +20,7 @@ window.onload = ()=>{
     }
   
     if(approved){
-      var notification = alertify.notify('Approved', 'success', 4);  
+      var notification = alertify.notify('Letter Signed', 'success', 4);  
       localStorage.removeItem("approved");
     }
   }
@@ -62,7 +62,7 @@ doublefetch.then(currentUser=>{
 
         if(currentUser == sender){
             $("#ActionsContainer").html(`
-            <button id="approveRequest">Approve</button>
+            <button id="approveRequest">Sign Letter</button>
             `);
         }
         else{
@@ -73,28 +73,21 @@ doublefetch.then(currentUser=>{
 });
 
 
-    
-
 $.ajax({
     url: "http://localhost/COMS/AssocClient/Functions/GetDocument.php",
     method: "POST",
     data: {selectedID: selectedRequest},
     success: function(response){
-        console.log(response);
+        // console.log(response);
         recipients = response;
         displayRecipient(response);
         checkIfDownloadable(response);
     }
 })
-    console.log(selectedRequest);
+    // console.log(selectedRequest);
 $("#backButton").on("click", ()=>{
     window.location.href = "../AssocClient/Request.php";
 });
-
-$("#downloadButton").on("click", ()=>{
-    console.log("Hello")
-});
-
 
 function displayRecipient(Users){
     let endorserElements = "";
@@ -145,14 +138,20 @@ function checkIfDownloadable(Users){
     let totalSigned = 0;
 
     Users.forEach((e)=>{
-        if(e.role == "Signed"){
+        if(e.status == "Signed"){
             totalSigned++;
         }
     });
 
-    console.log(totalRecipient + " - " + totalSigned);
+    // console.log(totalRecipient + " - " + totalSigned);
     if(totalSigned === totalRecipient){
         $("#downloadButton").removeAttr("disabled", false);
+        $("#downloadButton").click((e)=>{
+          e.preventDefault();
+          Users.forEach((e)=>{
+            //window.location.href = `../PDF-FILES/${e.documentID}.pdf`;
+          })    
+        });
     }
     else{
         $("#downloadButton").attr("disabled", true);
@@ -171,11 +170,6 @@ function signature(){
     $("#backButton").on("click", ()=>{
       window.location.href = "../AdminPage/Request.php";
     });
-  
-    $("#downloadButton").on("click", ()=>{
-      console.log("Hello")
-    });
-  
   
     $("#fileSelector").on("change", ()=>{
     $("#labelFile").text($("#fileSelector")[0].files[0].name);
@@ -329,13 +323,13 @@ function signature(){
           offscreenCtx.drawImage(canvas,0,0);
           offscreenCtx.fillText("THIS SIGNATURE IS FOR INTERNAL USE ONLY",70 ,90);
           var dataUrl = offscreenCanvas.toDataURL();
-          console.log(selectedRequest);
+          // console.log(selectedRequest);
           $.ajax({
             url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=approved",
             method: "POST",
             data: {signature: dataUrl, id: selectedRequest},
             success: function(response){
-                console.log(response);
+                // console.log(response);
                 localStorage.setItem("approved", true);
             }
         })
@@ -402,7 +396,7 @@ function signature(){
                     method: "POST",
                     data: {signature: rejectImage, id: selectedRequest},
                     success: function(response){
-                      console.log(response);
+                      // console.log(response);
                     }
                 })
             };
@@ -439,22 +433,22 @@ function signature(){
   
   
     $("#signUploaded").click((e)=>{
-      console.log(localStorage.getItem("image"))
+      // console.log(localStorage.getItem("image"))
       if(localStorage.getItem("image") != null){ 
         img.src = localStorage.getItem("image");
-        console.log(localStorage.getItem("image"));
+        // console.log(localStorage.getItem("image"));
         offscreenUploadCtx.font = "bold 11px Arial";
         offscreenUploadCtx.fillStyle = "rgba(255, 0, 0, 0.7)";
         offscreenUploadCtx.drawImage(img,0,0);
         offscreenUploadCtx.fillText("THIS SIGNATURE IS FOR INTERNAL USE ONLY",70 ,90);
         var dataUrl = offscreenUploadCanvas.toDataURL();
-        console.log(selectedRequest);
+        // console.log(selectedRequest);
         $.ajax({
           url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=approved",
           method: "POST",
           data: {signature: dataUrl, id: selectedRequest},
           success: function(response){
-              console.log(response);
+              // console.log(response);
               localStorage.setItem("approved", true);
           }
       })

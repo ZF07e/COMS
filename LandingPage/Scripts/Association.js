@@ -63,7 +63,7 @@ function renderAssociations(AssociationList){
     document.querySelectorAll(".js-ApplyButton").forEach((value) => {
         value.addEventListener('click', ()=>{ 
             let associationId = value.dataset.associationId;
-            console.log(associationId);
+            //console.log(associationId);
             selectedId = localStorage.setItem("selectedId", JSON.stringify(associationId));
         });
     });
