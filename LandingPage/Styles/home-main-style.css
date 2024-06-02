@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap');
+
+p{
+    margin: 0;
+}
+
 main{
-    height: 95vh;
+    height: 100vh;
     width: auto; 
 }
 
@@ -10,10 +16,11 @@ main{
     align-items: center;
     justify-content: space-between;
     box-shadow: inset 0px -20px 20px rgba(0, 0, 0, 0.3);
-    background-image: url(../../Images/Backgrounds/Loginbackground.jpg);
+    background-image: url(../../Images/Backgrounds/WhiteBackground.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+/* box-shadow: inset 0px 0px 20vw #000; */
 }
 
 .TitleDesc{
@@ -21,27 +28,30 @@ main{
     flex-direction: column;
     justify-content: center;
     font-family: "ROBOTO";
-    color: #eee;
     margin: 25px 0px;
 }
 
-.TitleDesc h1, .TitleDesc h3{
+.TitleDesc h1, .TitleDesc p{
     margin: 0;
 
 }
 
-.TitleDesc h1 span{
+.TitleDesc h1{
     /* color: #ff3333; */
+    font-style: "Oswald";
+    color: #000;
+    font-weight: bolder;
 }
 
-.TitleDesc h3{
+.TitleDesc p{
     margin-left: 5px;
-    color: #bdbdbd;
+    color: #000;
+    font-size: 1.4rem;
 }
 
 form{
-    background-color: rgba(28, 28, 28, 0.85);
-    color: white;
+    border: solid 2px #000;
+    color: #000;
     font-family: "ROBOTO";
     display: flex;
     flex-direction: column;
@@ -73,29 +83,31 @@ form .Logo{
 }
 
 form p{
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 400;
     margin: 0px;
 }
 
 .buttoncontainer{
     display: flex;
     width: 100%;
+    margin-bottom: 1rem;
 }
 
 .buttoncontainer button{
     background-color: transparent;
     column-gap: 0.4rem;
-    color: #fff;
     font-weight: 5rem;
     font-weight: 600;
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.6rem 4rem;
+    width: 100%;
+    padding: 0.1rem;
     border: solid 1px #7a7a7a;
-    border-radius: 10px;
-    margin: 1rem 0rem;    
+    /* border-radius: 10px; */
+    margin: 0.5rem 0rem;    
 }
 
 .buttoncontainer button:hover{
@@ -103,10 +115,56 @@ form p{
 }
 
 #applyText{
-    color: #f9ffa2;
+    color: #1e61ff;
+}
+
+#inputsContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    width: 100%;    
+    text-align: center;
+    margin-top: 1rem;
+}
+
+#inputsContainer input{
+    font-size: 0.9rem;
+    border: none;
+    padding: 0.43rem;
+    border-bottom: solid 1px #000;
+    background-color: transparent;
+}
+
+#loginButtonInput{
+    background-color: transparent;
+    border: solid 1px #7a7a7a;
+    padding: 0.5rem 0.1rem;
+    font-weight: 5rem;
+    font-weight: 600;
+    flex: 1;
+}
+
+#passwordCon{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+}
+
+#seePass{
+    position: absolute;
+    text-align: center;
+    right: 0;
+    bottom: 0;
+    top:0;
+    border: none;
+    background-color: transparent;
 }
 
 @media (max-width: 1142px){
+    .TitleDesc{
+        text-align: center;
+    }
     .logincontainer{
         flex-direction: column;
         justify-content: center;
@@ -114,33 +172,8 @@ form p{
     }
 }
 
-@media (max-width: 768px) {
-    .TitleDesc h1{
-        font-size: 25px;
-    }
-}
-
-@media (max-width: 425px) {
-    .TitleDesc h1{
-        font-size: 18px;
-    }
-    .TitleDesc h3{
-        font-size: 15px;
-    }
-
-    
-}
 
 @media (max-width: 500px) {
-    .logincontainer{
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .TitleDesc{
-        text-align: center;
-    }
-
     form{
         width: 19rem;
     }

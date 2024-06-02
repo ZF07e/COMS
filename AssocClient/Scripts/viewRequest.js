@@ -149,7 +149,7 @@ function checkIfDownloadable(Users){
         $("#downloadButton").click((e)=>{
           e.preventDefault();
           Users.forEach((e)=>{
-            window.location.href = `../PDF-FILES/${e.documentID}.pdf`;
+            //window.location.href = `../PDF-FILES/${e.documentID}.pdf`;
           })    
         });
     }

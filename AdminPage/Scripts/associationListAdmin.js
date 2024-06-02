@@ -12,7 +12,7 @@ window.onload = ()=>{
 fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getAssociationList')
 .then(response => response.json())
 .then(data => {
-    console.log(data);
+    //console.log(data);
     renderList(data);
 })
 .catch(error => console.error('Error:', error));
@@ -25,7 +25,7 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
     .catch(error => console.error('Error:', error));
 
 $("#pop-upForm").submit(()=>{
-    console.log("working");
+    //console.log("working");
     localStorage.setItem("assocAdded", true);
 });
 
@@ -181,7 +181,7 @@ function viewAssociationFunction(document){
         item.addEventListener("click", ()=>{
             let selectedId = item.dataset.selected;
             selectedAssociationID = localStorage.setItem("selectedAssociationID", JSON.stringify(selectedId));
-            console.log(selectedId);
+            //console.log(selectedId);
             window.location.href = "./viewAssociation.php";
         });
     });
