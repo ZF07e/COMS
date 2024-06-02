@@ -20,10 +20,112 @@ class UserLogin {
 
         header ('Location: '.$login_url.'?'.http_build_query ($params));
     }
-}
 
-if (isset($_POST["login"])) {
-    $login = new UserLogin();
-    $login->login();
+    function loginEmail(){
+        session_start();
+        $database = new Database();
+        $mysqli = $database->getConnection();
+        $email = $_POST['inputEmail'];
+        $passowrd = $_POST['inputPassword'];
+
+        $query = "SELECT password FROM useraccounts WHERE email = ?";
+
+        $stmt = $mysqli->stmt_init();
+        if(!$stmt->prepare($query)){
+            die('SQL error: '. $mysqli->error);
+        }
+
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $data = $result->fetch_assoc();
+
+        if(gettype($data) == "array"){
+            $data = implode($data);
+        }
+
+        $sql = "SELECT position FROM useraccounts WHERE email = '$email'";
+        $result = $mysqli->query($sql);
+        $userData = $result->fetch_assoc();
+        $role = $userData['position'];
+
+        //$data = md5($password);
+        if($data != null){
+            if($data == $passowrd){                
+                if ($role == "Student Affairs Officer") {
+                    $_SESSION['authorized'] = true;
+                    $_SESSION['email'] = $email;
+                    header("Location: http://localhost/COMS/AdminPage/index.php");
+                    exit();
+                }
+                elseif($role == "Adviser"){
+                    $_SESSION['authorized'] = true;
+                    $_SESSION['email'] = $email;
+                    header("Location: http://localhost/COMS/AssocClient/index.php");
+                    exit();
+                }
+                elseif($role == "President"){
+                    $_SESSION['authorized'] = true;
+                    $_SESSION['email'] = $email;
+                    header("Location: http://localhost/COMS/AssocClient/index.php");
+                    exit();
+                }
+                elseif($role == "Secretary"){
+                    $_SESSION['authorized'] = true;
+                    $_SESSION['email'] = $email;
+                    header("Location: http://localhost/COMS/AssocClient/index.php");
+                    exit();
+                }
+                elseif($role == "Auditor"){
+                    $_SESSION['authorized'] = true;
+                    $_SESSION['email'] = $email;
+                    header("Location: http://localhost/COMS/AssocClient/index.php");
+                    exit();
+                }
+                elseif($role == "Treasurer"){
+                    $_SESSION['authorized'] = true;
+                    $_SESSION['email'] = $email;
+                    header("Location: http://localhost/COMS/AssocClient/index.php");
+                    exit();
+                }
+                elseif($role == "Head Officer"){
+                    $_SESSION['authorized'] = true;
+                    $_SESSION['email'] = $email;
+                    header("Location: http://localhost/COMS/AssocClient/index.php");
+                    exit();
+                }
+                elseif($role == "Officer"){
+                    $_SESSION['authorized'] = true;
+                    $_SESSION['email'] = $email;
+                    header("Location: http://localhost/COMS/AssocClient/index.php");
+                    exit();
+                }
+                else {
+                    $_SESSION['error'] = 'Unauthorized Access';
+                    header("Location: http://localhost/COMS/LandingPage/Index.php");
+                    exit();
+                }
+            }
+            else{
+                $_SESSION['error'] = 'Incorrect username or password';
+                header('Location: http://localhost/COMS/LandingPage/Index.php');
+                exit();
+            }
+        }
+        else{
+            $_SESSION['error'] = 'Invalid email';
+            header('Location: http://localhost/COMS/LandingPage/Index.php');
+            exit();
+        }
+        $mysqli->close();
+    }
 }
+    if (isset($_POST["login"])) {
+        $login = new UserLogin();
+        $login->login();
+    }
+    else if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $login = new UserLogin();
+        $login->loginEmail();
+    }
 ?>
