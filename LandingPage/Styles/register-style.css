@@ -152,6 +152,10 @@ form input::placeholder{
     margin: 0;
 }
 
+body{
+    height: 100vh;
+}
+
 main{
     background-image: url(../../Images/Backgrounds/abstractFree.gif);
     background-position:center;
