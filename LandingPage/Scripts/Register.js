@@ -1,4 +1,4 @@
-import { selectedId } from "./utils/selectedAssociation.js";
+
 
 fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getAssociationList')
 .then(response => response.json())
@@ -9,15 +9,29 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
 
 function funktion(Associations){
     Associations.forEach((association)=>{
-        if(association.id == selectedId){
-            document.querySelector(".imageContainer").innerHTML += `<img src="${association.image ?? "../Images/COMS.png"}" alt="Profile" class="associationProfile">`;
-            document.querySelector(".associationTitle").innerHTML = association.association;
-            document.querySelector(".adviser").innerHTML = association.adviser;
-            document.querySelector(".description").innerHTML = association.description;
-    
-            document.querySelector(".AscMission").innerHTML = association.mission;
-            document.querySelector(".AscVision").innerHTML = association.vision;
-            document.getElementById("association").value = association.id;
+        if(association.id == JSON.parse(sessionStorage.getItem("selectedId"))){
+            $("#assocLogo").attr("src", `${association.image == undefined ? "../Images/COMS.png" : association.image}`)
+            // document.querySelector(".associationTitle").innerHTML = association.association;
+            $("#assocTitle").html(association.association);
+            // document.querySelector(".adviser").innerHTML = association.adviser;
+            $("#assocAdviser").html(association.adviser);
+            // document.querySelector(".description").innerHTML = association.description;
+            $("#assocDesc").html(`${association.description == "" ? "None" : association.description }`);
+            // document.querySelector(".AscMission").innerHTML = association.mission;
+            $("#assocMission").html(`${association.mission == "" ? "None" : association.mission }`);
+            // document.querySelector(".AscVision").innerHTML = association.vision;
+            $("#assocVision").html(`${association.vision == "" ? "None" : association.vision }`);
+            // document.getElementById("association").value = association.id;
         }
+    });
+
+    $("#registerButton").click((e)=>{
+        e.preventDefault();
+        $("#registerButton").html("Redirecting...");
+        setTimeout(()=>{
+            $("#registerButton").html("Register");
+            window.location.href = "../User_Registration/SetupAccount/index.php";
+        }, 2000)
+        
     });
 }

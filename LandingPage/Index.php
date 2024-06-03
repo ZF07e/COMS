@@ -16,7 +16,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
     <body>
-        
         <header><!--Header-->
             <nav class="leftPanel">
                 <a href="Index.php"><h2 class="Logo"><span>CO</span>MS<span>.</span></h2></a>
@@ -33,7 +32,7 @@
                 </div>
 
                 <form action = "http://localhost/COMS/LandingPage/Functions/UserLogin.php" method = "POST">
-                    <h3 class="Logo"><span> LOG</span>IN<span></span></h3>
+                    <h3 class="LoginTitleForm">LOGIN</h3>
                     
                     <div id="inputsContainer">
                     <?php
@@ -57,7 +56,9 @@
                             <img src="../Images/Icons/icons8-microsoft-30.png" alt="">    
                             Continue With Microsoft </button>
                     </div>
+
                     <p id="noAcc">No Account? <a href="Associations.php" id="applyText">Apply to the Club/Organization</a></p>
+                  
                 </form>
             </div>
 

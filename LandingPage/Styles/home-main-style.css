@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap');
 
+@keyframes fadeInLeft {
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
 p{
     margin: 0;
 }
@@ -7,6 +22,11 @@ p{
 main{
     height: 100vh;
     width: auto; 
+}
+
+.LoginTitleForm{
+    margin: 0;
+    font-weight: bold;
 }
 
 .logincontainer{
@@ -24,11 +44,14 @@ main{
 }
 
 .TitleDesc{
+    transform: translateX(-20px);
+    opacity: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     font-family: "ROBOTO";
     margin: 25px 0px;
+    animation: fadeInLeft 0.5s forwards;
 }
 
 .TitleDesc h1, .TitleDesc p{
@@ -49,6 +72,8 @@ main{
 }
 
 form{
+    transform: translateX(20px);
+    opacity: 0;
     border: solid 2px #292929;
     color: #292929;
     font-family: "ROBOTO";
@@ -56,13 +81,14 @@ form{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* width: 400px; */
+    width: 250px;
     /* height: 200px; */
     padding: 2rem;
     border-radius: 1rem;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     /* margin-right: 1vw; */
+    animation: fadeInRight 0.5s forwards;
 }
 
 form input:focus{
@@ -121,14 +147,14 @@ form p{
 #inputsContainer{
     display: flex;
     flex-direction: column;
-    row-gap: 0.5rem;
+    row-gap: 1rem;
     width: 100%;    
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 #inputsContainer input{
-    font-size: 0.9rem;
+    font-size: 1rem;
     border: none;
     padding: 0.43rem;
     border-bottom: solid 1px #292929;
@@ -136,6 +162,7 @@ form p{
 }
 
 #loginButtonInput{
+    margin-top: 0.9rem;
     background-color: transparent;
     border: solid 1px #7a7a7a;
     padding: 0.5rem 0.1rem;
@@ -179,12 +206,5 @@ form p{
         flex-direction: column;
         justify-content: center;
         row-gap: 2rem;
-    }
-}
-
-
-@media (max-width: 500px) {
-    form{
-        width: 19rem;
     }
 }

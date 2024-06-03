@@ -26,11 +26,13 @@ header{
 }
 
 .Logo span{
+    /* color: #fecc66; */
     /* color: #ff3333; */
     font-family: "ROBOTO";
 }
 
 .Logo{
+    color: #fecc66;
     margin-right: 20px;
     font-family: "ROBOTO";
 }
@@ -46,11 +48,11 @@ header{
     border-bottom: solid 2px #fecc66;  
 }
 
-.login-button{
+/* .login-button{
     padding: 7px 60px;
     border: solid 1px #eee;
     background-color: transparent;
-}
+} */
 
 
 

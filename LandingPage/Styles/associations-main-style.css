@@ -1,7 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap');
 
+@keyframes fadeIn {
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes toRight{
+    from{
+        transform: translateX(-20px);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
+
+html{
+    height: 100%;
+    overflow: hidden;
+}
+
 .mainPage{
-    height: 100vh;
+    height: 90%;
     display: flex;
     flex-direction: column;
     box-shadow: inset 0px -20px 20px rgba(0, 0, 0, 0.3);
@@ -10,6 +30,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     color: #292929;
+    overflow-y: auto;
+    scrollbar-width: thin;
 }
 
 .title-container h1{
@@ -41,14 +63,26 @@
     background-color:transparent;
     border: solid 2px #525252;
     border-radius: 0.5rem;
-    box-shadow: 0.4rem 0.4rem 0.7rem #292929;
     height: 7.5rem;
     display: flex;
     align-items: center;
     padding: 1rem;  
     font-family: "ROBOTO";
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    animation: fadeIn 0.5s forwards, toRight 0.5s;
+    transition: box-shadow 0.20s, transform 0.25s;
+}
+
+.itemList:hover{
+    box-shadow: 0.3rem 0.3rem 0.4rem #00000085;
+    transform: translate(-3px, -4px);
+}
+
+.itemList:active{
+    box-shadow: 0rem 0rem 0rem #00000085;
+    transform: translate(0px, 0px);
 }
 
 .pictureFrame{
@@ -109,6 +143,7 @@
     color: #292929;
     font-family: "ROBOTO";
     background-color: transparent;
+    transition: box-shadow 0.20s, transform 0.25s;
 }
 
 .details a{
@@ -116,11 +151,13 @@
 }
 
 .details button:hover{
-    background-color: #29292913;
+    box-shadow: 0.3rem 0.3rem 0.4rem #00000085;
+    transform: translate(-3px, -4px);
 }
 
 .details button:active{
-    background-color: #2929298f;
+    box-shadow: 0rem 0rem 0rem #00000085;
+    transform: translate(0px, 0px);
 }
 
 

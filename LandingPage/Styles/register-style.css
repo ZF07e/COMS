@@ -1,4 +1,4 @@
-main{
+/* main{    --Before
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -131,4 +131,132 @@ form input::placeholder{
     form input{
         width: 17rem;
     }
+} */
+@keyframes fadeIn {
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes backgroundFade {
+    from{
+        opacity: 0;
+
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+*{
+    margin: 0;
+}
+
+main{
+    background-image: url(../../Images/Backgrounds/abstractFree.gif);
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #232323;
+    padding: 3rem 0.5rem;
+    animation: backgroundFade 1s forwards;
+    height: 100%;
+}
+
+#assocLogo{
+    opacity: 0;
+    object-fit: cover;
+    object-position: center;
+    width: 9vw;
+    border-radius: 10%;
+    animation: fadeIn 0.8s forwards;
+    animation-delay: 0.2s;
+}
+
+#assocTitle{
+    opacity: 0;
+    animation: fadeIn 0.8s forwards ;
+    animation-delay: 0.4s;
+}
+
+#assocAdviser{
+    opacity: 0;
+    animation: fadeIn 0.8s forwards ;
+    animation-delay: 0.6s;
+}
+
+h3{
+    margin-top: 6vw;
+}
+
+#assocDescTitle{
+    opacity: 0;
+    animation: fadeIn 0.8s forwards ;
+    animation-delay: 0.8s;
+}
+
+#assocDesc{
+    text-align: center;
+    margin: 0rem 22vw;
+    opacity: 0;
+    animation: fadeIn 0.8s forwards ;
+    animation-delay: 1s;
+}
+
+#assocMissionTitle{
+    opacity: 0;
+    animation: fadeIn 0.8s forwards ;
+    animation-delay: 1.2s;
+}
+
+#assocMission{
+    text-align: center;
+    margin: 0rem 25vw;
+    opacity: 0;
+    animation: fadeIn 0.8s forwards ;
+    animation-delay: 1.4s;
+}
+
+#assocVisionTitle{
+    opacity: 0;
+    animation: fadeIn 0.8s forwards ;
+    animation-delay: 1.6s;
+}
+
+#assocVision{
+    text-align: center;
+    margin: 0rem 25vw;
+    opacity: 0;
+    animation: fadeIn 0.8s forwards ;
+    animation-delay: 1.8s;
+}
+
+
+#registerButton{
+    opacity: 0;
+    margin-top: 0.4rem;
+    padding: 0.5rem 0.6rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: transparent;
+    border: solid 2px #232323;
+    color: #232323;
+    transition: background-color 0.25s, color 0.20s;
+    animation: fadeIn 0.8s forwards ;
+    animation-delay: 0.7s;
+}
+
+#registerButton:hover{
+    background-color: #232323;
+    color: #eee;
+}
+
+#registerButton:active main{
+    background-color: transparent;
+    color: #232323;
+
 }
