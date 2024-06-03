@@ -24,7 +24,7 @@
     $_SESSION['last_activity'] = time();
 
     // Check if the user is logged in
-    if (isset($_SESSION['msatg']) && $_SESSION['msatg'] == 1) {
+    if ((isset($_SESSION['msatg']) && $_SESSION['msatg'] == 1) || isset($_SESSION['authorized'])) {
         //echo "Session ID: " . $_SESSION['uname'];
     } else {
         session_unset();
@@ -34,21 +34,38 @@
 
     if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 
-        $redirect_uri = urlencode("http://localhost/COMS/LandingPage/Index.php"); // Replace with your actual logout confirmation page
-        $logout_url = "https://login.microsoftonline.com/common/oauth2/v2.0/logout?post_logout_redirect_uri=$redirect_uri";
-        
-        $_SESSION = array();
-        // Expire the session cookie
-        if (ini_get("session.use_cookies")) {
-            $params = session_get_cookie_params();
-            setcookie(session_name(), '', time() - 42000,
-                $params["path"], $params["domain"],
-                $params["secure"], $params["httponly"]
-            );
+        if(isset($_SESSION['msatg']) && $_SESSION['msatg'] == 1){
+            $redirect_uri = urlencode("http://localhost/COMS/LandingPage/Index.php"); // Replace with your actual logout confirmation page
+            $logout_url = "https://login.microsoftonline.com/common/oauth2/v2.0/logout?post_logout_redirect_uri=$redirect_uri";
+            
+            $_SESSION = array();
+            // Expire the session cookie
+            if (ini_get("session.use_cookies")) {
+                $params = session_get_cookie_params();
+                setcookie(session_name(), '', time() - 42000,
+                    $params["path"], $params["domain"],
+                    $params["secure"], $params["httponly"]
+                );
+            }
+            session_unset();
+            session_destroy();
+            header("Location: $logout_url");
+            exit();
         }
-        session_unset();
-        session_destroy();
-        header("Location: $logout_url");
-        exit();
+        else{
+            $_SESSION = array();
+            // Expire the session cookie
+            if (ini_get("session.use_cookies")) {
+                $params = session_get_cookie_params();
+                setcookie(session_name(), '', time() - 42000,
+                    $params["path"], $params["domain"],
+                    $params["secure"], $params["httponly"]
+                );
+            }
+            session_unset();
+            session_destroy();
+            header("Location: http://localhost/COMS/LandingPage/Index.php");
+            exit();
+        }
     }
 ?>

@@ -35,12 +35,19 @@
                     <h3 class="LoginTitleForm">LOGIN</h3>
                     
                     <div id="inputsContainer">
+                    <?php
+                        session_start();
+                        if (isset($_SESSION['error'])) {
+                            echo '<p style="color:red;">' . $_SESSION['error'] . '</p>';
+                            unset($_SESSION['error']);
+                        }
+                    ?>
                         <input type="text" name="inputEmail" id="inputEmail" placeholder="Outlook Email">
                         <div id="passwordCon">
                             <input type="password" name="inputPassword" id="password" placeholder="Password">
                             <button id="seePass" type="button"><img src="../Images/Icons/icons8-eye-15.png" alt=""></button>
                         </div>   
-                        <button type="button" id="loginButtonInput">Login</button>
+                        <button type="submit" id="loginButtonInput">Login</button>
                         <p>- Or -</p>
                     </div>
 
@@ -49,8 +56,9 @@
                             <img src="../Images/Icons/icons8-microsoft-30.png" alt="">    
                             Continue With Microsoft </button>
                     </div>
-                    <p id="noAcc">No Account? <a href="Associations.php" id="applyText">Apply To The Organization/Club</a></p>
-             
+
+                    <p id="noAcc">No Account? <a href="Associations.php" id="applyText">Apply to the Club/Organization</a></p>
+                  
                 </form>
             </div>
 
