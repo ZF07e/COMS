@@ -1,72 +1,57 @@
-// import {selectedId} from "./utils/selectedAssociation.js";
-
 fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=displayActiveAssociation')
     .then(response => response.json())
     .then(data => {
-        // console.log(data);
+        sessionStorage.clear();
         renderAssociations(data);
     })
     .catch(error => console.error('Error:', error));
 
 function renderAssociations(AssociationList){
-    let Organization = "";
-    let Clubs = "";   
+    let Associations = "";
     
-    AssociationList.forEach((assosiation, index) => {
-        if(assosiation.type === "Organization"){
-            let pic = assosiation.image == undefined ? "../Images/COMS.png" : assosiation.image;
-            Organization += `
-            <div class="itemList"> 
-                <div class="pictureFrame">
-                    <img src="${pic}">
+    AssociationList.forEach((assosiation, index) => {   
+        let pic = assosiation.image == undefined ? "../Images/COMS.png" : assosiation.image;
+        Associations += `
+        <div class="itemList" style="animation-delay: ${index * 0.1}s" data-association-id="${assosiation.id}"> 
+            <div class="pictureFrame">
+                <img src="${pic}">
+            </div>
+            
+            <div class="title-description">
+                <div class="topSection">
+                    <h2>${assosiation.association}</h2>
                 </div>
-                
-                <div class="title-description">
-                    <div class="topSection">
-                        <h2>${assosiation.association}</h2>
-                    </div>
-                    <div class="details">
-                        <p>Adviser: ${assosiation.adviser}</p>
-                        <span>Type: ${assosiation.type}</span>
-                        <a href="Register.php"><button class="js-ApplyButton" data-association-id="${assosiation.id}">Apply</button></a>
-                    </div>
+                <div class="details">
+                    <p>Adviser: ${assosiation.adviser}</p>
+                    <span>Type: ${assosiation.type}</span>
+                    <a><button class="js-ApplyButton" data-association-id="${assosiation.id}">Apply</button></a>
                 </div>
             </div>
-            `;
-        }
-
-        else if(assosiation.type === "Club"){
-           let pic = assosiation.image == undefined ? "../Images/COMS.png" : assosiation.image;
-        Clubs += `
-            <div class="itemList"> 
-                <div class="pictureFrame">
-                    <img src="${pic}">
-                </div>
-                
-                <div class="title-description">
-                    <div class="topSection">
-                        <h2>${assosiation.association}</h2>
-                    </div>
-                    <div class="details">
-                        <p>Adviser: ${assosiation.adviser}</p>
-                        <span>Type: ${assosiation.type}</span>
-                        <a href="Register.php"><button class="js-ApplyButton" data-association-id="${assosiation.id}">Apply</button></a>
-                    </div>
-                </div>
-            </div>
-            `;
-        }
+        </div>
+        `;
+        
     });
-    document.querySelector(".orgList").innerHTML = Organization;
-    document.querySelector(".orgList").innerHTML += Clubs;
+    document.querySelector(".orgList").innerHTML = Associations;
     
     document.querySelectorAll(".js-ApplyButton").forEach((value) => {
-        value.addEventListener('click', ()=>{ 
+        value.addEventListener('click', (e)=>{ 
+            e.preventDefault();
             let associationId = value.dataset.associationId;
             //console.log(associationId);
-            selectedId = localStorage.setItem("selectedId", JSON.stringify(associationId));
+            window.location.href = "Register.php";
+            sessionStorage.setItem("selectedId", JSON.stringify(associationId));
         });
     });
+
+    document.querySelectorAll(".itemList").forEach((value)=>{
+        value.addEventListener('click', (e)=>{ 
+            e.preventDefault();
+            let associationId = value.dataset.associationId;
+            //console.log(associationId);
+            window.location.href = "Register.php";
+            sessionStorage.setItem("selectedId", JSON.stringify(associationId));
+        });
+    })
 };
 
 function AddtoArray(array){

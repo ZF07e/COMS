@@ -1,15 +1,21 @@
+
 body{
     background-color: #232323;
     margin: 0;
     padding-top: 3.6rem;
     font-family: "ROBOTO";
     color: #eee;
+    height: 100%;
+    
 }
 
-a:visited, a:active, a:hover, a{
+a:visited, a:active, a{
     color: #eee;
 }
 
+a:hover{
+    color: #fecc66;
+}
 
 a{
     text-decoration: none;
