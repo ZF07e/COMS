@@ -33,11 +33,14 @@ main{
 }
 
 #CenterDivContainer section{
-    background-color: #1B1B1B;
+    background-color: transparent;
+    border: solid 3px #232323;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 1.464vw 1.757vw;
     border-radius: 1.2rem;
     overflow: hidden;
-    transition: box-shadow 0.25s;
+    transition: box-shadow 0.25s, transform 0.20s;
 }
 
 #CenterDivContainer section h3{
@@ -45,7 +48,8 @@ main{
 }
 
 #CenterDivContainer section:hover{
-    box-shadow: 0px 0px 1rem #000000e7;
+    transform: translate(-3px, -4px);
+    box-shadow: 5px 5px 0.2rem #0000005d;
 }
 
 /* fonts */
@@ -87,7 +91,7 @@ main{
     border-radius: 50%;
     width: 7.687vw;
     height: 7.687vw;
-    border: solid 7px #0f0f0f;
+    border: solid 7px #336698;
 }
 
 /* DateNTotalEvents_Con */
@@ -109,7 +113,7 @@ main{
 }
 
 #gotoButton{
-    color: #f9ffa2;
+    color: #232323;
     font-weight: 500;
     font-size: 1.171vw;
     text-align: center;
@@ -123,8 +127,8 @@ main{
 }
 
 #Today_Con, .not_Today_Con{
-    border: solid 4px #f9ffa2;
-    color: #f9ffa2; 
+    border: solid 4px #fecc66;
+    color: #fecc66; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -142,8 +146,8 @@ main{
 .not_Today_Con{
     width: 3.66vw;
     height: 5.124vw;
-    border: solid 4px #cfcfcf42;
-    color: #ffffff42; 
+    border: solid 4px #18181893;
+    color: #18181893; 
 }
 
 #bullet{
@@ -194,13 +198,13 @@ main{
 }
 
 #orgPercentage{
-    border: solid 3px #f9ffa2;
-    color:#fff;
+    border: solid 3px #336698;
+    color:#fecc66;
 }
 
 #clubPercentage{
-    border: solid 3px #fff;
-    color:#f9ffa2;
+    border: solid 3px #fecc66;
+    color:#336698;
 }
 
 .assoc_Con{
@@ -214,11 +218,11 @@ main{
     border-radius: 0.2rem;
     width: 10px;
     height: 10px;
-    background-color:#f9ffa2;
+    background-color:#336698;
 }
 
 #clubColor{
-    background-color:#fff;
+    background-color:#fecc66;
 }
 
 #org_detl, #club_detl{
@@ -248,8 +252,8 @@ main{
 }
 
 #totalUsers{
-    border: solid 4px #fff;
-    color: #f9ffa2;
+    border: solid 4px #336698;
+    color: #fecc66;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -292,14 +296,14 @@ main{
 }
 
 #bulletAd{
-    background-color: #fff;
+    background-color: #336698;
     border-radius: 0.2rem;
     width: 10px;
     height: 10px;
 }
 
 #studentPer_Con #bulletAd{
-    background-color: #eef773;
+    background-color: #fecc66;
 }
 
 #adviPer, #studPer{
@@ -316,23 +320,23 @@ main{
 
 #viewReq{
     background-color: transparent;
-    color: #ffffffcc;
+    color: #336698;
     font-size: 0.9vw;
     font-weight: 700;
     padding: 0.586vw 1.171vw;
     border-radius: 1.171vw;
-    border: solid 1px #ffffffcc;
+    border: solid 1px #336698;
     transition: background-color 0.20s, color 0.20s;
 }
 
 #viewReq:hover{
-    background-color: #ffffffcc;
-    color: #000;
+    background-color: #336698;
+    color: #eee;
 }
 
 #viewReq:active{
-    background-color: #ffffff0e;
-    color: #fff;
+    background-color: transparent;
+    color: #336698;
 }
 
 #allTotalReq_Con{
@@ -344,7 +348,7 @@ main{
 }
 
 #allTotalReq_Con hr{
-    background-color: #ffffffcc;
+    background-color: #336698;
     border: none;
     height: 1px;
 }
@@ -363,11 +367,11 @@ main{
 }
 
 #inbox_Con #bullet, #approved_Con #bullet{
-    background-color: #fff;
+    background-color: #fecc66;
 }
 
 #unread_Con #bullet, #rejected_Con #bullet{
-    background-color: #f9ffa2;
+    background-color: #336698;
 }
 
 #totalInbox, #totalUnread, #totalApproved, #totalRejected{

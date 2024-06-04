@@ -17,11 +17,46 @@ window.onload = ()=>{
     }
 }
 
+/*
+
+
+    SAMPLE DATA BELOW
+    Clear it when using "fetch"
+
+
+*/
+
+
+//SampleData  
+let applicants = [
+    {
+        id: 1,
+        name: "Firstname Lastname",
+        email: "Sample@123456@alabang.sti.edu.ph",
+        gender: "Male",
+        course: "Bachelor In Science In Information In Technology",
+        desc: "Good At Cook'in"
+    },
+    {
+        id: 2,
+        name: "Firstname2 Lastname2",
+        email: "Sample@123456@alabang.sti.edu.ph2",
+        gender: "Female",
+        course: "Bachelor In Science In Information In Technology2",
+        desc: "Good At Cook'in2"
+    }
+]
+
+
+//do not remove this (Used for selecting an applicant)
+let selectedApp; 
+
 fetch('http://localhost/COMS/AssocClient/Functions/Querries/getUsers.php')
     .then(response => response.json())
     .then(data => {
         renderUserList(data);
         SearchTab(data);
+        renderApplicantList(applicants)
     })
     .catch(error => console.error('Error:', error));
 
@@ -49,12 +84,37 @@ $("#activateBtn").click(()=>{
     window.location.reload();
 });
 
+$("#Members").click((e)=>{
+    e.preventDefault();
+    $("#Members").addClass("navSelected");
+    $("#Applicants").removeClass("navSelected");
+    $(".userList").css("display", "flex");
+    $(".ap_item").css("display", "none");
+    $("#associationButton").css("display", "inline");
+});
+
+$("#Applicants").click((e)=>{
+    e.preventDefault();
+    $("#Applicants").addClass("navSelected");
+    $("#Members").removeClass("navSelected");
+    $(".ap_item").css("display", "flex");
+    $(".userList").css("display", "none");
+    $(".ap_item").css("display", "flex");
+    $("#associationButton").css("display", "none");
+});
+
+$("#applicantPopUpCon").click((e)=>{
+    e.preventDefault();
+    e.stopPropagation();
+    $("#applicantPopUpCon").css("display", "none");
+});
+
+
 function renderUserList(userList){//Function For Rendering 
     let users = "";
     
     userList.forEach((userprofile) => {
         //<img src="${userprofile.pfp}" class="profilePicture" alt="">
-        console.log(userprofile.userStatus);
         if(userprofile.userStatus == 1){
             users += `
             <div class="userItem" data-User-id="${userprofile.userID}">
@@ -87,12 +147,152 @@ function renderUserList(userList){//Function For Rendering
     FormButtonsFunctions();
 }
 
+function renderApplicantList(applicantList){
+    let applicants = "";
+    
+    applicantList.forEach((app) => {
+        console.log(app.id)
+        applicants += `
+            <div class="ap_item" data-Applicant="${app.id}">
+                <div class="item_left">
+                    <div class="userInfo">
+                        <p id="applicant">${app.name}</p>
+                        <p id="applicantEmail">${app.email}</p>
+                    </div>
+                </div>
+                <div>
+                    <button id="ap_accept2" class="ap_accept2C" data-Applicant="${app.id}">Accept</button>
+                    <button id="ap_reject2" class="ap_reject2C" data-Applicant="${app.id}">Reject</button>
+                </div>
+            </div>
+            `;
+        });
+    
+
+    $(".ap_list").html(applicants);
+
+    $("#applicantPopUp").click((e)=>{
+        e.stopPropagation();
+        e.preventDefault();
+    });
+
+    document.querySelectorAll(".ap_accept2C").forEach((e)=>{
+        e.addEventListener("click", (ev)=>{
+            ev.stopPropagation();
+            ev.preventDefault();
+            selectedApp = e.dataset.applicant;
+            $("#applicantPopUpCon").css("display", "flex");
+            displaySelectedAp(applicantList);
+        });
+    });
+
+    document.querySelectorAll(".ap_reject2C").forEach((e)=>{
+        e.addEventListener("click", (ev)=>{
+            ev.stopPropagation();
+            ev.preventDefault();
+            selectedApp = e.dataset.applicant;
+            $("#applicantPopUpCon").css("display", "flex");
+            displaySelectedAp(applicantList);
+        });
+    });
+
+    document.querySelectorAll(".ap_item").forEach((e)=>{
+        e.addEventListener("click", (ev)=>{
+            ev.stopPropagation();
+            ev.preventDefault();
+            selectedApp = e.dataset.applicant;
+            $("#applicantPopUpCon").css("display", "flex");
+            displaySelectedAp(applicantList);
+        });
+    });
+}
+
+function displaySelectedAp(applicantList){
+    let sl_gender;
+    let getApp = applicantList;
+    getApp.forEach((values)=>{
+        //console.log(values.id + " - " + selectedApp);
+        if(values.id == selectedApp){
+            sl_gender = values.gender;
+            $("#sl_name").html(values.name);
+            $("#ap_name").html(values.name);
+            $("#ap_email").html(values.email);
+            $("#ap_cour").html(values.course);
+            $("#ap_desc").html(values.desc);
+        }
+    });
+
+    $("#ap_exit").click((e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        $("#applicantPopUpCon").css("display", "none");
+    });
+
+    $("#sl_exit").click((e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        $("#selectPositionCon").css("display", "none");
+        $("#sl_position")[0].selectedIndex = 0;
+    });
+    
+    $("#ap_acc").click((e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        $("#applicantPopUpCon").css("display", "none");
+        $("#selectPositionCon").css("display", "flex");
+    });
+    
+    $("#ap_rej").click((e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        //$("#applicantPopUpCon").css("display", "none");
+        alertify.confirm('Reject Applicant', 'Are you sure to reject this applicant?', 
+        function(){ //IF REJECT USER
+            
+            
+            
+            
+            //CODE HERE 
+
+
+
+            $("#applicantPopUpCon").css("display", "none");
+            window.location.reload();
+        },
+        function(){
+            $("#applicantPopUpCon").css("display", "none");
+            window.location.reload();
+        });
+    });
+
+    $("#sl_acc").click((e)=>{ // IF USER ACCEPTED 
+        //CODE HERE
+        e.preventDefault();
+        if($("#sl_position").val() != ""){
+            let name = $("#sl_name").text();
+            let email = $("#ap_email").text();
+            let position = $("#sl_position").val();
+            let course = $("#ap_cour").text();
+            let gender = sl_gender;
+
+            $.ajax({
+                type: "POST",
+                url: "",
+                data: {name, email, position, course, gender}, //Short hand to for (name: name, email: email, etc...)
+                success: (res)=>{
+                    $("#selectPositionCon").css("display", "none");
+                    window.location.reload();
+                }
+            });
+        }
+    }); 
+}
+
 function getAssociationList(list){
     let associations = "";
 
     list.forEach((asscList)=>{
         if(!associations.includes(asscList.association)){
-            //console.log(associations);
             associations += `<option value="${asscList.association}"> ${asscList.association}</option>`
         }
     });
@@ -125,7 +325,6 @@ function SearchTab(userList){
         editButtonFunction(userList);
     });
 }
-
 
 function editButtonFunction(userList){
     //Form Editing Buttons Functions

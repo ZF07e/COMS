@@ -26,7 +26,7 @@
                         </div>               
                         <p class="formTag">Let's Set Up Your Account</p>
                         <p class="hint">Enter your Student Information</p>
-                        <p class="hint2">3/4</p>
+                        <p class="hint2">3/5</p>
                     </div>
 
                     <div class="inputContainer">
