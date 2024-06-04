@@ -13,6 +13,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        
     </head>
     <body>
         <main>
@@ -25,29 +26,35 @@
                             <h2>COMS</h2>
                         </div>               
                         <p class="formTag">Let's Set Up Your Account</p>
-                        <p class="hint">Enter your Password</p>
-                        <p class="hint2">5/5</p>
+                        <p class="hint">Tell us more about yourself.</p>
+                        <p class="hint2">4/5</p>
                     </div>
 
                     <div class="inputContainer">
-                        <p>Password <span class="required">*</span> <span class="Errormessage Emsg1"></span></p>
-                        <div class="inputCon">
-                            <input id="Password" class="normalInput" type="password" placeholder="*">
-                        </div>
+                        <p>Course/Strand<span class="required">*</span> <span class="Errormessage Emsg1"></span></p>
+                        <input id="courseStrand" type="text" class="normalInput" placeholder="Full course/strand name" required pattern="[A-Za-z\s]+">
+                        <p>Description<span class="required">*</span> <span class="Errormessage Emsg2"></span></p>
+                        <!-- <input > -->
+                        <Textarea id="desc" type="text" class="normalInput normalTextArea" placeholder="eg. Skills, Expertise." required pattern="[A-Za-z\s]+"></Textarea>
 
-                        <p>Confirm Password <span class="required">*</span> <span class="Errormessage Emsg2"></span></p>
-                        <input id="confirmPassword" class="normalInput" type="password" placeholder="*" required>
+                        <!-- <p>Gender <span class="required">*</span> <span class="Errormessage Emsg3"></span></p>
+                        <select  id="gender" required>
+                            <option value="" disabled selected>-Select-</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select> -->
                     </div>
                    
                 </section>
                 
                 <section class="bottomsection">
                     <div class="buttonContainer">
-                        <button class="submit-password animate--fadeIn delay-1">Set Account</button>
+                        <button class="submit-desc  animate--fadeIn delay-1">Next</button>
                     </div>
                 </section>
+
             </div>
         </main>
-        <script type="module" src="../Scripts/setupData/password.js"></script>
+        <script type="module" src="../Scripts/setupData/description.js"></script>
     </body>
 </html>

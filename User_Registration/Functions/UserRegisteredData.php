@@ -7,13 +7,17 @@
     //birthdate.js
     $BirthDay = $_POST['birthday'];
 
-    //Contact
+    //contact.js
     $Email = $_POST['email'];
     $MobileNum = $_POST['mobileNo'];
 
-    //password
+    //student_description.js
+    $courseStrand = $_POST['courseStrand'];
+    $description = $_POST['description']; 
+
+    //password.js
     $Password = $_POST['password'];
 
 
-    echo $FirstName. $LastName. $Gender. $BirthDay. $Email. $MobileNum. $Password;
+    echo $FirstName. $LastName. $Gender. $BirthDay. $Email. $MobileNum. $Password. $courseStrand. $description;
 ?>

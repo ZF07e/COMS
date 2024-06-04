@@ -85,6 +85,15 @@ a:visited, a:active, a:hover, a{
     font-size: 1rem; 
     border: solid 1px transparent;
     border-radius: 5px;  
+    resize: none;
+}
+
+.normalTextArea{
+    height: 6rem;
+}
+
+.normalTextArea:focus{
+    outline: none;
 }
 
 .inputContainer p{
