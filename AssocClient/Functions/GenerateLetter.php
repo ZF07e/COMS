@@ -164,21 +164,40 @@
     function insertRecipients($documentID){
         $endorsed = json_decode($_POST['endorsed'] ?? '[]', true);
         $noted = json_decode($_POST['noted'] ?? '[]', true);
+        $recipientTo = json_decode($_POST['recipientTo'] ?? '[]', true);
+
+        $database = new Database();
+        $mysqli = $database->getConnection();
+
+        $name = $writer = getUsername();
+        $email = $_SESSION['email'];
+        $role = 'Writer';
+        $status = 'None';
+        $query = 'INSERT INTO recipients (name, email, role, status, documentID, isVisible, emailSent) VALUES (?, ?, ?, ?, ?, 1, 1)';
+
+        $stmt = $mysqli->stmt_init();
+        if(!$stmt->prepare($query)){
+            die("SQL Error". $mysqli->error);
+        }
+        $stmt->bind_param("sssss", $name, $email, $role, $status, $documentID);
+        $stmt->execute();
+        $mysqli->close();
 
         for ($x = 0; $x < count($endorsed); $x++){
             $database = new Database();
             $mysqli = $database->getConnection();
 
             $name = $endorsed[$x]['firstname'].' '.$endorsed[$x]['lastname'];
+            $email = $endorsed[$x]['email'];
             $role = 'Endorser';
             $status = 'Pending';
-            $query = 'INSERT INTO recipients (name, role, status, documentid) VALUES (?, ?, ?, ?)';
+            $query = 'INSERT INTO recipients (name, email, role, status, documentID, isVisible) VALUES (?, ?, ?, ?, ?, 1)';
 
             $stmt = $mysqli->stmt_init();
             if(!$stmt->prepare($query)){
                 die("SQL Error". $mysqli->error);
             }
-            $stmt->bind_param("ssss", $name, $role, $status, $documentID);
+            $stmt->bind_param("sssss", $name, $email, $role, $status, $documentID);
             $stmt->execute();
             $mysqli->close();
         }
@@ -187,15 +206,34 @@
             $mysqli = $database->getConnection();
 
             $name = $noted[$x]['firstname'].' '.$noted[$x]['lastname'];
+            $email = $noted[$x]['email'];
             $role = 'Noter';
             $status = 'Pending';
-            $query = 'INSERT INTO recipients (name, role, status, documentid) VALUES (?, ?, ?, ?)';
+            $query = 'INSERT INTO recipients (name, email, role, status, documentid) VALUES (?, ?, ?, ?, ?)';
 
             $stmt = $mysqli->stmt_init();
             if(!$stmt->prepare($query)){
                 die("SQL Error". $mysqli->error);
             }
-            $stmt->bind_param("ssss", $name, $role, $status, $documentID);
+            $stmt->bind_param("sssss", $name, $email, $role, $status, $documentID);
+            $stmt->execute();
+            $mysqli->close();
+        }
+        for ($x = 0; $x < 1; $x++){
+            $database = new Database();
+            $mysqli = $database->getConnection();
+
+            $name = $recipientTo['firstname'].' '.$recipientTo['lastname'];
+            $email = $recipientTo['email'];
+            $role = 'Recipient';
+            $status = 'Pending';
+            $query = 'INSERT INTO recipients (name, email, role, status, documentid) VALUES (?, ?, ?, ?, ?)';
+
+            $stmt = $mysqli->stmt_init();
+            if(!$stmt->prepare($query)){
+                die("SQL Error". $mysqli->error);
+            }
+            $stmt->bind_param("sssss", $name, $email, $role, $status, $documentID);
             $stmt->execute();
             $mysqli->close();
         }
@@ -498,9 +536,7 @@
     }
 
     function sendEmail($subject){
-        $recipientTo = json_decode($_POST['recipientTo'] ?? '[]', true);
         $endorsed = json_decode($_POST['endorsed'] ?? '[]', true);
-        $noted = json_decode($_POST['noted'] ?? '[]', true);
 
         $mail = new PHPMailer(true);
         try {
@@ -519,12 +555,6 @@
 
             for($x = 0; $x < count($endorsed); $x++){
                 $mail->addAddress($endorsed[$x]['email'], $endorsed[$x]['firstname'].' '.$endorsed[$x]['lastname']);
-            }
-            for($x = 0; $x < count($noted); $x++){
-                $mail->addAddress($noted[$x]['email'], $noted[$x]['firstname'].' '.$noted[$x]['lastname']);
-            }
-            for($x = 0; $x < count($recipientTo); $x++){
-                $mail->addAddress($recipientTo['email'], $recipientTo['firstname'].' '.$recipientTo['lastname']);
             }
             // $mail->addAddress('ellen@example.com'); // Name is optional
             // $mail->addReplyTo('info@example.com', 'Information');
