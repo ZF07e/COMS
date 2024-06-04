@@ -40,6 +40,7 @@
                         if (isset($_SESSION['error'])) {
                             echo '<p style="color:red;">' . $_SESSION['error'] . '</p>';
                             unset($_SESSION['error']);
+                            session_destroy();
                         }
                     ?>
                         <input type="text" name="inputEmail" id="inputEmail" placeholder="Outlook Email">

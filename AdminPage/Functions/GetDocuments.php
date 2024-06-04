@@ -4,12 +4,18 @@
     require 'vendor/autoload.php';
 
     use Dompdf\Dompdf;
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
 
     function getDocuments() {
         $database = new Database();
         $mysqli = $database->getConnection();
+        $email = $_SESSION['email'];
 
-        $query = 'SELECT id, sender, status, subject, filename, htmlContent, DATE(timestamp) as date_only FROM documents';
+        $query = "SELECT d.id, d.sender, d.status, d.subject, d.filename, d.htmlContent, DATE(d.timestamp) as date_only
+        FROM documents d
+        JOIN recipients r ON d.id = r.documentID
+        WHERE r.email = '$email' AND r.isVisible = 1";
         $result = $mysqli->query($query);
 
         if (!$result) {
@@ -133,6 +139,121 @@
         $mysqli->close();
     }
 
+    function sendEmail(){
+        $database = new Database();
+        $mysqli = $database->getConnection();
+
+        $query = "SELECT subject FROM documents WHERE id = '$selectedID'";
+        $result = $mysqli->query($query);
+
+        if (!$result) {
+            die("SQL Error (query): " . $mysqli->error);
+        }
+
+        $subject = implode($result->fetch_assoc());
+
+        $query = "SELECT status FROM recipients WHERE role = 'Endorser' AND documentID = '$selectedID'";
+        $result = $mysqli->query($query);
+
+        if (!$result) {
+            die("SQL Error (query): " . $mysqli->error);
+        }
+
+        $endroserStatus = [];
+        while ($row = $result->fetch_assoc()) {
+            $endroserStatus[] = $row;
+        }
+
+        $endorserCount = 0;
+        for($x = 0; $x < count($endroserStatus); $x++){
+            $status = $endroserStatus[$x]['status'];
+            if($status == "Signed"){
+                $endorserCount++;
+            }
+        }
+
+        $query = "SELECT status FROM recipients WHERE role = 'Noter' AND documentID = '$selectedID'";
+        $result = $mysqli->query($query);
+
+        if (!$result) {
+            die("SQL Error (query): " . $mysqli->error);
+        }
+
+        $noterStatus = [];
+        while ($row = $result->fetch_assoc()) {
+            $noterStatus[] = $row;
+        }
+
+        $noterCount = 0;
+        for($x = 0; $x < count($noterStatus); $x++){
+            $status = $noterStatus[$x]['status'];
+            if($status == "Pending"){
+                $noterCount++;
+            }
+        }
+
+        if($endorserCount == count($endroserStatus)){
+            $query = "SELECT name, email FROM recipients WHERE role = 'Noter' AND documentID = '$selectedID'";
+            $result = $mysqli->query($query);
+
+            if (!$result) {
+                die("SQL Error (query): " . $mysqli->error);
+            }
+
+            $noterEmail = [];
+            if ($result->num_rows > 0) {
+                $noterEmail = [];
+                while ($row = $result->fetch_assoc()) {
+                    $noterEmail[] = $row;
+                }
+            }
+        }
+        else if($noterCount == count($noterStatus)){
+            $query = "SELECT name, email FROM recipients WHERE role = 'Recipient' AND documentID = '$selectedID'";
+            $result = $mysqli->query($query);
+
+            if (!$result) {
+                die("SQL Error (query): " . $mysqli->error);
+            }
+
+            $recipientEmail = [];
+            if ($result->num_rows > 0) {
+                $recipientEmail = [];
+                while ($row = $result->fetch_assoc()) {
+                    $recipientEmail[] = $row;
+                }
+            }
+
+            $mail = new PHPMailer(true);
+            try {
+                // Server settings
+                $mail->SMTPDebug = 0;
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'sti.college.coms@gmail.com';
+                $mail->Password = 'vbvp hefu avlr fizn';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+
+                // Recipients
+                $mail->setFrom('sti.college.coms@gmail.com', 'COMS-Notifier');
+
+                for($x = 0; $x < count($recipientEmail); $x++){
+                    $mail->addAddress($recipientEmail[$x]['email'], $recipientEmail[$x]['name']);
+                }
+                $mail->isHTML(true);
+                $mail->Subject = $subject;
+                $mail->Body    = 'A document letter is sent to you for approval. <br> Click the link to view here: <a href="http://localhost/COMS/AdminPage/Request.php">View Document</a>';
+                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+                $mail->send();
+            } catch (Exception $e) {
+                echo 'Error: '. $e;
+            }
+        } 
+    }
+
     function updateStatusReject($name, $selectedID){
         $database = new Database();
         $mysqli = $database->getConnection();
@@ -164,8 +285,6 @@
         $stmt->execute();
         $result = $stmt->get_result();
         $name = $result->fetch_assoc();
-        $stmt->close();
-        $mysqli->close();
 
         $fullName = $name['firstName'].' '.$name['lastName'];
         
@@ -173,7 +292,7 @@
         $htmlcontents = getHTMLcontents($selectedID);
         $newhtmlcontents = str_replace($fullName.'signature', $signature, $htmlcontents);
         //echo $selectedID;
-        echo $signature;
+        //echo $signature;
 
         $dompdf = new Dompdf();
         $dompdf->loadHtml($newhtmlcontents);
@@ -186,7 +305,11 @@
         file_put_contents($filePath, $pdfData);
         updateData($newhtmlcontents, $selectedID);
         updateStatusSigned($fullName, $selectedID);
-        echo "approved";
+        //echo "approved";
+        $stmt->close();
+        $mysqli->close();
+
+        updateNoter($selectedID);
     }
 
     function rejected(){
@@ -228,6 +351,83 @@
         updateData($newhtmlcontents, $selectedID);
         updateStatusReject($fullName, $selectedID);
         echo "REJECTED";
+    }
+
+    function updateNoter($selectedID){
+        $database = new Database();
+        $mysqli = $database->getConnection();
+
+        $query = "SELECT status FROM recipients WHERE role = 'Endorser' AND documentID = '$selectedID'";
+        $result = $mysqli->query($query);
+
+        if (!$result) {
+            die("SQL Error (query): " . $mysqli->error);
+        }
+
+        $endroserStatus = [];
+        while ($row = $result->fetch_assoc()) {
+            $endroserStatus[] = $row;
+        }
+
+        $endorserCount = 0;
+        for($x = 0; $x < count($endroserStatus); $x++){
+            $status = $endroserStatus[$x]['status'];
+            if($status == "Signed"){
+                $endorserCount++;
+            }
+        }
+
+        if($endorserCount == count($endroserStatus)){
+            $query = "UPDATE recipients SET isVisible = 1 WHERE role = 'Noter' AND documentID = ?";
+            $stmt = $mysqli->stmt_init();
+            if(!$stmt->prepare($query)){
+                die("SQL Error". $mysqli->error);
+            }
+            $stmt->bind_param('s', $selectedID);
+            $stmt->execute();
+
+            $query = "SELECT name, email FROM recipients WHERE role = 'Noter' AND  documentID = '$selectedID' AND emailSent = 0";
+            $result = $mysqli->query($query);
+
+            if (!$result) {
+                die("SQL Error (query): " . $mysqli->error);
+            }
+    
+            $emailNoters = [];
+            while ($row = $result->fetch_assoc()) {
+                $emailNoters[] = $row;
+            }
+
+            $mail = new PHPMailer(true);
+            try {
+                // Server settings
+                $mail->SMTPDebug = 0;
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'sti.college.coms@gmail.com';
+                $mail->Password = 'vbvp hefu avlr fizn';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+
+                // Recipients
+                $mail->setFrom('sti.college.coms@gmail.com', 'COMS-Notifier');
+
+                for($x = 0; $x < count($emailNoters); $x++){
+                    $mail->addAddress($emailNoters[$x]['email'], $emailNoters[$x]['name']);
+                }
+                $mail->isHTML(true);
+                $mail->Subject = $subject;
+                $mail->Body    = 'A document letter is sent to you for approval. <br> Click the link to view here: <a href="http://localhost/COMS/AdminPage/Request.php">View Document</a>';
+                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+                $mail->send();
+            } catch (Exception $e) {
+                echo 'Error: '. $e;
+            }
+            $stmt->close();            
+        }
+        $mysqli->close();
     }
 
     if (isset($_GET['action']) && $_GET['action'] == 'getDocumentDetails') {

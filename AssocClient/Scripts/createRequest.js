@@ -2,8 +2,6 @@ const quill = new Quill('#editor', {
     theme: 'snow'
   });
 
-
-
 let selectedRecipients = {
     to: [],
     endorsed: [],

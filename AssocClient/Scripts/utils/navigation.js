@@ -15,8 +15,6 @@ document.querySelector(".request").addEventListener("click", ()=>{
     window.location.href = "./Request.php";
 }); 
 
-
-
 let isOn = false;
 let profilePopUp = document.querySelector(".popUp");
 

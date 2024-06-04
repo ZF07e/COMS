@@ -8,7 +8,6 @@ window.onload = ()=>{
     let approved = localStorage.getItem("approved");
     let cancelled = localStorage.getItem("cancelled");
   
-  
     if(rejected){
       var notification = alertify.notify('Rejected', 'custom', 4);  
       localStorage.removeItem("rejected");
@@ -32,7 +31,9 @@ let doublefetch = fetch(`http://localhost/COMS/AssocClient/Functions/GetDocument
 .then(data => {
     Documents = data;
     sender = data[0].sender;
-    Recpt = data; 
+    Recpt = data;
+    let selectedRequest = JSON.parse(localStorage.getItem("selectedRequest"));
+    $("#documentPrev").attr('src', `../PDF-FILES/${selectedRequest}.pdf#toolbar=0`); //paayos po
     Documents.forEach((e) => {
         if (e.id == selectedRequest) {
             id = e.id;
@@ -51,24 +52,26 @@ doublefetch.then(currentUser=>{
     Recpt.forEach((dt)=>{
         console.log(dt);
         console.log(recipients);
+        
         recipients.forEach((recipt)=>{
             if(currentUser == recipt.name){
                 $("#ActionsContainer").html(`
                 <button id="approveRequest">Approve</button>
                 <button id="rejectRequest">Reject</button>
                 `);
+                signature();
             }
+            else if(currentUser == sender){
+              $("#ActionsContainer").html(`
+              <button id="approveRequest">Sign Letter</button>
+              `);
+              signature();
+            }
+            // else{
+            //     $("#ActionsContainer").html(""); 
+            // }
         });
-
-        if(currentUser == sender){
-            $("#ActionsContainer").html(`
-            <button id="approveRequest">Sign Letter</button>
-            `);
-        }
-        else{
-            $("#ActionsContainer").html(""); 
-        }
-        signature();
+        
     });
 });
 
@@ -168,7 +171,7 @@ function signature(){
     let offscreenUploadCtx = offscreenUploadCanvas.getContext("2d");    
   
     $("#backButton").on("click", ()=>{
-      window.location.href = "../AdminPage/Request.php";
+      window.location.href = "../AssocClient/Request.php";
     });
   
     $("#fileSelector").on("change", ()=>{
@@ -330,10 +333,12 @@ function signature(){
             data: {signature: dataUrl, id: selectedRequest},
             success: function(response){
                 // console.log(response);
+                $("#documentPrev").attr('src', `../PDF-FILES/${e.id}.pdf#toolbar=0`);
                 localStorage.setItem("approved", true);
             }
         })
           //console.log(dataUrl);
+          window.location.reload();
 
         }
         else{
@@ -396,6 +401,7 @@ function signature(){
                     method: "POST",
                     data: {signature: rejectImage, id: selectedRequest},
                     success: function(response){
+                    $("#documentPrev").attr('src', `../PDF-FILES/${e.id}.pdf#toolbar=0`);
                       // console.log(response);
                     }
                 })
@@ -449,6 +455,7 @@ function signature(){
           data: {signature: dataUrl, id: selectedRequest},
           success: function(response){
               // console.log(response);
+              $("#documentPrev").attr('src', `../PDF-FILES/${e.id}.pdf#toolbar=0`);
               localStorage.setItem("approved", true);
           }
       })
