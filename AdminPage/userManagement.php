@@ -64,8 +64,8 @@
             <nav id="profileNav">
                 <hr>
                 <div class="profile">
-                    <img src="" alt="">
-                    <div>Profile</div>
+                    <img src="../Images/COMS.png" alt="">
+                    <div>Admin</div>
 
                     <section class="popUp">
                         <button id="ProfileButton">Profile</button>

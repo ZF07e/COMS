@@ -15,9 +15,13 @@
         <!-- Alertify CSS -->
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
 
+        <!-- Semantic UI theme -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/semantic.min.css"/>
+
         <link rel="stylesheet" href="./Styles/mainStyle/general-style.css">
         <link rel="stylesheet" href="./Styles/mainStyle/header-style.css">
         <link rel="stylesheet" href="../AdminPage/Styles/userManagement.css">
+        <link rel="stylesheet" href="./Styles/userManagement.css">
         
         <!-- jquery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -168,9 +172,72 @@
             </form>
         </div>
         
+        <div id="applicantPopUpCon">
+            <form id="applicantPopUp">
+                <div id="ap_hdr">
+                    <h4>Applicant Information</h4>
+                    <p id="ap_exit">&#10005;</p>
+                </div>
+                
+
+                <div id="ap_Profl_con">
+                    <img id="ap_Profl" src="../Images/Icons/man.png" alt="">
+                </div>
+
+
+                <h5>Name:</h5>
+                <p id="ap_name"></p>
+                <h5>Email:</h5>
+                <p id="ap_email"></p>
+                <h5>Course:</h5>
+                <p id="ap_cour"></p>
+                <h5>Description:</h5>
+                <p id="ap_desc"></p>
+
+                <div id="ap_btn_Con">
+                    <button id="ap_acc">Accept</button>
+                    <button id="ap_rej">Reject</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="selectPositionCon">
+            <form id="selectPosition">
+                <div id="sl_hdr">
+                    <h4>Applicant Information</h4>
+                    <p id="sl_exit">&#10005;</p>
+                </div>
+
+                <div id="sl_Profl_con">
+                    <img id="sl_Profl" src="../Images/Icons/man.png" alt="">
+                </div>
+
+                <h5>Name:</h5>
+                <p id="sl_name"></p>
+
+                <h5>Position:</h5>
+                <select name="position" id="sl_position">
+                    <option value="" selected disabled>Select Position</option>
+                    <option value="President">President</option>
+                    <option value="Vice President">Vice President</option>
+                    <option value="Secretary">Secretary</option>
+                    <option value="Auditor">Auditor</option>
+                    <option value="Treasurer">Treasurer</option>
+                    <option value="Head Officer">Head Officer</option>
+                    <option value="Officer">Officer</option>
+                </select>
+
+                <button id="sl_acc">Accept Application</button>
+            </form>
+        </div>    
 
         <main>
             <div class="pageTitle">User Management</div>
+
+            <div id="NavContainer">
+                <nav id="Members" class="navSelected">Members</nav>
+                <nav id="Applicants">Applicants</nav>
+            </div>
             <div class="main-header">
                 <div class="searchbar">
                     <input type="text" name="" id="searchUser">
@@ -181,6 +248,10 @@
             </div>
 
             <section class="userList">
+            <!-- Render Here -->
+            </section>
+
+            <section class="ap_list"> <!-- NEW! -->
             <!-- Render Here -->
             </section>
         </main>

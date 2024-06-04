@@ -14,8 +14,8 @@ main{
 .form{
     /* background-color: rgba(28, 28, 28, 0.85); */
     border: solid 2px #292929;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 2rem 3rem;
     width: 50%;
     border-radius: 0.6rem;
