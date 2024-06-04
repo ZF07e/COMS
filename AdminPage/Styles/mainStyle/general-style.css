@@ -2,14 +2,12 @@
 
 .ajs-message.ajs-custom { color: #fff;  background-color:rgb(219, 54, 54);  border-color: rgb(219, 54, 54); }
 
-
-
 body{
-    background-color: #232323;
+    background-color: #faffed;
     margin: 0;
     font-family: "ROBOTO";
-    color: #eee;
-    width: auto;
+    color: #232323;
+    width: auto;    
     height: 100%;
     margin-left: 11rem;
     padding: 0.5rem 0.8rem;
