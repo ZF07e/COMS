@@ -64,8 +64,8 @@
             
             <nav>
                 <div class="profile">
-                    <img src="" alt="Profile">
-                    <div>Profile</div>
+                    <img src="../Images/COMS.png" alt="Profile">
+                    <div>Admin</div>
 
                     <section class="popUp">
                         <a href="?action=logout"><button id="LogoutButton">Logout</button></a>

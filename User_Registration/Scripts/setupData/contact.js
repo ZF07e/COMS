@@ -30,7 +30,7 @@ function saveData(){
     let prevData = decode(sessionStorage.getItem('userInfo'));
     let combineData = Object.assign({}, prevData, {email: email.value, mobileNo: mobileNo.value});
     sessionStorage.setItem('userInfo', encrypt(combineData));
-    window.location.href = "password.php";
+    window.location.href = "student_description.php";
 }
 
 function removeAllError(){
