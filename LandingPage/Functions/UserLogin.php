@@ -49,54 +49,74 @@ class UserLogin {
         $userData = $result->fetch_assoc();
         $role = $userData['position'];
 
+        $sql = "SELECT firstName, lastName FROM users WHERE email = '$email'";
+        $result = $mysqli->query($sql);
+        $userData = $result->fetch_assoc();
+        $name = $userData['firstName'].' '.$userData['lastName'];
+
         //$data = md5($password);
         if($data != null){
             if($data == $passowrd){                
                 if ($role == "Student Affairs Officer") {
                     $_SESSION['authorized'] = true;
                     $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $name;
                     header("Location: http://localhost/COMS/AdminPage/index.php");
                     exit();
                 }
                 elseif($role == "Adviser"){
                     $_SESSION['authorized'] = true;
                     $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $name;
                     header("Location: http://localhost/COMS/AssocClient/index.php");
                     exit();
                 }
                 elseif($role == "President"){
                     $_SESSION['authorized'] = true;
                     $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $name;
+                    header("Location: http://localhost/COMS/AssocClient/index.php");
+                    exit();
+                }
+                elseif($role == "Vice President"){
+                    $_SESSION['authorized'] = true;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $name;
                     header("Location: http://localhost/COMS/AssocClient/index.php");
                     exit();
                 }
                 elseif($role == "Secretary"){
                     $_SESSION['authorized'] = true;
                     $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $name;
                     header("Location: http://localhost/COMS/AssocClient/index.php");
                     exit();
                 }
                 elseif($role == "Auditor"){
                     $_SESSION['authorized'] = true;
                     $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $name;
                     header("Location: http://localhost/COMS/AssocClient/index.php");
                     exit();
                 }
                 elseif($role == "Treasurer"){
                     $_SESSION['authorized'] = true;
                     $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $name;
                     header("Location: http://localhost/COMS/AssocClient/index.php");
                     exit();
                 }
                 elseif($role == "Head Officer"){
                     $_SESSION['authorized'] = true;
                     $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $name;
                     header("Location: http://localhost/COMS/AssocClient/index.php");
                     exit();
                 }
                 elseif($role == "Officer"){
                     $_SESSION['authorized'] = true;
                     $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $name;
                     header("Location: http://localhost/COMS/AssocClient/index.php");
                     exit();
                 }
