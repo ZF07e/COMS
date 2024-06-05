@@ -1,28 +1,37 @@
 #NavContainer{
     display: flex;
-    background-color: #1C1C1C;
-    border: solid 1px #131314; 
+    background-color: #ffffff;
+    border: solid 2px #003365; 
+    color: #232323;
     flex-wrap: wrap;
     border-radius: 0.5rem;
     height: 2rem;
-    padding: 0.3rem;
+    /* padding: 0.2rem; */
     margin-bottom: 0.4rem;
     column-gap: 0.1rem;
 }
 
 #Members, #Applicants{
     flex: 1;
+    font-weight: 500;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .navSelected{
-    background-color: #242323;
+    background-color: #003365;
+    color: #ffffff;
 }
 
 #NavContainer nav:hover{
-    background-color: #242323;
+    color: #003365;
+}
+
+#NavContainer .navSelected:hover{
+    background-color: #003365;
+    color: #ffffff;
 }
 
 #applicantPopUpCon, #selectPositionCon{
@@ -39,7 +48,7 @@
 }
 
 #applicantPopUp, #selectPosition{
-    background-color: #171717;
+    background-color: #003365;
     border-radius: 1rem;
     display: flex;
     flex-direction: column; 
@@ -99,11 +108,13 @@
 
 #ap_acc{
     border-radius: 1rem 0rem 0rem 1rem;
+    cursor: pointer;
     background-color: #43dd2f;
 }
 
 #ap_rej{
     border-radius: 0rem 1rem 1rem 0rem;
+    cursor: pointer;
     background-color: #dd2f2f;
 }
 
@@ -111,8 +122,10 @@
 /*  */
 
 .ap_item{
-    background-color: #1C1C1C;
-    border: solid 1px #131314; 
+    background-color: #ffffff;
+    color: #232323;
+    /* border: solid 1px #131314;  */
+    box-shadow: 2px 2px 5px #00000056;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     display: none;
@@ -120,6 +133,10 @@
     justify-content: space-between ;
     transition: background-color 0.25s;
     font-weight: 300;
+}
+
+.ap_item:active{
+    background-color: #d8d8d8;
 }
 
 .ap_list{
@@ -138,6 +155,7 @@
 
 #ap_accept2{
     background-color: #43dd2f;
+    cursor: pointer;
 }
 
 #ap_accept2:hover{
@@ -146,6 +164,7 @@
 
 #ap_reject2{
     background-color: #dd2f2f;
+    cursor: pointer;
 }
 
 #ap_reject2:hover{
@@ -153,7 +172,8 @@
 }
 
 #applicant{
-    cursor: pointer;
+    font-weight: 700;
+    /* cursor: pointer; */
 }
 
 #applicant:hover{
@@ -181,4 +201,14 @@
     cursor: pointer;
     border: none;
     border-radius: 0.5rem;
+}
+
+.viewDetailsEL{
+    cursor: pointer;
+    padding: 0.6rem 1rem;
+    border: none;
+    background-color: #005db9;
+    color: #ffffff;
+    font-weight: 500;
+    border-radius: 1rem;
 }

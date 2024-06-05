@@ -4,12 +4,16 @@ header{
     left: 0;
     bottom: 0;
     width: 11rem;
-    background-color: #1B1B1B;
+    background-color: #003365;
     user-select: none;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     z-index: 100;
+}
+
+.pageTitle{
+    color: #232323;
 }
 
 header nav{
@@ -40,7 +44,8 @@ header nav{
 }
 
 .title{
-    font-weight: 500;
+    font-weight: 900;
+    font-size: 1.2rem;
 }
 
 .home, .events, .associations, .tasks, .user_management, .request, .profile{
@@ -54,26 +59,28 @@ header nav{
 }
 
 .home:hover, .events:hover, .associations:hover, .tasks:hover, .user_management:hover, .request:hover, .profile:hover{
-    background-color: #25232356;
+    background-color: #164675;
     cursor: pointer;
 }
 
 .home:active, .events:active, .associations:active, .tasks:active, .user_management:active, .request:active, .profile:active{
-    background-color: #1f1e1e;
+    background-color:#00264d;
+    color: #fecc66;
     cursor: pointer;
 }
 
 .selected{
-    background-color: #2b2a2a;
+    color: #fecc66;
+    background-color: #00264d;
 }
 
 .selected:hover{
-    background-color: #3d3c3c;
+    background-color: #00264d;
 }
 
-.selected:active{
+/* .selected:active{
     background-color: #2b2a2a;;
-}
+} */
 
 .profile img{
     width: 1.9rem;

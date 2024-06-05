@@ -95,7 +95,7 @@ main{
 #calendar{
     height: 100%;
     overflow: hidden;
-    background-color: #13131454; 
+    background-color: #232323; 
     padding: 1rem;
     border-radius: 1rem;
     border: solid 1px #131314;  
@@ -145,3 +145,5 @@ main{
 }
 
 /* calendar Style[End] */
+
+

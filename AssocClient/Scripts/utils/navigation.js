@@ -30,9 +30,10 @@ document.querySelector(".profile").addEventListener("click", ()=>{
 }); 
 
 
-fetch('http://localhost/COMS/AssocClient/Functions/GetDocument.php?action=getDocumentDetails')
+fetch('http://localhost/COMS/AssocClient/Functions/Querries/userName.php')
 .then(response => response.json())
 .then(data => {
-    
+    let UserName = data[0].split("(")[0];
+    document.getElementById("userNameHdr").innerHTML = UserName + " " + "(" + data[1] + ")";
 })
 .catch(error => console.error('Error:', error));

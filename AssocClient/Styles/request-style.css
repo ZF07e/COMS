@@ -27,8 +27,10 @@ main{
 
 
 #topSection{
-    background-color: #181818;  
+    background-color: #ffffff;  
     display: flex;
+    color: #232323;
+    font-weight: 700;
     column-gap: 0.1rem;
     row-gap: 0.1rem;
     cursor: pointer;
@@ -40,7 +42,7 @@ main{
 }
 
 .selected{
-    background-color: #49494e73;
+    background-color: #002c58;
 }
 
 #topSection div{
@@ -52,14 +54,15 @@ main{
     border-radius: 0.3rem;
 }
 
-#topSection div:hover{
+/* #topSection div:hover{
     background-color: #49494e73;
-}
+} */
 
 /* Inbox Container */
 
 #requestContainer{
-    background-color: #181818;  
+    background-color: #ffffff;  
+    box-shadow: 1px 1px 3px #0000006e;
     border: solid 1px #6e6e6e42;
     border-radius: 0.3rem;
     row-gap: 0.3rem;
@@ -70,7 +73,8 @@ main{
 }
 
 #containerHeader{
-    background-color: #232323;  
+    background-color: transparent;  
+    box-shadow: 0px 0px 3px #000000a6;
     padding: 0.7rem;
     border-radius: 0.3rem;
     display: flex;
@@ -81,7 +85,7 @@ main{
 #searchContainer{
     padding: 0.2rem 0.5rem;
     border-radius: 1rem;
-    border: solid 1px #ffffffbd; 
+    border: solid 2px #232323; 
     display: flex;
     width: 40%;
     align-items: center;
@@ -90,17 +94,17 @@ main{
 
 #searchContainer input{
     background-color: transparent; 
-    color: #ffffffd5;
+    color:#181818;
     border: none;
     width: 0;
     flex: 1;
 }
 
-#searchContainer:focus-within{
+/* #searchContainer:focus-within{
     background-color: #fff; 
     color:#181818;
     border: solid 1px #ffffffbd;
-}
+} */
 
 #searchContainer input:focus{
     background-color: transparent; 
@@ -116,15 +120,16 @@ main{
     background-color: transparent;
     padding: 0.5rem 1rem;
     font-weight: 500;
-    border: solid 1px #fff; 
+    border: solid 2px #232323; 
     border-radius: 0.2rem;
-    color: #fff;
+    color: #232323;
     transition: background-color 0.25s, color 0.25s;
 }
 
 #CreateRequest:hover{
-    background-color: #181818;
-    color: #fff;
+    background-color: #18181827;
+    color: #232323;
+    cursor: pointer;
 }
 
 #CreateRequest:active{
@@ -184,11 +189,18 @@ main{
     column-gap: 0.2rem;
     grid-template-columns: 1fr 1fr 1fr;
     border-radius: 0.2rem;
-    background-color: #2e2e30ab;
+    background-color: #ffffff;
+    color: #232323;
+    box-shadow: 1px 1px 3px #0000006e;
+    /* border: solid 1px #131314;  */
     flex-wrap: wrap;
     user-select: none;
     cursor: pointer;
     padding: 1rem;
+}
+
+.mailRequest:hover{
+    background-color: #e6e6e6b6;
 }
 
 #mailSender, #mailSubject, #mailDate{
@@ -261,7 +273,9 @@ main{
 /* View Request */
 
 #topHeader{
-    background-color: #181818;
+    background-color: #003365;
+    color: #ffffff;
+    border: solid 1px #131314; 
     border-radius: 0.5rem;
     display: flex;
     align-items: center;
@@ -371,7 +385,10 @@ main{
 /* List of Approver */
 
 #listOfApprover{
-    background-color: #181818;
+    background-color: #ffffff;
+    /* border: solid 1px #131314;  */
+    color: #232323;
+    box-shadow: 2px 2px 4px #00000059;
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -392,7 +409,7 @@ main{
 }
 
 #recipientContainer{
-    background-color:#232323;
+    background-color: #d8d8d8;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -411,7 +428,7 @@ main{
 
 #reciepientStatusPending{
     font-size: 0.8rem;
-    color: #ffffff59;
+    color: #23232381;
 }
 
 #reciepientStatusSigned{
@@ -441,7 +458,10 @@ main{
 /* Comments */
 
 #comments{
-    background-color: #181818;
+    background-color: #ffffff;
+    /* border: solid 1px #131314;  */
+    color:#002c58;
+    box-shadow: 2px 2px 4px #00000059;
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -459,13 +479,14 @@ main{
 }
 
 #commentButton{
+    background-color: #cacacac0;
     padding: 0.4rem 0.7rem;
     border-radius: 0.5rem;
     border:none;
 }
 
 #commentButton:hover{
-    background-color: #ffffffc0;
+    background-color: #a1a1a1c0;
 }
 
 #commentButton:active{
@@ -479,32 +500,46 @@ main{
    row-gap: 0.5rem;
 }
 
+#commentStyle{ 
+    background-color: #ffffff;
+    /* border: solid 2px #00000059; */
+    box-shadow: 0px 0px 4px #0000008f;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+}
+
 #commentStyleHeader{
-    background-color:#2c2c2c;
+    color:#232323;
+    font-weight: 600;
     font-size: 0.9rem;
-    padding: 0.5rem 0.3rem;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
 }
 
 #commentBody{
-    background-color:#232323;
+    color: #232323;
     font-size: 0.85rem;
-    padding: 0.6rem 0.3rem;
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
 }
 
 #commentTextbox{
-    background-color:#232323;
+    background-color:transparent;
+    box-shadow: 1px 1px 3px #00000059;
+    border: none;
     font-family: "ROBOTO";
-    color: #fff;
+    color: #232323;
     border-radius: 0.6rem;
     border-width: 2px;
     padding: 0.4rem; 
     height: 5rem;
     resize: none;
     flex: 1;
+    margin-bottom: 0.4rem;
+}
+
+#commentTextbox::placeholder{
+    color: #232323;
 }
 
 #commentTextbox:focus{
@@ -526,7 +561,8 @@ main{
     height: 100vh;  
     width: 100%;
     font-size: 0.95rem;
-    color: #fff;
+    color: #232323;
+    
 }
 
 #Requestmessage{
@@ -540,8 +576,10 @@ main{
 
 
 #leftsectionReq{
-    background-color: #181818;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 4px #00000059;
     padding: 0.5rem;
+    word-wrap: break-word;
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -549,13 +587,16 @@ main{
 }
 
 #RightsectionReq{
-    background-color: #181818;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 4px #00000059;
+    color: #232323;
     padding: 1rem;
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
 }
+
 
 .multiselectFields, #SelectRecv{
     width: 100%;
@@ -580,11 +621,13 @@ main{
 #sendReq{
     background-color: #60be5d;
     color: #fff;
+    box-shadow: 2px 2px 4px #00000059;
 }
 
 #canlReq{
     background-color: #d85252;
     color: #fff;
+    box-shadow: 2px 2px 4px #00000059;
 }
 
 
@@ -603,7 +646,7 @@ main{
 }
 
 #ApprovePopUp{
-    background-color: #181818;
+    background-color: #002c58;
     display: flex;
     flex-direction: column; 
     border-radius: 0.5rem;
@@ -728,7 +771,8 @@ main{
 
 .multi-select__select {
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04); */
+    box-shadow: 2px 2px 4px #00000059;
     box-sizing: border-box;
     cursor: pointer;
     display: flex;
@@ -837,8 +881,9 @@ main{
     border-radius: 6px;
     font-size: 1rem;
     border: solid 1px #aaaaaa;
-    color: #fff;
+    color: #232323;
     background-color: transparent;
+    box-shadow: 2px 2px 4px #00000059;
 }
 
 #SubjectInput:focus{
