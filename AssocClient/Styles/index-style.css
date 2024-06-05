@@ -36,7 +36,7 @@ main{
     right: 0;
     width: 11rem;
     top: 100%;
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 

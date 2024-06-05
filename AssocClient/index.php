@@ -53,7 +53,7 @@
                 <hr>
                 <div class="profile">
                     <img src="" alt="">
-                    <div>Profile</div>
+                    <div id="userNameHdr">Profile</div>
 
                     <section class="popUp">
                         <button id="ProfileButton">Profile</button>

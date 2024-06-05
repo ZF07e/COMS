@@ -1,5 +1,5 @@
 .topSection div:hover{
-    color: #ffffff67;
+    /* color: #ffffff67; */
     cursor: pointer;
 }
 
@@ -58,7 +58,7 @@
     margin: 0rem 0.5rem 1rem 0rem;
     display: flex;
     flex-direction: column;
-    border-bottom: solid 1px #ffffff54;
+    border-bottom: solid 1px #232323;
 }
 
 .AssociationHeader .info{
@@ -97,7 +97,7 @@
 }
 
 .selectedNav{
-    border-bottom: solid 1px #fff;
+    border-bottom: solid 1px #232323;
 }
 
 /* List Section */
@@ -108,20 +108,21 @@
 }
 
 .memberContainer{
-    border: solid 5px #1C1C1C;
+    border: solid 2px #1C1C1C;
+    padding: 0.3rem;
     border-radius: 0.5rem;
 }
 .memberHeader{
-    background-color: #1C1C1C;
-    padding: 0.2rem 0rem;
+    background-color: transparent;
+    padding: 0.1rem 0rem;
 }
 
 .memberContainer div{
     font-weight: 300;
-    padding: 0.3rem;
+    /* padding: 0.3rem; */
     display: flex;
     flex-direction: column;
-    color: #ffffff81;
+    /* color: #ffffff81; */
 }
 
 /* Home Section */
@@ -132,12 +133,12 @@
 
 .postHeader{
     font-size: 1rem;
-    border-bottom: solid 1px #fff;
+    border-bottom: solid 1px #232323;
    
 }
 
 #home_about, #home_mission, #home_vision{
-    color: #ffffff9a;
+    color: #232323;
     font-weight: 300;
     margin: 0.5rem 0rem;
 }
@@ -212,7 +213,11 @@
 }
 
 .upperlayer form{
-    background-color: #181818;
+    background-color: #003365;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: solid 2px #232323;
+    color: #eee;
     width: 300px;
     padding: 1rem 0rem;
     border-radius: 1rem;
@@ -221,6 +226,17 @@
     align-items: center;
     flex-direction: column;
     row-gap: 0.5rem;
+}
+
+#selectedName{
+    font-weight: 600;
+}
+
+.upperlayer form .infos h5{
+    margin:0;
+    margin-top: 0.5rem;
+    color:#fecc66;
+    
 }
 
 .formheader{
@@ -239,7 +255,7 @@
 .infos{
     display: flex;
     flex-direction: column;
-    row-gap: 0.5rem;
+    /* row-gap: 0.5rem; */
     width: 90%;   
 }
 
@@ -256,12 +272,14 @@
 }
 
 .upperlayer form button{
+    margin-top: 1rem;
     padding: 0.5rem;
     width: 90%;
-    border: solid 1px #fff;
+    border: solid 2px #fecc66;
+    font-weight: 600;
     border-radius: 1rem;
     background-color: transparent;
-    color: #fff;
+    color: #fecc66;
 }
 
 .upperlayer form button:hover{

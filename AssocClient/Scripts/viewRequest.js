@@ -70,8 +70,6 @@ doublefetch.then(currentUser=>{
             // else{
             //     $("#ActionsContainer").html(""); 
             // }
-        });
-        
     });
 });
 
@@ -457,6 +455,7 @@ function signature(){
               // console.log(response);
               $("#documentPrev").attr('src', `../PDF-FILES/${e.id}.pdf#toolbar=0`);
               localStorage.setItem("approved", true);
+              $("#documentPrev").attr('src', `../PDF-FILES/${e.id}.pdf#toolbar=0`);
           }
       })
     }

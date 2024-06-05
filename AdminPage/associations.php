@@ -25,12 +25,6 @@
         <header>
             <nav>
                 <div class="system-logo">
-                    <div class="logo">
-                        <span><div></div></span>
-                        <span><div></div></span>
-                        <div></div>
-                        <div></div>
-                    </div>
                     <div class="title"><span>CO</span>MS<span>.</span></div>
                 </div>
     
@@ -79,7 +73,7 @@
             <div class="pageTitle">Associations</div>
             <div class="main-header">
                 <div class="searchbar">
-                    <input type="text" name="" id="searchAssociation">
+                    <input type="text" name="" id="searchAssociation" placeholder="Search">
                     <img src="../Images/Icons/icons8-search-25.png" alt="search" class="searchButton">
                 </div>
                 
