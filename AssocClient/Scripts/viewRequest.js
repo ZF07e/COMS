@@ -171,7 +171,7 @@ function signature(){
     let offscreenUploadCtx = offscreenUploadCanvas.getContext("2d");    
   
     $("#backButton").on("click", ()=>{
-      window.location.href = "../AdminPage/Request.php";
+      window.location.href = "../AssocClient/Request.php";
     });
   
     $("#fileSelector").on("change", ()=>{

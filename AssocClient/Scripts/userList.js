@@ -85,6 +85,7 @@ function SearchTab(userList){
                                         <p id="position">${value.position} (${value.affiliation})</p>
                                     </div>
                                 </div>
+                                <button class="viewDetailsEL"  data-User-id="${value.userID}">View Details</button>
                             </div>
                             `;
         }
@@ -96,7 +97,7 @@ function SearchTab(userList){
 
 function editButtonFunction(userList){
     //Form Editing Buttons Functions
-    document.querySelectorAll(".userItem").forEach((item)=>{
+    document.querySelectorAll(".viewDetailsEL").forEach((item)=>{
         item.addEventListener("click", ()=>{
             //gets the button's stored id and display the floating form
             let userSelectedId = item.dataset.userId;

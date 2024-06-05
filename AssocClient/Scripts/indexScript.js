@@ -1,6 +1,7 @@
-fetch('http://localhost/COMS/AssocClient/Functions/Querries/UserAssociation.php?action=getUserAssociation')
+fetch("http://localhost/COMS/AssocClient/Functions/Querries/UserAssociation.php?action=getUserAssociation")
 .then(response => response.json())
 .then(data => {
+    console.log(data);
     renderDashboard(data);
 }).catch(error => console.error('Error:', error));
 

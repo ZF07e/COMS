@@ -27,12 +27,6 @@
         <header>
             <nav>
                 <div class="system-logo">
-                    <div class="logo">
-                        <span><div></div></span>
-                        <span><div></div></span>
-                        <div></div>
-                        <div></div>
-                    </div>
                     <div class="title"><span>CO</span>MS<span>.</span></div>
                 </div>
                 
@@ -60,8 +54,8 @@
             <nav id="profileNav">
                 <hr>
                 <div class="profile">
-                    <img src="" alt="">
-                    <div>Profile</div>
+                    <img src="../Images/COMS.png" alt="">
+                    <div id="userNameHdr">Profile</div>
 
                     <section class="popUp">
                         <button id="ProfileButton">Profile</button>

@@ -6,7 +6,9 @@ main{
 #topHeaderSection{
     display:flex;
     flex-direction: column;
-    background-color: #131314;
+    background-color: #ffffff;
+    color: #232323;
+    box-shadow: 2px 2px 3px #00000059;
     padding: 0rem 0.8rem 1.7rem 0.8rem;
     border-radius: 0.5rem;
     transition: background-color 0.25s;
@@ -27,8 +29,7 @@ main{
 }
 
 #EditOptions{
-    background-color: #0a0a0a;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     /* padding: 0.5rem 1rem; */
     position: absolute;
     font-weight: 400;
@@ -41,11 +42,14 @@ main{
 }
 
 #EditOptions div{
+    background-color: #ffffff;
+    color: #232323;
+    box-shadow: 2px 2px 3px #00000059;
     padding: 0.8rem 1rem;
 }
 
 #EditOptions div:hover{
-    background-color: #1d1d1d;
+    background-color: #dadada;
 }
 
 #sectionBody, #nameContainer{
@@ -106,7 +110,9 @@ main{
 /* dash Records */
 
 .dashRecords{
-    background-color: #131314;
+    background-color: #ffffff;
+    color: #232323;
+    box-shadow: 3px 3px 4px #00000059;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -120,9 +126,9 @@ main{
     transition: background-color 0.25s;
 }
 
-.dashRecords:hover, #topHeaderSection:hover{
-    background-color: #131314bb;
-}
+/* .dashRecords:hover, #topHeaderSection:hover{
+    background-color: #f3f3f3bb;
+} */
 
 #MissionVisionSection{
     display: flex;
@@ -131,7 +137,9 @@ main{
 }
 
 #MissionVisionSection div{
-    background-color: #131314;
+    background-color: #ffffff;
+    color: #232323;
+    box-shadow: 3px 3px 4px #00000059;
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
@@ -147,14 +155,14 @@ main{
     font-family: "ROBOTO";
     font-size: 1rem;
     padding: 0.5rem;
-    width: 100%;
+    /* width: 100%; */
     height: 15vh;
     resize: none;
     border: none;
     border-radius: 0.5rem;
     margin-top: 0.5rem;
-    background-color: #181818;
-    color: #fff;
+    background-color: #dadada;
+    color: #232323;
 }
 
 #MissionVisionSection div textarea:focus{
@@ -168,6 +176,7 @@ main{
 }
 
 #optionResult button{
+    box-shadow: 2px 2px 3px #00000059;
     padding: 0.6rem 1rem;
     border: none;
     font-weight: 700;

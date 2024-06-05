@@ -78,7 +78,7 @@
                 <section id="Account_Con">
                     <h3>Account</h3>
                     <div id="accountProfileHome">
-                        <img src="../Images/Noimg.jpg"  id="accountProfileHome">
+                        <img src="../Images/COMS.png"  id="accountProfileHome">
                         <h3 id="UserNameHome">[Username]</h3>
                         <h5 id="PositionHome">[Position]</h5>
                     </div>
