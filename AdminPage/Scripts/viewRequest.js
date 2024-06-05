@@ -38,13 +38,12 @@ fetch(`http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=getDocu
                 $("#documentPrev").attr('src', `../PDF-FILES/${e.id}.pdf#toolbar=0`);
             }
         });
-        
     })
     .catch(error => console.error('Error:', error));
 
     
     $.ajax({
-      url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php",
+      url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=updateDocumentStatusApproved",
       method: "POST",
       data: {selectedID: selectedRequest},
       success: function(response){
@@ -57,9 +56,6 @@ fetch(`http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=getDocu
   })
 
   console.log(selectedRequest);
-
-
-
 
 function displayRecipient(Users){
   let endorserElements = "";
@@ -123,7 +119,7 @@ function checkIfDownloadable(Users){
 });
 
   console.log(totalRecipient + " - " + totalSigned);
-  if(totalSigned === totalRecipient){
+  if(totalSigned === totalRecipient - 1){
       $("#downloadButton").removeAttr("disabled", false);
       console.log(selectedRequest);
       $.ajax({
@@ -135,7 +131,7 @@ function checkIfDownloadable(Users){
         }
     })
   }
-  else if(totalRecipient === totalRejected){
+  else if(totalRejected > 0){
     $("#downloadButton").removeAttr("disabled", false);
       console.log(selectedRequest);
       $.ajax({
@@ -449,7 +445,7 @@ function signature(){
         method: "POST",
         data: {signature: dataUrl, id: selectedRequest},
         success: function(response){
-            console.log(response);
+            //console.log(response);
             localStorage.setItem("approved", true);
         }
     })

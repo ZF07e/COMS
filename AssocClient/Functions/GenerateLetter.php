@@ -191,7 +191,7 @@
             $email = $endorsed[$x]['email'];
             $role = 'Endorser';
             $status = 'Pending';
-            $query = 'INSERT INTO recipients (name, email, role, status, documentID, isVisible) VALUES (?, ?, ?, ?, ?, 1)';
+            $query = 'INSERT INTO recipients (name, email, role, status, documentID, isVisible, emailSent) VALUES (?, ?, ?, ?, ?, 1, 1)';
 
             $stmt = $mysqli->stmt_init();
             if(!$stmt->prepare($query)){

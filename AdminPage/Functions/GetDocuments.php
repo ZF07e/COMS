@@ -121,6 +121,7 @@
         $stmt->execute();
         $stmt->close();
         $mysqli->close();
+        echo "Success";
     }
 
     function updateDocumentStatusRejected(){
@@ -137,121 +138,7 @@
         $stmt->execute();
         $stmt->close();
         $mysqli->close();
-    }
-
-    function sendEmail(){
-        $database = new Database();
-        $mysqli = $database->getConnection();
-
-        $query = "SELECT subject FROM documents WHERE id = '$selectedID'";
-        $result = $mysqli->query($query);
-
-        if (!$result) {
-            die("SQL Error (query): " . $mysqli->error);
-        }
-
-        $subject = implode($result->fetch_assoc());
-
-        $query = "SELECT status FROM recipients WHERE role = 'Endorser' AND documentID = '$selectedID'";
-        $result = $mysqli->query($query);
-
-        if (!$result) {
-            die("SQL Error (query): " . $mysqli->error);
-        }
-
-        $endroserStatus = [];
-        while ($row = $result->fetch_assoc()) {
-            $endroserStatus[] = $row;
-        }
-
-        $endorserCount = 0;
-        for($x = 0; $x < count($endroserStatus); $x++){
-            $status = $endroserStatus[$x]['status'];
-            if($status == "Signed"){
-                $endorserCount++;
-            }
-        }
-
-        $query = "SELECT status FROM recipients WHERE role = 'Noter' AND documentID = '$selectedID'";
-        $result = $mysqli->query($query);
-
-        if (!$result) {
-            die("SQL Error (query): " . $mysqli->error);
-        }
-
-        $noterStatus = [];
-        while ($row = $result->fetch_assoc()) {
-            $noterStatus[] = $row;
-        }
-
-        $noterCount = 0;
-        for($x = 0; $x < count($noterStatus); $x++){
-            $status = $noterStatus[$x]['status'];
-            if($status == "Pending"){
-                $noterCount++;
-            }
-        }
-
-        if($endorserCount == count($endroserStatus)){
-            $query = "SELECT name, email FROM recipients WHERE role = 'Noter' AND documentID = '$selectedID'";
-            $result = $mysqli->query($query);
-
-            if (!$result) {
-                die("SQL Error (query): " . $mysqli->error);
-            }
-
-            $noterEmail = [];
-            if ($result->num_rows > 0) {
-                $noterEmail = [];
-                while ($row = $result->fetch_assoc()) {
-                    $noterEmail[] = $row;
-                }
-            }
-        }
-        else if($noterCount == count($noterStatus)){
-            $query = "SELECT name, email FROM recipients WHERE role = 'Recipient' AND documentID = '$selectedID'";
-            $result = $mysqli->query($query);
-
-            if (!$result) {
-                die("SQL Error (query): " . $mysqli->error);
-            }
-
-            $recipientEmail = [];
-            if ($result->num_rows > 0) {
-                $recipientEmail = [];
-                while ($row = $result->fetch_assoc()) {
-                    $recipientEmail[] = $row;
-                }
-            }
-
-            $mail = new PHPMailer(true);
-            try {
-                // Server settings
-                $mail->SMTPDebug = 0;
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'sti.college.coms@gmail.com';
-                $mail->Password = 'vbvp hefu avlr fizn';
-                $mail->SMTPSecure = 'tls';
-                $mail->Port = 587;
-
-                // Recipients
-                $mail->setFrom('sti.college.coms@gmail.com', 'COMS-Notifier');
-
-                for($x = 0; $x < count($recipientEmail); $x++){
-                    $mail->addAddress($recipientEmail[$x]['email'], $recipientEmail[$x]['name']);
-                }
-                $mail->isHTML(true);
-                $mail->Subject = $subject;
-                $mail->Body    = 'A document letter is sent to you for approval. <br> Click the link to view here: <a href="http://localhost/COMS/AdminPage/Request.php">View Document</a>';
-                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-                $mail->send();
-            } catch (Exception $e) {
-                echo 'Error: '. $e;
-            }
-        } 
+        echo "Success";
     }
 
     function updateStatusReject($name, $selectedID){
@@ -310,6 +197,7 @@
         $mysqli->close();
 
         updateNoter($selectedID);
+        notifyRecipient($selectedID);
     }
 
     function rejected(){
@@ -400,6 +288,19 @@
 
             $mail = new PHPMailer(true);
             try {
+                $query = "SELECT subject FROM documents WHERE id = ?";
+                $stmt = $mysqli->prepare($query);
+                $stmt->bind_param('i', $selectedID);
+                $stmt->execute();
+                $result = $stmt->get_result();
+            
+                if (!$result) {
+                    die("SQL Error (query): " . $mysqli->error);
+                }
+            
+                $subjectRow = $result->fetch_assoc();
+                $subject = $subjectRow['subject'];
+
                 // Server settings
                 $mail->SMTPDebug = 0;
                 $mail->isSMTP();
@@ -422,6 +323,112 @@
                 $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
                 $mail->send();
+
+                $query = "UPDATE recipients SET emailSent = 1 WHERE role = 'Noter' AND documentID = ?";
+                $stmt = $mysqli->stmt_init();
+                if(!$stmt->prepare($query)){
+                    die("SQL Error". $mysqli->error);
+                }
+                $stmt->bind_param('s', $selectedID);
+                $stmt->execute();
+            } catch (Exception $e) {
+                echo 'Error: '. $e;
+            }
+            $stmt->close();            
+        }
+        $mysqli->close();
+    }
+
+    function notifyRecipient($selectedID){
+        $database = new Database();
+        $mysqli = $database->getConnection();
+
+        $query = "SELECT status FROM recipients WHERE role = 'Endorser' AND documentID = '$selectedID'";
+        $result = $mysqli->query($query);
+
+        if (!$result) {
+            die("SQL Error (query): " . $mysqli->error);
+        }
+
+        $endroserStatus = [];
+        while ($row = $result->fetch_assoc()) {
+            $endroserStatus[] = $row;
+        }
+
+        $endorserCount = 0;
+        for($x = 0; $x < count($endroserStatus); $x++){
+            $status = $endroserStatus[$x]['status'];
+            if($status == "Signed"){
+                $endorserCount++;
+            }
+        }
+
+        if($endorserCount == count($endroserStatus)){
+            $query = "UPDATE recipients SET isVisible = 1 WHERE role = 'Recipient' AND documentID = ?";
+            $stmt = $mysqli->stmt_init();
+            if(!$stmt->prepare($query)){
+                die("SQL Error". $mysqli->error);
+            }
+            $stmt->bind_param('s', $selectedID);
+            $stmt->execute();
+
+            $query = "SELECT name, email FROM recipients WHERE role = 'Recipient' AND  documentID = '$selectedID' AND emailSent = 0";
+            $result = $mysqli->query($query);
+
+            if (!$result) {
+                die("SQL Error (query): " . $mysqli->error);
+            }
+    
+            $recipient = [];
+            while ($row = $result->fetch_assoc()) {
+                $recipient[] = $row;
+            }
+
+            $mail = new PHPMailer(true);
+            try {
+                $query = "SELECT subject FROM documents WHERE id = ?";
+                $stmt = $mysqli->prepare($query);
+                $stmt->bind_param('i', $selectedID);
+                $stmt->execute();
+                $result = $stmt->get_result();
+            
+                if (!$result) {
+                    die("SQL Error (query): " . $mysqli->error);
+                }
+            
+                $subjectRow = $result->fetch_assoc();
+                $subject = $subjectRow['subject'];
+
+                // Server settings
+                $mail->SMTPDebug = 0;
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'sti.college.coms@gmail.com';
+                $mail->Password = 'vbvp hefu avlr fizn';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+
+                // Recipients
+                $mail->setFrom('sti.college.coms@gmail.com', 'COMS-Notifier');
+
+                for($x = 0; $x < count($recipient); $x++){
+                    $mail->addAddress($recipient[$x]['email'], $recipient[$x]['name']);
+                }
+                $mail->isHTML(true);
+                $mail->Subject = $subject;
+                $mail->Body    = 'A document letter is sent to you for approval. <br> Click the link to view here: <a href="http://localhost/COMS/AdminPage/Request.php">View Document</a>';
+                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+                $mail->send();
+
+                $query = "UPDATE recipients SET emailSent = 1 WHERE role = 'Recipient' AND documentID = ?";
+                $stmt = $mysqli->stmt_init();
+                if(!$stmt->prepare($query)){
+                    die("SQL Error". $mysqli->error);
+                }
+                $stmt->bind_param('s', $selectedID);
+                $stmt->execute();
             } catch (Exception $e) {
                 echo 'Error: '. $e;
             }
@@ -432,7 +439,6 @@
 
     if (isset($_GET['action']) && $_GET['action'] == 'getDocumentDetails') {
         getDocuments();
-        exit();
     }
     elseif(isset($_POST['selectedID'])) {
         $selectedID = $_POST['selectedID'];
@@ -449,5 +455,5 @@
     }
     elseif(isset($_GET['action']) && $_GET['action'] == 'updateDocumentStatusRejected'){
         updateDocumentStatusRejected();
-    }
+    } 
 ?>
