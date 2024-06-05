@@ -30,7 +30,7 @@ fetch(`http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=getDocu
         Documents = data;
         console.log(data);
         let selectedRequest = JSON.parse(localStorage.getItem("selectedRequest"));
-
+        $("#documentPrev").attr('src', `../PDF-FILES/${selectedRequest}.pdf#toolbar=0`); // paayos po
         Documents.forEach((e) => {
             if (e.id == selectedRequest) {
                 id = e.id;
@@ -335,6 +335,7 @@ function signature(){
       })
         //console.log(dataUrl);
         localStorage.setItem("approved", true);
+        window.location.reload();
       }
       else{
         alert("bruh")

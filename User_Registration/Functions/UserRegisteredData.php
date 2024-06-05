@@ -1,4 +1,6 @@
 <?php
+    require ('../../LandingPage/Functions/connectionDB.php');
+
     //fullname.js
     $FirstName = $_POST['firstName'];
     $LastName = $_POST['lastName'];
@@ -18,6 +20,6 @@
     //password.js
     $Password = $_POST['password'];
 
-
-    echo $FirstName. $LastName. $Gender. $BirthDay. $Email. $MobileNum. $Password. $courseStrand. $description;
+    $database = new Database();
+    $mysqli = $database->getConnection();
 ?>

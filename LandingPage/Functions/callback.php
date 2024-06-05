@@ -55,6 +55,10 @@
                             header("Location: http://localhost/COMS/AdminPage/index.php");
                             exit();
                         }
+                        else if($role == "IT Professional"){
+                            header("Location: http://localhost/COMS/AdminPage/index.php");
+                            exit();
+                        }
                         elseif($role == "Adviser"){
                             header("Location: http://localhost/COMS/AssocClient/index.php");
                             exit();

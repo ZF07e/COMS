@@ -7,6 +7,7 @@
         $mysqli = $database->getConnection();
         $email = $_SESSION['email'];
         $assocCode;
+        $name;
 
         $query = "SELECT associationCode FROM users WHERE email = ?";
 
@@ -25,9 +26,10 @@
             $assocCode = $data;
         }
 
-        $query = "SELECT id, sender, status, subject, filename, htmlContent, DATE(timestamp) as date_only 
-                    FROM documents
-                    WHERE id LIKE CONCAT('LTTR', '$assocCode', '%')";
+        $query = "SELECT d.id, d.sender, d.status, d.subject, d.filename, d.htmlContent, DATE(d.timestamp) as date_only
+        FROM documents d
+        JOIN recipients r ON d.id = r.documentID
+        WHERE r.email = '$email' AND r.isVisible = 1";
         $result = $mysqli->query($query);
 
         if (!$result) {

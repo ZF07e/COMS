@@ -24,9 +24,13 @@
     $_SESSION['last_activity'] = time();
 
     // Check if the user is logged in
-    if ((isset($_SESSION['msatg']) && $_SESSION['msatg'] == 1) || isset($_SESSION['authorized'])) {
-        //echo "Session ID: " . $_SESSION['uname'];
-    } else {
+    if (isset($_SESSION['msatg']) && $_SESSION['msatg'] == 1) {
+        //echo "Welocome back ". $_SESSION['uname'];
+    }
+    elseif(isset($_SESSION['authorized'])){
+        //echo "Welocome back ". $_SESSION['name'].'! ';
+    } 
+    else {
         session_unset();
         session_destroy();
         header("Location: http://localhost/COMS/LandingPage/Index.php");
