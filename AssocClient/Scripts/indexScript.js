@@ -57,6 +57,7 @@ function renderDashboard(Arr){
     //IF Edit is clicked
     $("#edtMissionVision").click(()=>{
         if(EditIsOpen){
+            $("#edtMissionVision").css("display", "flex");
             showTextDisplay();
             hideTextArea();
             EditIsOpen = false;

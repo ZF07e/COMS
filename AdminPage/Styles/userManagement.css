@@ -2,28 +2,29 @@
 
 
 .main-header{
-    background-color: #1C1C1C;
+    background-color: #ffffff;
 }
 
 .main-header{
     padding: 1rem 1rem;
     display:flex;
-    border: solid 1px #131314; 
+    /* border: solid 2px #232323;  */
     align-items: center;
     row-gap: 0.6rem;
     justify-content: space-between;
     flex-wrap: wrap;
     border-radius: 0.5rem;
+    box-shadow: 1px 1px 3px #1f1f1f80;
 }
 
 .main-header input{
-    background-color: #171717;
-    color: #b9b9b9;
+    background-color: transparent;
+    border: solid 2px #232323; 
+    /* color: #b9b9b9; */
     padding: 0.4rem 0.9rem;
     font-size: 1rem;
-    border: none;
     width: 100%;
-    border-radius: 1rem 0rem 0rem 1rem;
+    border-radius: 1rem;
 }
 
 .searchbar{
@@ -39,27 +40,29 @@
 }
 
 .searchButton{
-    background-color: #171717;
+    background-color: transparent;
+    border: solid 2px #232323; 
     color: #b9b9b9;
     padding: 0.4rem 0.5rem;
     width: 1.2rem;
-    border-radius: 0rem 1rem 1rem 0rem;
+    border-radius: 50%;
     -webkit-user-drag: none;
     user-select: none;
 }
 
 .main-header button{
-    background-color: #171717;
-    color: #b9b9b9;
+    background-color: #fff;
+    /* color: #b9b9b9; */
+    font-weight: 600;
     padding: 0.6rem 1rem;
     border: none;
     border-radius: 1rem;
-    outline: solid 1px #b9b9b9;
+    outline: solid 2px #232323;
     transition: background-color 0.15s;
 }
 
 .main-header button:hover{
-    background-color: #272525;
+    background-color: #27252518;
     outline-width: 2px;
 }
 
@@ -71,8 +74,9 @@
 }
 
 .userItem{
-    background-color: #1C1C1C;
-    border: solid 1px #131314; 
+    background-color: #fff;
+    color: #232323;
+    /* border: solid 2px #131314;  */
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     display: flex;
@@ -80,6 +84,11 @@
     justify-content: space-between ;
     transition: background-color 0.25s;
     font-weight: 300;
+    box-shadow: 1px 1px 3px #00000080;
+}
+
+#user_adviser{
+    font-weight: 600;
 }
 
 .DeactuserItem{
@@ -99,7 +108,7 @@
 }
 
 #position{
-    color:#ffffff6c;
+    /* color:#ffffff6c; */
     font-size: 0.8rem;
 }
 
@@ -139,7 +148,8 @@
     transform: translateY(-75%);
     transform: translateX(-50%); */
     /* Style */
-    background-color: #171717;
+    background-color: #003365;
+    color: #ffffff;
     /* position: fixed; */
     border-radius: 1rem;
     display: flex;
@@ -260,7 +270,7 @@ form div{
 }
 
 .upperlayer form{
-    background-color: #181818;
+    background-color: #003365;
     width: 300px;
     padding: 1rem 0rem;
     border-radius: 1rem;
@@ -268,6 +278,7 @@ form div{
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+    color: #ffffff;
     row-gap: 0.5rem;
 }
 
@@ -366,7 +377,8 @@ form div{
 }
 
 #confirmation{
-    background-color: #181818;
+    background-color: #003365;
+    color: #ffffff;
     padding: 1rem 0.5rem;
     user-select: none;
 }

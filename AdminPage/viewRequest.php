@@ -138,7 +138,7 @@
             <section id="topHeader"> 
                 <div id="topPrev">
                     <div id="backButton">
-                        &#8634; back
+                    &#8626; back
                     </div>
 
                     <div id="headerTitleRequest">
@@ -242,11 +242,11 @@
                         </form>
 
                         <div id="commentsList">
-                            <!-- <div id="commentStyle">
+                            <div id="commentStyle">
                                 <div id="commentStyleHeader">Marius Brylle U. Pastoral (Student)</div>
                                 <div id="commentBody">OOoohhhwwshiittt angaling</div>
                             </div>
-
+<!-- 
                             <div id="commentStyle">
                                 <div id="commentStyleHeader">Marius Brylle U. Pastoral (Student)</div>
                                 <div id="commentBody">UwU</div>

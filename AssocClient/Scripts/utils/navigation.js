@@ -28,3 +28,11 @@ document.querySelector(".profile").addEventListener("click", ()=>{
         isOn = false;
     }
 }); 
+
+
+fetch('http://localhost/COMS/AssocClient/Functions/GetDocument.php?action=getDocumentDetails')
+.then(response => response.json())
+.then(data => {
+    
+})
+.catch(error => console.error('Error:', error));

@@ -75,8 +75,8 @@ main{
 
 #cancelAddEvent, #cancelEditEvent, #removeEditEvent{
     background-color: transparent;
-    outline: solid 1px #fff;
-    color: #fff;
+    /* outline: solid 1px #fff; */
+    /* color: #fff; */
     border: none;
     padding: 0.5rem 1rem; 
     border-radius: 1rem;
@@ -95,7 +95,8 @@ main{
 #calendar{
     height: 100%;
     overflow: hidden;
-    background-color: #13131454; 
+    background-color: #312f2f; 
+    color: #eee;
     padding: 1rem;
     border-radius: 1rem;
     border: solid 1px #131314;  
