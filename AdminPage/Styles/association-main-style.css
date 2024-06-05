@@ -3,8 +3,9 @@ main{
 }
 
 .main-header{
-    background-color: transparent;
-    border: solid 2px #232323; 
+    background-color: #003365;
+    /* border: solid 2px #232323;  */
+    box-shadow: 2px 2px 3p #00000059;
 }
 
 .main-header{
@@ -18,12 +19,17 @@ main{
 }
 
 .main-header input{
-    background-color: transparent;
-    padding: 0.4rem 0.9rem;
+    background-color: #ffffff;
+    padding: 0.5rem 0.9rem;
     font-size: 1rem;
-    border: solid 2px #232323;
+    border: solid 2px #ffffff;
+    color: #232323;
     width: 100%;
-    border-radius: 1rem;
+    border-radius: 1rem 0rem 0rem 1rem;
+}
+
+.main-header input::placeholder{
+    color: #363636;
 }
 
 .searchbar{
@@ -39,29 +45,28 @@ main{
 }
 
 .searchButton{
-    background-color: transparent;
-    border: solid 2px #232323;
-    color: #b9b9b9;
-    padding: 0.39rem 0.5rem;
+    background-color: #ffffff;
+    border: solid 2px #ffffff;
+    padding: 0.45rem 0.5rem;
     width: 1.2rem;
-    border-radius: 50%;
+    border-radius: 0rem 1rem 1rem 0rem;
     -webkit-user-drag: none;
     user-select: none;
 }
 
 .main-header button{
     background-color: transparent;
-    color: #232323;
+    color: #ffffff;
     padding: 0.6rem 1rem;
     border: none;
     border-radius: 1rem;
-    outline: solid 2px #232323;
+    outline: solid 2px #ffffff;
     font-weight: 600;
     transition: background-color 0.15s;
 }
 
 .main-header button:hover{
-    background-color: #272525;
+    background-color: #002850;
     color: #eee;
     outline-width: 2px;
 }
@@ -88,9 +93,12 @@ main{
 }
 
 .associationItemDeactivated{
-    opacity: 40%;
-    background-color: #1C1C1C;
-    border: solid 1px #131314; 
+    opacity: 20%;
+    background-color: transparent;
+    border: solid 2px #292929;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: #232323;
     padding: 0.5rem 0.5rem;
     border-radius: 0.5rem;
     display: flex;

@@ -117,13 +117,15 @@ function renderUserList(userList){//Function For Rendering
         //<img src="${userprofile.pfp}" class="profilePicture" alt="">
         if(userprofile.userStatus == 1){
             users += `
-            <div class="userItem" data-User-id="${userprofile.userID}">
+            <div class="userItem">
                 <div class="item_left">
                     <div class="userInfo">
                         <p id="user_adviser">${userprofile.firstName} ${userprofile.lastName}</p>
                         <p id="position">${userprofile.position} (${userprofile.affiliation == "" ? "Unassigned" : userprofile.affiliation})</p>
                     </div>
                 </div>
+
+                <button class="viewDetailsEL"  data-User-id="${userprofile.userID}">View Details</button>
             </div>
             `;
         }
@@ -136,6 +138,7 @@ function renderUserList(userList){//Function For Rendering
                         <p id="position">${userprofile.position} (${userprofile.affiliation == "" ? "Unassigned" : userprofile.affiliation})</p>
                     </div>
                 </div>
+                <button class="viewDetailsEL"  data-User-id="${userprofile.userID}">View Details</button>
             </div>
             `;
         }
@@ -196,15 +199,15 @@ function renderApplicantList(applicantList){
         });
     });
 
-    document.querySelectorAll(".ap_item").forEach((e)=>{
-        e.addEventListener("click", (ev)=>{
-            ev.stopPropagation();
-            ev.preventDefault();
-            selectedApp = e.dataset.applicant;
-            $("#applicantPopUpCon").css("display", "flex");
-            displaySelectedAp(applicantList);
-        });
-    });
+    // document.querySelectorAll(".ap_item").forEach((e)=>{
+    //     e.addEventListener("click", (ev)=>{
+    //         ev.stopPropagation();
+    //         ev.preventDefault();
+    //         selectedApp = e.dataset.applicant;
+    //         $("#applicantPopUpCon").css("display", "flex");
+    //         displaySelectedAp(applicantList);
+    //     });
+    // });
 }
 
 function displaySelectedAp(applicantList){
@@ -317,6 +320,7 @@ function SearchTab(userList){
                                         <p id="position">${value.position} (${value.affiliation == "" ? "Unassigned" : value.affiliation})</p>
                                     </div>
                                 </div>
+                                <button class="viewDetailsEL"  data-User-id="${value.userID}">View Details</button>
                             </div>
                             `;
         }
@@ -328,7 +332,7 @@ function SearchTab(userList){
 
 function editButtonFunction(userList){
     //Form Editing Buttons Functions
-    document.querySelectorAll(".userItem").forEach((item)=>{
+    document.querySelectorAll(".viewDetailsEL").forEach((item)=>{
         item.addEventListener("click", ()=>{
             //gets the button's stored id and display the floating form
             let userSelectedId = item.dataset.userId;

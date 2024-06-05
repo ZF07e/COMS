@@ -30,9 +30,8 @@ function getUserAssociation(){
 function getAssociation($association){
     $database = new Database();
     $mysqli = $database->getConnection();
-
     $query = "SELECT * FROM associations WHERE association =  ?";
-        
+    
     $stmt = $mysqli->prepare($query);
     if (!$stmt) {
         die("SQL Error: " . $mysqli->error);

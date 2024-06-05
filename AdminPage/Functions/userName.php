@@ -1,7 +1,7 @@
 <?php
 
-require ('../../../LandingPage/Functions/SessionManagement.php');
-require ('../../../LandingPage/Functions/connectionDB.php');
+require ('../../LandingPage/Functions/SessionManagement.php');
+require ('../../LandingPage/Functions/connectionDB.php');
 
 $name = $_SESSION['uname'];
 $email = $_SESSION['email'];
