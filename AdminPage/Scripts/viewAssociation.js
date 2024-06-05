@@ -133,7 +133,7 @@ function navigationFunction(){
         ListPage.style.display = "flex";
         HomePage.style.display = "none";
         EditHome.style.display = "none";
-        editbuttonHeader.style.display = "none";
+        // editbuttonHeader.style.display = "none";
         RemoveHome.style.display = "none";
         
     });
@@ -144,7 +144,7 @@ function navigationFunction(){
         HomePageNav.classList.add("selectedNav");
         ListPage.style.display = "none";
         HomePage.style.display = "";
-        editbuttonHeader.style.display = "";    
+        // editbuttonHeader.style.display = "";    
         RemoveHome.style.display = "";
     });
 

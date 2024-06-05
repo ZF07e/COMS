@@ -22,7 +22,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
     <body>
-
         <header>
             <nav>
                 <div class="system-logo">
@@ -81,9 +80,9 @@
             <form id="confirmation" action = "http://localhost/COMS/AdminPage/Functions/InfromationManagement.php" method = "POST">
                 <div class="confHeader">
                     <h3>Warning!</h3>
-                    <button id="xbuttonConf">&#10005;</button>
+                    <button id="xbuttonConf" type="button">&#10005;</button>
                 </div>
-                <p>You're about to delete this account are you sure?</p>
+                <p>You're about to Deactivate this account are you sure?</p>
                 <input type="hidden" id = "name" name = "name" value = "">
                 <input type="hidden" id = "position" name = "position" value = "">
                 <input type="hidden" id = "email" name = "email" value = "">
@@ -170,12 +169,11 @@
             </form>
         </div>
         
-
         <main>
             <div class="pageTitle">User Management</div>
             <div class="main-header">
                 <div class="searchbar">
-                    <input type="text" name="" id="searchUser">
+                    <input type="text" name="" id="searchUser" placeholder="Search...">
                     <img src="../Images/Icons/icons8-search-25.png" alt="search" class="searchButton">
                 </div>
                 

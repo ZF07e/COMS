@@ -25,12 +25,6 @@
         <header>
             <nav>
                 <div class="system-logo">
-                    <div class="logo">
-                        <span><div></div></span>
-                        <span><div></div></span>
-                        <div></div>
-                        <div></div>
-                    </div>
                     <div class="title"><span>CO</span>MS<span>.</span></div>
                 </div>
     
@@ -107,11 +101,14 @@
         <div class="upperlayer" id="viewUser">
             <form>
                 <div class="formheader"><div id="xbuttonView">&#10005;</div></div>
-                <img src="../Images/Noimg.jpg" alt="" id=viewProfileImg>
+                <img src="../Images/COMS.png" alt="" id=viewProfileImg>
                 
                 <div class="infos">
+                    <h5>Name:</h5>
                     <p id="selectedName">[Sample Name]</p>
+                    <h5>Position:</h5>
                     <p id="selectedPosition">[Sample Position]</p>
+                    <h5>Email:</h5>
                     <p id="selectedEmail">[Sample Email]</p>
                     <button type="reset" id="back">Back</button>
                 </div>
@@ -121,14 +118,14 @@
         <main>
             <!-- Top Section -->
             <section class="topSection">
-                <div id="backbuttonView">&#8634; Back</div>
+                <div id="backbuttonView">&#8626; Back</div>
             </section>
 
             <!-- Top Section Header -->
             <section class="AssociationHeader">
                 <div class="info">
                     <div class="logoContainer">
-                        <img src="../Images/Noimg.jpg" alt="" id="associationLogo">
+                        <img src="../Images/COMS.png" alt="" id="associationLogo">
                     </div>
                     <div class="text">
                         <h3 id="associationName" name = "assocName"></h3>

@@ -58,16 +58,19 @@ doublefetch.then(currentUser=>{
                 <button id="rejectRequest">Reject</button>
                 `);
             }
+
+            else if(currentUser == sender){
+              $("#ActionsContainer").html(`
+              <button id="approveRequest">Sign Letter</button>
+              `);
+            }
+
+            else{
+                $("#ActionsContainer").html(""); 
+            }
+            
         });
 
-        if(currentUser == sender){
-            $("#ActionsContainer").html(`
-            <button id="approveRequest">Sign Letter</button>
-            `);
-        }
-        else{
-            $("#ActionsContainer").html(""); 
-        }
         signature();
     });
 });
@@ -450,6 +453,7 @@ function signature(){
           success: function(response){
               // console.log(response);
               localStorage.setItem("approved", true);
+              $("#documentPrev").attr('src', `../PDF-FILES/${e.id}.pdf#toolbar=0`);
           }
       })
     }

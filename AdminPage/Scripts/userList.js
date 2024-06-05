@@ -198,10 +198,15 @@ function PopUpFormFunction(){
         let removeUser = document.getElementById("removeUser");
         let yesbtn = document.getElementById("yesbtn");
         let nobtn = document.getElementById("nobtn");
+        let xbuttonConf = document.getElementById("xbuttonConf")
 
         editbutton.addEventListener("click", ()=>{
             viewmode.style.display = "none";
             editmode.style.display = "flex";
+        });
+
+        xbuttonConf.addEventListener("click", ()=>{
+            upperlayer2.style.display = "none";
         });
 
         //Return Functions

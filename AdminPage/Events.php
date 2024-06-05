@@ -79,12 +79,6 @@
         <header>
             <nav>
                 <div class="system-logo">
-                    <div class="logo">
-                        <span><div></div></span>
-                        <span><div></div></span>
-                        <div></div>
-                        <div></div>
-                    </div>
                     <div class="title"><span>CO</span>MS<span>.</span></div>
                 </div>
     
