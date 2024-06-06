@@ -59,6 +59,34 @@ class UserLogin {
                     header("Location: http://localhost/COMS/AdminPage/index.php");
                     exit();
                 }
+                elseif ($role == "School Administrator") {
+                    $_SESSION['authorized'] = true;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $name;
+                    header("Location: http://localhost/COMS/AdminPage/index.php");
+                    exit();
+                }
+                elseif ($role == "Academic Head") {
+                    $_SESSION['authorized'] = true;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $name;
+                    header("Location: http://localhost/COMS/AdminPage/index.php");
+                    exit();
+                }
+                elseif ($role == "Program Head") {
+                    $_SESSION['authorized'] = true;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $name;
+                    header("Location: http://localhost/COMS/AdminPage/index.php");
+                    exit();
+                }
+                elseif ($role == "Assistant Principal") {
+                    $_SESSION['authorized'] = true;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $name;
+                    header("Location: http://localhost/COMS/AdminPage/index.php");
+                    exit();
+                }
                 elseif($role == "Adviser"){
                     $_SESSION['authorized'] = true;
                     $_SESSION['email'] = $email;

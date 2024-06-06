@@ -59,6 +59,22 @@
                             header("Location: http://localhost/COMS/AdminPage/index.php");
                             exit();
                         }
+                        else if($role == "School Administrator"){
+                            header("Location: http://localhost/COMS/AdminPage/index.php");
+                            exit();
+                        }
+                        else if($role == "Academic Head"){
+                            header("Location: http://localhost/COMS/AdminPage/index.php");
+                            exit();
+                        }
+                        else if($role == "Program Head"){
+                            header("Location: http://localhost/COMS/AdminPage/index.php");
+                            exit();
+                        }
+                        else if($role == "Assistant Principal"){
+                            header("Location: http://localhost/COMS/AdminPage/index.php");
+                            exit();
+                        }
                         elseif($role == "Adviser"){
                             header("Location: http://localhost/COMS/AssocClient/index.php");
                             exit();

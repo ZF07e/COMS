@@ -151,8 +151,13 @@
                     <select name="position" id="type" id="u_pos">
                         <option value="" selected disabled>- Role -</option>
                         <option value="Unassigned">Unassigned</option>
+                        <option value="School Administrator">School Administrator</option>
+                        <option value="Academic Head">Academic Head</option>
+                        <option value="Program Head">Program Head</option>
+                        <option value="Assistant Principal">Assistant Principal</option>
                         <option value="Adviser">Adviser</option>
-                        <option value="President">President</option>
+                        
+                        
                     </select>
                 </div>
 

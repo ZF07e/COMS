@@ -107,7 +107,8 @@ select:focus, select:active{
 }
 
 ._PopUpForm{
-    background-color: #181818;
+    background-color: #003365;
+    color: #eee;
     padding: 1rem 1rem;
     border-radius: 1rem;
 }

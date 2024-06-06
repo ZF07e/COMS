@@ -35,7 +35,7 @@ function funktion(Associations){
         setTimeout(()=>{
             $("#registerButton").html("Register");
             window.location.href = "../User_Registration/SetupAccount/index.php";
-        }, 2000)
+        }, 500)
         
     });
 }
