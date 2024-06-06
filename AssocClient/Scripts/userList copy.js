@@ -209,9 +209,9 @@ function renderApplicantList(applicantList){
     //     });
     // });
 }
-
+let sl_gender;
 function displaySelectedAp(applicantList){
-    let sl_gender;
+
     let getApp = applicantList;
     getApp.forEach((values)=>{
         //console.log(values.id + " - " + selectedApp);
@@ -267,29 +267,30 @@ function displaySelectedAp(applicantList){
             window.location.reload();
         });
     });
-
-    $("#sl_acc").click((e)=>{ // IF USER ACCEPTED 
-        //CODE HERE
-        e.preventDefault();
-        if($("#sl_position").val() != ""){
-            let name = $("#sl_name").text();
-            let email = $("#ap_email").text();
-            let position = $("#sl_position").val();
-            let course = $("#ap_cour").text();
-            let gender = sl_gender;
-
-            $.ajax({
-                type: "POST",
-                url: "",
-                data: {name, email, position, course, gender}, //Short hand to for (name: name, email: email, etc...)
-                success: (res)=>{
-                    $("#selectPositionCon").css("display", "none");
-                    window.location.reload();
-                }
-            });
-        }
-    }); 
 }
+
+$("#sl_acc").click((e)=>{ // IF USER ACCEPTED 
+    //CODE HERE
+    e.preventDefault();
+    if($("#sl_position").val() != ""){
+        let name = $("#sl_name").text();
+        let email = $("#ap_email").text();
+        let position = $("#sl_position").val();
+        let course = $("#ap_cour").text();
+        let gender = sl_gender;
+
+        $.ajax({
+            type: "POST",
+            url: "",
+            data: {name, email, position, course, gender}, //Short hand to for (name: name, email: email, etc...)
+            success: (res)=>{
+                $("#selectPositionCon").css("display", "none");
+                console.log(name, email, position, course, gender);
+                //window.location.reload();
+            }
+        });
+    }
+}); 
 
 function getAssociationList(list){
     let associations = "";

@@ -73,6 +73,8 @@ doublefetch.then(currentUser=>{
     });
 });
 
+});
+
 
 $.ajax({
     url: "http://localhost/COMS/AssocClient/Functions/GetDocument.php",
@@ -463,4 +465,4 @@ function signature(){
       alert("bruh");
     }
     });
-  }
+}

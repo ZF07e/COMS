@@ -3,7 +3,6 @@ let firstname = document.getElementById("user-firstname");
 let lastname = document.getElementById("user-lastname");
 let gender = document.getElementById("gender");
 let formatted_firstname, formatted_lastname;
-
 document.querySelector(".submit-name").addEventListener("click", (e)=>{
     e.preventDefault();
     remomveAllError();
