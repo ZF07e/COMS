@@ -191,7 +191,7 @@
             $email = $endorsed[$x]['email'];
             $role = 'Endorser';
             $status = 'Pending';
-            $query = 'INSERT INTO recipients (name, email, role, status, documentID, isVisible) VALUES (?, ?, ?, ?, ?, 1)';
+            $query = 'INSERT INTO recipients (name, email, role, status, documentID, isVisible, emailSent) VALUES (?, ?, ?, ?, ?, 1, 1)';
 
             $stmt = $mysqli->stmt_init();
             if(!$stmt->prepare($query)){
@@ -252,7 +252,7 @@
                     <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle" alt=".">        
                     <p>
                     <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
-                    <i>'.$endorsed[$i]['position'].'</i></p>
+                    <i>'.$endorsed[$i]['position'].' '.$endorsed[$i]['affiliation'].'</i></p>
                 </div>';
             } elseif ($i == 1) {
                 $html1 .= '
@@ -261,7 +261,7 @@
                     <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle" alt=".">
                     <p> 
                     <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
-                    <i>'.$endorsed[$i]['position'].'</i></p>
+                    <i>'.$endorsed[$i]['position'].' '.$endorsed[$i]['affiliation'].'</i></p>
                 </div>';
             } elseif ($i == 2) {
                 $html2 .= '

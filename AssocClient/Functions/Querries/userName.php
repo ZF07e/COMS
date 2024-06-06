@@ -3,7 +3,12 @@
 require ('../../../LandingPage/Functions/SessionManagement.php');
 require ('../../../LandingPage/Functions/connectionDB.php');
 
-$name = $_SESSION['uname'];
+$name;
+if (!isset($_SESSION['uname']) || $_SESSION['uname'] === '') {
+    $name = $_SESSION['name'] ?? '';  // Use the 'name' session variable or an empty string if 'name' is not set
+} else {
+    $name = $_SESSION['uname'];
+}
 $email = $_SESSION['email'];
 
 $database = new Database();

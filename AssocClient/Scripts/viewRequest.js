@@ -72,12 +72,9 @@ doublefetch.then(currentUser=>{
             // }
     });
 });
-
-});
-
-
+})
 $.ajax({
-    url: "http://localhost/COMS/AssocClient/Functions/GetDocument.php",
+    url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=updateDocumentStatusApproved",
     method: "POST",
     data: {selectedID: selectedRequest},
     success: function(response){
@@ -139,6 +136,7 @@ function displayRecipient(Users){
 function checkIfDownloadable(Users){
     let totalRecipient = Users.length;
     let totalSigned = 0;
+    let totalRejected = 0;
 
     Users.forEach((e)=>{
         if(e.status == "Signed"){
@@ -146,21 +144,40 @@ function checkIfDownloadable(Users){
         }
     });
 
+    Users.forEach((e)=>{
+      if(e.status == "Rejected"){
+          totalRejected++;
+      }
+  });
+
     // console.log(totalRecipient + " - " + totalSigned);
     if(totalSigned === totalRecipient){
         $("#downloadButton").removeAttr("disabled", false);
-        $("#downloadButton").click((e)=>{
-          e.preventDefault();
-          Users.forEach((e)=>{
-            //window.location.href = `../PDF-FILES/${e.documentID}.pdf`;
-          })    
-        });
+        $.ajax({
+          url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=updateDocumentStatusApproved",
+          method: "POST",
+          data: {id: selectedRequest},
+          success: function(response){
+              console.log(response);
+          }
+      })
+    }
+    else if(totalRejected > 0){
+      $("#downloadButton").removeAttr("disabled", false);
+        console.log(selectedRequest);
+        $.ajax({
+          url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=updateDocumentStatusRejected",
+          method: "POST",
+          data: {id: selectedRequest},
+          success: function(response){
+              console.log(response);
+          }
+      })
     }
     else{
         $("#downloadButton").attr("disabled", true);
     }
-}
-
+  }
 let img = new Image();
 var offscreenCanvas = document.getElementById("offscreen-sig-canvas");
 var offscreenCtx = offscreenCanvas.getContext("2d");   

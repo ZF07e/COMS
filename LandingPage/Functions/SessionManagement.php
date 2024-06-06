@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    $session_timeout = 900; //15 minutes lang par
+    $session_timeout = 900;
 
     // Check if last activity time is set
     if (isset($_SESSION['last_activity']) && time() - $_SESSION['last_activity'] > $session_timeout) {

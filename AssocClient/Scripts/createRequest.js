@@ -18,7 +18,7 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
             let fullName = e.firstName + " " + e.lastName;
             myData.push({
                 label: fullName,
-                value: `${e.email + "," + e.position + "," + e.firstName + "," + e.lastName}`
+                value: `${e.email + "," + e.position + "," + e.affiliation + "," + e.firstName + "," + e.lastName}`
             });
         });
         
@@ -26,8 +26,8 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
             options: myData,
             autocomplete: true,
             onChange: value => {
-                let formattedValue = {email: value.split(",")[0], position: value.split(",")[1], 
-                                        firstname: value.split(",")[2], lastname: value.split(",")[3]}
+                let formattedValue = {email: value.split(",")[0], position: value.split(",")[1], affiliation: value.split(",")[2],
+                                        firstname: value.split(",")[3], lastname: value.split(",")[4]}
                 selectedRecipients.to = formattedValue;
             }
         });
@@ -44,8 +44,8 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
                 let incrmt = 0;
 
                 value.forEach((val)=>{
-                    formattedValue[incrmt] = {email: value[incrmt].split(",")[0], position: value[incrmt].split(",")[1], 
-                                            firstname: value[incrmt].split(",")[2], lastname: value[incrmt].split(",")[3]}
+                    formattedValue[incrmt] = {email: value[incrmt].split(",")[0], position: value[incrmt].split(",")[1], affiliation: value[incrmt].split(",")[2],
+                                            firstname: value[incrmt].split(",")[3], lastname: value[incrmt].split(",")[4]}
                     incrmt++;
                 })
                 selectedRecipients.endorsed = formattedValue;
@@ -63,8 +63,8 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
                 let incrmt = 0;
 
                 value.forEach((val)=>{
-                    formattedValue[incrmt] = {email: value[incrmt].split(",")[0], position: value[incrmt].split(",")[1], 
-                                            firstname: value[incrmt].split(",")[2], lastname: value[incrmt].split(",")[3]}
+                    formattedValue[incrmt] = {email: value[incrmt].split(",")[0], position: value[incrmt].split(",")[1], affiliation: value[incrmt].split(",")[2],
+                                            firstname: value[incrmt].split(",")[3], lastname: value[incrmt].split(",")[4]}
                     incrmt++;
                 })
                 selectedRecipients.noted = formattedValue;

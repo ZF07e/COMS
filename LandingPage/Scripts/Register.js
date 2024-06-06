@@ -1,4 +1,4 @@
-
+export {assocID, assoc};
 
 fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getAssociationList')
 .then(response => response.json())
@@ -6,10 +6,14 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
     funktion(data);
 })
 .catch(error => console.error('Error:', error));
+let assocID;
+let assoc;
 
 function funktion(Associations){
     Associations.forEach((association)=>{
         if(association.id == JSON.parse(sessionStorage.getItem("selectedId"))){
+            assocID = association.id;
+            assoc = association.association;
             $("#assocLogo").attr("src", `${association.image == undefined ? "../Images/COMS.png" : association.image}`)
             // document.querySelector(".associationTitle").innerHTML = association.association;
             $("#assocTitle").html(association.association);
