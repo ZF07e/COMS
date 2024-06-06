@@ -252,7 +252,7 @@
                     <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle" alt=".">        
                     <p>
                     <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
-                    <i>'.$endorsed[$i]['position'].'</i></p>
+                    <i>'.$endorsed[$i]['position'].' '.$endorsed[$i]['affiliation'].'</i></p>
                 </div>';
             } elseif ($i == 1) {
                 $html1 .= '
@@ -261,7 +261,7 @@
                     <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle" alt=".">
                     <p> 
                     <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
-                    <i>'.$endorsed[$i]['position'].'</i></p>
+                    <i>'.$endorsed[$i]['position'].' '.$endorsed[$i]['affiliation'].'</i></p>
                 </div>';
             } elseif ($i == 2) {
                 $html2 .= '

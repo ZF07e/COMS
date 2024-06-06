@@ -72,8 +72,7 @@ doublefetch.then(currentUser=>{
             // }
     });
 });
-
-
+})
 $.ajax({
     url: "http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=updateDocumentStatusApproved",
     method: "POST",
@@ -178,8 +177,7 @@ function checkIfDownloadable(Users){
     else{
         $("#downloadButton").attr("disabled", true);
     }
-}
-
+  }
 let img = new Image();
 var offscreenCanvas = document.getElementById("offscreen-sig-canvas");
 var offscreenCtx = offscreenCanvas.getContext("2d");   

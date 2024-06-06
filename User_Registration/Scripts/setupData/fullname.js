@@ -1,3 +1,4 @@
+import { assocID, assoc } from "../../../LandingPage/Scripts/Register.js";
 const encrypt = (data)=> (btoa(unescape(encodeURIComponent(JSON.stringify(data)))));
 let firstname = document.getElementById("user-firstname");
 let lastname = document.getElementById("user-lastname");
@@ -34,6 +35,8 @@ function saveData(){
     formatted_lastname = lastname.value.replace(/\s+/g, '').trim(); 
 
     sessionStorage.setItem('userInfo', encrypt({
+        associationID: assocID,
+        association: assoc,
         firstName: formatted_firstname,
         lastName: formatted_lastname,
         gender: gender.value
