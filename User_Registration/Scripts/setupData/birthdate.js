@@ -31,7 +31,7 @@ document.querySelector(".submit-birthdate").addEventListener("click", (e) =>{
 
 function saveData(){
     let prevData = decode(sessionStorage.getItem('userInfo'));
-    let birthday = month.value + " " + day.value + " " + year.value;
+    let birthday = month.value + " " + day.value + ", " + year.value;
     let combineData = Object.assign({}, prevData, {birthday})
     sessionStorage.setItem('userInfo', encrypt(combineData));
     window.location.href = "contact.php";

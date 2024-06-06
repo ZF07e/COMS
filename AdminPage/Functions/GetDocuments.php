@@ -343,27 +343,27 @@
         $database = new Database();
         $mysqli = $database->getConnection();
 
-        $query = "SELECT status FROM recipients WHERE role = 'Endorser' AND documentID = '$selectedID'";
+        $query = "SELECT status FROM recipients WHERE role = 'Noter' AND documentID = '$selectedID'";
         $result = $mysqli->query($query);
 
         if (!$result) {
             die("SQL Error (query): " . $mysqli->error);
         }
 
-        $endroserStatus = [];
+        $noterStatus = [];
         while ($row = $result->fetch_assoc()) {
-            $endroserStatus[] = $row;
+            $noterStatus[] = $row;
         }
 
-        $endorserCount = 0;
-        for($x = 0; $x < count($endroserStatus); $x++){
-            $status = $endroserStatus[$x]['status'];
+        $noterCount = 0;
+        for($x = 0; $x < count($noterStatus); $x++){
+            $status = $noterStatus[$x]['status'];
             if($status == "Signed"){
-                $endorserCount++;
+                $noterCount++;
             }
         }
 
-        if($endorserCount == count($endroserStatus)){
+        if($noterCount == count($noterStatus)){
             $query = "UPDATE recipients SET isVisible = 1 WHERE role = 'Recipient' AND documentID = ?";
             $stmt = $mysqli->stmt_init();
             if(!$stmt->prepare($query)){

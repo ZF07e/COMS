@@ -28,35 +28,26 @@ window.onload = ()=>{
 
 
 //SampleData  
-let applicants = [
-    {
-        id: 1,
-        name: "Firstname Lastname",
-        email: "Sample@123456@alabang.sti.edu.ph",
-        gender: "Male",
-        course: "Bachelor In Science In Information In Technology",
-        desc: "Good At Cook'in"
-    },
-    {
-        id: 2,
-        name: "Firstname2 Lastname2",
-        email: "Sample@123456@alabang.sti.edu.ph2",
-        gender: "Female",
-        course: "Bachelor In Science In Information In Technology2",
-        desc: "Good At Cook'in2"
-    }
-]
+
 
 
 //do not remove this (Used for selecting an applicant)
 let selectedApp; 
 
-fetch('http://localhost/COMS/AssocClient/Functions/Querries/getUsers.php')
+fetch('http://localhost/COMS/AssocClient/Functions/Querries/getUsers.php?action=positions')
     .then(response => response.json())
     .then(data => {
         renderUserList(data);
         SearchTab(data);
-        renderApplicantList(applicants)
+    })
+    .catch(error => console.error('Error:', error));
+
+fetch('http://localhost/COMS/AssocClient/Functions/Querries/getUsers.php?action=getApplicants')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        renderApplicantList(data)
+        displaySelectedAp(data);
     })
     .catch(error => console.error('Error:', error));
 
@@ -154,18 +145,18 @@ function renderApplicantList(applicantList){
     let applicants = "";
     
     applicantList.forEach((app) => {
-        console.log(app.id)
+        console.log(app.userID)
         applicants += `
-            <div class="ap_item" data-Applicant="${app.id}">
+            <div class="ap_item" data-Applicant="${app.userID}">
                 <div class="item_left">
                     <div class="userInfo">
-                        <p id="applicant">${app.name}</p>
+                        <p id="applicant">${app.firstName} ${app.lastName}</p>
                         <p id="applicantEmail">${app.email}</p>
                     </div>
                 </div>
                 <div>
-                    <button id="ap_accept2" class="ap_accept2C" data-Applicant="${app.id}">Accept</button>
-                    <button id="ap_reject2" class="ap_reject2C" data-Applicant="${app.id}">Reject</button>
+                    <button id="ap_accept2" class="ap_accept2C" data-Applicant="${app.userID}">Accept</button>
+                    <button id="ap_reject2" class="ap_reject2C" data-Applicant="${app.userID}">Reject</button>
                 </div>
             </div>
             `;
@@ -210,18 +201,68 @@ function renderApplicantList(applicantList){
     // });
 }
 
+let sl_gender;
+let assoc;
+$("#sl_acc").click((e)=>{
+    e.preventDefault();
+    if($("#sl_position").val() != ""){
+        console.log($("#sl_position").val());
+        let name = $("#sl_name").text();
+        let email = $("#ap_email").text();
+        let position = $("#sl_position").val();
+        let association = assoc;
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/COMS/AssocClient/Functions/Querries/getUsers.php?action=acceptApplication",
+            data: {email, position, name, association}, //Short hand to for (name: name, email: email, etc...)
+            success: (res)=>{
+                $("#selectPositionCon").css("display", "none");
+                window.location.reload();
+            },
+        });
+    }
+});
+
+
 function displaySelectedAp(applicantList){
-    let sl_gender;
     let getApp = applicantList;
     getApp.forEach((values)=>{
-        //console.log(values.id + " - " + selectedApp);
-        if(values.id == selectedApp){
+        console.log(values.userID + " - " + selectedApp);
+        if(values.userID == selectedApp){
             sl_gender = values.gender;
+            assoc = values.affiliation;
+            email = values.email;
+            position = values.position;
+            let name = values.firstName + ' ' + values.lastName;
             $("#sl_name").html(values.name);
-            $("#ap_name").html(values.name);
+            $("#ap_name").html(values.firstName + ' ' + values.lastName);
             $("#ap_email").html(values.email);
-            $("#ap_cour").html(values.course);
-            $("#ap_desc").html(values.desc);
+            $("#ap_cour").html(values.courseStrand);
+            $("#ap_desc").html(values.description);
+
+            $("#ap_rej").click((e)=>{
+                e.preventDefault();
+                e.stopPropagation();
+                //$("#applicantPopUpCon").css("display", "none");
+                alertify.confirm('Reject Applicant', 'Are you sure to reject this applicant?', 
+                function(){
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost/COMS/AssocClient/Functions/Querries/getUsers.php?action=rejectApplication",
+                        data: {email, position, name, assoc}, //Short hand to for (name: name, email: email, etc...)
+                        success: (res)=>{
+                            console.log(res);
+                            window.location.reload();
+                        },
+                    });
+                    $("#applicantPopUpCon").css("display", "none");
+                    window.location.reload();
+                },
+                function(){
+                    $("#applicantPopUpCon").css("display", "none");
+                    window.location.reload();
+                });
+            });
         }
     });
 
@@ -244,51 +285,6 @@ function displaySelectedAp(applicantList){
         $("#applicantPopUpCon").css("display", "none");
         $("#selectPositionCon").css("display", "flex");
     });
-    
-    $("#ap_rej").click((e)=>{
-        e.preventDefault();
-        e.stopPropagation();
-        //$("#applicantPopUpCon").css("display", "none");
-        alertify.confirm('Reject Applicant', 'Are you sure to reject this applicant?', 
-        function(){ //IF REJECT USER
-            
-            
-            
-            
-            //CODE HERE 
-
-
-
-            $("#applicantPopUpCon").css("display", "none");
-            window.location.reload();
-        },
-        function(){
-            $("#applicantPopUpCon").css("display", "none");
-            window.location.reload();
-        });
-    });
-
-    $("#sl_acc").click((e)=>{ // IF USER ACCEPTED 
-        //CODE HERE
-        e.preventDefault();
-        if($("#sl_position").val() != ""){
-            let name = $("#sl_name").text();
-            let email = $("#ap_email").text();
-            let position = $("#sl_position").val();
-            let course = $("#ap_cour").text();
-            let gender = sl_gender;
-
-            $.ajax({
-                type: "POST",
-                url: "",
-                data: {name, email, position, course, gender}, //Short hand to for (name: name, email: email, etc...)
-                success: (res)=>{
-                    $("#selectPositionCon").css("display", "none");
-                    window.location.reload();
-                }
-            });
-        }
-    }); 
 }
 
 function getAssociationList(list){

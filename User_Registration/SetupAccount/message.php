@@ -26,7 +26,7 @@
                             <h2>COMS</h2>
                         </div>               
                         <p class="formTag">Account Created!</p>
-                        <p class="hint">Check Your Email For Your Application Status</p>
+                        <p class="hint">Please check your email to activate your account</p>
                     </div>
 
                     <!-- 

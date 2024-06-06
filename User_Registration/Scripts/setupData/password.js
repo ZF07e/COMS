@@ -23,6 +23,7 @@ document.querySelector(".submit-password").addEventListener("click", (e) => {
             data : combineData,
             success: (res)=>{
                 console.log(res);
+                console.log(combineData);
                 sessionStorage.clear();
                 window.location.href = "message.php";
             }

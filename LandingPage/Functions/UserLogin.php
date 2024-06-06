@@ -26,9 +26,9 @@ class UserLogin {
         $database = new Database();
         $mysqli = $database->getConnection();
         $email = $_POST['inputEmail'];
-        $passowrd = $_POST['inputPassword'];
+        $passowrd = md5($_POST['inputPassword']);
 
-        $query = "SELECT password FROM useraccounts WHERE email = ?";
+        $query = "SELECT password FROM users WHERE email = ? AND activation IS null";
 
         $stmt = $mysqli->stmt_init();
         if(!$stmt->prepare($query)){
@@ -40,21 +40,16 @@ class UserLogin {
         $result = $stmt->get_result();
         $data = $result->fetch_assoc();
 
-        if(gettype($data) == "array"){
-            $data = implode($data);
+        if (is_array($data)) {
+            $data = implode('', $data); // '' specifies no delimiter
         }
 
-        $sql = "SELECT position FROM useraccounts WHERE email = '$email'";
+        $sql = "SELECT firstName, lastName, position FROM users WHERE email = '$email'";
         $result = $mysqli->query($sql);
         $userData = $result->fetch_assoc();
         $role = $userData['position'];
-
-        $sql = "SELECT firstName, lastName FROM users WHERE email = '$email'";
-        $result = $mysqli->query($sql);
-        $userData = $result->fetch_assoc();
         $name = $userData['firstName'].' '.$userData['lastName'];
 
-        //$data = md5($password);
         if($data != null){
             if($data == $passowrd){                
                 if ($role == "Student Affairs Officer") {
@@ -133,7 +128,7 @@ class UserLogin {
             }
         }
         else{
-            $_SESSION['error'] = 'Invalid email';
+            $_SESSION['error'] = $data;
             header('Location: http://localhost/COMS/LandingPage/Index.php');
             exit();
         }
