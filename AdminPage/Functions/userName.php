@@ -3,7 +3,16 @@
 require ('../../LandingPage/Functions/SessionManagement.php');
 require ('../../LandingPage/Functions/connectionDB.php');
 
+$name;
+
+if(isset($_SESSION['uname'])){
 $name = $_SESSION['uname'];
+}
+
+else{
+$name = $_SESSION['name'];
+}
+
 $email = $_SESSION['email'];
 
 $database = new Database();
@@ -25,4 +34,5 @@ $jsonArray = json_encode($data);
 header('Content-Type: application/json');
 
 print_r($jsonArray);
+
 ?>

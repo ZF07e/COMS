@@ -12,7 +12,7 @@ let selectedRecipients = {
 fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?action=getUserPositions')
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+        //console.log(data);
         myData = [];
         data.forEach((e)=>{
             let fullName = e.firstName + " " + e.lastName;
@@ -39,7 +39,7 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
             autocomplete: true,
             icon: "fa fa-times",
             onChange: value => {
-                console.log(value);
+                //console.log(value);
                 let formattedValue = []
                 let incrmt = 0;
 
@@ -96,11 +96,11 @@ fetch('http://localhost/COMS/LandingPage/Functions/GetAssociationDetails.php?act
 $("#sendReq").on("click", (e)=>{
     e.preventDefault();
 
-    console.log(selectedRecipients.to);
+    //console.log(selectedRecipients.to);
     const delta = quill.root.innerHTML;
     const subject = $("#SubjectInput").val();
-    console.log(delta);
-    console.log("Recipient Data" + selectedRecipients.to);
+    //console.log(delta);
+    //console.log("Recipient Data" + selectedRecipients.to);
     
     const form = document.createElement('form');
     form.method = 'POST';
