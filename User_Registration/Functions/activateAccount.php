@@ -19,7 +19,7 @@
         die("token not found");
     }
     $sql = "UPDATE users
-            SET activation = NULL, userStatus = 1
+            SET activation = NULL
             WHERE email = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("s", $user["email"]);
