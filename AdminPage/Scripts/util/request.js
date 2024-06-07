@@ -8,6 +8,7 @@ fetch('http://localhost/COMS/AdminPage/Functions/GetDocuments.php?action=getDocu
     .then(data => {
         Documents = data;
         displayRequest(Documents);
+        SearchTab(Documents);
         document.querySelectorAll(".mailRequest").forEach((e)=>{
             e.addEventListener("click", ()=>{
                 let selectedID = e.dataset.request;
@@ -81,6 +82,7 @@ $("#deleteMail").click((ev)=>{
     console.log("remove to database");
 });
 
+
 function displayRequest(documents){
     let inboxEL = "";
     let approEL = "";
@@ -134,4 +136,101 @@ function displayRequest(documents){
     $("#containerBodyApproved").html(approEL);
     $("#containerBodyRejected").html(rejecEL);
     $("#containerBodyArchived").html(archiEL);
+}
+
+function SearchTab(documents){
+    //When Searching User
+    document.getElementById("searchRequest").addEventListener("keyup", ()=>{
+        //get input String and convert it to UpperCase
+        let searchString = document.getElementById("searchRequest").value.toUpperCase();
+        let documentsFound = "";
+        console.log(searchString)
+        documents.forEach((e)=>{
+        // let fullName = value.firstName +" "+ value.lastName;  
+        if(e.subject.toUpperCase().includes(searchString, 0) && searchString.length > 0){      
+            documentsFound += `
+            <div class="mailRequest" data-Request="${e.id}">
+                <div id="mailSender">${e.sender}</div>
+                <div id="mailSubject">${e.subject}</div>
+                <div id="rightMailRequest">
+                <div id="deleteMail">Delete</div>
+                <div id="archiveMail">Archive</div>
+                <div id="mailDate">${e.date_only}</div>
+                </div>
+            </div>
+            `;  
+            document.getElementById("containerBody").innerHTML = documentsFound; //render the accounts Searched
+            document.getElementById("containerBodyApproved").innerHTML = documentsFound; 
+            document.getElementById("containerBodyRejected").innerHTML = documentsFound; 
+            document.getElementById("containerBodyArchived").innerHTML = documentsFound; 
+            }
+            else{
+                let inboxEL = "";
+                let approEL = "";
+                let rejecEL = "";
+                let archiEL = "";
+
+                documents.forEach((e)=>{
+                    if(e.status == "Inbox"){
+                        inboxEL += `
+                        <div class="mailRequest" data-Request="${e.id}">
+                            <div id="mailSender">${e.sender}</div>
+                            <div id="mailSubject">${e.subject}</div>
+                            <div id="rightMailRequest">
+                            <div id="deleteMail">Delete</div>
+                            <div id="archiveMail">Archive</div>
+                            <div id="mailDate">${e.date_only}</div>
+                            </div>
+                        </div>
+                        `;
+                    }
+                    else if(e.status == "Approved"){
+                        approEL += `
+                        <div class="mailRequest" data-Request="${e.id}">
+                            <div id="mailSender">${e.sender}</div>
+                            <div id="mailSubject">${e.subject}</div>
+                            <div id="mailDate">${e.date_only}</div>
+                        </div>
+                        `;    
+                    }
+                    else if(e.status == "Rejected"){
+                        rejecEL += `
+                        <div class="mailRequest" data-Request="${e.id}">
+                            <div id="mailSender">${e.sender}</div>
+                            <div id="mailSubject">${e.subject}</div>
+                            <div id="mailDate">${e.date_only}</div>
+                        </div>
+                        `;            
+                    }
+                    else if(e.status == "Archived"){
+                        archiEL += `
+                        <div class="mailRequest" data-Request="${e.id}">
+                            <div id="mailSender">${e.sender}</div>
+                            <div id="mailSubject">${e.subject}</div>
+                            <div id="mailDate">${e.date_only}</div>
+                        </div>
+                        `;            
+                    }
+                });
+                $("#containerBody").html(inboxEL);
+                $("#containerBodyApproved").html(approEL);
+                $("#containerBodyRejected").html(rejecEL);
+                $("#containerBodyArchived").html(archiEL);
+            }
+        }); 
+
+
+
+
+
+        document.querySelectorAll(".mailRequest").forEach((e)=>{
+            e.addEventListener("click", ()=>{
+                let selectedID = e.dataset.request;
+                selectedRequest = localStorage.setItem("selectedRequest", JSON.stringify(selectedID));
+                console.log(selectedID);
+                window.location.href = "../AdminPage/viewRequest.php";
+            });
+        });
+    });
+
 }
