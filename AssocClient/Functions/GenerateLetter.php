@@ -68,12 +68,12 @@
         }
 
         if($fileName == null){
-            $fileName = "COMS.png";
-            $imageURL = "../../Images/".$fileName;
+            $imageURL = "../../Images/COMS.png";
         }
         else{
             $imageURL = "../../Images/AssosiationsPfp/".$fileName;
         }
+        
         $stmt->close();
         $mysqli->close();
 
@@ -246,39 +246,45 @@
 
         for ($i = 0; $i < $endorsedCount; $i++) {
             if ($i == 0) {
+                $affiliation = $endorsed[$i]['affiliation'] != "" ? "(". $endorsed[$i]['affiliation'] . ")" : "";
                 $html1 .= '
                 <div class="endorser1" style="float: left;"> 
                     <br>
                     <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle" alt=".">        
                     <p>
                     <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
-                    <i>'.$endorsed[$i]['position'].' '.$endorsed[$i]['affiliation'].'</i></p>
+                    <i>'.$endorsed[$i]['position'].' '.$affiliation.'</i></p>
                 </div>';
             } elseif ($i == 1) {
+                $affiliation = $endorsed[$i]['affiliation'] != "" ? "(". $endorsed[$i]['affiliation'] . ")" : "";
                 $html1 .= '
                 <div class="endorser2" style="float: right;"> 
                     <br>
-                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle" alt=".">
-                    <p> 
+                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle" alt=".">        
+                    <p>
                     <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
-                    <i>'.$endorsed[$i]['position'].' '.$endorsed[$i]['affiliation'].'</i></p>
+                    <i>'.$endorsed[$i]['position'].' '.$affiliation.'</i></p>
                 </div>';
             } elseif ($i == 2) {
+                $affiliation = $endorsed[$i]['affiliation'] != "" ? "(". $endorsed[$i]['affiliation'] . ")" : "";
                 $html2 .= '
-                <div class="endorser3" style="float: left;">
-                    <br> 
-                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle" alt="."> 
+                <div class="endorser3" style="float: left;"> 
+                    <br>
+                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle" alt=".">        
+                    <p>
                     <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
-                    <i>'.$endorsed[$i]['position'].'</i></p>
+                    <i>'.$endorsed[$i]['position'].' '.$affiliation.'</i></p>
                 </div>';
             } elseif ($i == 3) {
+                $affiliation = $endorsed[$i]['affiliation'] != "" ? "(". $endorsed[$i]['affiliation'] . ")" : "";
                 $html2 .= '
-                <div class="endorser4" style="float: right;">
-                    <br> 
-                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle" alt="."> 
+                <div class="endorser4" style="float: right;"> 
+                    <br>
+                    <img src= "'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'signature" class="signatureStyle" alt=".">        
+                    <p>
                     <strong>'.$endorsed[$i]['firstname'].' '. $endorsed[$i]['lastname'].'</strong><br>
-                    <i>'.$endorsed[$i]['position'].'</i></p>
-                </div>';
+                    <i>'.$endorsed[$i]['position'].' '.$affiliation.'</i></p>
+                </div>';        
             }
         }
         $html1 .= '<div style="clear: both;"></div>';
@@ -297,40 +303,44 @@
 
         for ($i = 0; $i < $notedCount; $i++) {
             if ($i == 0) {
+                $affiliation = $noted[$i]['affiliation'] != "" ? "(". $noted[$i]['affiliation'] . ")" : "";
                 $html1 .= '
                 <div class="noted1" style="float: left;"> 
                     <br>
                     <img src= "'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'signature" class="signatureStyle" alt=".">        
                     <p>
                     <strong>'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
-                    <i>'.$noted[$i]['position'].'</i></p>
+                    <i>'.$noted[$i]['position'].' '.$affiliation.'</i></p>
                 </div>';
             } elseif ($i == 1) {
+                $affiliation = $noted[$i]['affiliation'] != "" ? "(". $noted[$i]['affiliation'] . ")" : "";
                 $html1 .= '
                 <div class="noted2" style="float: right;"> 
                     <br>
                     <img src= "'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'signature" class="signatureStyle" alt=".">
                     <p> 
                     <strong>'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
-                    <i>'.$noted[$i]['position'].'</i></p>
+                    <i>'.$noted[$i]['position'].' '.$affiliation.'</i></p>
                 </div>';
             } elseif ($i == 2) {
+                $affiliation = $noted[$i]['affiliation'] != "" ? "(". $noted[$i]['affiliation'] . ")" : "";
                 $html2 .= '
                 <div class="noted3" style="float: left;">
                     <br>
                     <img src= "'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'signature" class="signatureStyle" alt=".">
                     <p> 
                     <strong>'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
-                    <i>'.$noted[$i]['position'].'</i></p>
+                    <i>'.$noted[$i]['position'].' '.$affiliation.'</i></p>
                 </div>';
             } elseif ($i == 3) {
+                $affiliation = $noted[$i]['affiliation'] != "" ? "(". $noted[$i]['affiliation'] . ")" : "";
                 $html2 .= '
                 <div class="noted4" style="float: right;">
                     <br> 
                     <img src= "'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'signature" class="signatureStyle" alt="."> 
                     <p>
                     <strong>'.$noted[$i]['firstname'].' '. $noted[$i]['lastname'].'</strong><br>
-                    <i>'.$noted[$i]['position'].'</i></p>
+                    <i>'.$noted[$i]['position'].' '.$affiliation.'</i></p>
                 </div>';
             }
         }
@@ -431,7 +441,7 @@
             }
 
             .endorsed1, .endorsed2, .noter1, .noter2{
-                padding: 0rem 5rem;
+                padding: 0rem 2rem;
             }
 
             .endorsed1,.noter1{
