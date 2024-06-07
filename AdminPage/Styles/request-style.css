@@ -118,11 +118,11 @@ main{
     border: solid 1px #ffffffbd;
 } */
 
-/* #searchContainer input:focus{
+#searchContainer input:focus{
     background-color: transparent; 
     
     outline: none;
-} */
+}
 
 #searchContainer img{
     -webkit-user-drag: none;

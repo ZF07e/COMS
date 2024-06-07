@@ -495,7 +495,7 @@
                     Sincerely,<br>
                     <img src= "'.$writer.'signature" class="signatureStyle extraStyle" alt="."> <br>
                     <strong>'.$writer.'</strong><br>
-                    <i>'.$writerPosition.'<i>
+                    <i>'.$writerPosition.' ('.$association.')<i>
                 </p>
             </div>
             <div>
