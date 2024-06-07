@@ -219,10 +219,6 @@ function SearchTab(documents){
             }
         }); 
 
-
-
-
-
         document.querySelectorAll(".mailRequest").forEach((e)=>{
             e.addEventListener("click", ()=>{
                 let selectedID = e.dataset.request;
