@@ -9,10 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>COMS: ADMIN</title>
         <link rel="icon" href="../Images/WebLogo/CO (1).png" type="images/icon type">
-    
         <!-- jquery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>        
         <link rel="stylesheet" href="../AdminPage/Styles/mainStyle/header-style.css">
         <link rel="stylesheet" href="../AdminPage/Styles/mainStyle/general-style.css">
         <link rel="stylesheet" href="../AdminPage/Styles/mainStyle/calendar-style.css">
@@ -69,12 +67,10 @@
         <main>
             <section class="pageTitle">
                 Dashboard
-
                 <!-- <button id="logoutHeader"><img src="../Images/Icons/icons8-bell-24.png"></button> -->
             </section>
             
             <div id="CenterDivContainer">
-
                 <section id="Account_Con">
                     <h3>Account</h3>
                     <div id="accountProfileHome">
