@@ -236,10 +236,10 @@
                         </form>
 
                         <div id="commentsList">
-                            <div id="commentStyle">
+                            <!-- <div id="commentStyle">
                                 <div id="commentStyleHeader">Marius Brylle U. Pastoral (Student)</div>
                                 <div id="commentBody">OOoohhhwwshiittt angaling</div>
-                            </div>
+                            </div> -->
 <!-- 
                             <div id="commentStyle">
                                 <div id="commentStyleHeader">Marius Brylle U. Pastoral (Student)</div>
