@@ -110,8 +110,11 @@
                     <select name="newPosition" id="EditselectedPosition">
                         <option value="" selected disabled>- Position -</option>
                         <option value="Unassigned">Unassigned</option>
-                        <option value="Adviser">Adviser</option>
-                        <option value="President">President</option>               
+                        <option value="School Administrator">School Administrator</option>
+                        <option value="Academic Head">Academic Head</option>
+                        <option value="Program Head">Program Head</option>
+                        <option value="Assistant Principal">Assistant Principal</option>
+                        <option value="Adviser">Adviser</option>              
                     </select>
 
                     <select name="newAffiliation" id="EdithandlingAssociation">
